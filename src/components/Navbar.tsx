@@ -18,9 +18,9 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#e2e8f0]/70 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 lg:h-[88px]">
-          <Link href="/" className="flex items-center gap-3.5 shrink-0">
-            <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-[60px] w-auto object-contain" />
+        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-[88px]">
+          <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0">
+            <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-11 sm:h-[60px] w-auto object-contain" />
             <div className="hidden sm:block">
               <span className="text-[1.5rem] font-extrabold text-[#1118E8] leading-none block tracking-tight">
                 MG Eye Foundation

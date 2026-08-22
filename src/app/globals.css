@@ -56,7 +56,8 @@
     @apply bg-white text-foreground;
     font-family: var(--font-poppins), 'Inter', system-ui, sans-serif;
   }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { overflow-x: hidden; }
 }
 
 @keyframes fadeUp {

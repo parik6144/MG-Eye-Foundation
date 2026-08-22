@@ -20,77 +20,89 @@ export default function HomePage() {
     window.dispatchEvent(new CustomEvent("open-appointment"));
   }, []);
 
+  const heroCopy = (mobile: boolean) => (
+    <div className={mobile ? "" : "max-w-xl animate-fade-up"}>
+      <h1 className={`${mobile ? "text-[1.75rem] leading-tight" : "text-[2.8rem] sm:text-[3.2rem] lg:text-[3.8rem] leading-[1.08]"} font-extrabold text-[#0F172A]`}>
+        Better Vision.{" "}
+        <span className="text-[#1118E8]">Better Tomorrow.</span>
+      </h1>
+      <p className={`text-[#374151] leading-relaxed font-medium ${mobile ? "text-sm mt-3" : "text-base sm:text-[17px] mt-4 max-w-lg"}`}>
+        Cataract, retina, glaucoma, child eye care and squint. We scan here. We treat here. We explain in simple words. Bara Gamharia, 15+ years.
+      </p>
+      <div className={`flex items-start ${mobile ? "justify-between gap-2 mt-5" : "items-center gap-6 mt-6"}`}>
+        {FEATURES.map((f, i) => (
+          <div key={i} className="text-center flex-1 min-w-0">
+            <div className={`${mobile ? "w-10 h-10" : "w-11 h-11"} rounded-full border border-[#1118E8]/30 flex items-center justify-center mx-auto mb-1.5 bg-white/70`}>
+              <f.icon className={`${mobile ? "w-4 h-4" : "w-5 h-5"} text-[#1118E8]`} strokeWidth={1.5} />
+            </div>
+            <span className={`${mobile ? "text-[10px]" : "text-[11px]"} font-semibold text-[#1E293B] leading-tight block`}>{f.label}</span>
+          </div>
+        ))}
+      </div>
+      <div className={`mt-5 flex flex-col ${mobile ? "gap-4" : "sm:flex-row sm:items-start gap-4 mt-6"}`}>
+        <div>
+          <button
+            onClick={openAppointment}
+            className={`bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full shadow-lg shadow-[#1118E8]/25 transition-all flex items-center justify-center gap-2 ${mobile ? "w-full px-5 py-3 text-sm" : "px-8 py-3.5 text-base"}`}
+          >
+            <CalendarDays className="w-5 h-5" /> Book Your Appointment
+          </button>
+          <p className="text-[#64748B] text-xs mt-1.5 ml-1">Fast and simple to book.</p>
+        </div>
+        <div className={mobile ? "" : "sm:border-l sm:border-[#CBD5E1] sm:pl-5"}>
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4 text-[#374151]" />
+            <span className="text-sm font-semibold text-[#1E293B]">Call Us Now</span>
+          </div>
+          <a href={SITE.phoneHref} className="text-[#FF0808] font-bold text-base hover:underline">{SITE.phoneDisplay}</a>
+          <p className="text-[#94A3B8] text-xs mt-1">{SITE.hours}</p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
-      <section className="relative w-full overflow-hidden bg-white pt-[88px]">
-        <img src="/mg_eye_banner_4.png" alt="MG Eye Foundation" className="w-full h-auto block" />
-        <div className="absolute top-[88px] left-0 right-0 bottom-[70px] bg-gradient-to-r from-white/92 via-white/65 to-transparent pointer-events-none" />
-        <div className="absolute top-[88px] left-0 right-0 bottom-[70px] flex items-center">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="max-w-xl animate-fade-up">
-              <h1 className="text-[2.8rem] sm:text-[3.2rem] lg:text-[3.8rem] font-extrabold text-[#0F172A] leading-[1.08]">
-                Better Vision.{" "}
-                <span className="text-[#1118E8]">Better Tomorrow.</span>
-              </h1>
-              <p className="text-[#374151] text-base sm:text-[17px] mt-4 max-w-lg leading-relaxed font-medium">
-                Cataract, retina, glaucoma, child eye care and squint. We scan here. We treat here. We explain in simple words. Bara Gamharia, 15+ years.
-              </p>
-              <div className="flex items-center gap-6 mt-6">
-                {FEATURES.map((f, i) => (
-                  <div key={i} className="text-center">
-                    <div className="w-11 h-11 rounded-full border border-[#1118E8]/30 flex items-center justify-center mx-auto mb-1.5 bg-white/70">
-                      <f.icon className="w-5 h-5 text-[#1118E8]" strokeWidth={1.5} />
-                    </div>
-                    <span className="text-[11px] font-semibold text-[#1E293B] leading-tight block">{f.label}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 flex flex-col sm:flex-row sm:items-start gap-4">
-                <div>
-                  <button onClick={openAppointment} className="bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full px-8 py-3.5 text-base shadow-lg shadow-[#1118E8]/25 transition-all flex items-center gap-2">
-                    <CalendarDays className="w-5 h-5" /> Book Your Appointment
-                  </button>
-                    <p className="text-[#64748B] text-xs mt-1.5 ml-1">Fast and simple to book.</p>
-                </div>
-                <div className="sm:border-l sm:border-[#CBD5E1] sm:pl-5">
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#374151]" />
-                    <span className="text-sm font-semibold text-[#1E293B]">Call Us Now</span>
-                  </div>
-                  <a href={SITE.phoneHref} className="text-[#FF0808] font-bold text-base hover:underline">{SITE.phoneDisplay}</a>
-                  <p className="text-[#94A3B8] text-xs mt-1">{SITE.hours}</p>
-                </div>
-              </div>
+      <section className="relative w-full overflow-hidden bg-white pt-16 sm:pt-20 lg:pt-[88px]">
+        <div className="relative">
+          <img src="/mg_eye_banner_4.png" alt="MG Eye Foundation" className="w-full h-auto block" />
+          <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white/92 via-white/65 to-transparent pointer-events-none" />
+          <div className="hidden lg:flex absolute inset-0 items-center pb-[70px]">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              {heroCopy(false)}
             </div>
           </div>
+          <div className="absolute bottom-0 left-0 w-full pointer-events-none h-10 sm:h-[70px]">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none" className="w-full h-full">
+              <path d="M1440 70 C1200 45, 900 18, 600 8 C300 0, 100 20, 0 12 L0 70 Z" fill="#1118E8" opacity="0.92" />
+              <path d="M1440 70 C1250 50, 1000 25, 700 18 C400 12, 150 30, 0 24 L0 70 Z" fill="#FF741F" opacity="0.88" />
+              <path d="M1440 70 C1300 58, 1050 38, 800 32 C550 26, 200 40, 0 36 L0 70 Z" fill="#FF0808" opacity="0.82" />
+            </svg>
+          </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none" style={{ height: "70px" }}>
-          <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none" className="w-full h-full">
-            <path d="M1440 70 C1200 45, 900 18, 600 8 C300 0, 100 20, 0 12 L0 70 Z" fill="#1118E8" opacity="0.92" />
-            <path d="M1440 70 C1250 50, 1000 25, 700 18 C400 12, 150 30, 0 24 L0 70 Z" fill="#FF741F" opacity="0.88" />
-            <path d="M1440 70 C1300 58, 1050 38, 800 32 C550 26, 200 40, 0 36 L0 70 Z" fill="#FF0808" opacity="0.82" />
-          </svg>
+        <div className="lg:hidden px-4 pt-5 pb-6">
+          {heroCopy(true)}
         </div>
       </section>
 
-      <section className="bg-[#1118E8] py-5">
+      <section className="bg-[#1118E8] py-4 sm:py-5">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {STATS.map((s) => (
               <div key={s.label} className="text-center lg:text-left lg:border-l lg:border-white/20 lg:pl-6 first:lg:border-0 first:lg:pl-0">
-                <div className="text-2xl font-extrabold text-white">{s.num}</div>
-                <div className="text-white/60 text-[11px] mt-0.5">{s.label}</div>
+                <div className="text-xl sm:text-2xl font-extrabold text-white">{s.num}</div>
+                <div className="text-white/70 text-[10px] sm:text-[11px] mt-0.5 leading-snug">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-[22px] overflow-hidden border border-[#e2e8f0] shadow-lg shadow-[#1118E8]/[0.06]">
-              <img src="/about-care.png" alt="Doctor talking with a patient at MG Eye Foundation" className="w-full h-full object-cover min-h-[380px]" />
+              <img src="/about-care.png" alt="Doctor talking with a patient at MG Eye Foundation" className="w-full h-full object-cover min-h-[220px] sm:min-h-[380px]" />
             </div>
             <div>
               <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">About Us</span>
@@ -112,7 +124,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#F7F9FC]">
+      <section className="py-12 sm:py-20 bg-[#F7F9FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-[28px] bg-[#0F172A] px-6 py-10 text-center sm:px-10">
             <p className="text-[#FF741F] text-xs font-semibold tracking-[0.22em] uppercase">Mission and vision</p>
@@ -203,7 +215,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-[#F4F7FF] to-white">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-[#F4F7FF] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-[#FF0808] text-sm font-semibold tracking-wide uppercase">Patient Education</span>
@@ -252,7 +264,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-20 bg-[#0F172A]">
+      <section className="relative overflow-hidden py-12 sm:py-20 bg-[#0F172A]">
         <div className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-[#1118E8]/40 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 rounded-full bg-[#FF741F]/30 blur-3xl" />
         <div className="pointer-events-none absolute top-1/2 left-1/3 h-40 w-40 rounded-full bg-[#FF0808]/20 blur-2xl" />
@@ -279,7 +291,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">Our Services</span>

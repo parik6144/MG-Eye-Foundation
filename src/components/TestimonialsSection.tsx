@@ -58,74 +58,61 @@ export default function TestimonialsSection() {
   const next = () => setPage((p) => (p + 1) % SLIDES.length);
 
   return (
-    <section className="bg-[#F8F9FA] border-t border-[#dadce0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
+    <section className="bg-[#F8F9FA] border-t border-[#dadce0] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
           <div>
             <p className="text-sm font-medium text-[#5f6368]">What patients say</p>
-            <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold text-[#202124]">Reviews</h2>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <GoogleG className="h-12 w-12 sm:h-14 sm:w-14" />
+            <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[#202124]">Reviews</h2>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <GoogleG className="h-10 w-10 sm:h-14 sm:w-14" />
               <div>
-                <div className="flex items-center gap-3">
-                  <span className="text-5xl sm:text-6xl font-medium leading-none text-[#202124]">{TESTIMONIAL_RATING}</span>
-                  <Stars size={28} />
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <span className="text-4xl sm:text-6xl font-medium leading-none text-[#202124]">{TESTIMONIAL_RATING}</span>
+                  <Stars size={22} />
                 </div>
-                <p className="text-base text-[#5f6368] mt-2">{TESTIMONIALS.length} reviews · 5 stars each</p>
+                <p className="text-sm sm:text-base text-[#5f6368] mt-2">{TESTIMONIALS.length} reviews · 5 stars each</p>
               </div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={prev}
-              className="h-12 w-12 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]"
-              aria-label="Previous reviews"
-            >
+            <button type="button" onClick={prev} className="h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]" aria-label="Previous reviews">
               <ChevronLeft className="h-6 w-6 text-[#202124]" />
             </button>
-            <button
-              type="button"
-              onClick={next}
-              className="h-12 w-12 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]"
-              aria-label="Next reviews"
-            >
+            <button type="button" onClick={next} className="h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]" aria-label="Next reviews">
               <ChevronRight className="h-6 w-6 text-[#202124]" />
             </button>
           </div>
         </div>
 
         <div className="overflow-hidden" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${page * 100}%)` }}
-          >
+          <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${page * 100}%)` }}>
             {SLIDES.map((pair, si) => (
-              <div key={si} className="w-full shrink-0 grid md:grid-cols-2 gap-6 px-0.5">
+              <div key={si} className="w-full shrink-0 grid md:grid-cols-2 gap-4 sm:gap-6 px-0.5">
                 {pair.map((t) => {
                   const i = TESTIMONIALS.findIndex((x) => x.name === t.name);
                   return (
                     <article
                       key={t.name}
-                      className="rounded-3xl bg-white border border-[#dadce0] p-8 sm:p-10 min-h-[320px] sm:min-h-[380px] shadow-[0_1px_2px_rgba(60,64,67,.3),0_2px_6px_2px_rgba(60,64,67,.15)]"
+                      className="rounded-3xl bg-white border border-[#dadce0] p-5 sm:p-10 min-h-0 md:min-h-[380px] shadow-[0_1px_2px_rgba(60,64,67,.3),0_2px_6px_2px_rgba(60,64,67,.15)]"
                     >
-                      <div className="flex items-start gap-4">
+                      <div className="flex items-start gap-3 sm:gap-4">
                         <span
-                          className="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-full text-white text-lg font-semibold"
+                          className="flex h-12 w-12 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-full text-white text-base font-semibold"
                           style={{ background: AVATAR[i % AVATAR.length] }}
                         >
                           {initials(t.name)}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="text-xl sm:text-2xl font-medium text-[#202124] leading-tight">{t.name}</p>
-                          <p className="text-sm text-[#5f6368] mt-1">5.0/5.0</p>
-                          <div className="mt-2">
-                            <Stars size={24} />
+                          <p className="text-lg sm:text-2xl font-medium text-[#202124] leading-tight">{t.name}</p>
+                          <p className="text-xs sm:text-sm text-[#5f6368] mt-1">5.0/5.0</p>
+                          <div className="mt-1">
+                            <Stars size={20} />
                           </div>
                         </div>
-                        <GoogleG className="h-8 w-8 shrink-0" />
+                        <GoogleG className="h-7 w-7 sm:h-8 sm:w-8 shrink-0" />
                       </div>
-                      <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#3c4043]">“{t.text}”</p>
+                      <p className="mt-4 sm:mt-6 text-base sm:text-xl leading-relaxed text-[#3c4043]">“{t.text}”</p>
                     </article>
                   );
                 })}
