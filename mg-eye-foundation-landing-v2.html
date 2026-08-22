@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MG Eye Foundation — See Clearly. Live Fully.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1122;
+    --ink-soft:#5B6478;
+    --paper:#FFFFFF;
+    --mist:#F5F7FB;
+    --vision-blue:#132657;
+    --vision-blue-2:#1E3A78;
+    --orange:#FF6A39;
+    --teal:#12A594;
+    --violet:#7C6CF3;
+    --line:rgba(10,17,34,.09);
+    --glass:rgba(255,255,255,.65);
+
+    --f-display:'Space Grotesk', sans-serif;
+    --f-body:'Inter', sans-serif;
+    --f-mono:'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--f-body);color:var(--ink);background:var(--paper);line-height:1.55;overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--f-display);color:var(--vision-blue);line-height:1.05;letter-spacing:-.01em;}
+  .eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);font-weight:600;}
+  ::selection{background:var(--orange);color:#fff;}
+
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);}
+  [data-reveal].in{opacity:1;transform:translateY(0);}
+
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:14px;font-weight:600;font-size:14.5px;border:none;cursor:pointer;font-family:var(--f-body);transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease, background .25s ease;}
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(10,17,34,.45);background:var(--orange);}
+  .btn-ghost{background:transparent;color:var(--vision-blue);border:1.5px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--vision-blue);background:var(--mist);}
+  .btn-glass{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px);}
+  .btn-glass:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);}
+  :focus-visible{outline:2.5px solid var(--teal);outline-offset:3px;}
+
+  /* ===== progress bar ===== */
+  #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--violet));z-index:200;width:0%;transition:width .1s linear;}
+
+  /* ===== announcement ===== */
+  .announce{background:var(--vision-blue);color:#fff;text-align:center;font-size:12.5px;padding:9px 20px;font-weight:500;letter-spacing:.01em;}
+  .announce b{color:#FFB89C;}
+
+  /* ===== nav ===== */
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.78);backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;max-width:1240px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:11px;}
+  .logo-mark{width:36px;height:36px;}
+  .logo-text strong{display:block;font-family:var(--f-display);font-size:17px;font-weight:700;color:var(--vision-blue);}
+  .logo-text span{display:block;font-size:10.5px;color:var(--ink-soft);font-family:var(--f-mono);letter-spacing:.04em;}
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;color:var(--ink-soft);}
+  .nav-links a{position:relative;padding:6px 0;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--orange);transition:width .25s ease;}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+  .nav-links a.active{color:var(--vision-blue);}
+  .nav-cta{display:flex;align-items:center;gap:16px;}
+  @media(max-width:980px){.nav-links{display:none;}}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:64px 0 40px;overflow:hidden;}
+  .mesh{position:absolute;inset:0;z-index:0;pointer-events:none;}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;}
+  .b1{width:420px;height:420px;background:var(--teal);top:-140px;left:-100px;}
+  .b2{width:380px;height:380px;background:var(--orange);top:60px;right:-140px;opacity:.28;}
+  .b3{width:300px;height:300px;background:var(--violet);bottom:-120px;left:38%;opacity:.22;}
+
+  .hero-bento{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:20px;max-width:1240px;margin:0 auto;padding:0 32px;align-items:stretch;}
+  .hero-copy{padding:20px 8px;}
+  .hero-copy h1{font-size:clamp(38px,4.6vw,60px);font-weight:700;}
+  .hero-copy h1 .grad{background:linear-gradient(100deg,var(--orange),var(--violet) 70%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-copy p.lead{margin-top:18px;font-size:16.5px;color:var(--ink-soft);max-width:440px;}
+  .hero-actions{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;align-items:center;}
+  .call-chip{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft);}
+  .call-chip .dot{width:36px;height:36px;border-radius:11px;background:var(--mist);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}
+  .call-chip .num{font-family:var(--f-mono);font-weight:600;color:var(--vision-blue);display:block;font-size:14px;}
+
+  .chip-row{display:flex;gap:10px;margin-top:38px;flex-wrap:wrap;}
+  .chip{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);padding:9px 14px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--vision-blue);box-shadow:0 6px 16px -12px rgba(10,17,34,.3);}
+
+  /* interactive eye card */
+  .eye-panel{position:relative;border-radius:28px;overflow:hidden;background:linear-gradient(150deg,var(--vision-blue) 0%, #0B1740 100%);min-height:420px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;}
+  .eye-panel .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,106,57,.9),transparent);animation:scan 3.2s ease-in-out infinite;top:0;}
+  @keyframes scan{0%{top:8%;opacity:0;}10%{opacity:1;}50%{top:88%;opacity:1;}60%{opacity:0;}100%{top:8%;opacity:0;}}
+  .eye-stage{flex:1;display:flex;align-items:center;justify-content:center;position:relative;}
+  #eyeSvg{width:78%;max-width:280px;}
+  .eye-panel-foot{display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:2;}
+  .eye-tag{font-family:var(--f-mono);font-size:11px;color:#9FB3D6;letter-spacing:.05em;}
+  .eye-tag b{color:var(--orange);display:block;font-size:24px;font-family:var(--f-mono);}
+  .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
+
+  /* ===== TICKER ===== */
+  .ticker-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--mist);overflow:hidden;padding:16px 0;margin-top:48px;}
+  .ticker{display:flex;gap:60px;white-space:nowrap;animation:tick 26s linear infinite;width:max-content;}
+  .ticker span{font-family:var(--f-mono);font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:10px;}
+  .ticker span b{color:var(--vision-blue);}
+  .ticker span::before{content:'◆';color:var(--orange);font-size:8px;}
+  @keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:100px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:50px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(28px,3.2vw,40px);font-weight:600;margin-top:10px;max-width:520px;}
+  .section-head p{color:var(--ink-soft);max-width:340px;font-size:14.5px;}
+
+  /* ===== SERVICES BENTO ===== */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:18px;}
+  .bcard{border-radius:22px;padding:26px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.16,1,.3,1);border:1px solid var(--line);}
+  .bcard:hover{transform:translateY(-5px);}
+  .bcard h3{font-size:19px;font-weight:600;margin:14px 0 8px;}
+  .bcard p{font-size:13.5px;color:var(--ink-soft);}
+  .bcard .go{position:absolute;bottom:24px;left:26px;font-size:12.5px;font-weight:700;color:var(--teal);}
+  .b-1{grid-column:span 2;grid-row:span 2;background:var(--mist);}
+  .b-2{grid-column:span 2;background:var(--paper);}
+  .b-3{grid-column:span 1;background:var(--vision-blue);color:#fff;}
+  .b-3 h3, .b-3 p{color:#fff;}
+  .b-4{grid-column:span 1;background:var(--paper);}
+  .b-5{grid-column:span 2;background:linear-gradient(135deg,var(--orange),#FF8F63);color:#fff;}
+  .b-5 h3, .b-5 p{color:#fff;}
+  .b-ico{width:44px;height:44px;border-radius:12px;background:rgba(19,38,87,.08);display:flex;align-items:center;justify-content:center;font-size:19px;}
+  .b-3 .b-ico, .b-5 .b-ico{background:rgba(255,255,255,.16);}
+  @media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr);}.b-1{grid-column:span 2;grid-row:span 1;}.b-5{grid-column:span 2;}}
+  @media(max-width:560px){.bento{grid-template-columns:1fr;}.b-1,.b-2,.b-3,.b-4,.b-5{grid-column:span 1;}}
+
+  /* ===== PROCESS ===== */
+  .process{background:var(--mist);}
+  .process-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .process-row::before{content:'';position:absolute;top:26px;left:0;right:0;height:1px;background:var(--line);}
+  .p-step{padding:0 20px 0 0;position:relative;}
+  .p-num{font-family:var(--f-mono);font-size:13px;color:var(--orange);font-weight:700;background:var(--mist);display:inline-block;padding-right:10px;position:relative;z-index:1;}
+  .p-step h3{font-size:17px;margin:14px 0 8px;}
+  .p-step p{font-size:13.5px;color:var(--ink-soft);}
+  @media(max-width:800px){.process-row{grid-template-columns:1fr;gap:34px;}.process-row::before{display:none;}}
+
+  /* ===== TECH ===== */
+  .tech{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+  .tech .grid-overlay{opacity:.5;}
+  .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+  .tech h2{color:#fff;font-size:clamp(28px,3.4vw,42px);}
+  .tech .grad{background:linear-gradient(100deg,var(--orange),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .tech p.desc{color:#9FB3D6;margin-top:16px;max-width:420px;font-size:15px;}
+  .spec-list{margin-top:30px;display:flex;flex-direction:column;gap:0;}
+  .spec-row{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px;}
+  .spec-row span:first-child{color:#fff;font-weight:600;}
+  .spec-row span:last-child{color:#8CA0BC;font-family:var(--f-mono);font-size:12.5px;}
+  .tech-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .tcard{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px;transition:border-color .25s ease, background .25s ease;}
+  .tcard:hover{border-color:var(--orange);background:rgba(255,106,57,.06);}
+  .tcard .pct{font-family:var(--f-mono);font-size:26px;font-weight:700;color:var(--orange);}
+  .tcard h4{font-family:var(--f-body);font-size:14px;font-weight:600;color:#fff;margin-top:8px;}
+  .tcard p{font-size:12px;color:#8CA0BC;margin-top:4px;}
+  @media(max-width:900px){.tech-grid{grid-template-columns:1fr;}}
+
+  /* ===== DOCTORS ===== */
+  .doc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .doc-card{border:1px solid var(--line);border-radius:22px;padding:22px;background:var(--paper);transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease;}
+  .doc-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -22px rgba(10,17,34,.28);}
+  .doc-avatar{width:100%;aspect-ratio:1;border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-size:32px;font-weight:700;color:#fff;margin-bottom:16px;}
+  .doc-card h3{font-size:16px;}
+  .doc-card .spec{font-size:12.5px;color:var(--teal);font-weight:600;margin:4px 0 10px;}
+  .doc-card .meta{font-size:12px;color:var(--ink-soft);display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:12px;}
+  @media(max-width:900px){.doc-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.doc-grid{grid-template-columns:1fr;}}
+
+  /* ===== TESTIMONIALS scroll-snap ===== */
+  .testi-scroll{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;-ms-overflow-style:none;scrollbar-width:none;}
+  .testi-scroll::-webkit-scrollbar{display:none;}
+  .testi-card{scroll-snap-align:start;flex:0 0 340px;border:1px solid var(--line);border-radius:22px;padding:28px;background:var(--mist);}
+  .stars{color:var(--orange);font-size:14px;letter-spacing:2px;margin-bottom:14px;}
+  .testi-card p.quote{font-size:14.5px;color:var(--ink-soft);margin-bottom:22px;}
+  .testi-person{display:flex;align-items:center;gap:12px;}
+  .avatar-sm{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--f-display);color:#fff;font-size:14px;}
+  .testi-person strong{display:block;font-size:13.5px;}
+  .testi-person span{font-size:12px;color:var(--ink-soft);}
+
+  /* ===== FAQ ===== */
+  .faq{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 4px;cursor:pointer;font-weight:600;font-size:15.5px;color:var(--vision-blue);}
+  .faq-q .plus{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:transform .3s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);border-color:var(--orange);color:var(--orange);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1);}
+  .faq-a p{font-size:14px;color:var(--ink-soft);padding:0 4px 22px;max-width:600px;}
+  .faq-item.open .faq-a{max-height:200px;}
+
+  /* ===== FINAL CTA ===== */
+  .final{position:relative;background:linear-gradient(160deg,var(--vision-blue) 0%, #0B1740 100%);color:#fff;overflow:hidden;}
+  .final-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+  .final h2{color:#fff;font-size:clamp(30px,4vw,46px);}
+  .final p{color:#B9C6DA;margin-top:16px;max-width:420px;font-size:15px;}
+  .final-actions{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;}
+  .form-mock{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:26px;backdrop-filter:blur(10px);}
+  .form-mock .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+  .form-mock label{font-size:11px;color:#9FB3D6;font-family:var(--f-mono);letter-spacing:.04em;display:block;margin-bottom:6px;}
+  .form-mock .fld{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 14px;font-size:13.5px;color:#fff;}
+  .form-mock .full{grid-column:span 2;}
+
+  /* ===== FOOTER ===== */
+  footer{background:#070C18;color:#8CA0BC;padding:70px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.08);}
+  .footer-brand p{font-size:13.5px;margin:16px 0 10px;color:#748199;max-width:280px;line-height:1.6;}
+  footer h4{color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;font-family:var(--f-mono);font-weight:600;}
+  footer ul li{margin-bottom:10px;font-size:13.5px;}
+  footer ul li a:hover{color:#fff;}
+  .contact-item{display:flex;gap:10px;font-size:13px;margin-bottom:14px;}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:24px;font-size:12px;color:#4D5A72;flex-wrap:wrap;gap:12px;}
+  @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;} .final-grid,.tech-grid{grid-template-columns:1fr;} .hero-bento{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="announce">🔬 <b>Now open:</b> Femto-LASIK &amp; OCT-Angiography wing at our Jamshedpur centre — book a free screening this week</div>
+
+<header>
+  <nav>
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#FF6A39" stroke-width="1.4"/>
+        <path d="M4 20C9 12 15 8 20 8C25 8 31 12 36 20C31 28 25 32 20 32C15 32 9 28 4 20Z" stroke="#132657" stroke-width="1.6"/>
+        <circle cx="20" cy="20" r="6.4" fill="#12A594"/>
+        <circle cx="20" cy="20" r="2.6" fill="#0A1122"/>
+      </svg>
+      <div class="logo-text"><strong>MG Eye Foundation</strong><span>VISION · CARE · TRUST</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a class="active" href="#">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tech">Technology</a></li>
+      <li><a href="#doctors">Doctors</a></li>
+      <li><a href="#stories">Stories</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta"><a class="btn btn-primary" href="#book">Book Appointment</a></div>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding-bottom:0;">
+  <div class="mesh"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+  <div class="hero-bento">
+    <div class="hero-copy">
+      <span class="eyebrow">JAMSHEDPUR · JHARKHAND · EST. 2016</span>
+      <h1>See clearly.<br>Live <span class="grad">fully.</span></h1>
+      <p class="lead">Precision eye care powered by real-time diagnostics, sub-millimetre laser surgery, and a team that treats every patient like the only one in the room.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary">Book Your Appointment →</a>
+        <div class="call-chip">
+          <span class="dot">📞</span>
+          <div>Call now<span class="num">+91 79911 46771</span></div>
+        </div>
+      </div>
+      <div class="chip-row">
+        <span class="chip">⚡ Same-day diagnostics</span>
+        <span class="chip">🩺 12 specialists on-site</span>
+        <span class="chip">🛡️ NABH-track protocols</span>
+      </div>
+    </div>
+
+    <div class="eye-panel">
+      <div class="grid-overlay"></div>
+      <div class="scan"></div>
+      <div class="eye-stage">
+        <svg id="eyeSvg" viewBox="0 0 300 220">
+          <path d="M10 110C55 40 120 8 150 8C180 8 245 40 290 110C245 180 180 212 150 212C120 212 55 180 10 110Z" fill="none" stroke="#3A5590" stroke-width="1.6"/>
+          <circle id="iris" cx="150" cy="110" r="58" fill="#12A594"/>
+          <circle cx="150" cy="110" r="58" fill="none" stroke="#0A1740" stroke-width="1.5"/>
+          <g id="pupilGroup">
+            <circle id="pupil" cx="150" cy="110" r="24" fill="#050912"/>
+            <circle cx="141" cy="98" r="7" fill="#fff" opacity=".8"/>
+          </g>
+          <circle cx="150" cy="110" r="58" fill="none" stroke="#FF6A39" stroke-width="1" opacity=".4" stroke-dasharray="2 4"/>
+        </svg>
+      </div>
+      <div class="eye-panel-foot">
+        <div class="eye-tag">LIVE PUPIL TRACKING<br><span style="color:#5C7099;">move your cursor</span></div>
+        <div class="eye-tag" style="text-align:right;">ACCURACY<b>±0.01mm</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span><b>10+ yrs</b> in patient care</span>
+      <span><b>15,000+</b> patients treated</span>
+      <span><b>98%</b> satisfaction score</span>
+      <span><b>25,000+</b> procedures performed</span>
+      <span><b>12</b> specialist ophthalmologists</span>
+      <span><b>4.9/5</b> average rating</span>
+      <span><b>10+ yrs</b> in patient care</span>
+      <span><b>15,000+</b> patients treated</span>
+      <span><b>98%</b> satisfaction score</span>
+      <span><b>25,000+</b> procedures performed</span>
+      <span><b>12</b> specialist ophthalmologists</span>
+      <span><b>4.9/5</b> average rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES BENTO ===== -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div><span class="eyebrow">What we treat</span><h2>Care mapped to every stage of sight</h2></div>
+      <p>From routine screening to microsurgery — one roof, one continuous record, no referrals lost in translation.</p>
+    </div>
+    <div class="bento" data-reveal>
+      <div class="bcard b-1">
+        <div class="b-ico">🔬</div>
+        <h3>Cataract Surgery</h3>
+        <p>Bladeless phaco-emulsification with premium lens options. Most patients go home the same day, seeing clearly within 24 hours.</p>
+        <span class="go">Learn more →</span>
+      </div>
+      <div class="bcard b-2">
+        <div class="b-ico">✨</div>
+        <h3>LASIK &amp; Refractive Surgery</h3>
+        <p>Custom-mapped, bladeless correction for myopia, hyperopia and astigmatism.</p>
+        <span class="go">Learn more →</span>
+      </div>
+      <div class="bcard b-3">
+        <div class="b-ico">🩻</div>
+        <h3>Retina Care</h3>
+        <p>OCT-angiography for early detection of diabetic and age-related retinal disease.</p>
+        <span class="go" style="color:#FFB89C;">Learn more →</span>
+      </div>
+      <div class="bcard b-4">
+        <div class="b-ico">🧒</div>
+        <h3>Pediatric Eye Care</h3>
+        <p>Gentle screening and treatment built for children.</p>
+        <span class="go">Learn more →</span>
+      </div>
+      <div class="bcard b-5">
+        <div class="b-ico">🤝</div>
+        <h3>Eye Care for All — Community Camps</h3>
+        <p>Free screening camps across rural Jharkhand, bringing diagnosis to villages with no nearby ophthalmologist.</p>
+        <span class="go" style="color:#fff;">See our impact →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS (real sequence, numbered) ===== -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div><span class="eyebrow">How it works</span><h2>From first visit to full recovery</h2></div>
+      <p>A single, predictable path — no guesswork about what happens next.</p>
+    </div>
+    <div class="process-row" data-reveal>
+      <div class="p-step"><span class="p-num">01</span><h3>Screen</h3><p>Comprehensive vision &amp; OCT scan, usually under 30 minutes.</p></div>
+      <div class="p-step"><span class="p-num">02</span><h3>Diagnose</h3><p>Specialist reviews results with you the same day, in plain language.</p></div>
+      <div class="p-step"><span class="p-num">03</span><h3>Treat</h3><p>Scheduled procedure with transparent pricing agreed upfront.</p></div>
+      <div class="p-step"><span class="p-num">04</span><h3>Recover</h3><p>Structured follow-ups until your vision is fully stable.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH ===== -->
+<section class="tech" id="tech">
+  <div class="grid-overlay"></div>
+  <div class="wrap">
+    <div class="tech-grid">
+      <div data-reveal>
+        <span class="eyebrow">Inside the OT</span>
+        <h2>Diagnostics that catch<br>what the eye can't <span class="grad">tell you.</span></h2>
+        <p class="desc">Every machine here exists to remove guesswork — from micron-level corneal mapping to real-time retinal blood-flow imaging.</p>
+        <div class="spec-list">
+          <div class="spec-row"><span>Femto-LASIK</span><span>150kHz bladeless laser</span></div>
+          <div class="spec-row"><span>OCT-Angiography</span><span>3µm resolution scan</span></div>
+          <div class="spec-row"><span>Phaco System</span><span>torsional micro-incision</span></div>
+          <div class="spec-row"><span>Corneal Topography</span><span>22,000-point map</span></div>
+        </div>
+      </div>
+      <div class="tech-cards" data-reveal>
+        <div class="tcard"><div class="pct">0.01</div><h4>mm precision</h4><p>Laser correction tolerance</p></div>
+        <div class="tcard"><div class="pct">&lt;15</div><h4>min scan time</h4><p>Full diagnostic workup</p></div>
+        <div class="tcard"><div class="pct">99.2</div><h4>% detection rate</h4><p>Early diabetic retinopathy</p></div>
+        <div class="tcard"><div class="pct">24</div><h4>hr recovery</h4><p>Typical cataract surgery</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCTORS ===== -->
+<section id="doctors">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div><span class="eyebrow">Meet the team</span><h2>Specialists behind every diagnosis</h2></div>
+      <p>Twelve ophthalmologists, one shared patient record.</p>
+    </div>
+    <div class="doc-grid" data-reveal>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#12A594,#0E7A70);">DS</div>
+        <h3>Dr. D. Sharma</h3>
+        <div class="spec">Cataract &amp; Refractive Surgery</div>
+        <div class="meta"><span>18 yrs exp.</span><span>★ 4.9</span></div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#7C6CF3,#5847C7);">RV</div>
+        <h3>Dr. R. Verma</h3>
+        <div class="spec">Retina &amp; Diabetic Eye Care</div>
+        <div class="meta"><span>14 yrs exp.</span><span>★ 4.8</span></div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#FF6A39,#E14E1F);">AN</div>
+        <h3>Dr. A. Nair</h3>
+        <div class="spec">Pediatric Ophthalmology</div>
+        <div class="meta"><span>11 yrs exp.</span><span>★ 4.9</span></div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-avatar" style="background:linear-gradient(135deg,#132657,#2A468F);">MK</div>
+        <h3>Dr. M. Kujur</h3>
+        <div class="spec">Glaucoma &amp; Cornea</div>
+        <div class="meta"><span>16 yrs exp.</span><span>★ 4.8</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="stories" style="background:var(--mist);">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div><span class="eyebrow">Patient stories</span><h2>What clarity feels like</h2></div>
+      <p>Drag or scroll →</p>
+    </div>
+    <div class="testi-scroll" data-reveal>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"I was very worried about my cataract surgery, but the team made it smooth and painless. My vision is better than it was 10 years ago."</p>
+        <div class="testi-person"><div class="avatar-sm" style="background:#12A594;">R</div><div><strong>Ramesh Kumar</strong><span>Cataract Surgery</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"They detected my glaucoma early during a routine check-up. The continuous monitoring gives me real peace of mind."</p>
+        <div class="testi-person"><div class="avatar-sm" style="background:#7C6CF3;">S</div><div><strong>Sunita Devi</strong><span>Glaucoma Treatment</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Referred here for diabetic retinopathy — every step was explained clearly, and the equipment gave me real confidence."</p>
+        <div class="testi-person"><div class="avatar-sm" style="background:#FF6A39;">A</div><div><strong>Amit Singh</strong><span>Retina Treatment</span></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"My son's squint was corrected without any trauma for him — the pediatric team was incredibly patient."</p>
+        <div class="testi-person"><div class="avatar-sm" style="background:#132657;">P</div><div><strong>Priya Mahato</strong><span>Pediatric Care</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head" data-reveal style="justify-content:center;text-align:center;">
+      <div style="margin:0 auto;"><span class="eyebrow">Good to know</span><h2>Frequently asked questions</h2></div>
+    </div>
+    <div class="faq" data-reveal>
+      <div class="faq-item open">
+        <div class="faq-q">Do I need a referral to book an appointment? <span class="plus">+</span></div>
+        <div class="faq-a"><p>No — you can book directly for any service. We'll route you to the right specialist after your initial screening.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does cataract surgery recovery take? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Most patients resume normal activity within 24–48 hours, with full stabilisation over 2–4 weeks.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you accept insurance? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Yes, we work with most major insurers and offer flexible payment plans for uninsured patients.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What should I bring to my first visit? <span class="plus">+</span></div>
+        <div class="faq-a"><p>A valid ID, any prior prescriptions or scans, and a list of current medications.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" id="book">
+  <div class="wrap">
+    <div class="final-grid">
+      <div data-reveal>
+        <span class="eyebrow">Get started</span>
+        <h2>Your first clear day starts with one call.</h2>
+        <p>Book a screening today — most patients get a diagnosis and treatment plan on the very first visit.</p>
+        <div class="final-actions">
+          <span class="btn btn-glass">🚨 Emergency? Call +91 79911 46771</span>
+        </div>
+      </div>
+      <div class="form-mock" data-reveal>
+        <div class="frow">
+          <div><label>Full name</label><div class="fld">Your name</div></div>
+          <div><label>Phone</label><div class="fld">+91</div></div>
+        </div>
+        <div class="frow">
+          <div class="full"><label>Concern</label><div class="fld">e.g. Blurred vision, eye check-up...</div></div>
+        </div>
+        <div class="frow">
+          <div><label>Preferred date</label><div class="fld">Choose a date</div></div>
+          <div><label>Time slot</label><div class="fld">Morning</div></div>
+        </div>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:6px;">Confirm Appointment →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text"><strong style="color:#fff;">MG Eye Foundation</strong></div>
+        <p>Comprehensive eye care with compassion and cutting-edge technology — dedicated to restoring vision and transforming lives across Jharkhand.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#services">Services</a></li><li><a href="#doctors">Doctors</a></li><li><a href="#">Facilities</a></li></ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul><li><a href="#">Cataract Surgery</a></li><li><a href="#">Glaucoma Care</a></li><li><a href="#">Retina Treatment</a></li><li><a href="#">Pediatric Eye Care</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="contact-item">📍 Near Vani Vidya Mandir, Dhiraganj, Gamharia, Jamshedpur, Jharkhand – 832108</div>
+        <div class="contact-item">📞 +91 79911 46771</div>
+        <div class="contact-item">✉️ www.mgeyefoundation.com</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 MG Eye Foundation. All rights reserved.</span>
+      <span style="display:flex;gap:20px;"><a href="#">Privacy Policy</a><a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll progress
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // pupil tracking
+  const pupilGroup = document.getElementById('pupilGroup');
+  const eyePanel = document.querySelector('.eye-panel');
+  eyePanel.addEventListener('mousemove', (e) => {
+    const rect = eyePanel.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / rect.width;
+    const dy = (e.clientY - cy) / rect.height;
+    const maxMove = 10;
+    pupilGroup.setAttribute('transform', `translate(${dx*maxMove},${dy*maxMove})`);
+  });
+  eyePanel.addEventListener('mouseleave', () => { pupilGroup.setAttribute('transform','translate(0,0)'); });
+
+  // faq accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

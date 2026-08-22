@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      --c-bg: #061e2e;
+      --c-bg-mid: #0a2e42;
+      --c-accent: #00c8e0;
+      --c-gold: #d4b800;
+      --c-gold-light: #f0d800;
+      --c-text: #eaf6fa;
+      --c-muted: #7ab8cc;
+      --c-glow: rgba(0, 200, 224, 0.08);
+      --c-glow-gold: rgba(212, 184, 0, 0.06);
+    }
+    html, body {
+      margin: 0; padding: 0;
+      width: 794px; height: 1123px;
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: 'Inter', sans-serif;
+    }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: var(--c-bg); }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 80px rgba(0,200,224,0.15); }
+    }
+    .cover {
+      width: 794px; height: 1123px;
+      position: relative; box-sizing: border-box;
+      overflow: hidden;
+    }
+    /* Layer 1 - Background decorative */
+    .bg-layer {
+      position: absolute; inset: 0; z-index: 1; overflow: hidden;
+    }
+    .bg-glow-top {
+      position: absolute; top: 0; left: 0; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,200,224,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .bg-glow-bottom {
+      position: absolute; bottom: 0; right: 0; width: 450px; height: 450px;
+      background: radial-gradient(circle, rgba(212,184,0,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,224,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,224,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    /* Layer 2 - Structure */
+    .frame {
+      position: absolute; z-index: 2;
+      top: 60px; left: 50px; right: 50px; bottom: 60px;
+      border: 1.5px solid rgba(0,200,224,0.25);
+      pointer-events: none;
+    }
+    .frame-inner {
+      position: absolute; z-index: 2;
+      top: 66px; left: 56px; right: 56px; bottom: 66px;
+      border: 0.5px solid rgba(0,200,224,0.10);
+      pointer-events: none;
+    }
+    .gold-line-left {
+      position: absolute; z-index: 2;
+      left: 50px; top: 60px; bottom: 60px;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--c-gold), var(--c-gold-light), var(--c-gold), transparent);
+    }
+    .accent-line-right {
+      position: absolute; z-index: 2;
+      right: 50px; top: 60px; bottom: 60px;
+      width: 1.5px;
+      background: linear-gradient(to bottom, transparent, var(--c-accent), transparent);
+    }
+    /* Layer 3 - Content */
+    .content {
+      position: absolute; z-index: 3;
+      inset: 0;
+    }
+    .logo-area {
+      position: absolute;
+      top: 90px; left: 100px;
+    }
+    .logo-area img {
+      width: 140px; height: auto;
+      filter: drop-shadow(0 0 20px rgba(0,200,224,0.3));
+    }
+    .kicker {
+      position: absolute;
+      top: 295px; left: 100px;
+      font-size: 10pt; font-weight: 300;
+      color: var(--c-accent);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+    .title-block {
+      position: absolute;
+      top: 320px; left: 100px; right: 100px;
+    }
+    .title-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 46pt; font-weight: 900;
+      line-height: 1.15;
+      color: var(--c-text);
+      margin-bottom: 16px;
+    }
+    .title-accent {
+      color: var(--c-gold-light);
+    }
+    .subtitle {
+      font-size: 15pt; font-weight: 400;
+      color: var(--c-muted);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-top: 12px;
+    }
+    .summary-block {
+      position: absolute;
+      top: 560px; left: 100px; right: 100px;
+    }
+    .summary-text {
+      font-size: 11pt; font-weight: 400;
+      color: var(--c-muted);
+      line-height: 1.7;
+      max-width: 500px;
+      opacity: 0.85;
+    }
+    .meta-block {
+      position: absolute;
+      bottom: 140px; left: 100px; right: 100px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .meta-left {
+      font-size: 11pt; color: var(--c-muted); line-height: 1.6;
+    }
+    .meta-left strong {
+      color: var(--c-text);
+      font-weight: 600;
+    }
+    .meta-right {
+      text-align: right;
+    }
+    .investment-label {
+      font-size: 9pt; color: var(--c-accent);
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .investment-amount {
+      font-size: 28pt; font-weight: 900;
+      color: var(--c-gold-light);
+      font-family: 'Playfair Display', serif;
+    }
+    .delivery-tag {
+      font-size: 10pt; color: var(--c-muted); margin-top: 4px;
+    }
+    .footer-bar {
+      position: absolute; z-index: 3;
+      bottom: 75px; left: 100px; right: 100px;
+      display: flex; justify-content: space-between;
+      font-size: 8pt; color: rgba(122,184,204,0.5);
+      letter-spacing: 1px;
+    }
+    /* Glossy shine overlay */
+    .shine {
+      position: absolute; z-index: 2;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.02) 100%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="bg-layer">
+      <div class="bg-glow-top"></div>
+      <div class="bg-glow-bottom"></div>
+      <div class="bg-grid"></div>
+    </div>
+    <div class="shine"></div>
+    <div class="frame"></div>
+    <div class="frame-inner"></div>
+    <div class="gold-line-left"></div>
+    <div class="accent-line-right"></div>
+    <div class="content">
+      <div class="logo-area">
+        <img src="mg_logo.png" alt="MG Eye Foundation Logo">
+      </div>
+      <div class="kicker">Business Proposal</div>
+      <div class="title-block">
+        <div class="title-main">
+          M G Eye<br>Foundation
+        </div>
+        <div class="subtitle">
+          Website Design &amp; Development for a Premium Eye-Care Digital Presence
+        </div>
+      </div>
+      <div class="summary-block">
+        <div class="summary-text">
+          A professionally designed, modern and informative 8-page Next.js website with responsive optimisation, search engine readiness, and a clean medical interface built on the MG Eye Foundation brand identity.
+        </div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-left">
+          <strong>Prepared For</strong><br>
+          M G Eye Foundation<br>
+          Near Vani Vidya Mandir School,<br>
+          Dhirajganj, Gamharia,<br>
+          Jamshedpur, Jharkhand - 832108
+        </div>
+        <div class="meta-right">
+          <div class="investment-label">Final Investment</div>
+          <div class="investment-amount">&#8377;40,400</div>
+          <div class="delivery-tag">Delivery: 7 Days</div>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <span>www.mgeyefoundation.com</span>
+        <span>Prepared by Amit Parik</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

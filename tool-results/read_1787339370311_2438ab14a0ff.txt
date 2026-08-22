@@ -1,0 +1,729 @@
+     1→     1→"use client";
+     2→     2→
+     3→     3→import { useState, useEffect, useRef } from "react";
+     4→     4→import { Button } from "@/components/ui/button";
+     5→     5→import { Card, CardContent } from "@/components/ui/card";
+     6→     6→import { Input } from "@/components/ui/input";
+     7→     7→import { Textarea } from "@/components/ui/textarea";
+     8→     8→import {
+     9→     9→  Eye, Phone, MapPin, Mail, Clock, ChevronRight,
+    10→    10→  Shield, Heart, Stethoscope, Microscope, Users,
+    11→    11→  Star, Send, Menu, X, ArrowUp,
+    12→    12→} from "lucide-react";
+    13→    13→
+    14→    14→const NAV_ITEMS = [
+    15→    15→  { id: "home", label: "Home" },
+    16→    16→  { id: "about", label: "About" },
+    17→    17→  { id: "services", label: "Services" },
+    18→    18→  { id: "doctors", label: "Doctors" },
+    19→    19→  { id: "facilities", label: "Facilities" },
+    20→    20→  { id: "eye-health", label: "Eye Health" },
+    21→    21→  { id: "gallery", label: "Gallery" },
+    22→    22→  { id: "contact", label: "Contact" },
+    23→    23→];
+    24→    24→
+    25→    25→const SERVICES = [
+    26→    26→  { icon: Eye, title: "Cataract Care & Surgery", desc: "Advanced phacoemulsification and lens implantation for clear, restored vision with minimal recovery time." },
+    27→    27→  { icon: Shield, title: "Glaucoma Care", desc: "Comprehensive glaucoma screening, monitoring and treatment to preserve your vision from silent vision loss." },
+    28→    28→  { icon: Heart, title: "Retina & Vitreous Care", desc: "Specialised retinal diagnostics and vitreous procedures using state-of-the-art imaging technology." },
+    29→    29→  { icon: Eye, title: "Cornea Care", desc: "Corneal health assessment, treatment and transplant services with expert corneal specialists." },
+    30→    30→  { icon: Users, title: "Pediatric Eye Care", desc: "Dedicated eye care services for children and infants in a friendly, comfortable environment." },
+    31→    31→  { icon: Stethoscope, title: "Comprehensive Eye Check-up", desc: "Thorough eye examinations and vision assessments using advanced diagnostic equipment." },
+    32→    32→  { icon: Eye, title: "Refractive / Vision Correction", desc: "Glasses, contact lenses and refractive surgery options to help you see the world clearly." },
+    33→    33→  { icon: Heart, title: "Diabetic Eye Care", desc: "Specialised care for diabetes-related eye conditions including diabetic retinopathy screening." },
+    34→    34→  { icon: Eye, title: "Dry Eye Management", desc: "Diagnosis and treatment for chronic dry eye conditions using the latest therapeutic approaches." },
+    35→    35→  { icon: Stethoscope, title: "General Ophthalmic Consultation", desc: "Routine eye consultations and specialist referrals for all your eye health concerns." },
+    36→    36→];
+    37→    37→
+    38→    38→const DOCTORS = [
+    39→    39→  { name: "Dr. M. G. Sharma", spec: "Cataract & Refractive Surgery", exp: "15+ Years", qual: "MBBS, MS (Ophthalmology), FRCS" },
+    40→    40→  { name: "Dr. Anita Kumari", spec: "Glaucoma Specialist", exp: "12+ Years", qual: "MBBS, DNB (Ophthalmology)" },
+    41→    41→  { name: "Dr. Rajesh Verma", spec: "Retina & Vitreous", exp: "10+ Years", qual: "MBBS, MD (Ophthalmology)" },
+    42→    42→];
+    43→    43→
+    44→    44→const TESTIMONIALS = [
+    45→    45→  { name: "Ramesh Kumar", text: "Excellent cataract surgery. I can see clearly now. The staff was very caring and professional throughout the process.", rating: 5 },
+    46→    46→  { name: "Sunita Devi", text: "My child was treated for a squint problem. The doctor was very patient and explained everything. Highly recommend this hospital.", rating: 5 },
+    47→    47→  { name: "Amit Singh", text: "Best eye hospital in Jamshedpur. Modern equipment, clean environment, and very reasonable pricing for the quality of care.", rating: 5 },
+    48→    48→];
+    49→    49→
+    50→    50→const FACILITIES = [
+    51→    51→  { icon: Microscope, title: "Advanced Diagnostic Lab", desc: "State-of-the-art ophthalmic diagnostic equipment for precise assessment" },
+    52→    52→  { icon: Stethoscope, title: "Modern Operation Theatres", desc: "Fully equipped surgical suites with the latest technology" },
+    53→    53→  { icon: Eye, title: "Laser Treatment Room", desc: "Dedicated laser procedures for retinal and glaucoma treatments" },
+    54→    54→  { icon: Shield, title: "Sterile & Safe Environment", desc: "Rigorous infection control protocols for patient safety" },
+    55→    55→  { icon: Heart, title: "Comfortable Patient Rooms", desc: "Clean, air-conditioned waiting and recovery areas" },
+    56→    56→  { icon: Users, title: "Trained Support Staff", desc: "Compassionate and experienced nursing and support team" },
+    57→    57→];
+    58→    58→
+    59→    59→const EYE_TIPS = [
+    60→    60→  { q: "When should I visit an eye specialist?", a: "You should visit an eye specialist at least once a year for a routine check-up. If you experience sudden vision changes, eye pain, redness, flashes of light, or floaters, visit immediately." },
+    61→    61→  { q: "What is cataract and how is it treated?", a: "Cataract is the clouding of the eye's natural lens, causing blurred vision. It is treated with a simple surgical procedure called phacoemulsification where the cloudy lens is replaced with an artificial lens." },
+    62→    62→  { q: "Can diabetes affect my eyes?", a: "Yes, diabetes can cause diabetic retinopathy, which damages the blood vessels in the retina. Regular eye screenings are essential for diabetic patients to detect and treat this condition early." },
+    63→    63→  { q: "How can I protect my child's eyes?", a: "Limit screen time, ensure proper lighting while reading, provide a balanced diet rich in vitamin A, and schedule regular eye check-ups from age 3 onwards." },
+    64→    64→];
+    65→    65→
+    66→    66→export default function HomePage() {
+    67→    67→  const [activeNav, setActiveNav] = useState("home");
+    68→    68→  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    69→    69→  const [showTopBtn, setShowTopBtn] = useState(false);
+    70→    70→  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
+    71→    71→  const [formSubmitted, setFormSubmitted] = useState(false);
+    72→    72→  const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
+    73→    73→
+    74→    74→  useEffect(() => {
+    75→    75→    const handleScroll = () => {
+    76→    76→      setShowTopBtn(window.scrollY > 400);
+    77→    77→      const scrollPos = window.scrollY + 120;
+    78→    78→      for (const item of NAV_ITEMS) {
+    79→    79→        const el = sectionsRef.current[item.id];
+    80→    80→        if (el && el.offsetTop <= scrollPos) {
+    81→    81→          setActiveNav(item.id);
+    82→    82→        }
+    83→    83→      }
+    84→    84→    };
+    85→    85→    window.addEventListener("scroll", handleScroll, { passive: true });
+    86→    86→    return () => window.removeEventListener("scroll", handleScroll);
+    87→    87→  }, []);
+    88→    88→
+    89→    89→  const scrollTo = (id: string) => {
+    90→    90→    sectionsRef.current[id]?.scrollIntoView({ behavior: "smooth" });
+    91→    91→    setMobileMenuOpen(false);
+    92→    92→  };
+    93→    93→
+    94→    94→  const handleSubmit = (e: React.FormEvent) => {
+    95→    95→    e.preventDefault();
+    96→    96→    setFormSubmitted(true);
+    97→    97→    setFormData({ name: "", phone: "", email: "", message: "" });
+    98→    98→    setTimeout(() => setFormSubmitted(false), 4000);
+    99→    99→  };
+   100→   100→
+   101→   101→  return (
+   102→   102→    <div className="min-h-screen flex flex-col bg-[#f4f9fb]">
+   103→   103→      {/* ========== NAVBAR ========== */}
+   104→   104→      <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-[rgba(0,128,192,0.12)] transition-all duration-300">
+   105→   105→        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   106→   106→          <div className="flex items-center justify-between h-16">
+   107→   107→            <div className="flex items-center gap-3">
+   108→   108→              <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-10 w-auto object-contain" />
+   109→   109→              <span className="hidden sm:block text-sm font-medium text-[#0a4d6b] leading-tight">
+   110→   110→                M G Eye Foundation
+   111→   111→                <br />
+   112→   112→                <span className="text-[10px] text-[#5a8a9a] font-normal italic">Tamso Ma Jyotirgamaya</span>
+   113→   113→              </span>
+   114→   114→            </div>
+   115→   115→            <div className="hidden lg:flex items-center gap-6">
+   116→   116→              {NAV_ITEMS.map((item) => (
+   117→   117→                <button
+   118→   118→                  key={item.id}
+   119→   119→                  onClick={() => scrollTo(item.id)}
+   120→   120→                  className={`nav-link text-sm font-medium pb-1 ${activeNav === item.id ? "text-[#0080c0] active" : "text-[#0a2a3a] hover:text-[#0080c0]"}`}
+   121→   121→                >
+   122→   122→                  {item.label}
+   123→   123→                </button>
+   124→   124→              ))}
+   125→   125→              <Button
+   126→   126→                onClick={() => scrollTo("contact")}
+   127→   127→                className="bg-[#0080c0] hover:bg-[#006a9e] text-white text-sm font-semibold rounded-full px-5 shadow-lg shadow-[rgba(0,128,192,0.3)] transition-all hover:shadow-[rgba(0,128,192,0.5)]"
+   128→   128→              >
+   129→   129→                Book Appointment
+   130→   130→              </Button>
+   131→   131→            </div>
+   132→   132→            <button
+   133→   133→              className="lg:hidden text-[#0080c0]"
+   134→   134→              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+   135→   135→            >
+   136→   136→              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+   137→   137→            </button>
+   138→   138→          </div>
+   139→   139→        </div>
+   140→   140→        {mobileMenuOpen && (
+   141→   141→          <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-[#9ec5d4]/30 pb-4">
+   142→   142→            {NAV_ITEMS.map((item) => (
+   143→   143→              <button
+   144→   144→                key={item.id}
+   145→   145→                onClick={() => scrollTo(item.id)}
+   146→   146→                className={`block w-full text-left px-6 py-2.5 text-sm ${activeNav === item.id ? "text-[#0080c0] font-semibold bg-[#e8f3f7]" : "text-[#0a2a3a]"}`}
+   147→   147→              >
+   148→   148→                {item.label}
+   149→   149→              </button>
+   150→   150→            ))}
+   151→   151→            <div className="px-6 pt-2">
+   152→   152→              <Button className="w-full bg-[#0080c0] hover:bg-[#006a9e] text-white rounded-full font-semibold">
+   153→   153→                Book Appointment
+   154→   154→              </Button>
+   155→   155→            </div>
+   156→   156→          </div>
+   157→   157→        )}
+   158→   158→      </nav>
+   159→   159→
+   160→   160→      <main className="flex-1">
+   161→   161→        {/* ========== HERO ========== */}
+   162→   162→        <section
+   163→   163→          id="home"
+   164→   164→          ref={(el) => { sectionsRef.current["home"] = el; }}
+   165→   165→          className="hero-overlay relative min-h-screen flex items-center pt-16 overflow-hidden"
+   166→   166→        >
+   167→   167→          <div className="shimmer absolute inset-0" />
+   168→   168→          <div className="absolute top-20 right-10 w-72 h-72 bg-[rgba(0,200,224,0.08)] rounded-full blur-3xl" />
+   169→   169→          <div className="absolute bottom-10 left-10 w-96 h-96 bg-[rgba(212,184,0,0.05)] rounded-full blur-3xl" />
+   170→   170→          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+   171→   171→            <div className="grid lg:grid-cols-2 gap-12 items-center">
+   172→   172→              <div>
+   173→   173→                <div className="inline-flex items-center gap-2 bg-[rgba(0,200,224,0.15)] rounded-full px-4 py-1.5 mb-6">
+   174→   174→                  <Eye className="w-4 h-4 text-[#00c8e0]" />
+   175→   175→                  <span className="text-[#00c8e0] text-sm font-medium">Premium Eye Care in Jamshedpur</span>
+   176→   176→                </div>
+   177→   177→                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+   178→   178→                  Your Vision, <br />
+   179→   179→                  <span className="gold-shine">Our Commitment</span>
+   180→   180→                </h1>
+   181→   181→                <p className="text-[#7ab8cc] text-lg sm:text-xl max-w-lg mb-8 leading-relaxed">
+   182→   182→                  Advanced eye care with compassion. M G Eye Foundation offers state-of-the-art
+   183→   183→                  treatments for all your vision needs, delivered by experienced specialists.
+   184→   184→                </p>
+   185→   185→                <div className="flex flex-wrap gap-4">
+   186→   186→                  <Button
+   187→   187→                    onClick={() => scrollTo("contact")}
+   188→   188→                    className="bg-[#00c8e0] hover:bg-[#00a8b8] text-[#061e2e] font-bold rounded-full px-8 py-5 text-base shadow-lg shadow-[rgba(0,200,224,0.4)] transition-all hover:shadow-[rgba(0,200,224,0.6)]"
+   189→   189→                  >
+   190→   190→                    Book Appointment <ChevronRight className="ml-1 w-4 h-4" />
+   191→   191→                  </Button>
+   192→   192→                  <Button
+   193→   193→                    variant="outline"
+   194→   194→                    onClick={() => scrollTo("services")}
+   195→   195→                    className="border-[rgba(0,200,224,0.4)] text-[#00c8e0] hover:bg-[rgba(0,200,224,0.1)] rounded-full px-8 py-5 text-base"
+   196→   196→                  >
+   197→   197→                    Our Services
+   198→   198→                  </Button>
+   199→   199→                </div>
+   200→   200→                <div className="flex items-center gap-8 mt-10">
+   201→   201→                  <div>
+   202→   202→                    <div className="text-3xl font-bold text-white">10+</div>
+   203→   203→                    <div className="text-[#7ab8cc] text-sm">Years Experience</div>
+   204→   204→                  </div>
+   205→   205→                  <div className="w-px h-10 bg-[rgba(0,200,224,0.3)]" />
+   206→   206→                  <div>
+   207→   207→                    <div className="text-3xl font-bold text-white">15K+</div>
+   208→   208→                    <div className="text-[#7ab8cc] text-sm">Patients Treated</div>
+   209→   209→                  </div>
+   210→   210→                  <div className="w-px h-10 bg-[rgba(0,200,224,0.3)]" />
+   211→   211→                  <div>
+   212→   212→                    <div className="text-3xl font-bold text-white">98%</div>
+   213→   213→                    <div className="text-[#7ab8cc] text-sm">Success Rate</div>
+   214→   214→                  </div>
+   215→   215→                </div>
+   216→   216→              </div>
+   217→   217→              <div className="hidden lg:flex justify-center">
+   218→   218→                <div className="relative">
+   219→   219→                  <div className="w-80 h-80 rounded-full bg-[rgba(0,128,192,0.15)] flex items-center justify-center teal-glow">
+   220→   220→                    <div className="w-60 h-60 rounded-full bg-[rgba(0,128,192,0.2)] flex items-center justify-center">
+   221→   221→                      <Eye className="w-24 h-24 text-[#00c8e0]" />
+   222→   222→                    </div>
+   223→   223→                  </div>
+   224→   224→                  <div className="absolute -top-4 -right-4 bg-white/10 backdrop-blur-sm rounded-2xl p-3 border border-[rgba(0,200,224,0.2)]">
+   225→   225→                    <Stethoscope className="w-8 h-8 text-[#00c8e0]" />
+   226→   226→                  </div>
+   227→   227→                  <div className="absolute -bottom-4 -left-4 bg-white/10 backdrop-blur-sm rounded-2xl p-3 border border-[rgba(212,184,0,0.3)]">
+   228→   228→                    <Shield className="w-8 h-8 text-[#f0d800]" />
+   229→   229→                  </div>
+   230→   230→                </div>
+   231→   231→              </div>
+   232→   232→            </div>
+   233→   233→          </div>
+   234→   234→        </section>
+   235→   235→
+   236→   236→        {/* ========== ABOUT ========== */}
+   237→   237→        <section
+   238→   238→          id="about"
+   239→   239→          ref={(el) => { sectionsRef.current["about"] = el; }}
+   240→   240→          className="py-20 bg-white"
+   241→   241→        >
+   242→   242→          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   243→   243→            <div className="text-center mb-14">
+   244→   244→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">About Us</span>
+   245→   245→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">
+   246→   246→                About M G Eye Foundation
+   247→   247→              </h2>
+   248→   248→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   249→   249→            </div>
+   250→   250→            <div className="grid lg:grid-cols-2 gap-12 items-center">
+   251→   251→              <div className="glossy-gradient rounded-3xl p-8 teal-glow">
+   252→   252→                <blockquote className="text-2xl font-serif italic text-[#0a4d6b] leading-relaxed">
+   253→   253→                  &ldquo;Tamso Ma Jyotirgamaya&rdquo;
+   254→   254→                </blockquote>
+   255→   255→                <p className="text-[#5a8a9a] mt-3 text-sm">From darkness, lead me to light</p>
+   256→   256→                <div className="grid grid-cols-2 gap-4 mt-8">
+   257→   257→                  <div className="glass-card rounded-xl p-4 text-center">
+   258→   258→                    <div className="text-2xl font-bold text-[#0080c0]">10+</div>
+   259→   259→                    <div className="text-xs text-[#5a8a9a] mt-1">Years of Service</div>
+   260→   260→                  </div>
+   261→   261→                  <div className="glass-card rounded-xl p-4 text-center">
+   262→   262→                    <div className="text-2xl font-bold text-[#c9a800]">3</div>
+   263→   263→                    <div className="text-xs text-[#5a8a9a] mt-1">Specialist Doctors</div>
+   264→   264→                  </div>
+   265→   265→                  <div className="glass-card rounded-xl p-4 text-center">
+   266→   266→                    <div className="text-2xl font-bold text-[#0080c0]">8+</div>
+   267→   267→                    <div className="text-xs text-[#5a8a9a] mt-1">Eye Care Services</div>
+   268→   268→                  </div>
+   269→   269→                  <div className="glass-card rounded-xl p-4 text-center">
+   270→   270→                    <div className="text-2xl font-bold text-[#c9a800]">15000+</div>
+   271→   271→                    <div className="text-xs text-[#5a8a9a] mt-1">Happy Patients</div>
+   272→   272→                  </div>
+   273→   273→                </div>
+   274→   274→              </div>
+   275→   275→              <div className="space-y-5">
+   276→   276→                <p className="text-[#0a2a3a] leading-relaxed">
+   277→   277→                  M G Eye Foundation is a premier eye care centre located in Gamharia, Jamshedpur, dedicated to providing
+   278→   278→                  world-class ophthalmic services to the community. Our foundation was established with a vision to make
+   279→   279→                  quality eye care accessible to everyone, combining advanced medical technology with compassionate
+   280→   280→                  patient care.
+   281→   281→                </p>
+   282→   282→                <p className="text-[#0a2a3a] leading-relaxed">
+   283→   283→                  Our mission is to preserve, restore and enhance the vision of every patient who walks through our
+   284→   284→                  doors. We believe in a patient-first approach, where every treatment plan is tailored to individual
+   285→   285→                  needs, and every patient is treated with dignity, respect and empathy.
+   286→   286→                </p>
+   287→   287→                <p className="text-[#0a2a3a] leading-relaxed">
+   288→   288→                  With a team of experienced specialists, state-of-the-art diagnostic equipment and a commitment to
+   289→   289→                  continuous innovation, M G Eye Foundation stands as a beacon of hope for those seeking excellent
+   290→   290→                  eye care in the region.
+   291→   291→                </p>
+   292→   292→                <div className="flex items-center gap-4 pt-2">
+   293→   293→                  <div className="flex items-center gap-2 text-sm text-[#0080c0] font-medium">
+   294→   294→                    <Shield className="w-4 h-4" /> Quality Care
+   295→   295→                  </div>
+   296→   296→                  <div className="flex items-center gap-2 text-sm text-[#c9a800] font-medium">
+   297→   297→                    <Heart className="w-4 h-4" /> Compassionate Approach
+   298→   298→                  </div>
+   299→   299→                  <div className="flex items-center gap-2 text-sm text-[#0080c0] font-medium">
+   300→   300→                    <Microscope className="w-4 h-4" /> Advanced Technology
+   301→   301→                  </div>
+   302→   302→                </div>
+   303→   303→              </div>
+   304→   304→            </div>
+   305→   305→          </div>
+   306→   306→        </section>
+   307→   307→
+   308→   308→        {/* ========== SERVICES ========== */}
+   309→   309→        <section
+   310→   310→          id="services"
+   311→   311→          ref={(el) => { sectionsRef.current["services"] = el; }}
+   312→   312→          className="py-20 bg-[#f4f9fb]"
+   313→   313→        >
+   314→   314→          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   315→   315→            <div className="text-center mb-14">
+   316→   316→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">What We Offer</span>
+   317→   317→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">Our Eye Care Services</h2>
+   318→   318→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   319→   319→              <p className="text-[#5a8a9a] mt-4 max-w-2xl mx-auto">
+   320→   320→                We offer a comprehensive range of eye care services to address every aspect of your vision health,
+   321→   321→                from routine check-ups to advanced surgical procedures.
+   322→   322→              </p>
+   323→   323→            </div>
+   324→   324→            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+   325→   325→              {SERVICES.map((svc, i) => (
+   326→   326→                <Card
+   327→   327→                  key={i}
+   328→   328→                  className="group border-0 bg-white rounded-2xl shadow-sm hover:shadow-xl hover:shadow-[rgba(0,128,192,0.1)] transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+   329→   329→                >
+   330→   330→                  <CardContent className="p-6">
+   331→   331→                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#e8f3f7] to-[#dfeef4] flex items-center justify-center mb-4 group-hover:from-[#0080c0] group-hover:to-[#00c8e0] transition-all duration-500">
+   332→   332→                      <svc.icon className="w-6 h-6 text-[#0080c0] group-hover:text-white transition-colors duration-500" />
+   333→   333→                    </div>
+   334→   334→                    <h3 className="text-lg font-bold text-[#0a2a3a] mb-2">{svc.title}</h3>
+   335→   335→                    <p className="text-[#5a8a9a] text-sm leading-relaxed">{svc.desc}</p>
+   336→   336→                  </CardContent>
+   337→   337→                  <div className="h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+   338→   338→                </Card>
+   339→   339→              ))}
+   340→   340→            </div>
+   341→   341→          </div>
+   342→   342→        </section>
+   343→   343→
+   344→   344→        {/* ========== DOCTORS ========== */}
+   345→   345→        <section
+   346→   346→          id="doctors"
+   347→   347→          ref={(el) => { sectionsRef.current["doctors"] = el; }}
+   348→   348→          className="py-20 bg-white"
+   349→   349→        >
+   350→   350→          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   351→   351→            <div className="text-center mb-14">
+   352→   352→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">Our Team</span>
+   353→   353→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">Doctors & Specialists</h2>
+   354→   354→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   355→   355→            </div>
+   356→   356→            <div className="grid md:grid-cols-3 gap-8">
+   357→   357→              {DOCTORS.map((doc, i) => (
+   358→   358→                <Card key={i} className="border-0 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-[rgba(0,128,192,0.1)] transition-all duration-500 group">
+   359→   359→                  <div className="h-3 bg-gradient-to-r from-[#0080c0] via-[#00c8e0] to-[#c9a800]" />
+   360→   360→                  <CardContent className="p-8 text-center">
+   361→   361→                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#e8f3f7] to-[#dfeef4] mx-auto flex items-center justify-center mb-5 group-hover:from-[#0080c0] group-hover:to-[#00c8e0] transition-all duration-500">
+   362→   362→                      <Stethoscope className="w-10 h-10 text-[#0080c0] group-hover:text-white transition-colors duration-500" />
+   363→   363→                    </div>
+   364→   364→                    <h3 className="text-xl font-bold text-[#0a2a3a]">{doc.name}</h3>
+   365→   365→                    <p className="text-[#0080c0] font-medium text-sm mt-1">{doc.spec}</p>
+   366→   366→                    <div className="flex justify-center gap-4 mt-4">
+   367→   367→                      <span className="inline-flex items-center gap-1 text-xs bg-[#e8f3f7] text-[#0a4d6b] px-3 py-1 rounded-full">
+   368→   368→                        <Clock className="w-3 h-3" /> {doc.exp}
+   369→   369→                      </span>
+   370→   370→                    </div>
+   371→   371→                    <p className="text-[#5a8a9a] text-sm mt-3">{doc.qual}</p>
+   372→   372→                    <Button
+   373→   373→                      onClick={() => scrollTo("contact")}
+   374→   374→                      className="mt-5 bg-[#0080c0] hover:bg-[#006a9e] text-white rounded-full text-sm font-semibold shadow-md shadow-[rgba(0,128,192,0.2)]"
+   375→   375→                    >
+   376→   376→                      Consult Now
+   377→   377→                    </Button>
+   378→   378→                  </CardContent>
+   379→   379→                </Card>
+   380→   380→              ))}
+   381→   381→            </div>
+   382→   382→          </div>
+   383→   383→        </section>
+   384→   384→
+   385→   385→        {/* ========== FACILITIES ========== */}
+   386→   386→        <section
+   387→   387→          id="facilities"
+   388→   388→          ref={(el) => { sectionsRef.current["facilities"] = el; }}
+   389→   389→          className="py-20 bg-[#f4f9fb]"
+   390→   390→        >
+   391→   391→          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   392→   392→            <div className="text-center mb-14">
+   393→   393→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">Infrastructure</span>
+   394→   394→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">Facilities & Technology</h2>
+   395→   395→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   396→   396→            </div>
+   397→   397→            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+   398→   398→              {FACILITIES.map((f, i) => (
+   399→   399→                <div key={i} className="glass-card rounded-2xl p-6 hover:shadow-lg hover:shadow-[rgba(0,128,192,0.08)] transition-all duration-300 group">
+   400→   400→                  <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#0080c0] to-[#00c8e0] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+   401→   401→                    <f.icon className="w-5 h-5 text-white" />
+   402→   402→                  </div>
+   403→   403→                  <h3 className="text-lg font-bold text-[#0a2a3a] mb-2">{f.title}</h3>
+   404→   404→                  <p className="text-[#5a8a9a] text-sm leading-relaxed">{f.desc}</p>
+   405→   405→                </div>
+   406→   406→              ))}
+   407→   407→            </div>
+   408→   408→          </div>
+   409→   409→        </section>
+   410→   410→
+   411→   411→        {/* ========== EYE HEALTH ========== */}
+   412→   412→        <section
+   413→   413→          id="eye-health"
+   414→   414→          ref={(el) => { sectionsRef.current["eye-health"] = el; }}
+   415→   415→          className="py-20 bg-white"
+   416→   416→        >
+   417→   417→          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+   418→   418→            <div className="text-center mb-14">
+   419→   419→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">Patient Education</span>
+   420→   420→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">Eye Health Information</h2>
+   421→   421→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   422→   422→            </div>
+   423→   423→            <div className="space-y-6">
+   424→   424→              {EYE_TIPS.map((tip, i) => (
+   425→   425→                <div key={i} className="glass-card rounded-2xl p-6 hover:shadow-md transition-shadow duration-300">
+   426→   426→                  <h3 className="text-lg font-bold text-[#0080c0] mb-3 flex items-center gap-2">
+   427→   427→                    <Eye className="w-5 h-5" /> {tip.q}
+   428→   428→                  </h3>
+   429→   429→                  <p className="text-[#0a2a3a] leading-relaxed text-sm pl-7">{tip.a}</p>
+   430→   430→                </div>
+   431→   431→              ))}
+   432→   432→            </div>
+   433→   433→            <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-[#e8f3f7] to-[#dfeef4] border border-[#9ec5d4]/30">
+   434→   434→              <h3 className="font-bold text-[#0a2a3a] mb-2">Basic Eye Care Tips</h3>
+   435→   435→              <ul className="grid sm:grid-cols-2 gap-2 text-sm text-[#0a2a3a]">
+   436→   436→                <li className="flex items-start gap-2"><span className="text-[#0080c0] mt-0.5">&#8226;</span> Eat a diet rich in vitamins A, C and E</li>
+   437→   437→                <li className="flex items-start gap-2"><span className="text-[#0080c0] mt-0.5">&#8226;</span> Take regular breaks from screens (20-20-20 rule)</li>
+   438→   438→                <li className="flex items-start gap-2"><span className="text-[#0080c0] mt-0.5">&#8226;</span> Wear sunglasses with UV protection outdoors</li>
+   439→   439→                <li className="flex items-start gap-2"><span className="text-[#0080c0] mt-0.5">&#8226;</span> Get annual eye check-ups after age 40</li>
+   440→   440→                <li className="flex items-start gap-2"><span className="text-[#0080c0] mt-0.5">&#8226;</span> Maintain proper lighting while reading</li>
+   441→   441→                <li className="flex items-start gap-2"><span className="text-[#0080c0] mt-0.5">&#8226;</span> Keep chronic conditions like diabetes under control</li>
+   442→   442→              </ul>
+   443→   443→            </div>
+   444→   444→          </div>
+   445→   445→        </section>
+   446→   446→
+   447→   447→        {/* ========== GALLERY ========== */}
+   448→   448→        <section
+   449→   449→          id="gallery"
+   450→   450→          ref={(el) => { sectionsRef.current["gallery"] = el; }}
+   451→   451→          className="py-20 bg-[#f4f9fb]"
+   452→   452→        >
+   453→   453→          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   454→   454→            <div className="text-center mb-14">
+   455→   455→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">Our Space</span>
+   456→   456→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">Gallery</h2>
+   457→   457→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   458→   458→            </div>
+   459→   459→            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+   460→   460→              {[
+   461→   461→                { label: "Reception", gradient: "from-[#0a4d6b] to-[#0a2e42]", icon: Shield },
+   462→   462→                { label: "Consultation Room", gradient: "from-[#0080c0] to-[#004d6b]", icon: Stethoscope },
+   463→   463→                { label: "Operation Theatre", gradient: "from-[#0a3a52] to-[#0a4d6b]", icon: Microscope },
+   464→   464→                { label: "Diagnostic Lab", gradient: "from-[#006a9e] to-[#0a4d6b]", icon: Eye },
+   465→   465→                { label: "Waiting Area", gradient: "from-[#0a2e42] to-[#0c5a7a]", icon: Heart },
+   466→   466→                { label: "Equipment", gradient: "from-[#0080c0] to-[#006a9e]", icon: Microscope },
+   467→   467→                { label: "Patient Care", gradient: "from-[#0a4d6b] to-[#0080c0]", icon: Users },
+   468→   468→                { label: "Eye Camp", gradient: "from-[#0c5a7a] to-[#0a2e42]", icon: Shield },
+   469→   469→              ].map((item, i) => (
+   470→   470→                <div
+   471→   471→                  key={i}
+   472→   472→                  className={`relative h-48 rounded-2xl bg-gradient-to-br ${item.gradient} overflow-hidden group cursor-pointer hover:scale-[1.02] transition-transform duration-300`}
+   473→   473→                >
+   474→   474→                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+   475→   475→                    <item.icon className="w-12 h-12 text-white/30 group-hover:text-white/70 transition-colors duration-300" />
+   476→   476→                  </div>
+   477→   477→                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/50 to-transparent">
+   478→   478→                    <span className="text-white text-sm font-medium">{item.label}</span>
+   479→   479→                  </div>
+   480→   480→                </div>
+   481→   481→              ))}
+   482→   482→            </div>
+   483→   483→            {/* Testimonials */}
+   484→   484→            <div className="mt-16">
+   485→   485→              <h3 className="text-2xl font-bold text-[#0a2a3a] text-center mb-8">What Our Patients Say</h3>
+   486→   486→              <div className="grid md:grid-cols-3 gap-6">
+   487→   487→                {TESTIMONIALS.map((t, i) => (
+   488→   488→                  <Card key={i} className="border-0 rounded-2xl shadow-sm bg-white">
+   489→   489→                    <CardContent className="p-6">
+   490→   490→                      <div className="flex gap-1 mb-3">
+   491→   491→                        {Array.from({ length: t.rating }).map((_, j) => (
+   492→   492→                          <Star key={j} className="w-4 h-4 fill-[#c9a800] text-[#c9a800]" />
+   493→   493→                        ))}
+   494→   494→                      </div>
+   495→   495→                      <p className="text-[#0a2a3a] text-sm leading-relaxed italic">
+   496→   496→                        &ldquo;{t.text}&rdquo;
+   497→   497→                      </p>
+   498→   498→                      <div className="mt-4 pt-4 border-t border-[#dfeef4]">
+   499→   499→                        <span className="text-sm font-semibold text-[#0080c0]">{t.name}</span>
+   500→   500→                      </div>
+   501→   501→                    </CardContent>
+   502→   502→                  </Card>
+   503→   503→                ))}
+   504→   504→              </div>
+   505→   505→            </div>
+   506→   506→          </div>
+   507→   507→        </section>
+   508→   508→
+   509→   509→        {/* ========== CONTACT ========== */}
+   510→   510→        <section
+   511→   511→          id="contact"
+   512→   512→          ref={(el) => { sectionsRef.current["contact"] = el; }}
+   513→   513→          className="py-20 bg-white"
+   514→   514→        >
+   515→   515→          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   516→   516→            <div className="text-center mb-14">
+   517→   517→              <span className="text-[#c9a800] text-sm font-semibold tracking-widest uppercase">Get In Touch</span>
+   518→   518→              <h2 className="text-3xl sm:text-4xl font-bold text-[#0a2a3a] mt-2">Contact & Appointment</h2>
+   519→   519→              <div className="w-20 h-1 bg-gradient-to-r from-[#0080c0] to-[#00c8e0] mx-auto mt-4 rounded-full" />
+   520→   520→            </div>
+   521→   521→            <div className="grid lg:grid-cols-2 gap-12">
+   522→   522→              {/* Contact Info */}
+   523→   523→              <div className="space-y-6">
+   524→   524→                <div className="glass-card rounded-2xl p-6">
+   525→   525→                  <h3 className="text-lg font-bold text-[#0a2a3a] mb-4">Hospital Information</h3>
+   526→   526→                  <div className="space-y-4">
+   527→   527→                    <div className="flex items-start gap-3">
+   528→   528→                      <MapPin className="w-5 h-5 text-[#0080c0] mt-0.5 shrink-0" />
+   529→   529→                      <div>
+   530→   530→                        <p className="text-sm font-medium text-[#0a2a3a]">Address</p>
+   531→   531→                        <p className="text-sm text-[#5a8a9a]">Near Vani Vidya Mandir School, Dhirajganj, Gamharia, Jamshedpur, Jharkhand - 832108</p>
+   532→   532→                      </div>
+   533→   533→                    </div>
+   534→   534→                    <div className="flex items-center gap-3">
+   535→   535→                      <Phone className="w-5 h-5 text-[#0080c0] shrink-0" />
+   536→   536→                      <div>
+   537→   537→                        <p className="text-sm font-medium text-[#0a2a3a]">Phone</p>
+   538→   538→                        <p className="text-sm text-[#5a8a9a]">+91 7991146771</p>
+   539→   539→                      </div>
+   540→   540→                    </div>
+   541→   541→                    <div className="flex items-center gap-3">
+   542→   542→                      <Mail className="w-5 h-5 text-[#0080c0] shrink-0" />
+   543→   543→                      <div>
+   544→   544→                        <p className="text-sm font-medium text-[#0a2a3a]">Website</p>
+   545→   545→                        <p className="text-sm text-[#0080c0]">www.mgeyefoundation.com</p>
+   546→   546→                      </div>
+   547→   547→                    </div>
+   548→   548→                    <div className="flex items-center gap-3">
+   549→   549→                      <Clock className="w-5 h-5 text-[#c9a800] shrink-0" />
+   550→   550→                      <div>
+   551→   551→                        <p className="text-sm font-medium text-[#0a2a3a]">Timings</p>
+   552→   552→                        <p className="text-sm text-[#5a8a9a]">Mon - Sat: 9:00 AM - 7:00 PM</p>
+   553→   553→                      </div>
+   554→   554→                    </div>
+   555→   555→                  </div>
+   556→   556→                </div>
+   557→   557→                <div className="grid grid-cols-2 gap-4">
+   558→   558→                  <a
+   559→   559→                    href="tel:+917991146771"
+   560→   560→                    className="flex items-center justify-center gap-2 bg-[#0080c0] hover:bg-[#006a9e] text-white rounded-xl p-4 font-semibold text-sm transition-colors shadow-md shadow-[rgba(0,128,192,0.2)]"
+   561→   561→                  >
+   562→   562→                    <Phone className="w-4 h-4" /> Call Now
+   563→   563→                  </a>
+   564→   564→                  <a
+   565→   565→                    href="https://wa.me/917991146771"
+   566→   566→                    target="_blank"
+   567→   567→                    rel="noopener noreferrer"
+   568→   568→                    className="flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#1ea952] text-white rounded-xl p-4 font-semibold text-sm transition-colors shadow-md shadow-[rgba(37,211,102,0.2)]"
+   569→   569→                  >
+   570→   570→                    <Send className="w-4 h-4" /> WhatsApp
+   571→   571→                  </a>
+   572→   572→                </div>
+   573→   573→                {/* Map placeholder */}
+   574→   574→                <div className="rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-[#e8f3f7] to-[#dfeef4] flex items-center justify-center border border-[#9ec5d4]/30">
+   575→   575→                  <div className="text-center">
+   576→   576→                    <MapPin className="w-8 h-8 text-[#0080c0] mx-auto mb-2" />
+   577→   577→                    <p className="text-sm font-medium text-[#0a4d6b]">M G Eye Foundation, Gamharia</p>
+   578→   578→                    <p className="text-xs text-[#5a8a9a]">Jamshedpur, Jharkhand - 832108</p>
+   579→   579→                  </div>
+   580→   580→                </div>
+   581→   581→              </div>
+   582→   582→              {/* Appointment Form */}
+   583→   583→              <Card className="border-0 rounded-2xl shadow-lg overflow-hidden">
+   584→   584→                <div className="h-2 bg-gradient-to-r from-[#0080c0] via-[#00c8e0] to-[#c9a800]" />
+   585→   585→                <CardContent className="p-8">
+   586→   586→                  <h3 className="text-xl font-bold text-[#0a2a3a] mb-6">Book an Appointment</h3>
+   587→   587→                  {formSubmitted ? (
+   588→   588→                    <div className="text-center py-10">
+   589→   589→                      <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+   590→   590→                        <Shield className="w-8 h-8 text-green-600" />
+   591→   591→                      </div>
+   592→   592→                      <h4 className="text-lg font-bold text-[#0a2a3a]">Thank You!</h4>
+   593→   593→                      <p className="text-[#5a8a9a] text-sm mt-1">We will contact you shortly to confirm your appointment.</p>
+   594→   594→                    </div>
+   595→   595→                  ) : (
+   596→   596→                    <form onSubmit={handleSubmit} className="space-y-4">
+   597→   597→                      <div>
+   598→   598→                        <label className="text-sm font-medium text-[#0a2a3a] mb-1 block">Full Name</label>
+   599→   599→                        <Input
+   600→   600→                          required
+   601→   601→                          placeholder="Enter your name"
+   602→   602→                          value={formData.name}
+   603→   603→                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+   604→   604→                          className="rounded-xl border-[#9ec5d4] focus:border-[#0080c0] focus:ring-[#0080c0]/20"
+   605→   605→                        />
+   606→   606→                      </div>
+   607→   607→                      <div>
+   608→   608→                        <label className="text-sm font-medium text-[#0a2a3a] mb-1 block">Phone Number</label>
+   609→   609→                        <Input
+   610→   610→                          required
+   611→   611→                          type="tel"
+   612→   612→                          placeholder="Enter your phone number"
+   613→   613→                          value={formData.phone}
+   614→   614→                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+   615→   615→                          className="rounded-xl border-[#9ec5d4] focus:border-[#0080c0] focus:ring-[#0080c0]/20"
+   616→   616→                        />
+   617→   617→                      </div>
+   618→   618→                      <div>
+   619→   619→                        <label className="text-sm font-medium text-[#0a2a3a] mb-1 block">Email (Optional)</label>
+   620→   620→                        <Input
+   621→   621→                          type="email"
+   622→   622→                          placeholder="Enter your email"
+   623→   623→                          value={formData.email}
+   624→   624→                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+   625→   625→                          className="rounded-xl border-[#9ec5d4] focus:border-[#0080c0] focus:ring-[#0080c0]/20"
+   626→   626→                        />
+   627→   627→                      </div>
+   628→   628→                      <div>
+   629→   629→                        <label className="text-sm font-medium text-[#0a2a3a] mb-1 block">Message</label>
+   630→   630→                        <Textarea
+   631→   631→                          placeholder="Describe your eye concern..."
+   632→   632→                          rows={3}
+   633→   633→                          value={formData.message}
+   634→   634→                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+   635→   635→                          className="rounded-xl border-[#9ec5d4] focus:border-[#0080c0] focus:ring-[#0080c0]/20"
+   636→   636→                        />
+   637→   637→                      </div>
+   638→   638→                      <Button
+   639→   639→                        type="submit"
+   640→   640→                        className="w-full bg-[#0080c0] hover:bg-[#006a9e] text-white font-bold rounded-xl py-5 text-base shadow-lg shadow-[rgba(0,128,192,0.3)] transition-all hover:shadow-[rgba(0,128,192,0.5)]"
+   641→   641→                      >
+   642→   642→                        <Send className="w-4 h-4 mr-2" /> Send Appointment Request
+   643→   643→                      </Button>
+   644→   644→                    </form>
+   645→   645→                  )}
+   646→   646→                </CardContent>
+   647→   647→              </Card>
+   648→   648→            </div>
+   649→   649→          </div>
+   650→   650→        </section>
+   651→   651→      </main>
+   652→   652→
+   653→   653→      {/* ========== FOOTER ========== */}
+   654→   654→      <footer className="bg-[#061e2e] text-white pt-14 pb-6">
+   655→   655→        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   656→   656→          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-[rgba(0,200,224,0.15)]">
+   657→   657→            <div>
+   658→   658→              <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-12 w-auto object-contain mb-4 brightness-0 invert" />
+   659→   659→              <p className="text-[#7ab8cc] text-sm leading-relaxed">
+   660→   660→                Premium eye care with compassion. Dedicated to restoring and preserving your vision.
+   661→   661→              </p>
+   662→   662→            </div>
+   663→   663→            <div>
+   664→   664→              <h4 className="font-bold text-sm mb-4 text-[#00c8e0]">Quick Links</h4>
+   665→   665→              <ul className="space-y-2">
+   666→   666→                {NAV_ITEMS.map((item) => (
+   667→   667→                  <li key={item.id}>
+   668→   668→                    <button
+   669→   669→                      onClick={() => scrollTo(item.id)}
+   670→   670→                      className="text-[#7ab8cc] hover:text-white text-sm transition-colors"
+   671→   671→                    >
+   672→   672→                      {item.label}
+   673→   673→                    </button>
+   674→   674→                  </li>
+   675→   675→                ))}
+   676→   676→              </ul>
+   677→   677→            </div>
+   678→   678→            <div>
+   679→   679→              <h4 className="font-bold text-sm mb-4 text-[#00c8e0]">Services</h4>
+   680→   680→              <ul className="space-y-2 text-[#7ab8cc] text-sm">
+   681→   681→                <li>Cataract Surgery</li>
+   682→   682→                <li>Glaucoma Care</li>
+   683→   683→                <li>Retina Treatment</li>
+   684→   684→                <li>Pediatric Eye Care</li>
+   685→   685→                <li>Eye Check-up</li>
+   686→   686→              </ul>
+   687→   687→            </div>
+   688→   688→            <div>
+   689→   689→              <h4 className="font-bold text-sm mb-4 text-[#00c8e0]">Contact</h4>
+   690→   690→              <div className="space-y-3 text-[#7ab8cc] text-sm">
+   691→   691→                <p className="flex items-start gap-2">
+   692→   692→                  <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+   693→   693→                  Gamharia, Jamshedpur, Jharkhand - 832108
+   694→   694→                </p>
+   695→   695→                <p className="flex items-center gap-2">
+   696→   696→                  <Phone className="w-4 h-4 shrink-0" />
+   697→   697→                  +91 7991146771
+   698→   698→                </p>
+   699→   699→                <p className="flex items-center gap-2">
+   700→   700→                  <Mail className="w-4 h-4 shrink-0" />
+   701→   701→                  www.mgeyefoundation.com
+   702→   702→                </p>
+   703→   703→              </div>
+   704→   704→            </div>
+   705→   705→          </div>
+   706→   706→          <div className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+   707→   707→            <p className="text-[#5a8a9a] text-xs">
+   708→   708→              M G Eye Foundation. All rights reserved.
+   709→   709→            </p>
+   710→   710→            <p className="text-[#5a8a9a] text-xs">
+   711→   711→              Tamso Ma Jyotirgamaya
+   712→   712→            </p>
+   713→   713→          </div>
+   714→   714→        </div>
+   715→   715→      </footer>
+   716→   716→
+   717→   717→      {/* Scroll to top */}
+   718→   718→      {showTopBtn && (
+   719→   719→        <button
+   720→   720→          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+   721→   721→          className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-[#0080c0] text-white shadow-lg shadow-[rgba(0,128,192,0.4)] flex items-center justify-center hover:bg-[#006a9e] transition-colors"
+   722→   722→        >
+   723→   723→          <ArrowUp className="w-5 h-5" />
+   724→   724→        </button>
+   725→   725→      )}
+   726→   726→    </div>
+   727→   727→  );
+   728→   728→}
+   729→   729→

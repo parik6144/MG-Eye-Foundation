@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'cmsmasters-demo-icons';
+  src:  url('fonts/cmsmasters-demo-icons.eot?us05xs');
+  src:  url('fonts/cmsmasters-demo-icons.eot?us05xs#iefix') format('embedded-opentype'),
+    url('fonts/cmsmasters-demo-icons.ttf?us05xs') format('truetype'),
+    url('fonts/cmsmasters-demo-icons.woff?us05xs') format('woff'),
+    url('fonts/cmsmasters-demo-icons.svg?us05xs#cmsmasters-demo-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="cms-demo-icon-"], [class*=" cms-demo-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cmsmasters-demo-icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cms-demo-icon-arrow-framed-left:before {
+  content: "\e900";
+}
+.cms-demo-icon-arrow-framed-right:before {
+  content: "\e901";
+}
+.cms-demo-icon-arrow-left:before {
+  content: "\e902";
+}
+.cms-demo-icon-arrow-right:before {
+  content: "\e903";
+}
+.cms-demo-icon-arrows:before {
+  content: "\e904";
+}
+.cms-demo-icon-cancel:before {
+  content: "\e905";
+}
+.cms-demo-icon-cart:before {
+  content: "\e906";
+}
+.cms-demo-icon-check:before {
+  content: "\e907";
+}
+.cms-demo-icon-contact-lens:before {
+  content: "\e908";
+}
+.cms-demo-icon-date:before {
+  content: "\e909";
+}
+.cms-demo-icon-dropdown-down:before {
+  content: "\e90a";
+}
+.cms-demo-icon-dropdown-up:before {
+  content: "\e90b";
+}
+.cms-demo-icon-eye-2:before {
+  content: "\e90c";
+}
+.cms-demo-icon-eye-drop:before {
+  content: "\e90d";
+}
+.cms-demo-icon-eye-surgery:before {
+  content: "\e90e";
+}
+.cms-demo-icon-eye:before {
+  content: "\e90f";
+}
+.cms-demo-icon-eyeglasses:before {
+  content: "\e910";
+}
+.cms-demo-icon-laser-surgery-1:before {
+  content: "\e911";
+}
+.cms-demo-icon-laser-surgery-2:before {
+  content: "\e912";
+}
+.cms-demo-icon-location:before {
+  content: "\e913";
+}
+.cms-demo-icon-mail:before {
+  content: "\e914";
+}
+.cms-demo-icon-medal:before {
+  content: "\e915";
+}
+.cms-demo-icon-menu:before {
+  content: "\e916";
+}
+.cms-demo-icon-minus-framed:before {
+  content: "\e917";
+}
+.cms-demo-icon-optometrist:before {
+  content: "\e918";
+}
+.cms-demo-icon-phone:before {
+  content: "\e919";
+}
+.cms-demo-icon-plus-framed:before {
+  content: "\e91a";
+}
+.cms-demo-icon-protection:before {
+  content: "\e91b";
+}
+.cms-demo-icon-refraction:before {
+  content: "\e91c";
+}
+.cms-demo-icon-search:before {
+  content: "\e91d";
+}
+.cms-demo-icon-star:before {
+  content: "\e91e";
+}
+.cms-demo-icon-testing-glasses-2:before {
+  content: "\e91f";
+}
+.cms-demo-icon-testing-glasses:before {
+  content: "\e920";
+}
+.cms-demo-icon-time:before {
+  content: "\e921";
+}
