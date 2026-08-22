@@ -18,14 +18,12 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#e2e8f0]/70 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20 lg:h-[88px]">
-          <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0">
-            <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-11 sm:h-[60px] w-auto object-contain" />
-            <div className="hidden sm:block">
-              <span className="text-[1.5rem] font-extrabold text-[#1118E8] leading-none block tracking-tight">
-                MG Eye Foundation
-              </span>
-            </div>
+        <div className="flex items-center justify-between h-14 sm:h-20 lg:h-[88px]">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 pr-2">
+            <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-10 sm:h-[60px] w-auto object-contain shrink-0" />
+            <span className="min-w-0 text-[15px] sm:text-[1.5rem] font-extrabold text-[#1118E8] leading-tight tracking-tight">
+              M G Eye Foundation
+            </span>
           </Link>
 
           <div className="hidden xl:flex items-center gap-1">
@@ -51,7 +49,7 @@ export default function Navbar() {
           </div>
 
           <button
-            className="xl:hidden text-[#0F172A] p-2"
+            className="xl:hidden text-[#0F172A] p-2 shrink-0"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={26} /> : <Menu size={26} />}

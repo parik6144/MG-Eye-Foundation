@@ -21,36 +21,36 @@ export default function HomePage() {
   }, []);
 
   const heroCopy = (mobile: boolean) => (
-    <div className={mobile ? "" : "max-w-xl animate-fade-up"}>
-      <h1 className={`${mobile ? "text-[1.75rem] leading-tight" : "text-[2.8rem] sm:text-[3.2rem] lg:text-[3.8rem] leading-[1.08]"} font-extrabold text-[#0F172A]`}>
+    <div className={mobile ? "text-center" : "max-w-xl animate-fade-up"}>
+      <h1 className={`${mobile ? "text-[1.85rem] leading-tight" : "text-[2.8rem] sm:text-[3.2rem] lg:text-[3.8rem] leading-[1.08]"} font-extrabold text-[#0F172A]`}>
         Better Vision.{" "}
         <span className="text-[#1118E8]">Better Tomorrow.</span>
       </h1>
-      <p className={`text-[#374151] leading-relaxed font-medium ${mobile ? "text-sm mt-3" : "text-base sm:text-[17px] mt-4 max-w-lg"}`}>
+      <p className={`text-[#374151] leading-relaxed font-medium ${mobile ? "text-sm mt-3 mx-auto max-w-[34ch]" : "text-base sm:text-[17px] mt-4 max-w-lg"}`}>
         Cataract, retina, glaucoma, child eye care and squint. We scan here. We treat here. We explain in simple words. Bara Gamharia, 15+ years.
       </p>
-      <div className={`flex items-start ${mobile ? "justify-between gap-2 mt-5" : "items-center gap-6 mt-6"}`}>
+      <div className={mobile ? "grid grid-cols-2 gap-x-3 gap-y-4 mt-6 max-w-xs mx-auto" : "flex items-center gap-6 mt-6"}>
         {FEATURES.map((f, i) => (
-          <div key={i} className="text-center flex-1 min-w-0">
-            <div className={`${mobile ? "w-10 h-10" : "w-11 h-11"} rounded-full border border-[#1118E8]/30 flex items-center justify-center mx-auto mb-1.5 bg-white/70`}>
-              <f.icon className={`${mobile ? "w-4 h-4" : "w-5 h-5"} text-[#1118E8]`} strokeWidth={1.5} />
+          <div key={i} className="text-center">
+            <div className={`${mobile ? "w-12 h-12" : "w-11 h-11"} rounded-full border border-[#1118E8]/30 flex items-center justify-center mx-auto mb-1.5 bg-white`}>
+              <f.icon className={`${mobile ? "w-5 h-5" : "w-5 h-5"} text-[#1118E8]`} strokeWidth={1.5} />
             </div>
-            <span className={`${mobile ? "text-[10px]" : "text-[11px]"} font-semibold text-[#1E293B] leading-tight block`}>{f.label}</span>
+            <span className={`${mobile ? "text-xs" : "text-[11px]"} font-semibold text-[#1E293B] leading-tight block`}>{f.label}</span>
           </div>
         ))}
       </div>
-      <div className={`mt-5 flex flex-col ${mobile ? "gap-4" : "sm:flex-row sm:items-start gap-4 mt-6"}`}>
-        <div>
+      <div className={`mt-6 flex flex-col ${mobile ? "gap-4 items-center" : "sm:flex-row sm:items-start gap-4"}`}>
+        <div className={mobile ? "w-full" : ""}>
           <button
             onClick={openAppointment}
-            className={`bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full shadow-lg shadow-[#1118E8]/25 transition-all flex items-center justify-center gap-2 ${mobile ? "w-full px-5 py-3 text-sm" : "px-8 py-3.5 text-base"}`}
+            className={`bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full shadow-lg shadow-[#1118E8]/25 transition-all flex items-center justify-center gap-2 ${mobile ? "w-full px-5 py-3.5 text-sm" : "px-8 py-3.5 text-base"}`}
           >
             <CalendarDays className="w-5 h-5" /> Book Your Appointment
           </button>
-          <p className="text-[#64748B] text-xs mt-1.5 ml-1">Fast and simple to book.</p>
+          <p className="text-[#64748B] text-xs mt-1.5">Fast and simple to book.</p>
         </div>
         <div className={mobile ? "" : "sm:border-l sm:border-[#CBD5E1] sm:pl-5"}>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center sm:justify-start gap-2">
             <Phone className="w-4 h-4 text-[#374151]" />
             <span className="text-sm font-semibold text-[#1E293B]">Call Us Now</span>
           </div>
@@ -63,24 +63,24 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative w-full overflow-hidden bg-white pt-16 sm:pt-20 lg:pt-[88px]">
-        <div className="relative">
-          <img src="/mg_eye_banner_4.png" alt="MG Eye Foundation" className="w-full h-auto block" />
+      <section className="relative w-full overflow-hidden bg-white pt-14 sm:pt-20 lg:pt-[88px]">
+        <div className="relative overflow-hidden">
+          <img src="/mg_eye_banner_4.png" alt="MG Eye Foundation" className="w-full h-auto max-h-[240px] sm:max-h-none object-cover object-center block" />
           <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white/92 via-white/65 to-transparent pointer-events-none" />
           <div className="hidden lg:flex absolute inset-0 items-center pb-[70px]">
             <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
               {heroCopy(false)}
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 w-full pointer-events-none h-10 sm:h-[70px]">
-            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none" className="w-full h-full">
+          <div className="hidden lg:block absolute bottom-0 left-0 w-full pointer-events-none h-[70px] overflow-hidden">
+            <svg viewBox="0 0 1440 70" preserveAspectRatio="none" className="block w-full h-full" fill="none">
               <path d="M1440 70 C1200 45, 900 18, 600 8 C300 0, 100 20, 0 12 L0 70 Z" fill="#1118E8" opacity="0.92" />
               <path d="M1440 70 C1250 50, 1000 25, 700 18 C400 12, 150 30, 0 24 L0 70 Z" fill="#FF741F" opacity="0.88" />
               <path d="M1440 70 C1300 58, 1050 38, 800 32 C550 26, 200 40, 0 36 L0 70 Z" fill="#FF0808" opacity="0.82" />
             </svg>
           </div>
         </div>
-        <div className="lg:hidden px-4 pt-5 pb-6">
+        <div className="lg:hidden px-4 pt-5 pb-7">
           {heroCopy(true)}
         </div>
       </section>
