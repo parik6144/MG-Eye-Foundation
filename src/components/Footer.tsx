@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone, MapPin, Mail, Clock } from "lucide-react";
-import { SITE, SERVICES, NAV } from "@/lib/site";
+import { SITE, SERVICES, NAV, COPY } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -13,7 +13,7 @@ export default function Footer() {
             </Link>
             <p className="mt-4 text-lg font-extrabold tracking-tight">MG Eye Foundation</p>
             <p className="text-slate-400 text-sm leading-relaxed mt-2">
-              Eye hospital in Bara Gamharia. Cataract, retina, glaucoma, child eyes and squint. We explain in simple words.
+              {COPY.intro}
             </p>
             {/* <p className="text-slate-500 text-xs mt-3">Tamaso Ma Jyotirgamaya</p> */}
           </div>

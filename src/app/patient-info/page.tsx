@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback } from "react";
-import { CARE_STEPS } from "@/lib/site";
+import { CARE_STEPS, COPY } from "@/lib/site";
 
 const STEPS = [
-  { title: "Before your visit", items: ["Bring old reports and glasses", "List of medicines", "Come 15 minutes early"] },
+  { title: "Before your visit", items: ["Bring old reports and glasses", "List of medicines", "PM-JAY or Rajyakarmi card, if you have one", "Come 15 minutes early"] },
   { title: "During your visit", items: ["First register, then full eye check", "Scan if needed (photo of the eye)", "We explain in simple words"] },
   { title: "After your visit", items: ["Put drops as told", "Keep the next date", "Call in working hours if anything feels wrong"] },
 ];
@@ -17,13 +17,12 @@ export default function PatientInfoPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <span className="text-[#F97316] text-sm font-semibold tracking-wide uppercase">Patient Guide</span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Patient Information</h1>
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Patient Education</h1>
           <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
         </div>
         <div className="max-w-3xl mx-auto text-center mb-10">
-          <h2 className="text-2xl font-extrabold text-[#0F172A]">How we explain your eye problem</h2>
           <p className="text-[#475569] mt-3 text-sm leading-relaxed">
-            Many people feel worried because medical words are hard. We explain in three steps.
+            {COPY.patientEdu}
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-5 mb-16">
@@ -50,7 +49,7 @@ export default function PatientInfoPage() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <button onClick={book} className="bg-[#F97316] hover:bg-[#EA580C] text-white font-bold rounded-full px-8 py-3">Schedule a Check-up</button>
+          <button onClick={book} className="bg-[#F97316] hover:bg-[#EA580C] text-white font-bold rounded-full px-8 py-3">Schedule a Consultation</button>
         </div>
       </div>
     </div>

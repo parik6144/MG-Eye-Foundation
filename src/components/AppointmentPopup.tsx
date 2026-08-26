@@ -126,7 +126,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
             <div className="flex items-start justify-between">
               <div>
                 <span className="text-[#FF0808] text-[11px] font-semibold tracking-[0.15em] uppercase">MG Eye Foundation</span>
-                <h2 className="text-2xl lg:text-[26px] font-bold text-[#0F172A] mt-1">Book Appointment</h2>
+                <h2 className="text-2xl lg:text-[26px] font-bold text-[#0F172A] mt-1">Schedule a Consultation</h2>
               </div>
               <button
                 onClick={close}

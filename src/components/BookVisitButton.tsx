@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 
-export default function BookVisitButton({ label = "Book a visit" }: { label?: string }) {
+export default function BookVisitButton({ label = "Schedule a Consultation" }: { label?: string }) {
   const book = useCallback(() => window.dispatchEvent(new CustomEvent("open-appointment")), []);
   return (
     <button

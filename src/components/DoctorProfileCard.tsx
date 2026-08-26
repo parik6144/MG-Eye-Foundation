@@ -67,7 +67,7 @@ export default function DoctorProfileCard({
             </h3>
             <span className="text-[#94A3B8] text-base sm:text-lg font-medium">{doctor.qual}</span>
           </div>
-          <p className="mt-1 text-[#64748b] text-sm">{doctor.hindi} · {doctor.role}</p>
+          <p className="mt-1 text-[#64748b] text-sm">{doctor.role}</p>
 
           <div className="mt-5 flex flex-wrap gap-3">
             {doctor.stats.map((s) => (

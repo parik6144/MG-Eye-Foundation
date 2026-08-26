@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useCallback } from "react";
-import { Eye, Stethoscope, Shield, Heart, ArrowRight, Phone, CalendarDays } from "lucide-react";
-import { SITE, STATS, SERVICES, IMPACT, CARE_STEPS, WHY_FAMILIES } from "@/lib/site";
+import { Eye, Stethoscope, Shield, Heart, ArrowRight, CalendarDays } from "lucide-react";
+import { SITE, COPY, STATS, SERVICES, IMPACT, CARE_STEPS, WHY_FAMILIES } from "@/lib/site";
 import { DOCTORS } from "@/lib/doctors";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
@@ -11,7 +11,7 @@ import DoctorProfileCard from "@/components/DoctorProfileCard";
 const FEATURES = [
   { icon: Eye, label: "Cataract" },
   { icon: Stethoscope, label: "Retina" },
-  { icon: Heart, label: "Child eyes" },
+  { icon: Heart, label: "Pediatric Eye Care" },
   { icon: Shield, label: "Squint" },
 ];
 
@@ -23,11 +23,11 @@ export default function HomePage() {
   const heroCopy = (mobile: boolean) => (
     <div className={mobile ? "text-center" : "max-w-xl animate-fade-up"}>
       <h1 className={`${mobile ? "text-[1.85rem] leading-tight" : "text-[2.8rem] sm:text-[3.2rem] lg:text-[3.8rem] leading-[1.08]"} font-extrabold text-[#0F172A]`}>
-        Better Vision.{" "}
-        <span className="text-[#1118E8]">Better Tomorrow.</span>
+        Better Vision,{" "}
+        <span className="text-[#1118E8]">Better Tomorrow</span>
       </h1>
-      <p className={`text-[#374151] leading-relaxed font-medium ${mobile ? "text-sm mt-3 mx-auto max-w-[34ch]" : "text-base sm:text-[17px] mt-4 max-w-lg"}`}>
-        Cataract, retina, glaucoma, child eye care and squint. We scan here. We treat here. We explain in simple words. Bara Gamharia, 15+ years.
+      <p className={`text-[#374151] leading-relaxed font-medium ${mobile ? "text-sm mt-3 mx-auto max-w-[42ch]" : "text-[13px] sm:text-[15px] mt-4 max-w-xl"}`}>
+        {COPY.intro}
       </p>
       <div className={mobile ? "grid grid-cols-2 gap-x-3 gap-y-4 mt-6 max-w-xs mx-auto" : "flex items-center gap-6 mt-6"}>
         {FEATURES.map((f, i) => (
@@ -45,17 +45,16 @@ export default function HomePage() {
             onClick={openAppointment}
             className={`bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full shadow-lg shadow-[#1118E8]/25 transition-all flex items-center justify-center gap-2 ${mobile ? "w-full px-5 py-3.5 text-sm" : "px-8 py-3.5 text-base"}`}
           >
-            <CalendarDays className="w-5 h-5" /> Book Your Appointment
+            <CalendarDays className="w-5 h-5" /> {COPY.cta}
           </button>
-          <p className="text-[#64748B] text-xs mt-1.5">Fast and simple to book.</p>
+          <p className="text-[#64748B] text-xs mt-1.5">{COPY.ctaNote}</p>
         </div>
         <div className={mobile ? "" : "sm:border-l sm:border-[#CBD5E1] sm:pl-5"}>
-          <div className="flex items-center justify-center sm:justify-start gap-2">
-            <Phone className="w-4 h-4 text-[#374151]" />
-            <span className="text-sm font-semibold text-[#1E293B]">Call Us Now</span>
-          </div>
+          <p className="text-[11px] text-[#64748B] leading-snug max-w-[22ch] sm:max-w-none">
+            For immediate assistance, please call
+          </p>
           <a href={SITE.phoneHref} className="text-[#FF0808] font-bold text-base hover:underline">{SITE.phoneDisplay}</a>
-          <p className="text-[#94A3B8] text-xs mt-1">{SITE.hours}</p>
+          <p className="text-[#94A3B8] text-xs mt-1">(Monday–Saturday, 10:00 a.m.–6:00 p.m.)</p>
         </div>
       </div>
     </div>
@@ -107,14 +106,14 @@ export default function HomePage() {
             <div>
               <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">About Us</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2 leading-tight">
-                We treat the eye problem. Then we explain it in simple words.
+                {COPY.aboutTitle}
               </h2>
               <div className="w-12 h-1 bg-[#1118E8] mt-4 rounded-full" />
               <p className="text-[#475569] mt-5 leading-relaxed">
-                MG Eye Foundation is an eye hospital in Bara Gamharia. We do the scan here. We sit with you. We tell you what is wrong, and what we will do next.
+                {COPY.aboutP1}
               </p>
               <p className="text-[#475569] mt-3 leading-relaxed">
-                Our work is cataract surgery, retina injection and laser, glaucoma care, cornea and dry eye, child eye checks, squint surgery, and eye injuries from nearby factories.
+                {COPY.aboutP2}
               </p>
               <Link href="/about" className="inline-flex items-center gap-2 mt-6 bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full px-6 py-2.5 text-sm">
                 Read our story <ArrowRight className="w-4 h-4" />
@@ -129,7 +128,7 @@ export default function HomePage() {
           <div className="rounded-[28px] bg-[#0F172A] px-6 py-10 text-center sm:px-10">
             <p className="text-[#FF741F] text-xs font-semibold tracking-[0.22em] uppercase">Mission and vision</p>
             <h2 className="mt-3 text-2xl sm:text-4xl font-extrabold text-white leading-snug">
-              Scan. Treat. Explain. <span className="text-[#FF741F]">All in one hospital.</span>
+              Our Mission <span className="text-[#FF741F]">and Our Vision</span>
             </h2>
           </div>
 
@@ -143,13 +142,13 @@ export default function HomePage() {
                   <span className="text-[#FF741F] text-xs font-semibold tracking-[0.18em] uppercase">Our Mission</span>
                 </div>
                 <h3 className="text-white text-2xl sm:text-3xl font-extrabold leading-tight">
-                  We treat the problem. <span className="text-[#FF741F]">We explain it first.</span>
+                  Our Mission
                 </h3>
                 <p className="mt-4 text-white/85 text-sm leading-relaxed max-w-md">
-                  We do cataract surgery, retina injections and laser, glaucoma care, eye injuries, child eye checks, and squint surgery. We do the scan here. Then we tell you what it means, in simple words. We tell you the cost before treatment. Cashless is not available now.
+                  {COPY.mission}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["Scan on the same day", "7 types of eye care", "We see you after surgery"].map((tag) => (
+                  {COPY.missionTags.map((tag) => (
                     <span key={tag} className="rounded-full border border-white/40 px-3.5 py-1.5 text-[12px] text-white/90">
                       {tag}
                     </span>
@@ -167,13 +166,13 @@ export default function HomePage() {
                   <span className="text-[#1118E8] text-xs font-semibold tracking-[0.18em] uppercase">Our Vision</span>
                 </div>
                 <h3 className="text-[#0F172A] text-2xl sm:text-3xl font-extrabold leading-tight">
-                  An eye hospital near home that <span className="text-[#FF0808]">people come back to</span>
+                  Our Vision
                 </h3>
                 <p className="mt-4 text-[#475569] text-sm leading-relaxed max-w-md">
-                  For 15 years we have treated more than 75,000 people. A child with squint should not wait for a far-away hospital. A worker hurt in Adityapur should get help quickly. We are at Plot 121, Bara Gamharia. Open Monday to Saturday, 10 AM to 6 PM.
+                  {COPY.vision}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["75,000+ patients", "Child eye checks every day", "Help for eye injuries"].map((tag) => (
+                  {COPY.visionTags.map((tag) => (
                     <span key={tag} className="rounded-full border border-[#cbd5e1] bg-white/70 px-3.5 py-1.5 text-[12px] text-[#334155]">
                       {tag}
                     </span>
@@ -192,10 +191,10 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Why Families Choose Us</p>
             <h2 className="mt-4 text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-              We look after your eyes. <span className="text-[#FF741F]">We explain every step.</span>
+              Why Families Choose Us
             </h2>
             <p className="mt-4 text-white/75 text-sm sm:text-base leading-relaxed">
-              In other words: this is not only a booking and an operation. We listen. We show the scan. We treat with care. Then we tell you when to come back.
+              {COPY.whyIntro}
             </p>
           </div>
           <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -220,25 +219,25 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-[#FF0808] text-sm font-semibold tracking-wide uppercase">Patient Education</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-3 leading-tight">
-              How we explain your eye problem
+              Patient Education
             </h2>
             <p className="text-[#475569] mt-4 leading-relaxed">
-              Many people feel worried because medical words are hard. We explain every eye problem in three simple steps. What you feel. What is happening inside the eye. How we fix it.
+              {COPY.patientEdu}
             </p>
           </div>
 
           <div className="mt-8 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
             <div className="overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white">
               <img src="/patient-edu/feel.png" alt="What you feel" className="h-24 sm:h-32 w-full object-cover" />
-              <p className="text-center text-[11px] sm:text-xs font-semibold text-[#0F172A] py-2">What you feel</p>
+              <p className="text-center text-[11px] sm:text-xs font-semibold text-[#0F172A] py-2">Symptoms</p>
             </div>
             <div className="overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white">
-              <img src="/patient-edu/inside.png" alt="Inside the eye" className="h-24 sm:h-32 w-full object-cover" />
-              <p className="text-center text-[11px] sm:text-xs font-semibold text-[#0F172A] py-2">Inside the eye</p>
+              <img src="/patient-edu/inside.png" alt="Underlying condition of the eye" className="h-24 sm:h-32 w-full object-cover" />
+              <p className="text-center text-[11px] sm:text-xs font-semibold text-[#0F172A] py-2">Underlying condition</p>
             </div>
             <div className="overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white">
-              <img src="/patient-edu/fix.png" alt="How we fix it" className="h-24 sm:h-32 w-full object-cover" />
-              <p className="text-center text-[11px] sm:text-xs font-semibold text-[#0F172A] py-2">How we fix it</p>
+              <img src="/patient-edu/fix.png" alt="Recommended course of treatment" className="h-24 sm:h-32 w-full object-cover" />
+              <p className="text-center text-[11px] sm:text-xs font-semibold text-[#0F172A] py-2">Recommended treatment</p>
             </div>
           </div>
 
@@ -272,14 +271,14 @@ export default function HomePage() {
           <div className="max-w-3xl mb-10">
             <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Our doctors</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2 leading-tight">
-              Meet the doctors who will see you
+              Our Doctors
             </h2>
             <p className="text-white/75 mt-3 leading-relaxed">
-              In other words: two eye doctors work here. First, retina, glaucoma and cataract. Then child eyes and squint. Both also treat eye injuries.
+              {COPY.doctorsIntro}
             </p>
           </div>
           <div className="space-y-8">
-            {[...DOCTORS].reverse().map((d, i) => (
+            {DOCTORS.map((d, i) => (
               <DoctorProfileCard
                 key={d.name}
                 doctor={d}
@@ -295,9 +294,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">Our Services</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2">Seven types of eye care</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2">Our Services</h2>
             <p className="text-[#475569] mt-3 max-w-2xl mx-auto text-sm leading-relaxed">
-              For each problem we say three things. What it is. What you may feel. What we do.
+              {COPY.servicesIntro}
             </p>
             <div className="w-12 h-1 bg-[#1118E8] mx-auto mt-4 rounded-full" />
           </div>
@@ -307,9 +306,9 @@ export default function HomePage() {
                 <img src={s.image} alt={s.title} className="h-48 w-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
                 <div className="p-5">
                   <h3 className="font-extrabold text-lg text-[#0F172A]">{s.title}</h3>
-                  <p className="text-sm text-[#475569] mt-3 leading-relaxed"><span className="font-semibold text-[#1118E8]">What it is. </span>{s.what}</p>
-                  <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#FF741F]">What you may feel. </span>{s.feel}</p>
-                  <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#0F172A]">What we do. </span>{s.do}</p>
+                  <p className="text-sm text-[#475569] mt-3 leading-relaxed"><span className="font-semibold text-[#1118E8]">Condition: </span>{s.what}</p>
+                  <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#FF741F]">Common Symptoms: </span>{s.feel}</p>
+                  <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#0F172A]">Our Approach: </span>{s.do}</p>
                   <Link href={`/services/${s.slug}`} className="mt-4 inline-flex text-sm font-bold text-[#1118E8] hover:underline">
                     View more
                   </Link>
@@ -334,7 +333,7 @@ export default function HomePage() {
       <section className="w-full bg-[#0F172A]">
         <div className="w-full px-4 sm:px-8 lg:px-12 py-10 sm:py-12">
           <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Our work</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">What we have done in this area</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">Our Work</h2>
         </div>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/10">
           {IMPACT.map((item, i) => (

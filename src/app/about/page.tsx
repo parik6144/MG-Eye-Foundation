@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { STATS, IMPACT, SITE } from "@/lib/site";
+import { STATS, IMPACT, SITE, COPY } from "@/lib/site";
 import ClinicVideo from "@/components/ClinicVideo";
 
 export const metadata: Metadata = { title: "About Us | MG Eye Foundation" };
@@ -19,10 +19,10 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">About Us</span>
         <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[#0F172A] leading-tight">
-          MG Eye Foundation
+          {COPY.aboutTitle}
         </h1>
-        <p className="mt-3 text-[#475569] text-base max-w-2xl leading-relaxed">
-          An eye hospital in Bara Gamharia. Families also come from Adityapur, Jamshedpur and Saraikela-Kharsawan. We scan. We treat. We explain in simple words.
+        <p className="mt-3 text-[#475569] text-base max-w-3xl leading-relaxed">
+          {COPY.aboutP1}
         </p>
       </section>
 
@@ -36,20 +36,34 @@ export default function AboutPage() {
             <div>
               <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">Our story</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2 leading-tight">
-                15+ years of eye care in this area
+                {COPY.aboutTitle}
               </h2>
               <div className="w-12 h-1 bg-[#1118E8] mt-4 rounded-full" />
               <p className="text-[#475569] leading-relaxed mt-5">
-                MG Eye Foundation is at {SITE.address}, {SITE.city}. We treat cataract, retina, glaucoma, cornea, dry eye, child eye problems, squint and eye injuries. Scans, laser, injection and surgery happen in the same hospital.
+                {COPY.aboutP1}
               </p>
               <p className="text-[#475569] leading-relaxed mt-3">
-                Child eye checks and squint care are here every working day. We are listed under PM-JAY. Cashless is not available now.
+                {COPY.aboutP2}
               </p>
               <blockquote className="mt-6 border-l-4 border-[#1118E8] pl-4">
                 <p className="text-xl font-extrabold text-[#1118E8]">Tamaso Ma Jyotirgamaya</p>
                 <p className="text-[#64748b] text-sm mt-1">From darkness, lead me to light.</p>
               </blockquote>
             </div>
+          </div>
+
+          <div className="mt-14 grid sm:grid-cols-3 gap-5">
+            {[
+              { n: "01", t: "Call or visit", b: "Appointments may be scheduled by telephone at +91 84090 01008, or by visiting the hospital directly. Monday–Saturday, 10:00 a.m. to 6:00 p.m." },
+              { n: "02", t: "Examination and scans on site", b: "All diagnostic scans and clinical treatments are performed on site. Specialists explain each diagnosis and treatment plan in clear, accessible language." },
+              { n: "03", t: "Treatment and follow-up", b: "The associated costs are communicated in advance of treatment. Structured post-operative follow-up is arranged. Cashless facilities are not currently available." },
+            ].map((c) => (
+              <article key={c.n} className="rounded-[22px] border border-[#e2e8f0] bg-[#F7F9FC] p-6">
+                <span className="text-[#1118E8] text-sm font-extrabold">{c.n}</span>
+                <h3 className="mt-2 text-lg font-extrabold text-[#0F172A]">{c.t}</h3>
+                <p className="mt-3 text-sm text-[#475569] leading-relaxed">{c.b}</p>
+              </article>
+            ))}
           </div>
 
           <div className="mt-12 grid lg:grid-cols-2 gap-8 items-center">
@@ -80,11 +94,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase text-center">Mission and vision</p>
           <h2 className="mt-3 text-center text-3xl sm:text-5xl font-extrabold text-white leading-tight max-w-4xl mx-auto">
-            Scan. Treat. Explain. <span className="text-[#FF741F]">All in one hospital.</span>
+            Our Mission <span className="text-[#FF741F]">and Our Vision</span>
           </h2>
-          <p className="mt-4 text-center text-white/70 max-w-2xl mx-auto leading-relaxed">
-            In other words: you do not need to go far. The scan, the talk and the treatment happen here.
-          </p>
 
           <div className="mt-14 grid lg:grid-cols-2 gap-8">
             <article className="rounded-[28px] overflow-hidden bg-white">
@@ -93,19 +104,13 @@ export default function AboutPage() {
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#FF741F] text-white font-bold">01</span>
                 <p className="mt-4 text-[#FF741F] text-xs font-semibold tracking-[0.18em] uppercase">Our Mission</p>
                 <h3 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[#0F172A] leading-tight">
-                  We treat the problem. We explain it first.
+                  Our Mission
                 </h3>
                 <p className="mt-5 text-[#475569] text-base leading-relaxed">
-                  Our work is cataract surgery, retina injection and laser, glaucoma care, eye injuries, child eye checks and squint surgery.
-                </p>
-                <p className="mt-3 text-[#475569] text-base leading-relaxed">
-                  We do the scan here. Then we sit with you. We tell you the name of the problem, which part of the eye it is, and what we will do next. We use simple words. Hindi or English, the way you speak at home.
-                </p>
-                <p className="mt-3 text-[#475569] text-base leading-relaxed">
-                  We tell you the cost before treatment. Cashless is not available now. After surgery we see you again, so healing stays safe.
+                  {COPY.mission}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["Scan on the same day", "7 types of eye care", "We see you after surgery"].map((tag) => (
+                  {COPY.missionTags.map((tag) => (
                     <span key={tag} className="rounded-full border border-[#e2e8f0] px-3.5 py-1.5 text-xs text-[#334155]">
                       {tag}
                     </span>
@@ -120,19 +125,13 @@ export default function AboutPage() {
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1118E8] text-white font-bold">02</span>
                 <p className="mt-4 text-[#1118E8] text-xs font-semibold tracking-[0.18em] uppercase">Our Vision</p>
                 <h3 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[#0F172A] leading-tight">
-                  An eye hospital near home that people come back to
+                  Our Vision
                 </h3>
                 <p className="mt-5 text-[#475569] text-base leading-relaxed">
-                  For 15 years we have treated more than 75,000 people. We want families in Gamharia, Adityapur, Jamshedpur and Saraikela-Kharsawan to get good eye care close to home.
-                </p>
-                <p className="mt-3 text-[#475569] text-base leading-relaxed">
-                  A child with squint should not wait for a far-away hospital. A worker hurt in Adityapur should get help quickly. That is why we stay at Plot 121, Bara Gamharia.
-                </p>
-                <p className="mt-3 text-[#475569] text-base leading-relaxed">
-                  Open Monday to Saturday, 10 AM to 6 PM. Sunday is closed. If the eye problem is urgent, call us in working hours.
+                  {COPY.vision}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["75,000+ patients", "Child eye checks every day", "Help for eye injuries"].map((tag) => (
+                  {COPY.visionTags.map((tag) => (
                     <span key={tag} className="rounded-full border border-[#e2e8f0] px-3.5 py-1.5 text-xs text-[#334155]">
                       {tag}
                     </span>
@@ -146,12 +145,12 @@ export default function AboutPage() {
 
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">The areas we serve</span>
+          <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">Service Area</span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2 leading-tight">
-            Not only Gamharia. This hospital is for the whole belt.
+            Service Area
           </h2>
           <p className="text-[#475569] mt-4 max-w-3xl leading-relaxed">
-            The hospital stands in Bara Gamharia. People also come from Adityapur, Jamshedpur and Saraikela-Kharsawan. You do not need to go to a far city for many eye problems.
+            {COPY.serviceArea}
           </p>
           <div className="mt-10 grid sm:grid-cols-2 gap-5">
             <article className="rounded-[22px] border border-[#e2e8f0] p-7 bg-[#F7F9FC]">
@@ -208,7 +207,7 @@ export default function AboutPage() {
       <section className="w-full bg-[#0F172A]">
         <div className="w-full px-4 sm:px-8 lg:px-12 py-10">
           <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Our work</span>
-          <h2 className="text-3xl font-extrabold text-white mt-2">What we have done in this area</h2>
+          <h2 className="text-3xl font-extrabold text-white mt-2">Our Work</h2>
         </div>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/10">
           {IMPACT.map((item, i) => (

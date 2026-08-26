@@ -19,9 +19,6 @@ export default function FaqSection() {
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
           Frequently Asked Questions
         </h2>
-        <p className="mt-2 text-slate-300 text-sm">
-          Simple answers. If you are still not sure, call us.
-        </p>
       </div>
       <div className="w-full border-t border-white/10">
         {FAQS.map((f, i) => {

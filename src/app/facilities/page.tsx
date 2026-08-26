@@ -10,11 +10,11 @@ export default function FacilitiesPage() {
         <div className="max-w-3xl mb-16">
           <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Our machines</span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3 leading-tight">
-            Scans and machines in this hospital
+            Diagnostic equipment
           </h1>
           <div className="w-12 h-1 bg-[#1118E8] mt-4 rounded-full" />
           <p className="text-[#475569] mt-5 text-lg leading-relaxed">
-            We do the scan here. The doctor sees the picture the same day. You do not go to another centre for these tests.
+            All diagnostic scans are performed on the day of consultation. The following instruments support cataract, retina, glaucoma and related care. You sit for the scan; the doctor reviews the picture the same day.
           </p>
         </div>
 

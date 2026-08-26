@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import Link from "next/link";
-import { SERVICES, SITE } from "@/lib/site";
+import { SERVICES, SITE, COPY } from "@/lib/site";
 
 export default function ServicesPage() {
   const book = useCallback(() => window.dispatchEvent(new CustomEvent("open-appointment")), []);
@@ -12,10 +12,10 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-14 text-center">
           <span className="text-[#FF741F] text-sm font-semibold tracking-wide uppercase">Services</span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Seven types of eye care</h1>
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Our Services</h1>
           <div className="w-12 h-1 bg-[#1118E8] mx-auto mt-4 rounded-full" />
           <p className="text-[#475569] mt-5 max-w-2xl mx-auto leading-relaxed">
-            For each problem we say three things. What it is. What you may feel. What we do.
+            {COPY.servicesIntro}
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -24,9 +24,9 @@ export default function ServicesPage() {
               <img src={s.image} alt={s.title} className="h-48 w-full object-cover" />
               <div className="p-6">
                 <h2 className="text-lg font-extrabold text-[#0F172A]">{s.title}</h2>
-                <p className="text-sm text-[#475569] mt-3 leading-relaxed"><span className="font-semibold text-[#1118E8]">What it is. </span>{s.what}</p>
-                <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#FF741F]">What you may feel. </span>{s.feel}</p>
-                <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#0F172A]">What we do. </span>{s.do}</p>
+                <p className="text-sm text-[#475569] mt-3 leading-relaxed"><span className="font-semibold text-[#1118E8]">Condition: </span>{s.what}</p>
+                <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#FF741F]">Common Symptoms: </span>{s.feel}</p>
+                <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#0F172A]">Our Approach: </span>{s.do}</p>
                 <div className="mt-5 flex flex-wrap items-center gap-3">
                   <button onClick={book} className="inline-flex bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full px-5 py-2.5 text-sm">
                     Book this care

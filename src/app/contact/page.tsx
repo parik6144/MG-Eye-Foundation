@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { Phone, MapPin, Mail, Clock, Send, CheckCircle2, MessageCircle } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { SITE, COPY } from "@/lib/site";
 
 const MAP_SRC =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.5908957717247!2d86.10057549999999!3d22.817618100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e5848c06a167%3A0x2cdbf23713a6129!2sM%20G%20Eye%20Foundation!5e0!3m2!1sen!2sin!4v1787430071311!5m2!1sen!2sin";
@@ -21,11 +21,11 @@ export default function ContactPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Contact</span>
           <h1 className="mt-3 text-3xl sm:text-5xl font-extrabold text-white leading-tight max-w-2xl">
-            Come to the hospital, call, or send a message
+            MG Eye Foundation
           </h1>
           <div className="w-12 h-1 bg-[#FF741F] mt-5 rounded-full" />
           <p className="mt-5 text-slate-300 text-lg max-w-xl leading-relaxed">
-            We are in Bara Gamharia, near Vani Vidya Mandir. Same place for scan, visit and treatment.
+            Plot No. 121, Durga Puja Maidan, Near Vani Vidya Mandir School, Bara Gamharia, Jamshedpur, Jharkhand
           </p>
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function ContactPage() {
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1118E8] text-white">
               <Phone className="w-5 h-5" />
             </span>
-            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#FF741F]">Phone</p>
+            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#FF741F]">Telephone</p>
             <p className="mt-1 font-extrabold text-[#0F172A] text-lg">{SITE.phoneDisplay}</p>
             <p className="mt-1 text-sm text-[#64748b]">Tap to call</p>
           </a>
@@ -52,7 +52,7 @@ export default function ContactPage() {
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#FF741F] text-white">
               <Mail className="w-5 h-5" />
             </span>
-            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#FF741F]">Email</p>
+            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#FF741F]">Electronic Mail</p>
             <p className="mt-1 font-extrabold text-[#0F172A] text-sm break-all">{SITE.email}</p>
             <p className="mt-1 text-sm text-[#64748b]">We reply on working days</p>
           </a>
@@ -60,7 +60,7 @@ export default function ContactPage() {
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#0F172A] text-white">
               <Clock className="w-5 h-5" />
             </span>
-            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#FF741F]">Hours</p>
+            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#FF741F]">Hours of Operation</p>
             <p className="mt-1 font-extrabold text-[#0F172A]">{SITE.hours}</p>
             <p className="mt-1 text-sm text-[#64748b]">{SITE.sunday}</p>
           </div>
@@ -70,24 +70,28 @@ export default function ContactPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] leading-tight">Find us</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] leading-tight">Contact Information</h2>
             <div className="w-12 h-1 bg-[#1118E8] mt-4 rounded-full" />
             <p className="mt-6 flex items-start gap-3 text-[#475569] text-lg leading-relaxed">
               <MapPin className="w-6 h-6 text-[#FF741F] shrink-0 mt-1" />
               {SITE.address}, {SITE.city}
             </p>
             <p className="mt-4 text-[#64748b] leading-relaxed">
-              Come from Adityapur, Jamshedpur or Saraikela-Kharsawan. The map below shows the hospital gate.
+              <span className="font-semibold text-[#0F172A]">Service Area. </span>
+              {COPY.serviceArea}
             </p>
             <p className="mt-6 text-sm bg-[#FFF7ED] border border-[#FFEDD5] text-[#9A3412] rounded-2xl p-4 leading-relaxed">
-              Cashless is not available now. We are listed under PM-JAY.
+              {COPY.pmjay}
+            </p>
+            <p className="mt-4 text-sm bg-[#F0FDF4] border border-[#BBF7D0] text-[#14532D] rounded-2xl p-4 leading-relaxed">
+              {COPY.rajyakarmi}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href={SITE.phoneHref} className="inline-flex items-center justify-center gap-2 bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full px-7 py-3.5 text-sm">
                 <Phone className="w-4 h-4" /> Call now
               </a>
               <button onClick={openAppointment} className="inline-flex items-center justify-center bg-[#FF741F] hover:bg-[#EA580C] text-white font-bold rounded-full px-7 py-3.5 text-sm">
-                Book a visit
+                Schedule a Consultation
               </button>
             </div>
           </div>
