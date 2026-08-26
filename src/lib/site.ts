@@ -124,6 +124,12 @@ export const SERVICES = [
       "Difficulty with reading, walking, or recognising faces as the cataract progresses",
     ],
     when: "Come for a full assessment when cloudy vision begins to interfere with daily activity. Our specialists will advise whether surgery is appropriate.",
+    offers: [
+      "Cataract surgery with intraocular lens replacement",
+      "Optical biometry to choose the lens power",
+      "Ultrasound measurement when a dense cataract blocks a light scan",
+      "YAG laser if the capsule becomes cloudy after surgery",
+    ],
     story: [
       "The lens inside the eye should be clear, like a clean window. With age, or after injury, that lens can turn cloudy. That cloud is a cataract. Drops cannot wash it away.",
       "We check your eye first. We measure the eye so the new lens has the right power. Then we take out the cloudy lens and put in a clear one. Most people go home the same day.",
@@ -151,6 +157,12 @@ export const SERVICES = [
       "A family history of glaucoma, or known high eye pressure",
     ],
     when: "A pressure check is advisable even when the eye feels comfortable. Early detection helps preserve vision.",
+    offers: [
+      "Intraocular pressure measurement and monitoring",
+      "OCT of the optic nerve",
+      "Prescribed pressure-lowering drops",
+      "Laser treatment, including YAG where indicated",
+    ],
     story: [
       "Glaucoma is extra pressure in the eye. That pressure can harm the nerve that helps you see. Once that nerve is hurt, that part of seeing does not come back. So we try to find it early.",
       "We check the pressure. We look at the nerve. We often use an OCT scan of the back of the eye. Then we use drops, and sometimes laser, to bring the pressure down.",
@@ -178,6 +190,13 @@ export const SERVICES = [
       "Known diabetes, even when the eye feels well",
     ],
     when: "Patients with diabetes should have the retina examined on a planned schedule. Sudden dark spots or a sudden drop in vision require prompt assessment.",
+    offers: [
+      "Colour fundus photography",
+      "OCT scan of the retina",
+      "Intravitreal injection",
+      "Retinal laser",
+      "Diabetic retina care",
+    ],
     story: [
       "The retina is the back of the eye. It takes the picture you see. In diabetes, small vessels can leak or swell. Age can also harm the centre of seeing.",
       "We take a colour photo and an OCT scan. Then we tell you if you need an injection, a laser, or only watching for now.",
@@ -205,6 +224,12 @@ export const SERVICES = [
       "Workplace injury, including injuries from nearby industrial settings",
     ],
     when: "A painful, red, or injured eye should be examined without delay during working hours.",
+    offers: [
+      "Slit-lamp examination",
+      "Anterior segment imaging",
+      "Treatment of infection and injury",
+      "Care for workplace injuries, including those from Adityapur",
+    ],
     story: [
       "The cornea is the clear front window. If it is hurt or infected, light cannot pass well. The eye can hurt a lot. Do not wait at home with a red, painful eye.",
       "We look with a slit lamp. We may take a close photo of the front of the eye. Then we start drops or other care the same day when we can.",
@@ -232,6 +257,11 @@ export const SERVICES = [
       "Symptoms affecting one or both eyes, often worse with prolonged screen use",
     ],
     when: "Come if burning, grittiness or watering persists, or if drops used at home no longer give relief.",
+    offers: [
+      "Assessment of why the eye cannot stay wet enough",
+      "Regimen of drops",
+      "Supportive measures to relieve burning and grittiness",
+    ],
     story: [
       "Dry eye means the eye does not stay wet enough. Odd as it sounds, a dry eye can also water a lot. Screens, dust, age and some medicines can make this worse.",
       "We look at the front of the eye. We tell you why it feels like this. Then we give drops and a simple daily plan. This is not usually surgery.",
@@ -259,6 +289,13 @@ export const SERVICES = [
       "Feedback from school regarding a child's vision",
     ],
     when: "We recommend an eye examination if any of these signs are present. Pediatric examinations are conducted daily.",
+    offers: [
+      "Daily pediatric eye examinations",
+      "Visual acuity assessment",
+      "Assessment for corrective lenses",
+      "Identification of a weaker or asymmetric eye",
+      "Auto-refraction (glasses power check)",
+    ],
     story: [
       "A child’s eye is still growing. If one eye is weak, or the two eyes do not work together, we need to find it early. Waiting can make one eye stay weak.",
       "The check is gentle. We may use drops to see the true power. We tell the parent in simple words: glasses, exercises, or more care.",
@@ -286,6 +323,11 @@ export const SERVICES = [
       "Head tilt, closing one eye in sunlight, or difficulty with depth",
     ],
     when: "A child with a turned or weaker eye should be assessed promptly. Adults with a new or long-standing squint may also be examined here.",
+    offers: [
+      "Measurement of eye alignment",
+      "Corrective lenses when indicated",
+      "Squint correction surgery",
+    ],
     story: [
       "Squint, or bhengaapan, means the two eyes do not look at the same place. In a child, the brain may start using only the straight eye. The other eye can become lazy.",
       "We measure how much the eye turns. Some children need glasses first. Some need surgery to straighten the eye. We tell you which one, and why.",

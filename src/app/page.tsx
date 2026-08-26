@@ -64,14 +64,53 @@ export default function HomePage() {
     <>
       <section className="relative w-full overflow-hidden bg-white pt-14 sm:pt-20 lg:pt-[88px]">
         <div className="relative overflow-hidden">
-          <img src="/mg_eye_banner_4.png" alt="MG Eye Foundation" className="w-full h-auto max-h-[240px] sm:max-h-none object-cover object-center block" />
-          <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white/92 via-white/65 to-transparent pointer-events-none" />
-          <div className="hidden lg:flex absolute inset-0 items-center pb-[70px]">
-            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              {heroCopy(false)}
+          <img src="/mg_eye_banner_4.png" alt="MG Eye Foundation" className="w-full h-auto max-h-[240px] lg:max-h-none object-cover object-center block" />
+          <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent pointer-events-none" />
+
+          <div className="hidden lg:block absolute inset-0 pb-[70px]">
+            <div className="relative h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <div className="relative z-[2] max-w-xl h-full flex flex-col justify-center animate-fade-up">
+                <h1 className="text-[2.8rem] lg:text-[3.4rem] xl:text-[3.8rem] leading-[1.08] font-extrabold text-[#0F172A]">
+                  Better Vision,{" "}
+                  <span className="text-[#1118E8]">Better Tomorrow</span>
+                </h1>
+                <div className="flex items-center gap-6 mt-6">
+                  {FEATURES.map((f, i) => (
+                    <div key={i} className="text-center">
+                      <div className="w-11 h-11 rounded-full border border-[#1118E8]/30 flex items-center justify-center mx-auto mb-1.5 bg-white">
+                        <f.icon className="w-5 h-5 text-[#1118E8]" strokeWidth={1.5} />
+                      </div>
+                      <span className="text-[11px] font-semibold text-[#1E293B] leading-tight block">{f.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-col sm:flex-row sm:items-start gap-4">
+                  <div>
+                    <button
+                      onClick={openAppointment}
+                      className="bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full shadow-lg shadow-[#1118E8]/25 transition-all inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm"
+                    >
+                      <CalendarDays className="w-5 h-5" /> {COPY.cta}
+                    </button>
+                    <p className="text-[#64748B] text-xs mt-1.5">{COPY.ctaNote}</p>
+                  </div>
+                  <div className="sm:border-l sm:border-[#CBD5E1] sm:pl-5">
+                    <p className="text-[11px] text-[#64748B] leading-snug">For immediate assistance, please call</p>
+                    <a href={SITE.phoneHref} className="text-[#FF0808] font-bold text-base hover:underline">{SITE.phoneDisplay}</a>
+                    <p className="text-[#94A3B8] text-xs mt-1">(Monday–Saturday, 10:00 a.m.–6:00 p.m.)</p>
+                  </div>
+                </div>
+              </div>
+
+              <aside
+                className="absolute right-[10%] top-1/2 z-[1] w-[min(500px,38%)] max-w-[500px] -translate-y-[30%] rounded-[24px] border border-white/30 bg-white/20 p-8 text-[#0F172A] text-lg font-semibold leading-relaxed shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-[8px]"
+              >
+                {COPY.intro}
+              </aside>
             </div>
           </div>
-          <div className="hidden lg:block absolute bottom-0 left-0 w-full pointer-events-none h-[70px] overflow-hidden">
+
+          <div className="hidden lg:block absolute bottom-0 left-0 w-full pointer-events-none h-[70px] overflow-hidden z-[1]">
             <svg viewBox="0 0 1440 70" preserveAspectRatio="none" className="block w-full h-full" fill="none">
               <path d="M1440 70 C1200 45, 900 18, 600 8 C300 0, 100 20, 0 12 L0 70 Z" fill="#1118E8" opacity="0.92" />
               <path d="M1440 70 C1250 50, 1000 25, 700 18 C400 12, 150 30, 0 24 L0 70 Z" fill="#FF741F" opacity="0.88" />

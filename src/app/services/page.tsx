@@ -27,6 +27,14 @@ export default function ServicesPage() {
                 <p className="text-sm text-[#475569] mt-3 leading-relaxed"><span className="font-semibold text-[#1118E8]">Condition: </span>{s.what}</p>
                 <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#FF741F]">Common Symptoms: </span>{s.feel}</p>
                 <p className="text-sm text-[#475569] mt-2 leading-relaxed"><span className="font-semibold text-[#0F172A]">Our Approach: </span>{s.do}</p>
+                <p className="mt-4 text-xs font-semibold tracking-[0.14em] uppercase text-[#94A3B8]">What we offer</p>
+                <ul className="mt-2 space-y-1.5">
+                  {s.offers.map((item) => (
+                    <li key={item} className="text-sm text-[#475569] leading-snug pl-3 border-l-2 border-[#1118E8]/30">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
                 <div className="mt-5 flex flex-wrap items-center gap-3">
                   <button onClick={book} className="inline-flex bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full px-5 py-2.5 text-sm">
                     Book this care

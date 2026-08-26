@@ -65,6 +65,19 @@ export default async function ServiceDetailPage({ params }: Props) {
             </article>
           </div>
 
+          <article className="mt-12 rounded-[24px] bg-white border border-[#e2e8f0] p-8">
+            <h2 className="text-2xl font-extrabold text-[#0F172A]">What we offer</h2>
+            <p className="mt-2 text-sm text-[#64748b]">Care available at this hospital for this condition.</p>
+            <ul className="mt-5 grid sm:grid-cols-2 gap-3">
+              {s.offers.map((item) => (
+                <li key={item} className="flex gap-3 text-[#475569] leading-relaxed">
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#FF741F]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+
           <div className="mt-12 grid lg:grid-cols-2 gap-8">
             <article className="rounded-[24px] bg-white border border-[#e2e8f0] p-8">
               <h2 className="text-2xl font-extrabold text-[#0F172A]">Signs to watch</h2>
