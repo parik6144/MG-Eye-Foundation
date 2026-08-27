@@ -70,12 +70,12 @@ export default function BeforeAfterSlider({
       <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-[#0F172A]/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
         {beforeLabel}
       </span>
-      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-[#1118E8] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
+      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-[#1F8A9A] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
         {afterLabel}
       </span>
 
       <div className="pointer-events-none absolute inset-y-0 z-10 w-0.5 bg-white shadow-[0_0_12px_rgba(255,116,31,0.85)]" style={{ left: `${pos}%` }}>
-        <div className="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-[#1118E8] text-white shadow-lg">
+        <div className="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-[#1F8A9A] text-white shadow-lg">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path d="M8 12H4M4 12L7 9M4 12L7 15M16 12H20M20 12L17 9M20 12L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

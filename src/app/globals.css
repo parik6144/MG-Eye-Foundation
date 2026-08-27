@@ -36,18 +36,18 @@
   --card-foreground: #0F172A;
   --popover: #ffffff;
   --popover-foreground: #0F172A;
-  --primary: #1118E8;
+  --primary: #1F8A9A;
   --primary-foreground: #ffffff;
   --secondary: #F1F5F9;
-  --secondary-foreground: #1118E8;
+  --secondary-foreground: #1F8A9A;
   --muted: #F1F5F9;
   --muted-foreground: #64748b;
-  --accent: #FF741F;
+  --accent: #1F8A9A;
   --accent-foreground: #ffffff;
   --destructive: #FF0808;
   --border: #e2e8f0;
   --input: #cbd5e1;
-  --ring: #1118E8;
+  --ring: #1F8A9A;
 }
 
 @layer base {
@@ -70,4 +70,4 @@
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #F1F5F9; }
 ::-webkit-scrollbar-thumb { background: #c7d2e0; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #1118E8; }
+::-webkit-scrollbar-thumb:hover { background: #1F8A9A; }

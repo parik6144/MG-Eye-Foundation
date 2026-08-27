@@ -8,7 +8,7 @@ export default function BookVisitButton({ label = "Schedule a Consultation" }: {
     <button
       type="button"
       onClick={book}
-      className="inline-flex bg-[#1118E8] hover:bg-[#0d12b8] text-white font-bold rounded-full px-7 py-3.5 text-sm"
+      className="inline-flex bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold rounded-full px-7 py-3.5 text-sm"
     >
       {label}
     </button>

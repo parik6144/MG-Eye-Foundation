@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const ITEMS = [
-  { label: "Hospital", img: "/mg_eye_banner_4.png" },
+  { label: "Hospital", img: "/mg_eye_banner.png" },
   { label: "Cataract care", img: "/MG_Eye_Cataract_Service_Image.png" },
   { label: "Retina clinic", img: "/MG_Eye_Retina_Service_Image.png" },
   { label: "Pediatric clinic", img: "/MG_Eye_Pediatric_Service_Image.png" },
@@ -19,7 +19,7 @@ export default function GalleryPage() {
   const shown = active === "All" ? ITEMS : ITEMS.filter((i) => i.label === active);
 
   return (
-    <div className="pt-28 pb-20 bg-[#F1F5F9]">
+    <div className="pt-6 pb-20 bg-[#F1F5F9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <span className="text-[#F97316] text-sm font-semibold tracking-wide uppercase">Our Space</span>

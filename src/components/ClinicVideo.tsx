@@ -41,7 +41,7 @@ export default function ClinicVideo({
             aria-label="Play video"
           >
             <img src={poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
-            <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF741F] text-white shadow-lg shadow-[#FF741F]/40">
+            <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-[#1F8A9A] text-white shadow-lg shadow-[#1F8A9A]/40">
               <Play className="h-7 w-7 ml-1" fill="currentColor" />
             </span>
           </button>

@@ -24,9 +24,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL((process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "")),
-  title: "MG Eye Foundation | Premium Eye Care - Jamshedpur, Jharkhand",
+  title: "MG Eye Foundation | Clear Vision. Expert Care. Healthier Eyes.",
   description:
-    "MG Eye Foundation, Bara Gamharia — cataract, glaucoma, medical retina, pediatric eye care and squint. 15+ years, 75,000+ patients. Call +91 84090 01008.",
+    "Meera Gayatri Eye Foundation, Bara Gamharia — comprehensive ophthalmic care led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi. Call +91 84090 01008.",
 };
 
 export default function RootLayout({

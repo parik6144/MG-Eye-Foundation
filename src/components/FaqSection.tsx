@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { FAQS } from "@/lib/site";
 
-const HIDE_ON = ["/contact", "/privacy", "/terms"];
+const HIDE_ON = ["/", "/contact", "/privacy", "/terms", "/testimonials"];
 
 export default function FaqSection() {
   const pathname = usePathname();
@@ -35,7 +35,7 @@ export default function FaqSection() {
                   {f.q}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 shrink-0 text-[#FF741F] transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  className={`w-5 h-5 shrink-0 text-[#1F8A9A] transition-transform ${isOpen ? "rotate-180" : ""}`}
                 />
               </button>
               {isOpen ? (

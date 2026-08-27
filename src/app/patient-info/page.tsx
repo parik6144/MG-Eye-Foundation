@@ -13,12 +13,12 @@ export default function PatientInfoPage() {
   const book = useCallback(() => window.dispatchEvent(new CustomEvent("open-appointment")), []);
 
   return (
-    <div className="pt-28 pb-20 bg-white">
+    <div className="pt-6 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-[#F97316] text-sm font-semibold tracking-wide uppercase">Patient Guide</span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Patient Education</h1>
-          <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          <span className="text-[#1F8A9A] text-sm font-semibold tracking-wide uppercase">Patient Resources</span>
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Patient Resources</h1>
+          <div className="w-12 h-1 bg-[#1F8A9A] mx-auto mt-4 rounded-full" />
         </div>
         <div className="max-w-3xl mx-auto text-center mb-10">
           <p className="text-[#475569] mt-3 text-sm leading-relaxed">
@@ -30,7 +30,7 @@ export default function PatientInfoPage() {
             <article key={step.n} className="overflow-hidden rounded-[22px] bg-[#F4F7FF] border border-[#e2e8f0]">
               <img src={step.image} alt="" className="h-36 w-full object-cover" />
               <div className="p-6">
-                <span className="text-3xl font-extrabold text-[#1118E8]/25">{step.n}</span>
+                <span className="text-3xl font-extrabold text-[#1F8A9A]/25">{step.n}</span>
                 <h3 className="text-lg font-extrabold text-[#0F172A] mt-2">{step.title}</h3>
                 <p className="text-[#64748b] text-sm mt-2 leading-relaxed">{step.body}</p>
               </div>
@@ -49,7 +49,7 @@ export default function PatientInfoPage() {
           ))}
         </div>
         <div className="text-center mt-12">
-          <button onClick={book} className="bg-[#F97316] hover:bg-[#EA580C] text-white font-bold rounded-full px-8 py-3">Schedule a Consultation</button>
+          <button onClick={book} className="bg-[#F97316] hover:bg-[#16707E] text-white font-bold rounded-full px-8 py-3">Schedule a Consultation</button>
         </div>
       </div>
     </div>

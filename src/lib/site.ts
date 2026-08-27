@@ -1,9 +1,12 @@
 export const SITE = {
   name: "M G Eye Foundation",
+  legalName: "Meera Gayatri Eye Foundation",
   phone: "8409001008",
   phoneDisplay: "+91 84090 01008",
   phoneHref: "tel:+918409001008",
   whatsapp: "https://wa.me/918409001008",
+  facebook: "https://www.facebook.com/mgeyefoundation",
+  instagram: "https://www.instagram.com/mgeyefoundation/",
   email: "mgeyefoundation@gmail.com",
   emailHref: "mailto:mgeyefoundation@gmail.com",
   hours: "Monday–Saturday: 10:00 a.m.–6:00 p.m.",
@@ -16,17 +19,23 @@ export const SITE = {
 } as const;
 
 export const COPY = {
-  headline: "Better Vision, Better Tomorrow",
+  tagline: "Clear Vision. Expert Care. Healthier Eyes.",
+  headline: "Comprehensive and Advanced Eye Care Hospital",
+  subhead: "Your vision deserves expert care.",
   intro:
-    "MG Eye Foundation provides comprehensive ophthalmic care, including the treatment of cataract, retinal disease, glaucoma, and squint, together with dedicated pediatric eye services. All diagnostic scans and clinical treatments are performed on site by our specialists, who take care to explain each diagnosis and treatment plan in clear, accessible language. Based in Bara Gamharia, we have served the community for more than fifteen years.",
-  cta: "Schedule a Consultation",
+    "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
+  introLead:
+    "Led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protecting your vision and helping you maintain healthy eyes at every stage of life.",
+  footerBlurb:
+    "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
+  cta: "Book an Appointment",
   ctaNote: "Appointments can be arranged promptly and with minimal formality.",
   callLabel: "For immediate assistance, please call",
-  aboutTitle: "Our Commitment to Patient Care",
+  aboutTitle: "About: M G EYE FOUNDATION",
   aboutP1:
-    "MG Eye Foundation is an eye care hospital situated in Bara Gamharia, dedicated to delivering thorough diagnosis, transparent communication, and effective treatment. Every diagnostic scan is conducted within our facility, and each patient is given a clear explanation of their condition and the recommended course of treatment before proceeding.",
+    "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
   aboutP2:
-    "Our clinical services encompass cataract surgery, retinal injection and laser therapy, glaucoma management, corneal and dry-eye treatment, pediatric eye examinations, squint correction, and the treatment of ocular injuries, including those sustained in nearby industrial settings.",
+    "Led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protecting your vision and helping you maintain healthy eyes at every stage of life.",
   mission:
     "Our mission is to diagnose and treat ophthalmic conditions with clinical precision while ensuring that every patient understands their diagnosis and treatment options. Our services include cataract surgery, retinal injection and laser therapy, glaucoma management, treatment of ocular injuries, pediatric eye examinations, and squint surgery. All diagnostic scans are performed on the day of consultation, and the associated costs are communicated to patients in advance of treatment. Cashless facilities are not currently available.",
   missionTags: ["On-site same-day scanning", "Seven specialised services", "Structured post-operative follow-up"],
@@ -38,7 +47,7 @@ export const COPY = {
   patientEdu:
     "We recognise that unfamiliar medical terminology can cause unnecessary concern. For this reason, we explain every diagnosis according to a consistent three-part structure: the symptoms experienced by the patient, the underlying condition of the eye, and the recommended course of treatment.",
   doctorsIntro:
-    "Our clinical team comprises two directors with complementary areas of specialisation: one focused on retinal, glaucoma, and cataract care, and the other on pediatric ophthalmology and squint correction. Both physicians are also experienced in the treatment of ocular injuries.",
+    "Meet our doctors. Led by Dr. Kumar Saket, Medical Retina Specialist, and Dr. Malay Kumar Dwivedi, Paediatric Ophthalmologist.",
   servicesIntro:
     "Each service is described according to the nature of the condition, its typical symptoms, and the corresponding treatment approach.",
   pmjay:
@@ -374,7 +383,7 @@ export const EQUIPMENT = [
     image: "/equip/fundus.png",
   },
   {
-    name: "Biomedix USG Biometer",
+    name: "Biomedix and Appasamy USG biometer with pachymetry",
     use: "Ultrasound when the eye is cloudy",
     what: "This is an ultrasound of the eye. It uses sound, not light.",
     feel: "Gel is put near the closed eye. A small probe touches the lid. It does not hurt.",
@@ -390,7 +399,7 @@ export const EQUIPMENT = [
     image: "/equip/yag.png",
   },
   {
-    name: "Nidek ARK",
+    name: "Nidek and Unicos ARK",
     use: "Glasses power check",
     what: "This machine checks the power of the eye for glasses.",
     feel: "You look at a picture inside the machine. It takes less than a minute.",
@@ -405,14 +414,46 @@ export const EQUIPMENT = [
     do: "We use it for cornea problems, injuries and to keep a record of how the front of the eye looks.",
     image: "/equip/anterior.png",
   },
+  {
+    name: "Zeiss Lumera 300 operating microscope",
+    use: "Surgery microscope",
+    what: "This microscope is used in the operating theatre so the surgeon can see the eye in high detail.",
+    feel: "You are on the operating table. The microscope does not touch the eye.",
+    do: "We use it for cataract surgery and other eye operations.",
+    image: "/equip/oct.png",
+  },
+  {
+    name: "Oertli Phaco Systems CataRhex 3",
+    use: "Cataract surgery machine",
+    what: "This phaco system breaks and removes the cloudy lens during cataract surgery.",
+    feel: "You are under local anaesthesia. Most people feel little or no pain.",
+    do: "We use it for cataract surgery with intraocular lens replacement.",
+    image: "/equip/biometer.png",
+  },
+  {
+    name: "Tonopen",
+    use: "Eye pressure check",
+    what: "This is a handheld instrument that measures pressure inside the eye.",
+    feel: "A drop of anaesthetic is used. A light touch on the cornea lasts a moment.",
+    do: "We use it for glaucoma checks and follow-up of eye pressure.",
+    image: "/equip/ark.png",
+  },
+  {
+    name: "Topcon lensometer",
+    use: "Check existing glasses",
+    what: "This machine reads the power of the glasses you already wear.",
+    feel: "You hand over the glasses. You do not sit at the machine.",
+    do: "We compare your current glasses with a new eye check before writing a new prescription.",
+    image: "/equip/ark.png",
+  },
 ] as const;
 
 export const NAV = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
+  { href: "/about", label: "About Us" },
   { href: "/doctors", label: "Doctors" },
-  { href: "/facilities", label: "Facilities" },
+  { href: "/services", label: "Services" },
+  { href: "/testimonials", label: "Testimonials" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

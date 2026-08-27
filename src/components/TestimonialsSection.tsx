@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TESTIMONIALS, TESTIMONIAL_RATING } from "@/lib/testimonials";
 
-const SHOW_ON = ["/", "/about"];
+const SHOW_ON = ["/", "/about", "/testimonials"];
 const PER_SLIDE = 2;
 const AVATAR = ["#EA4335", "#4285F4", "#34A853", "#FBBC05", "#A142F4", "#FF6D01", "#46BDC6", "#F538A0", "#1A73E8", "#188038"];
 
@@ -58,12 +58,12 @@ export default function TestimonialsSection() {
   const next = () => setPage((p) => (p + 1) % SLIDES.length);
 
   return (
-    <section className="bg-[#F8F9FA] border-t border-[#dadce0] overflow-hidden">
+    <section className="bg-[#F7F9FC] border-t border-[#e2e8f0] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
           <div>
-            <p className="text-sm font-medium text-[#5f6368]">What patients say</p>
-            <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[#202124]">Reviews</h2>
+            <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-[#1F8A9A]">Testimonials</p>
+            <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[#0E4A56]">Testimonials</h2>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <GoogleG className="h-10 w-10 sm:h-14 sm:w-14" />
               <div>

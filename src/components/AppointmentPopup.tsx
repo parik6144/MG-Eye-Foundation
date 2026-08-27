@@ -86,10 +86,10 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
         <div className="hidden lg:flex lg:w-[340px] shrink-0 flex-col justify-between bg-[#0F172A] p-8 lg:p-10 relative overflow-hidden">
           {/* Decorative circles */}
           <div className="absolute top-0 right-0 w-48 h-48 rounded-full border border-white/[0.06] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-20 left-0 w-32 h-32 rounded-full border border-[#FF741F]/10 translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute bottom-20 left-0 w-32 h-32 rounded-full border border-[#1F8A9A]/10 translate-y-1/2 -translate-x-1/2" />
 
           <div className="relative z-10">
-            <span className="text-[#FF741F] text-[11px] font-semibold tracking-[0.15em] uppercase">Quick Booking</span>
+            <span className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.15em] uppercase">Quick Booking</span>
             <h3 className="text-2xl lg:text-[28px] font-bold text-white mt-3 leading-tight">
               Book your eye visit
             </h3>
@@ -100,13 +100,13 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
 
           <div className="relative z-10 mt-8">
             {/* Call */}
-            <span className="text-[#FF741F] text-[11px] font-semibold tracking-[0.15em] uppercase">Call</span>
+            <span className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.15em] uppercase">Call</span>
             <p className="text-white text-lg font-bold mt-1.5 leading-snug">
               {SITE.phoneDisplay}
             </p>
 
             {/* Hours */}
-            <span className="text-[#FF741F] text-[11px] font-semibold tracking-[0.15em] uppercase mt-6 block">Hours</span>
+            <span className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.15em] uppercase mt-6 block">Hours</span>
             <p className="text-white/80 text-sm mt-1.5">
               {SITE.hours}
             </p>
@@ -125,7 +125,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
           <div className="px-8 lg:px-10 pt-8 lg:pt-10 pb-2">
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-[#FF0808] text-[11px] font-semibold tracking-[0.15em] uppercase">MG Eye Foundation</span>
+                <span className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.15em] uppercase">MG Eye Foundation</span>
                 <h2 className="text-2xl lg:text-[26px] font-bold text-[#0F172A] mt-1">Schedule a Consultation</h2>
               </div>
               <button
@@ -162,7 +162,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                         placeholder="Patient name"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1118E8] focus:ring-2 focus:ring-[#1118E8]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
                       />
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                         placeholder="10-digit mobile"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1118E8] focus:ring-2 focus:ring-[#1118E8]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
                       />
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                       placeholder="your@email.com"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1118E8] focus:ring-2 focus:ring-[#1118E8]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
                     />
                   </div>
                 </div>
@@ -216,7 +216,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                         value={form.date}
                         onChange={(e) => setForm({ ...form, date: e.target.value })}
                         min={new Date().toISOString().split("T")[0]}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1118E8] focus:ring-2 focus:ring-[#1118E8]/15 bg-white text-sm text-[#0F172A] transition-all outline-none"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none"
                       />
                     </div>
                   </div>
@@ -230,7 +230,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                         required
                         value={form.time}
                         onChange={(e) => setForm({ ...form, time: e.target.value })}
-                        className="w-full pl-10 pr-10 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1118E8] focus:ring-2 focus:ring-[#1118E8]/15 bg-white text-sm text-[#0F172A] transition-all outline-none appearance-none"
+                        className="w-full pl-10 pr-10 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none appearance-none"
                       >
                         <option value="">Select slot</option>
                         {TIME_SLOTS.map((t) => (
@@ -254,7 +254,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                       rows={3}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1118E8] focus:ring-2 focus:ring-[#1118E8]/15 bg-white text-sm text-[#0F172A] transition-all outline-none resize-none placeholder:text-[#94a3b8]"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none resize-none placeholder:text-[#94a3b8]"
                     />
                   </div>
                 </div>

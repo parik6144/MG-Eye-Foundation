@@ -6,11 +6,11 @@ export const metadata: Metadata = { title: "Terms and Conditions | MG Eye Founda
 
 export default function TermsPage() {
   return (
-    <div className="pt-28 pb-20 bg-white">
+    <div className="pt-6 pb-20 bg-white">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span className="text-[#FF741F] text-sm font-semibold tracking-[0.18em] uppercase">Legal</span>
+        <span className="text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Legal</span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Terms and Conditions</h1>
-        <div className="w-12 h-1 bg-[#1118E8] mt-4 rounded-full" />
+        <div className="w-12 h-1 bg-[#1F8A9A] mt-4 rounded-full" />
         <p className="text-[#64748b] mt-4 text-sm">Last update: 23 August 2026</p>
 
         <div className="mt-10 space-y-8 text-[#475569] leading-relaxed">
@@ -47,7 +47,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-extrabold text-[#0F172A]">Privacy</h2>
             <p className="mt-2">
               How we keep your details is in our{" "}
-              <Link href="/privacy" className="text-[#1118E8] font-semibold hover:underline">
+              <Link href="/privacy" className="text-[#1F8A9A] font-semibold hover:underline">
                 Privacy Policy
               </Link>
               .
