@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { FAQS } from "@/lib/site";
 
-const HIDE_ON = ["/", "/contact", "/privacy", "/terms", "/testimonials"];
+const HIDE_ON = ["/", "/contact", "/privacy", "/terms", "/testimonials", "/doctors"];
 
 export default function FaqSection() {
   const pathname = usePathname();

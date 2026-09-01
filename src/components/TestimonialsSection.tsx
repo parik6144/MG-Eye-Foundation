@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TESTIMONIALS, TESTIMONIAL_RATING } from "@/lib/testimonials";
 
-const SHOW_ON = ["/", "/about", "/testimonials"];
+const SHOW_ON = ["/"];
 const PER_SLIDE = 2;
 const AVATAR = ["#EA4335", "#4285F4", "#34A853", "#FBBC05", "#A142F4", "#FF6D01", "#46BDC6", "#F538A0", "#1A73E8", "#188038"];
 
@@ -41,7 +41,7 @@ const SLIDES = Array.from({ length: Math.ceil(TESTIMONIALS.length / PER_SLIDE) }
   TESTIMONIALS.slice(i * PER_SLIDE, i * PER_SLIDE + PER_SLIDE)
 );
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ force = false }: { force?: boolean }) {
   const pathname = usePathname();
   const [page, setPage] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -52,35 +52,35 @@ export default function TestimonialsSection() {
     return () => window.clearInterval(id);
   }, [paused]);
 
-  if (!SHOW_ON.includes(pathname)) return null;
+  if (!force && !SHOW_ON.includes(pathname)) return null;
 
   const prev = () => setPage((p) => (p - 1 + SLIDES.length) % SLIDES.length);
   const next = () => setPage((p) => (p + 1) % SLIDES.length);
 
   return (
     <section className="bg-[#F7F9FC] border-t border-[#e2e8f0] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-[#1F8A9A]">Testimonials</p>
-            <h2 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[#0E4A56]">Testimonials</h2>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
-              <GoogleG className="h-10 w-10 sm:h-14 sm:w-14" />
+            <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0E4A56]">Testimonials</h2>
+            <div className="mt-3 flex flex-wrap items-center gap-2.5">
+              <GoogleG className="h-8 w-8" />
               <div>
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-4xl sm:text-6xl font-medium leading-none text-[#202124]">{TESTIMONIAL_RATING}</span>
-                  <Stars size={22} />
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl sm:text-[1.75rem] font-medium leading-none text-[#202124]">{TESTIMONIAL_RATING}</span>
+                  <Stars size={16} />
                 </div>
-                <p className="text-sm sm:text-base text-[#5f6368] mt-2">{TESTIMONIALS.length} reviews · 5 stars each</p>
+                <p className="text-xs text-[#5f6368] mt-1">{TESTIMONIALS.length} reviews · 5 stars each</p>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <button type="button" onClick={prev} className="h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]" aria-label="Previous reviews">
-              <ChevronLeft className="h-6 w-6 text-[#202124]" />
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={prev} className="h-9 w-9 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]" aria-label="Previous reviews">
+              <ChevronLeft className="h-5 w-5 text-[#202124]" />
             </button>
-            <button type="button" onClick={next} className="h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]" aria-label="Next reviews">
-              <ChevronRight className="h-6 w-6 text-[#202124]" />
+            <button type="button" onClick={next} className="h-9 w-9 rounded-full bg-white border border-[#dadce0] shadow-sm flex items-center justify-center hover:bg-[#f1f3f4]" aria-label="Next reviews">
+              <ChevronRight className="h-5 w-5 text-[#202124]" />
             </button>
           </div>
         </div>
@@ -94,25 +94,25 @@ export default function TestimonialsSection() {
                   return (
                     <article
                       key={t.name}
-                      className="rounded-3xl bg-white border border-[#dadce0] p-5 sm:p-10 min-h-0 md:min-h-[380px] shadow-[0_1px_2px_rgba(60,64,67,.3),0_2px_6px_2px_rgba(60,64,67,.15)]"
+                      className="rounded-2xl bg-white border border-[#dadce0] p-4 sm:p-5 shadow-[0_1px_2px_rgba(60,64,67,.3),0_2px_6px_2px_rgba(60,64,67,.15)]"
                     >
-                      <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="flex items-start gap-3">
                         <span
-                          className="flex h-12 w-12 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-full text-white text-base font-semibold"
+                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white text-xs font-semibold"
                           style={{ background: AVATAR[i % AVATAR.length] }}
                         >
                           {initials(t.name)}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="text-lg sm:text-2xl font-medium text-[#202124] leading-tight">{t.name}</p>
-                          <p className="text-xs sm:text-sm text-[#5f6368] mt-1">5.0/5.0</p>
-                          <div className="mt-1">
-                            <Stars size={20} />
+                          <p className="text-sm font-semibold text-[#202124] leading-tight">{t.name}</p>
+                          <p className="text-[11px] text-[#5f6368] mt-0.5">5.0/5.0</p>
+                          <div className="mt-0.5">
+                            <Stars size={14} />
                           </div>
                         </div>
-                        <GoogleG className="h-7 w-7 sm:h-8 sm:w-8 shrink-0" />
+                        <GoogleG className="h-5 w-5 shrink-0" />
                       </div>
-                      <p className="mt-4 sm:mt-6 text-base sm:text-xl leading-relaxed text-[#3c4043]">“{t.text}”</p>
+                      <p className="mt-3 text-sm leading-relaxed text-[#3c4043]">“{t.text}”</p>
                     </article>
                   );
                 })}

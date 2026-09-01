@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { Menu, X, Phone, Mail, Facebook, Instagram, ChevronDown } from "lucide-react";
 import { useState, useCallback } from "react";
-import { NAV, SITE, COPY } from "@/lib/site";
+import { NAV, SITE, COPY, SERVICES } from "@/lib/site";
 
 const TEAL = "#1F8A9A";
 const TEAL_DEEP = "#16707E";
@@ -76,6 +76,53 @@ export default function Navbar() {
             <nav className="hidden lg:flex items-center gap-0.5 min-w-0 flex-1 justify-end">
               {NAV.map((item) => {
                 const active = isActive(pathname, item.href);
+                if (item.href === "/services") {
+                  return (
+                    <div key={item.href} className="relative group">
+                      <Link
+                        href="/services"
+                        className={`inline-flex items-center gap-1 px-2.5 py-2 text-[13px] font-medium rounded-full whitespace-nowrap transition-colors ${
+                          active ? "font-semibold text-white" : "hover:bg-[#E7F3F5]"
+                        }`}
+                        style={active ? { backgroundColor: TEAL_DEEP, color: "#ffffff" } : { color: TEAL_DEEP }}
+                        aria-haspopup="true"
+                      >
+                        {item.label}
+                        <ChevronDown className="h-3.5 w-3.5 opacity-80" />
+                      </Link>
+                      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute right-0 top-full z-50 pt-2 transition-opacity">
+                        <ul className="min-w-[250px] overflow-hidden rounded-2xl border border-[#D5E6EA] bg-white py-1.5 shadow-[0_16px_40px_rgba(14,74,86,0.14)]">
+                          <li>
+                            <Link
+                              href="/services"
+                              className={`block px-4 py-2.5 text-[13px] font-semibold ${
+                                pathname === "/services" ? "bg-[#E7F3F5] text-[#0E4A56]" : "text-[#0E4A56] hover:bg-[#F4F8F9]"
+                              }`}
+                            >
+                              All services
+                            </Link>
+                          </li>
+                          {SERVICES.map((s) => {
+                            const href = `/services/${s.slug}`;
+                            const on = pathname === href;
+                            return (
+                              <li key={s.slug}>
+                                <Link
+                                  href={href}
+                                  className={`block px-4 py-2.5 text-[13px] ${
+                                    on ? "bg-[#E7F3F5] font-semibold text-[#0E4A56]" : "text-[#334155] hover:bg-[#F4F8F9]"
+                                  }`}
+                                >
+                                  {s.title}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                }
                 return (
                   <Link
                     key={item.href}
@@ -115,7 +162,41 @@ export default function Navbar() {
             <a href={SITE.phoneHref} className="flex items-center gap-2 px-4 py-2 text-sm font-semibold" style={{ color: TEAL }}>
               <Phone className="w-4 h-4" /> Call {SITE.phoneDisplay}
             </a>
-            {NAV.map((item) => (
+            {NAV.map((item) => {
+              if (item.href === "/services") {
+                return (
+                  <div key={item.href} className="px-1">
+                    <Link
+                      href="/services"
+                      onClick={() => setMobileOpen(false)}
+                      className={`block px-4 py-3.5 text-[15px] rounded-xl transition-colors ${
+                        isActive(pathname, item.href) ? "font-semibold" : "text-[#475569]"
+                      }`}
+                      style={isActive(pathname, item.href) ? { color: TEAL, backgroundColor: "#E7F3F5" } : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                    <ul className="ml-3 mb-1 border-l-2 border-[#1F8A9A]/30">
+                      {SERVICES.map((s) => (
+                        <li key={s.slug}>
+                          <Link
+                            href={`/services/${s.slug}`}
+                            onClick={() => setMobileOpen(false)}
+                            className={`block px-4 py-2.5 text-[14px] rounded-lg ${
+                              pathname === `/services/${s.slug}`
+                                ? "font-semibold text-[#0E4A56] bg-[#E7F3F5]"
+                                : "text-[#475569]"
+                            }`}
+                          >
+                            {s.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              }
+              return (
               <Link
                 key={item.href}
                 href={item.href}
@@ -127,7 +208,8 @@ export default function Navbar() {
               >
                 {item.label}
               </Link>
-            ))}
+              );
+            })}
             <div className="px-4 pt-3 pb-2">
               <button
                 onClick={openAppointment}

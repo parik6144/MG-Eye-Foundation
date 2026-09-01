@@ -31,7 +31,7 @@ export const COPY = {
   cta: "Book an Appointment",
   ctaNote: "Appointments can be arranged promptly and with minimal formality.",
   callLabel: "For immediate assistance, please call",
-  aboutTitle: "About: M G EYE FOUNDATION",
+  aboutTitle: "About Us",
   aboutP1:
     "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
   aboutP2:
@@ -53,7 +53,7 @@ export const COPY = {
   pmjay:
     "MG Eye Foundation is an empanelled facility under the PM-JAY scheme and welcomes patients seeking eye care under this programme. Patients are advised that cashless treatment is not currently available; kindly consult the front desk for further information prior to admission.",
   serviceArea:
-    "We are pleased to welcome patients from Bara Gamharia, Adityapur, Jamshedpur, and Saraikela-Kharsawan.",
+    "MG Eye Foundation is an eye hospital at Plot 121, Durga Puja Maidan, near Vani Vidya Mandir School, Bara Gamharia, Jamshedpur. People come to this hospital from Bara Gamharia, Adityapur, Jamshedpur, and Saraikela-Kharsawan. Eye checks, scans, and surgery all happen in this same hospital.",
   rajyakarmi:
     "MG Eye Foundation is associated with the Jharkhand Rajyakarmi Swasthya Bima Yojana (State Employees Health Insurance Scheme / SEHIS). State government employees, pensioners and eligible family members may seek eye care here under this programme. Kindly consult the front desk with your scheme card and papers prior to admission. Cashless facilities are not currently available.",
 } as const;
@@ -150,6 +150,14 @@ export const SERVICES = [
       "Surgery is done here. You go home the same day in most cases.",
       "You come back so we can see how the eye is healing.",
     ],
+    stepImages: [
+      "/equip/ark.png",
+      "/equip/biometer.png",
+      "/treats/saket-cataract.png",
+      "/patient-edu/step3.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/malay-cataract.png",
   },
   {
     slug: "glaucoma",
@@ -183,6 +191,14 @@ export const SERVICES = [
       "Drops, and sometimes laser, bring the pressure down.",
       "You come back so we can see if the pressure stays safe.",
     ],
+    stepImages: [
+      "/treats/saket-glaucoma.png",
+      "/equip/oct.png",
+      "/equip/yag.png",
+      "/patient-edu/step3.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/saket-glaucoma.png",
   },
   {
     slug: "retina",
@@ -217,6 +233,14 @@ export const SERVICES = [
       "If needed, we give an injection or do laser here.",
       "You come back so we can see if the swelling has gone down.",
     ],
+    stepImages: [
+      "/equip/fundus.png",
+      "/equip/oct.png",
+      "/treats/saket-retina.png",
+      "/treats/saket-laser.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/saket-retina.png",
   },
   {
     slug: "cornea",
@@ -250,6 +274,14 @@ export const SERVICES = [
       "We start treatment here.",
       "You come back so the window of the eye can heal well.",
     ],
+    stepImages: [
+      "/equip/anterior.png",
+      "/service-photos/cornea.png",
+      "/treats/malay-injury.png",
+      "/patient-edu/step3.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/malay-injury.png",
   },
   {
     slug: "dry-eye",
@@ -282,6 +314,14 @@ export const SERVICES = [
       "We give drops and a simple home plan.",
       "If it does not settle, you come back and we check again.",
     ],
+    stepImages: [
+      "/patient-edu/feel.png",
+      "/service-photos/dryeye.png",
+      "/patient-edu/fix.png",
+      "/patient-edu/step3.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/patient-edu/fix.png",
   },
   {
     slug: "pediatric",
@@ -316,6 +356,14 @@ export const SERVICES = [
       "We say if glasses or more care is needed.",
       "We fix a date to come back if the eye needs watching.",
     ],
+    stepImages: [
+      "/service-photos/pediatric.png",
+      "/treats/malay-child.png",
+      "/equip/ark.png",
+      "/patient-edu/step3.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/malay-child.png",
   },
   {
     slug: "squint",
@@ -348,6 +396,14 @@ export const SERVICES = [
       "If surgery is needed, we do it here and tell you the cost first.",
       "The child or adult comes back so we can see the result.",
     ],
+    stepImages: [
+      "/service-photos/squint.png",
+      "/equip/ark.png",
+      "/treats/malay-squint.png",
+      "/patient-edu/step3.png",
+    ],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/malay-squint.png",
   },
 ] as const;
 
