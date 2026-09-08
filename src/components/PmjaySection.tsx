@@ -36,7 +36,7 @@ export default function PmjaySection() {
           Schemes we are associated with
         </h2>
         <p className="mt-3 text-center text-[#64748b] text-sm max-w-2xl mx-auto leading-relaxed">
-          Bring your card and papers. The front desk will explain what is needed before admission. Cashless facilities are not currently available.
+          Bring your card and papers. The front desk will explain what is needed before admission.
         </p>
 
         <div className="mt-10 grid lg:grid-cols-2 gap-6">

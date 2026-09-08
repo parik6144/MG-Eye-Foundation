@@ -37,7 +37,7 @@ export default function TermsPage() {
           </section>
           <section>
             <h2 className="text-xl font-extrabold text-[#0F172A]">Cost, PM-JAY and Rajyakarmi</h2>
-            <p className="mt-2">The associated costs are communicated to patients in advance of treatment. Cashless facilities are not currently available. We are empanelled under PM-JAY and associated with Rajyakarmi Swasthya Bima Yojana (SEHIS). Kindly consult the front desk prior to admission.</p>
+            <p className="mt-2">The associated costs are communicated to patients in advance of treatment. We are empanelled under PM-JAY and associated with Rajyakarmi Swasthya Bima Yojana (SEHIS). Kindly consult the front desk prior to admission.</p>
           </section>
           <section>
             <h2 className="text-xl font-extrabold text-[#0F172A]">Photos and names</h2>

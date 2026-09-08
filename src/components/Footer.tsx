@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           <div>
             <Link href="/" className="inline-flex items-center gap-3 rounded-2xl bg-white px-3 py-2.5 shadow-md shadow-black/20">
-              <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-14 w-auto object-contain" />
+              <img src="/mg_logo.png" alt={SITE.name} className="h-14 w-auto object-contain" />
             </Link>
-            <p className="mt-4 text-lg font-extrabold tracking-tight">MG Eye Foundation</p>
+            <p className="mt-4 text-lg font-extrabold tracking-tight">{SITE.name}</p>
             <p className="text-slate-400 text-sm leading-relaxed mt-2">
               {COPY.footerBlurb}
             </p>
@@ -68,7 +68,6 @@ export default function Footer() {
                 <Clock className="w-4 h-4 mt-0.5 shrink-0 text-[#1F8A9A]" />
                 <span>{SITE.hours}<br />{SITE.sunday}</span>
               </p>
-              {/* <p className="text-[#1F8A9A] text-xs">Cashless is not available now.</p> */}
             </div>
           </div>
         </div>
@@ -76,7 +75,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-slate-500 text-xs">&copy; {new Date().getFullYear()} MG Eye Foundation. All rights reserved.</p>
+          <p className="text-slate-500 text-xs">&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="text-slate-500 hover:text-white text-xs transition-colors">
               Privacy Policy

@@ -1,14 +1,18 @@
 export const DOCTORS = [
   {
     name: "Dr. Kumar Saket",
+    shortName: "Dr. Saket",
     photo: "/Dr Saket.png",
     hindi: "रेटिना विशेषज्ञ",
-    englishFocus: "Medical Retina Specialist",
-    label: "M.B.B.S., D.N.B. | Medical Retina Specialist",
+    englishFocus: "Cataract, Medical Retina & Trauma",
+    label: "M.B.B.S., D.N.B. | Cataract, Medical Retina & Trauma Specialist",
     qual: "M.B.B.S., D.N.B.",
-    spec: "Medical Retina Specialist",
+    spec: "Cataract, Medical Retina & Trauma",
     role: "Ex. HOD Medical Retina Services, Purnima Netralaya",
-    bio: "Dr. Kumar Saket is an experienced ophthalmologist and Medical Retina Specialist with over 12 years of experience in ophthalmology. He is dedicated to providing comprehensive, compassionate, and evidence-based eye care, with particular expertise in medical retina, cataract care, and ocular trauma.",
+    showLabel: false,
+    showQual: false,
+    showMemberships: false,
+    bio: "Dr. Kumar Saket is an experienced ophthalmologist and Medical Retina Specialist with over 15 years of experience in ophthalmology. He is dedicated to providing comprehensive, compassionate, and evidence-based eye care, with particular expertise in medical retina, cataract care, and ocular trauma.",
     extraBio: [
       "Dr. Kumar Saket completed his M.B.B.S. from K.M.C.H., Bihar, followed by D.N.B. in Ophthalmology from Susrut Eye Foundation and Research Centre, Kolkata. His clinical experience has enabled him to develop a focused approach to the diagnosis and management of a wide range of eye conditions.",
       "Dr. Kumar Saket also provides comprehensive evaluation and treatment for cataract and a range of common medical eye conditions. Each patient's treatment plan is developed according to their individual eye health, visual requirements, and overall medical history.",
@@ -18,8 +22,7 @@ export const DOCTORS = [
       "Good eye care begins with listening, accurate diagnosis, and helping patients make informed decisions about their vision.",
     bookLabel: "Book an Appointment",
     stats: [
-      { value: "12+", label: "Years in ophthalmology" },
-      { value: "D.N.B.", label: "Ophthalmology" },
+      { value: "15+", label: "Years of experience" },
     ],
     expertise: [
       "Medical Retina",
@@ -67,13 +70,17 @@ export const DOCTORS = [
   },
   {
     name: "Dr. Malay Kumar Dwivedi",
+    shortName: "Dr. Malay",
     photo: "/Dr Malay Kumar Dwiwedi.jpg",
     hindi: "शिशु नेत्र रोग विशेषज्ञ",
-    englishFocus: "Paediatric Ophthalmologist",
-    label: "M.B.B.S., M.S., F.P.O.A.S. | Paediatric Ophthalmologist",
+    englishFocus: "Pediatric Ophthalmologist, Cataract & Squint Specialist",
+    label: "M.B.B.S., M.S., F.P.O.A.S. | Pediatric Ophthalmologist, Cataract & Squint Specialist",
     qual: "M.B.B.S., M.S., F.P.O.A.S.",
-    spec: "Paediatric Ophthalmologist",
+    spec: "Pediatric Ophthalmologist, Cataract & Squint Specialist",
     role: "Ex Fellow, Aravind Eye Hospital, Madurai",
+    showLabel: false,
+    showQual: false,
+    showMemberships: false,
     bio: "Dr. Malay Kumar Dwivedi is a dedicated ophthalmologist with specialized training in Paediatric Ophthalmology, providing comprehensive eye care for infants, children, and adolescents. With a compassionate and child-friendly approach, Dr. Dwivedi focuses on the early detection, diagnosis, and management of eye and vision problems during the crucial years of visual development.",
     extraBio: [
       "Every child deserves the opportunity to develop clear and healthy vision.",
@@ -81,11 +88,10 @@ export const DOCTORS = [
     ],
     quote: "",
     bookLabel: "Book a Paediatric Eye Consultation",
-    stats: [
-      { value: "F.P.O.A.S.", label: "Paediatric fellowship" },
-      { value: "Aravind", label: "Madurai" },
-    ],
+    stats: [] as { value: string; label: string }[],
     expertise: [
+      "ROP Surgery",
+      "Cataract",
       "Squint / Strabismus",
       "Lazy Eye / Amblyopia",
       "Childhood refractive errors",

@@ -122,7 +122,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           })}
         </ol>
         <p className="mt-6 text-sm text-[#64748b]">
-          We tell you the cost first. Cashless is not available now. {SITE.hours} {SITE.sunday}
+          We tell you the cost first. {SITE.hours} {SITE.sunday}
         </p>
       </section>
 

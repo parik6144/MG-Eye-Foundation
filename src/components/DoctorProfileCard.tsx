@@ -37,13 +37,16 @@ export default function DoctorProfileCard({
   doctor,
   showFullProfileLink = false,
   accent = "blue",
+  useShortName = false,
 }: {
   doctor: Doctor;
   showFullProfileLink?: boolean;
   accent?: Accent;
+  useShortName?: boolean;
 }) {
   const book = () => window.dispatchEvent(new CustomEvent("open-appointment"));
   const a = ACCENT[accent];
+  const title = useShortName ? doctor.shortName : doctor.name;
 
   return (
     <article className={`rounded-[24px] border border-[#e8edf2] bg-white p-6 sm:p-8 ${a.shadow}`}>
@@ -57,17 +60,30 @@ export default function DoctorProfileCard({
         </div>
 
         <div className="min-w-0 flex-1">
-          <p className={`${a.label} text-[11px] font-semibold tracking-[0.14em] uppercase`}>
-            {doctor.label}
-          </p>
+          {doctor.showLabel ? (
+            <p className={`${a.label} text-[11px] font-semibold tracking-[0.14em] uppercase`}>
+              {doctor.label}
+            </p>
+          ) : null}
 
-          <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <div className={`${doctor.showLabel ? "mt-2" : ""} flex flex-wrap items-baseline gap-x-3 gap-y-1`}>
             <h3 className="text-2xl sm:text-[2rem] font-extrabold text-[#0F172A] leading-tight">
-              {doctor.name}
+              {title}
             </h3>
-            <span className="text-[#94A3B8] text-base sm:text-lg font-medium">{doctor.qual}</span>
+            {doctor.showQual && !useShortName ? (
+              <span className="text-[#94A3B8] text-base sm:text-lg font-medium">{doctor.qual}</span>
+            ) : null}
           </div>
-          <p className="mt-1 text-[#64748b] text-sm">{doctor.role}</p>
+          <p className="mt-1 text-[#1F8A9A] text-sm sm:text-base italic">{doctor.englishFocus}</p>
+
+          <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#94A3B8]">
+            Where he has worked before
+          </p>
+          <ul className="mt-2 grid sm:grid-cols-2 gap-x-8 gap-y-1.5 text-sm text-[#475569]">
+            {doctor.highlights.map((h) => (
+              <li key={h}>{h.replace("Ex. ", "")}</li>
+            ))}
+          </ul>
 
           <div className="mt-5 flex flex-wrap gap-3">
             {doctor.stats.map((s) => (
@@ -106,14 +122,18 @@ export default function DoctorProfileCard({
             ))}
           </ul>
 
-          <p className="mt-6 text-xs font-semibold tracking-[0.16em] uppercase text-[#94A3B8]">
-            Professional qualifications
-          </p>
-          <ul className="mt-3 space-y-1.5 text-sm text-[#475569]">
-            {doctor.memberships.map((m) => (
-              <li key={m}>{m}</li>
-            ))}
-          </ul>
+          {doctor.showMemberships ? (
+            <>
+              <p className="mt-6 text-xs font-semibold tracking-[0.16em] uppercase text-[#94A3B8]">
+                Professional qualifications
+              </p>
+              <ul className="mt-3 space-y-1.5 text-sm text-[#475569]">
+                {doctor.memberships.map((m) => (
+                  <li key={m}>{m}</li>
+                ))}
+              </ul>
+            </>
+          ) : null}
 
           <div className="mt-5 grid grid-cols-4 gap-2">
             {doctor.treats.map((t) => (

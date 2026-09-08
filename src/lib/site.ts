@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "M G Eye Foundation",
+  name: "M G EYE Foundation",
   legalName: "Meera Gayatri Eye Foundation",
   phone: "8409001008",
   phoneDisplay: "+91 84090 01008",
@@ -37,32 +37,32 @@ export const COPY = {
   aboutP2:
     "Led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protecting your vision and helping you maintain healthy eyes at every stage of life.",
   mission:
-    "Our mission is to diagnose and treat ophthalmic conditions with clinical precision while ensuring that every patient understands their diagnosis and treatment options. Our services include cataract surgery, retinal injection and laser therapy, glaucoma management, treatment of ocular injuries, pediatric eye examinations, and squint surgery. All diagnostic scans are performed on the day of consultation, and the associated costs are communicated to patients in advance of treatment. Cashless facilities are not currently available.",
+    "Our mission is to provide comprehensive eye care services to all the sections of society at affordable cost.",
   missionTags: ["On-site same-day scanning", "Seven specialised services", "Structured post-operative follow-up"],
   vision:
-    "Our vision is to remain a trusted, accessible eye care institution for the communities we serve. Over fifteen years, we have treated more than 75,000 patients. We believe that a child requiring treatment for squint should not need to travel to a distant facility, and that an individual injured while at work in Adityapur should be able to receive prompt care nearby. MG Eye Foundation is located at Plot No. 121, Bara Gamharia, and is open Monday to Saturday, 10:00 a.m. to 6:00 p.m.",
-  visionTags: ["75,000+ patients treated", "Daily pediatric eye examinations", "Dedicated care for ocular injuries"],
+    "Lakhs more than 1,00,000 patients. We believe that any patient requiring treatment for eye conditions should not need to travel to a distant facility and come to our Centre. We are committed to provide world class treatment facility in your vicinity.",
+  visionTags: ["1,00,000+ patients treated", "Daily pediatric eye examinations", "Dedicated care for ocular injuries"],
   whyIntro:
     "Our approach extends beyond scheduling appointments and performing procedures. We listen carefully to each patient, present diagnostic findings clearly, administer treatment with attentiveness, and provide guidance on follow-up care.",
   patientEdu:
     "We recognise that unfamiliar medical terminology can cause unnecessary concern. For this reason, we explain every diagnosis according to a consistent three-part structure: the symptoms experienced by the patient, the underlying condition of the eye, and the recommended course of treatment.",
   doctorsIntro:
-    "Meet our doctors. Led by Dr. Kumar Saket, Medical Retina Specialist, and Dr. Malay Kumar Dwivedi, Paediatric Ophthalmologist.",
+    "Meet our doctors. Led by Dr. Saket, Cataract, Medical Retina & Trauma, and Dr. Malay, Pediatric Ophthalmologist, Cataract & Squint Specialist.",
   servicesIntro:
     "Each service is described according to the nature of the condition, its typical symptoms, and the corresponding treatment approach.",
   pmjay:
-    "MG Eye Foundation is an empanelled facility under the PM-JAY scheme and welcomes patients seeking eye care under this programme. Patients are advised that cashless treatment is not currently available; kindly consult the front desk for further information prior to admission.",
+    "M G EYE Foundation is an empanelled facility under the PM-JAY scheme and welcomes patients seeking eye care under this programme. Kindly consult the front desk for further information prior to admission.",
   serviceArea:
-    "MG Eye Foundation is an eye hospital at Plot 121, Durga Puja Maidan, near Vani Vidya Mandir School, Bara Gamharia, Jamshedpur. People come to this hospital from Bara Gamharia, Adityapur, Jamshedpur, and Saraikela-Kharsawan. Eye checks, scans, and surgery all happen in this same hospital.",
+    "M G EYE Foundation is an eye hospital at Plot 121, Durga Puja Maidan, near Vani Vidya Mandir School, Bara Gamharia, Jamshedpur. People come to this hospital from Bara Gamharia, Adityapur, Jamshedpur, and Saraikela-Kharsawan. Eye checks, scans, and surgery all happen in this same hospital.",
   rajyakarmi:
-    "MG Eye Foundation is associated with the Jharkhand Rajyakarmi Swasthya Bima Yojana (State Employees Health Insurance Scheme / SEHIS). State government employees, pensioners and eligible family members may seek eye care here under this programme. Kindly consult the front desk with your scheme card and papers prior to admission. Cashless facilities are not currently available.",
+    "M G EYE Foundation is associated with the Jharkhand Rajyakarmi Swasthya Bima Yojana (State Employees Health Insurance Scheme / SEHIS). State government employees, pensioners and eligible family members may seek eye care here under this programme. Kindly consult the front desk with your scheme card and papers prior to admission.",
 } as const;
 
 export const STATS = [
   { num: "15+", label: "Years of Clinical Experience" },
-  { num: "75,000+", label: "Patients Treated" },
-  { num: "4,000+", label: "Cataract Surgeries Performed" },
-  { num: "7", label: "Specialised Eye Care Services" },
+  { num: "1,00,000+", label: "Patients" },
+  { num: "10,000+", label: "Surgeries" },
+  { num: "10", label: "Specialists" },
 ] as const;
 
 export const IMPACT = [
@@ -106,7 +106,7 @@ export const CARE_STEPS = [
   {
     n: "02",
     title: "Treatment Planning",
-    body: "Depending on clinical need, treatment may involve topical drops, oral medication, laser therapy, injection, or cataract surgery with lens replacement. The recommended treatment is selected according to the patient's specific condition, and the associated cost is confirmed prior to treatment. Cashless facilities are not currently available.",
+    body: "Depending on clinical need, treatment may involve topical drops, oral medication, laser therapy, injection, or cataract surgery with lens replacement. The recommended treatment is selected according to the patient's specific condition, and the associated cost is confirmed prior to treatment.",
     image: "/patient-edu/step2.png",
   },
   {
@@ -142,7 +142,7 @@ export const SERVICES = [
     story: [
       "The lens inside the eye should be clear, like a clean window. With age, or after injury, that lens can turn cloudy. That cloud is a cataract. Drops cannot wash it away.",
       "We check your eye first. We measure the eye so the new lens has the right power. Then we take out the cloudy lens and put in a clear one. Most people go home the same day.",
-      "We tell you the cost before surgery. Cashless is not available now. We are listed under PM-JAY and associated with Rajyakarmi insurance. Ask at the desk what papers you need.",
+      "We tell you the cost before surgery. We are listed under PM-JAY and associated with Rajyakarmi insurance. Ask at the desk what papers you need.",
     ],
     steps: [
       "Come for an eye check and a scan of the eye length.",
@@ -415,92 +415,133 @@ export function getService(slug: string) {
 
 export const EQUIPMENT = [
   {
-    name: "Zeiss Cirrus 500 OCT",
-    use: "Retina and glaucoma scan",
-    what: "This machine takes a picture of the layers at the back of the eye.",
-    feel: "You sit, put your chin on the rest, and look at a small light. It does not hurt.",
-    do: "We use it for glaucoma and retina problems. You get the picture the same day.",
+    name: "ZEISS CIRRUS 500 OCT",
+    kicker: "",
+    body: [
+      "The ZEISS CIRRUS 500 OCT is a state-of-the-art eye imaging system that provides detailed, high-resolution images of the retina and optic nerve—without any discomfort or contact with the eye.",
+      "This advanced technology helps our ophthalmologists detect and monitor eye conditions at an early stage, including glaucoma, diabetic eye disease, macular disorders and retinal conditions. By creating precise cross-sectional images of the eye, OCT supports accurate diagnosis and helps doctors closely monitor changes over time.",
+    ],
+    tagline: "Advanced technology. Precise imaging. Better-informed eye care.",
     image: "/equip/oct.png",
   },
   {
-    name: "Tomey Optical Biometer",
-    use: "Measure before cataract surgery",
-    what: "This machine measures the length of the eye and the front curve.",
-    feel: "You look into a small window. The scan is quick and does not hurt.",
-    do: "We use these numbers to choose the right power of the new lens for cataract surgery.",
+    name: "TOMEY Optical Biometer",
+    kicker: "Precision Measurements for Personalised Cataract Care",
+    body: [
+      "The Tomey Optical Biometer represents advanced precision in modern cataract surgery planning. Using sophisticated optical measurement technology, it accurately assesses key parameters of the eye to help determine the ideal intraocular lens (IOL) power.",
+      "Fast, non-contact and comfortable for the patient, the system provides reliable measurements that support precise IOL selection and personalised surgical planning.",
+    ],
+    tagline: "Advanced biometry. Exceptional precision. Personalised vision care.",
     image: "/equip/biometer.png",
   },
   {
-    name: "Fundus Camera",
-    use: "Photo of the back of the eye",
-    what: "This camera takes a colour photo of the retina.",
-    feel: "A bright flash comes. It lasts one second. Your vision may look white for a short time.",
-    do: "We keep the photo to watch diabetic eye disease and other retina changes over time.",
+    name: "Forus Fundus Camera",
+    kicker: "High-Precision Imaging for Complete Retinal Care",
+    body: [
+      "The Forus Fundus Camera is an advanced retinal imaging system designed to capture high-quality, detailed images of the retina and optic nerve. Its non-invasive technology enables ophthalmologists to examine, document and monitor subtle changes in the eye with greater clarity.",
+      "It plays an important role in the early detection and ongoing management of diabetic retinopathy, glaucoma, macular disorders and other retinal conditions, supporting timely diagnosis and personalised eye care.",
+    ],
+    tagline: "Advanced retinal imaging. Early detection. Confident eye care.",
     image: "/equip/fundus.png",
   },
   {
-    name: "Biomedix and Appasamy USG biometer with pachymetry",
-    use: "Ultrasound when the eye is cloudy",
-    what: "This is an ultrasound of the eye. It uses sound, not light.",
-    feel: "Gel is put near the closed eye. A small probe touches the lid. It does not hurt.",
-    do: "We use it when a thick cataract blocks a light scan, so we can still measure the eye.",
-    image: "/equip/usg.png",
-  },
-  {
-    name: "YAG Laser",
-    use: "Clear a cloudy lens capsule",
-    what: "This is a laser on a slit-lamp chair. No cut is made.",
-    feel: "You sit with your chin on the rest. You may see a flash. Most people feel no pain.",
-    do: "If vision becomes cloudy again after cataract, this laser can open the thin layer. We also use it in some glaucoma cases.",
+    name: "Appasamy YAG Laser",
+    kicker: "Advanced Laser Technology for Precise Eye Care",
+    body: [
+      "The Appasamy YAG Laser is an advanced ophthalmic laser system designed to provide precise, controlled and minimally invasive laser treatment for selected eye conditions. It is commonly used for YAG laser capsulotomy, a procedure that can restore clarity of vision when clouding develops behind an artificial lens following cataract surgery.",
+      "With accurate laser delivery and controlled treatment, the system supports safe, efficient and patient-friendly eye care with minimal discomfort and a short treatment time.",
+    ],
+    tagline: "Advanced laser precision. Comfortable treatment. Clearer vision.",
     image: "/equip/yag.png",
   },
   {
-    name: "Nidek and Unicos ARK",
-    use: "Glasses power check",
-    what: "This machine checks the power of the eye for glasses.",
-    feel: "You look at a picture inside the machine. It takes less than a minute.",
-    do: "We use it for children and adults before writing glasses or starting other tests.",
-    image: "/equip/ark.png",
-  },
-  {
-    name: "Anterior Segment Imaging",
-    use: "Photo of the front of the eye",
-    what: "This is a camera on a slit lamp. It photographs the cornea, iris and front of the eye.",
-    feel: "A thin light shines on the eye. You sit still for a few seconds.",
-    do: "We use it for cornea problems, injuries and to keep a record of how the front of the eye looks.",
+    name: "Appasamy Anterior Segment Imaging System",
+    kicker: "Advanced Imaging for Precise Front-of-the-Eye Assessment",
+    body: [
+      "The Appasamy Anterior Segment Imaging System is an advanced diagnostic technology designed to provide clear and detailed imaging of the front structures of the eye, including the cornea, anterior chamber, iris and lens.",
+      "It helps ophthalmologists evaluate and document important eye conditions with greater precision, supporting the diagnosis and management of corneal disorders, cataract, glaucoma and other anterior segment conditions.",
+    ],
+    tagline: "Detailed imaging. Precise assessment. Better-informed eye care.",
     image: "/equip/anterior.png",
   },
   {
-    name: "Zeiss Lumera 300 operating microscope",
-    use: "Surgery microscope",
-    what: "This microscope is used in the operating theatre so the surgeon can see the eye in high detail.",
-    feel: "You are on the operating table. The microscope does not touch the eye.",
-    do: "We use it for cataract surgery and other eye operations.",
-    image: "/equip/oct.png",
+    name: "ZEISS LUMERA 300 Operating Microscope",
+    kicker: "Advanced Visualisation for Precision Eye Surgery",
+    body: [
+      "The ZEISS LUMERA 300 Operating Microscope is a high-performance surgical microscope designed to provide ophthalmic surgeons with exceptional clarity, precision and control during delicate eye procedures.",
+      "With advanced optics, excellent illumination and enhanced visualisation of fine ocular structures, it supports greater accuracy throughout cataract, corneal, glaucoma and other microsurgical procedures.",
+    ],
+    tagline: "Superior visualisation. Surgical precision. Confidence at every step.",
+    image: "/equip/microscope.png",
   },
   {
-    name: "Oertli Phaco Systems CataRhex 3",
-    use: "Cataract surgery machine",
-    what: "This phaco system breaks and removes the cloudy lens during cataract surgery.",
-    feel: "You are under local anaesthesia. Most people feel little or no pain.",
-    do: "We use it for cataract surgery with intraocular lens replacement.",
-    image: "/equip/biometer.png",
+    name: "Orteli Catrex 3 Phaco Machine",
+    kicker: "Advanced Technology for Precise Cataract Surgery",
+    body: [
+      "The Orteli Catrex 3 Phaco Machine is an advanced ophthalmic surgical system designed to support precise, controlled and efficient cataract surgery. Its sophisticated phacoemulsification technology helps surgeons safely remove the cloudy natural lens while maintaining excellent control throughout the procedure.",
+      "Designed for modern cataract care, the system supports smooth surgical performance, precision and patient comfort, contributing to predictable and high-quality surgical outcomes.",
+    ],
+    tagline: "Advanced phaco technology. Surgical precision. Better cataract care.",
+    image: "/equip/phaco.png",
   },
   {
-    name: "Tonopen",
-    use: "Eye pressure check",
-    what: "This is a handheld instrument that measures pressure inside the eye.",
-    feel: "A drop of anaesthetic is used. A light touch on the cornea lasts a moment.",
-    do: "We use it for glaucoma checks and follow-up of eye pressure.",
+    name: "Tono-Pen",
+    kicker: "Quick, Accurate & Comfortable Eye Pressure Measurement",
+    body: [
+      "The Tono-Pen is a compact, handheld tonometer designed to measure intraocular pressure (IOP) quickly and accurately. Its convenient, patient-friendly design allows ophthalmologists to assess eye pressure comfortably, making it a valuable tool in the screening, diagnosis and monitoring of glaucoma and other conditions associated with elevated eye pressure.",
+    ],
+    tagline: "Accurate measurement. Quick assessment. Better glaucoma care.",
+    image: "/equip/tonopen.png",
+  },
+  {
+    name: "Biomedix USG Biometer",
+    kicker: "Advanced Ultrasound Biometry for Precise Cataract Planning",
+    body: [
+      "The Biomedix USG Biometer is an advanced ophthalmic diagnostic system designed to accurately measure important eye parameters, including axial length and other biometric measurements required for cataract surgery planning.",
+      "Its reliable ultrasound-based technology supports precise intraocular lens (IOL) power calculation, particularly when optical biometry may be difficult to perform. It helps ophthalmologists achieve accurate measurements for personalised and well-planned cataract surgery.",
+    ],
+    tagline: "Accurate biometry. Reliable measurements. Precision-driven cataract care.",
+    image: "/equip/usg.png",
+  },
+  {
+    name: "NIDEK ARK",
+    kicker: "Precision Refraction & Corneal Measurement",
+    body: [
+      "The NIDEK ARK is an advanced Auto Ref-Keratometer designed to provide fast and accurate measurements of refractive power and corneal curvature. It helps assess common refractive errors such as myopia, hyperopia and astigmatism with precision.",
+      "Its reliable technology supports accurate vision assessment, prescription planning and comprehensive eye examinations, helping our specialists provide personalised and effective vision care.",
+    ],
+    tagline: "Advanced measurement. Precise assessment. Clearer vision care.",
     image: "/equip/ark.png",
   },
   {
-    name: "Topcon lensometer",
-    use: "Check existing glasses",
-    what: "This machine reads the power of the glasses you already wear.",
-    feel: "You hand over the glasses. You do not sit at the machine.",
-    do: "We compare your current glasses with a new eye check before writing a new prescription.",
-    image: "/equip/ark.png",
+    name: "Topcon Lensometer",
+    kicker: "Precision Lens Measurement for Accurate Vision Care",
+    body: [
+      "The Topcon Lensometer is an advanced optical instrument designed to accurately measure the power, axis and optical characteristics of spectacle lenses. It helps our eye-care professionals verify lens prescriptions with precision, ensuring that spectacles meet the required visual correction.",
+      "Reliable, efficient and easy to use, it supports accurate prescription verification and quality assurance, contributing to clearer and more personalised vision care.",
+    ],
+    tagline: "Precision lens measurement. Reliable verification. Better vision care.",
+    image: "/equip/lensometer.png",
+  },
+  {
+    name: "Slit Lamp",
+    kicker: "Advanced Microscopic Examination for Comprehensive Eye Care",
+    body: [
+      "The Slit Lamp is an essential ophthalmic diagnostic instrument that provides a magnified and highly detailed view of the eye’s structures. It enables our ophthalmologists to carefully examine the cornea, conjunctiva, iris, lens and other parts of the eye.",
+      "This advanced examination plays an important role in the early detection, diagnosis and monitoring of conditions such as cataract, corneal disorders, glaucoma and other eye diseases.",
+    ],
+    tagline: "Detailed examination. Precise diagnosis. Comprehensive eye care.",
+    image: "/equip/slit-lamp.png",
+  },
+  {
+    name: "General Anaesthesia Machine",
+    kicker: "Advanced Anaesthesia Support for Safe Surgical Care",
+    body: [
+      "Our General Anaesthesia Machine is an advanced medical system designed to support the safe and controlled delivery of anaesthesia during surgical procedures. It enables precise management of anaesthetic gases, oxygen delivery and patient ventilation, helping the anaesthesia team maintain stable and closely monitored conditions throughout surgery.",
+      "With reliable performance and integrated monitoring capabilities, it contributes to patient safety, comfort and effective surgical management.",
+    ],
+    tagline: "Controlled anaesthesia. Continuous support. Safety at every step.",
+    image: "/equip/anaesthesia.png",
   },
 ] as const;
 
@@ -509,53 +550,94 @@ export const NAV = [
   { href: "/about", label: "About Us" },
   { href: "/doctors", label: "Doctors" },
   { href: "/services", label: "Services" },
+  { href: "/facilities", label: "Technology" },
   { href: "/testimonials", label: "Testimonials" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const FAQS = [
   {
-    q: "What are the symptoms of dry eye?",
-    a: "Common symptoms include a burning or gritty sensation, redness, light sensitivity, difficulty seeing at night, excessive watering or stinging, and blurred vision. These symptoms may affect one or both eyes.",
+    q: "What can I expect on my first visit?",
+    a: "The first visit includes discussion of your eye and medical history, family history, and the reason for consultation, followed by a comprehensive eye examination including vision testing and tonometry. The complete check-up takes around two hours.",
   },
   {
-    q: "What are the early signs of cataract?",
-    a: "Please consult our specialists for a full assessment; a member of our clinical team will be pleased to advise you further.",
+    q: "How often should I go to the ophthalmologist?",
+    a: "A complete eye examination is generally recommended at least once a year. More frequent examinations may be appropriate for people over 55 or those with diabetes, high blood pressure, previous eye injuries, or a family history of eye disease. Sudden vision changes, vision loss, pain, irritation, or medication-related visual effects warrant prompt consultation.",
   },
   {
-    q: "What eye conditions do you treat?",
-    a: "We treat cataract, glaucoma, retinal disease, corneal conditions, dry eye, pediatric eye conditions, squint, and ocular injuries.",
+    q: "When should an adult patient with cataract be operated?",
+    a: "For adults, cataract surgery is generally considered when the cataract begins interfering with daily activities. Childhood cataract is treated as more urgent and should be assessed promptly when significant cataract is diagnosed.",
   },
   {
-    q: "What is the difference between a routine and a medical eye examination?",
-    a: "A routine examination assesses general vision and the need for corrective lenses, whereas a medical examination investigates and manages specific eye conditions or diseases.",
+    q: "Is injection required for cataract surgery?",
+    a: "The treating ophthalmologist decides the appropriate method. More than 95% of cataract surgeries are currently performed without an injection.",
   },
   {
-    q: "Can glaucoma be cured?",
-    a: "Glaucoma cannot be cured, but its progression can be effectively managed through appropriate monitoring and treatment. Please speak with our specialists for guidance specific to your condition.",
+    q: "How do we select the type of lens for cataract surgery?",
+    a: "The doctor may suggest two or three suitable lens choices based on the patient's eye condition. The patient makes the final choice. Visual outcomes can be similar, while dependence on spectacles can vary according to the selected lens.",
   },
   {
-    q: "When should a child be brought in for an eye examination?",
-    a: "We recommend an eye examination if a child sits unusually close to screens, exhibits a weaker or misaligned eye, or if concerns are raised by their school regarding their vision.",
+    q: "How do you treat a lazy eye in children?",
+    a: "Treatment depends on the cause and severity and may include corrective spectacles or contact lenses, patching, vision therapy, and surgery when squint or cataract is responsible.",
   },
   {
-    q: "Is cataract surgery painful?",
-    a: "Cataract surgery is generally well tolerated and performed under local anaesthesia; most patients experience minimal discomfort.",
+    q: "Can a lazy eye be corrected with glasses?",
+    a: "In some cases, glasses can improve a lazy eye. If vision does not improve after approximately 4–8 weeks of proper spectacle use, additional treatment may be considered.",
   },
   {
-    q: "Do you accept PM-JAY (Ayushman Bharat)?",
-    a: "Yes, we are empanelled under PM-JAY. Please note that cashless treatment is not currently available.",
+    q: "How can I fix my lazy eye at home?",
+    a: "Vision therapy is often combined with glasses, eye patches, or eye drops. Examples of therapy activities include eye tracking, eye jumps, puzzles, dot-to-dot activities, and coloring exercises.",
   },
   {
-    q: "Do you accept Rajyakarmi insurance (SEHIS)?",
-    a: "Yes, we are associated with the Jharkhand Rajyakarmi Swasthya Bima Yojana (State Employees Health Insurance Scheme). Please bring your scheme card and consult the front desk. Cashless treatment is not currently available.",
+    q: "How will I know that I am suffering from glaucoma?",
+    a: "Glaucoma can damage the optic nerve and cause permanent vision loss. Possible warning signs include eye pain, advanced tunnel vision, patchy blind spots, blurred vision, halos, redness, nausea or vomiting, and severe headache.",
   },
   {
-    q: "What are your operating hours?",
-    a: "We are open Monday to Saturday, 10:00 a.m. to 6:00 p.m. We remain closed on Sundays.",
+    q: "What tests are done to diagnose glaucoma?",
+    a: "Tests include tonometry, a dilated eye examination, pachymetry, perimetry, gonioscopy, and RNFL analysis using OCT.",
   },
   {
-    q: "How can I schedule an appointment?",
-    a: "Appointments may be scheduled by telephone at +91 84090 01008, or by visiting the hospital directly.",
+    q: "Can glaucoma be detected in an eye test?",
+    a: "Yes. A routine eye examination can detect glaucoma before noticeable symptoms appear, which supports early diagnosis and treatment.",
+  },
+  {
+    q: "What should be the lifestyle dos and don'ts for a glaucoma patient?",
+    a: "Healthy food and regular exercise are recommended, along with eye protection during activities such as swimming or sports, slow fluid intake, avoiding smoking and eye rubbing, and avoiding foods high in trans fatty acids.",
+  },
+  {
+    q: "How often should a child get their eyes checked?",
+    a: "A first eye examination is recommended around six months of age, another by age three, and yearly examinations for school-aged children without vision problems. Children using glasses or contact lenses may need checks every 6–12 months or as advised.",
+  },
+  {
+    q: "What kind of spectacles should I buy for my child?",
+    a: "Available lens materials include plastic, polycarbonate, and high-index plastic. Polycarbonate and high-index lenses are lighter and more impact resistant. Glass lenses are discouraged for children because broken glass can injure the eye. Sports goggles may be useful for children involved in contact sports.",
+  },
+  {
+    q: "Does a child with astigmatism need spectacles?",
+    a: "Astigmatism can be corrected with glasses. Spectacles may not always be necessary when the astigmatism is mild and does not produce significant near- or farsightedness. Glasses may be optional when uncorrected vision is 20/30 or better.",
+  },
+  {
+    q: "How do I know if my 2-year-old has eye problems?",
+    a: "Possible signs include misaligned eyes, an unusually white or grey pupil, watering, discharge or crusting, light sensitivity, frequent eye rubbing, pain or itching, drooping eyelids, poor focus, persistent redness, and poor visual tracking. Some conditions such as lazy eye may have no obvious symptoms, making routine examinations important.",
+  },
+  {
+    q: "What is normal eyesight for a 5-year-old?",
+    a: "Vision develops with age. 20/30 can be normal for a five-year-old. An eye examination is recommended when visual acuity is below the expected level.",
+  },
+  {
+    q: "How does diabetes affect the eyes?",
+    a: "Long-term uncontrolled diabetes can damage the retina, causing diabetic retinopathy and potentially reducing vision.",
+  },
+  {
+    q: "How is diabetic retinopathy treated?",
+    a: "Treatment may involve retinal laser treatment or injections, depending on the condition and the treating doctor's assessment. Advanced disease may require surgery.",
+  },
+  {
+    q: "How do we identify retinal detachment?",
+    a: "A sudden reduction in vision or a curtain-like shadow across part of the visual field can be a warning sign. Immediate consultation is advised because early treatment and surgery may be required.",
+  },
+  {
+    q: "What is age-related macular degeneration?",
+    a: "Age-related macular degeneration affects the central retina, which is responsible for most detailed central vision. Early detection is important, and treatment can include injections into the eye.",
   },
 ] as const;

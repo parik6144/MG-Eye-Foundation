@@ -6,6 +6,7 @@ import { UserSearch, MapPin, CalendarDays, ArrowRight } from "lucide-react";
 import { COPY, SERVICES, STATS } from "@/lib/site";
 import { DOCTORS } from "@/lib/doctors";
 import { SERVICE_MARKS, SERVICE_SHORT, ServicesTitleMark } from "@/components/ServiceIcons";
+import DoctorProfileCard from "@/components/DoctorProfileCard";
 
 const STAT_TONE = [
   "bg-[#E7F3F5] text-[#0E4A56]",
@@ -23,8 +24,8 @@ export default function HomePage() {
     <div className="bg-[#F4F8F9]">
       <section className="bg-white">
         <img
-          src="/mg_eye_banner.png"
-          alt="MG Eye Foundation hospital entrance"
+          src="/2new_mg_eye_banner.png"
+          alt="M G EYE Foundation hospital entrance"
           className="w-full h-auto block"
         />
       </section>
@@ -94,7 +95,7 @@ export default function HomePage() {
       </section>
 
       <section className="py-16 sm:py-20 bg-[#F4F8F9]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-[2rem] sm:text-[2.4rem] font-extrabold text-[#0E4A56]">Services</h2>
             <div className="mt-3 flex items-center justify-center gap-3">
@@ -104,20 +105,20 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12 flex flex-wrap justify-center gap-5 sm:gap-6">
+          <div className="mt-12 flex flex-nowrap items-stretch justify-start lg:justify-center gap-3 overflow-x-auto pb-2">
             {SERVICES.map((s) => {
               const Mark = SERVICE_MARKS[s.slug];
               return (
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
-                  className="group w-[calc(50%-10px)] sm:w-[200px] lg:w-[210px] rounded-[18px] bg-white px-4 py-8 text-center shadow-[0_12px_32px_rgba(15,23,42,0.08)] hover:shadow-[0_18px_40px_rgba(31,138,154,0.18)] hover:-translate-y-1.5 border border-white hover:border-[#1F8A9A]/25 transition-all"
+                  className="group shrink-0 w-[138px] sm:w-[148px] lg:flex-1 lg:w-auto lg:min-w-0 lg:max-w-[168px] rounded-[18px] bg-white px-2.5 py-6 text-center shadow-[0_12px_32px_rgba(15,23,42,0.08)] hover:shadow-[0_18px_40px_rgba(31,138,154,0.18)] hover:-translate-y-1.5 border border-white hover:border-[#1F8A9A]/25 transition-all"
                 >
                   <span className="mx-auto flex items-center justify-center text-[#1F8A9A]">
                     {Mark ? Mark() : null}
                   </span>
-                  <span className="mx-auto mt-4 mb-4 block h-[3px] w-14 rounded-full bg-[#1F8A9A]" />
-                  <span className="block text-[13px] sm:text-[14px] font-bold tracking-[0.12em] uppercase text-[#1F8A9A] leading-snug">
+                  <span className="mx-auto mt-3 mb-3 block h-[3px] w-10 rounded-full bg-[#1F8A9A]" />
+                  <span className="block text-[11px] sm:text-xs font-bold tracking-[0.1em] uppercase text-[#1F8A9A] leading-snug">
                     {SERVICE_SHORT[s.slug] ?? s.title}
                   </span>
                 </Link>
@@ -130,27 +131,16 @@ export default function HomePage() {
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">Meet our team</p>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[#0E4A56]">Meet Our Doctors</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E4A56]">Meet Our Doctors</h2>
             <div className="mt-4 flex items-center justify-center gap-2">
               <span className="h-px w-8 bg-[#1F8A9A]/30" />
               <span className="h-1.5 w-1.5 rounded-full bg-[#1F8A9A]" />
               <span className="h-px w-8 bg-[#1F8A9A]/30" />
             </div>
           </div>
-          <div className="mt-12 flex flex-wrap justify-center gap-8">
+          <div className="mt-12 space-y-10">
             {DOCTORS.map((d) => (
-              <Link
-                key={d.name}
-                href="/doctors"
-                className="group w-full max-w-[300px] rounded-3xl bg-[#F4F8F9] border border-[#D5E6EA] p-8 text-center hover:bg-white hover:shadow-[0_16px_40px_rgba(31,138,154,0.12)] hover:-translate-y-1 transition-all"
-              >
-                <span className="mx-auto block h-40 w-40 rounded-full overflow-hidden border-[6px] border-white shadow-[0_8px_24px_rgba(15,23,42,0.10)] bg-white">
-                  <img src={d.photo} alt={d.name} className="h-full w-full object-cover object-top" />
-                </span>
-                <span className="mt-5 block font-extrabold text-[#0E4A56] group-hover:text-[#1F8A9A]">{d.name}</span>
-                <span className="mt-1 block text-sm text-[#64748b] leading-snug">{d.englishFocus}</span>
-              </Link>
+              <DoctorProfileCard key={d.name} doctor={d} useShortName />
             ))}
           </div>
         </div>

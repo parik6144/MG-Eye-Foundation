@@ -15,7 +15,7 @@ export default function InsurancePage() {
         </h1>
         <div className="w-12 h-1 bg-[#1F8A9A] mt-4 rounded-full" />
         <p className="mt-5 text-[#475569] leading-relaxed max-w-3xl">
-          Costs are told before treatment. Cashless facilities are not currently available. Patients may pay at the hospital. We are empanelled under PM-JAY and associated with Rajyakarmi (SEHIS). Kindly consult the front desk with your scheme card and papers prior to admission.
+          Costs are told before treatment. Patients may pay at the hospital. We are empanelled under PM-JAY and associated with Rajyakarmi (SEHIS). Kindly consult the front desk with your scheme card and papers prior to admission.
         </p>
         <p className="mt-4 text-sm text-[#64748b]">
           {SITE.hours}. {SITE.sunday}

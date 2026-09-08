@@ -6,7 +6,7 @@ import BookVisitButton from "@/components/BookVisitButton";
 import ClinicVideo from "@/components/ClinicVideo";
 import TestimonialsSection from "@/components/TestimonialsSection";
 
-export const metadata: Metadata = { title: "About Us | MG Eye Foundation" };
+export const metadata: Metadata = { title: "About Us | M G EYE Foundation" };
 
 export default function AboutPage() {
   return (
@@ -21,10 +21,11 @@ export default function AboutPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <p className="text-white/80 text-[11px] font-semibold tracking-[0.22em] uppercase">About us</p>
           <h1 className="mt-2 max-w-xl text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            MG Eye Foundation
+            M G EYE Foundation
           </h1>
-          <p className="mt-4 max-w-lg text-slate-200 leading-relaxed">
-            An eye hospital in Bara Gamharia, Jamshedpur. Two doctors. Scan and treatment in one place.
+          <p className="mt-4 text-white/80 text-[11px] font-semibold tracking-[0.18em] uppercase">Our mission</p>
+          <p className="mt-2 max-w-lg text-slate-200 leading-relaxed">
+            {COPY.mission}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <BookVisitButton label="Book an appointment" />
@@ -54,7 +55,7 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <img
             src="/clinic/reception.jpg"
-            alt="Reception at MG Eye Foundation"
+            alt="Reception at M G EYE Foundation"
             className="h-64 sm:h-80 w-full object-cover rounded-[24px]"
           />
           <div>

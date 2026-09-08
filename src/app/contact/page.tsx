@@ -21,7 +21,7 @@ export default function ContactPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Contact</span>
           <h1 className="mt-3 text-3xl sm:text-5xl font-extrabold text-white leading-tight max-w-2xl">
-            MG Eye Foundation
+            {SITE.name}
           </h1>
           <div className="w-12 h-1 bg-[#1F8A9A] mt-5 rounded-full" />
           <p className="mt-5 text-slate-300 text-lg max-w-xl leading-relaxed">
@@ -176,10 +176,10 @@ export default function ContactPage() {
       <section className="w-full">
         <div className="px-4 sm:px-6 lg:px-8 pb-4 max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">Hospital on the map</h2>
-          <p className="text-[#64748b] mt-1 mb-4">MG Eye Foundation, Bara Gamharia. Full map below.</p>
+          <p className="text-[#64748b] mt-1 mb-4">{SITE.name}, Bara Gamharia. Full map below.</p>
         </div>
         <iframe
-          title="MG Eye Foundation on Google Maps"
+          title={`${SITE.name} on Google Maps`}
           src={MAP_SRC}
           className="block w-full h-[420px] sm:h-[500px] border-0"
           allowFullScreen

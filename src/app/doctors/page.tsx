@@ -23,17 +23,7 @@ export default function DoctorsPage() {
         </div>
         <div className="space-y-10">
           {DOCTORS.map((d) => (
-            <div key={d.name}>
-              <DoctorProfileCard doctor={d} />
-              <div className="mt-4 rounded-[22px] bg-white border border-[#e2e8f0] px-6 py-5">
-                <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#94A3B8]">Where he has worked before</p>
-                <ul className="mt-3 grid sm:grid-cols-2 gap-2 text-sm text-[#475569]">
-                  {d.highlights.map((h) => (
-                    <li key={h}>{h.replace("Ex. ", "")}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <DoctorProfileCard key={d.name} doctor={d} />
           ))}
         </div>
         <div className="text-center mt-12">

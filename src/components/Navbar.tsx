@@ -67,7 +67,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4 py-2.5">
             <Link href="/" className="flex items-center gap-3 min-w-0 shrink-0">
-              <img src="/mg_logo.png" alt="MG Eye Foundation" className="h-16 sm:h-20 w-auto object-contain" />
+              <img src="/mg_logo.png" alt={SITE.name} className="h-16 sm:h-20 w-auto object-contain" />
               <span className="block text-[17px] sm:text-[1.4rem] font-extrabold leading-tight tracking-tight" style={{ color: TEAL }}>
                 {SITE.name}
               </span>

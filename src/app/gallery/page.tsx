@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const ITEMS = [
-  { label: "Hospital", img: "/mg_eye_banner.png" },
+  { label: "Hospital", img: "/2new_mg_eye_banner.png" },
   { label: "Cataract care", img: "/MG_Eye_Cataract_Service_Image.png" },
   { label: "Retina clinic", img: "/MG_Eye_Retina_Service_Image.png" },
   { label: "Pediatric clinic", img: "/MG_Eye_Pediatric_Service_Image.png" },
