@@ -33,7 +33,7 @@ export const COPY = {
   callLabel: "For immediate assistance, please call",
   aboutTitle: "About Us",
   aboutP1:
-    "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
+    "Welcome to M G EYE Foundation, where advanced eye care meets compassionate, personalized treatment.",
   aboutP2:
     "Led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protecting your vision and helping you maintain healthy eyes at every stage of life.",
   mission:

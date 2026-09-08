@@ -148,24 +148,28 @@ export default function HomePage() {
 
       <section className="py-14 sm:py-20 bg-[#F4F8F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">About us</p>
-            <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[#0E4A56]">{COPY.aboutTitle}</h2>
-            <div className="mt-4 flex items-center justify-center gap-2">
-              <span className="h-px w-8 bg-[#1F8A9A]/30" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1F8A9A]" />
-              <span className="h-px w-8 bg-[#1F8A9A]/30" />
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+            <div className="lg:col-span-6 relative overflow-hidden rounded-[28px] min-h-[280px] sm:min-h-[360px]">
+              <img
+                src="/home-about-clinic.png"
+                alt="Eye check at M G EYE Foundation"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0E4A56]/35 via-transparent to-[#1F8A9A]/20" />
             </div>
-          </div>
-          <div className="mt-10 rounded-3xl bg-white border border-[#e2e8f0] p-8 sm:p-10 text-center shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-            <p className="text-[#475569] leading-relaxed">{COPY.aboutP1}</p>
-            <p className="mt-4 text-[#475569] leading-relaxed">{COPY.aboutP2}</p>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 mt-7 text-sm font-bold text-[#1F8A9A] hover:text-[#16707E]"
-            >
-              Read more <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="lg:col-span-6 rounded-[28px] bg-white border border-[#D5E6EA] p-7 sm:p-10 flex flex-col justify-center shadow-[0_12px_32px_rgba(31,138,154,0.08)]">
+              <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">About us</p>
+              <h2 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[#0E4A56]">{COPY.aboutTitle}</h2>
+              <div className="mt-4 h-px w-14 bg-gradient-to-r from-[#E8B4BC] to-[#1F8A9A]" />
+              <p className="mt-6 text-[#475569] leading-relaxed">{COPY.aboutP1}</p>
+              <p className="mt-4 text-[#475569] leading-relaxed">{COPY.aboutP2}</p>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 mt-8 self-start rounded-full bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold px-7 py-3 text-sm"
+              >
+                Read more <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
