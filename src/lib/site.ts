@@ -40,7 +40,7 @@ export const COPY = {
     "Our mission is to provide comprehensive eye care services to all the sections of society at affordable cost.",
   missionTags: ["On-site same-day scanning", "Seven specialised services", "Structured post-operative follow-up"],
   vision:
-    "Lakhs more than 1,00,000 patients. We believe that any patient requiring treatment for eye conditions should not need to travel to a distant facility and come to our Centre. We are committed to provide world class treatment facility in your vicinity.",
+    "We believe that any patient requiring treatment for eye conditions should not need to travel to a distant facility and come to our Centre. We are committed to provide world class treatment facility in your vicinity.",
   visionTags: ["1,00,000+ patients treated", "Daily pediatric eye examinations", "Dedicated care for ocular injuries"],
   whyIntro:
     "Our approach extends beyond scheduling appointments and performing procedures. We listen carefully to each patient, present diagnostic findings clearly, administer treatment with attentiveness, and provide guidance on follow-up care.",
