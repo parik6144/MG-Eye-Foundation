@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { SERVICE_HUB } from "@/lib/site";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 function EyeMark() {
   return (
@@ -26,13 +27,7 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#E7F4F1]/20 to-[#E7F4F1]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 lg:pb-10">
-          <p className="text-sm text-[#64748b]">
-            <Link href="/" className="hover:text-[#1F8A9A]">
-              Home
-            </Link>
-            <span className="mx-1.5">/</span>
-            <span className="text-[#0E4A56]">Services</span>
-          </p>
+          <PageBreadcrumb items={[{ label: "Services" }]} />
           <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-[#1F8A9A] tracking-tight">Services</h1>
         </div>
       </section>

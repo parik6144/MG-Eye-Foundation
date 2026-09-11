@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
-export const metadata: Metadata = { title: "Terms and Conditions | MG Eye Foundation" };
+export const metadata: Metadata = { title: "Terms and Conditions | M G Eye Foundation" };
 
 export default function TermsPage() {
   return (
     <div className="pt-6 pb-20 bg-white">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span className="text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Legal</span>
+        <PageBreadcrumb items={[{ label: "Terms and Conditions" }]} />
+        <span className="mt-4 block text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Legal</span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Terms and Conditions</h1>
         <div className="w-12 h-1 bg-[#1F8A9A] mt-4 rounded-full" />
         <p className="text-[#64748b] mt-4 text-sm">Last update: 23 August 2026</p>
@@ -17,7 +19,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-extrabold text-[#0F172A]">This website</h2>
             <p className="mt-2">
-              This site tells you about MG Eye Foundation in Bara Gamharia. It helps you find the hospital, the doctors, and how to book a visit.
+              This site tells you about M G Eye Foundation in Bara Gamharia. It helps you find the hospital, the doctors, and how to book a visit.
             </p>
           </section>
           <section>

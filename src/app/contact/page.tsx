@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Phone, MapPin, Mail, Clock, Send, CheckCircle2, MessageCircle } from "lucide-react";
+import { Phone, MapPin, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
 import { SITE, COPY } from "@/lib/site";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 const MAP_SRC =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.5908957717247!2d86.10057549999999!3d22.817618100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e5848c06a167%3A0x2cdbf23713a6129!2sM%20G%20Eye%20Foundation!5e0!3m2!1sen!2sin!4v1787430071311!5m2!1sen!2sin";
@@ -19,9 +20,9 @@ export default function ContactPage() {
       <section className="relative overflow-hidden pt-6 pb-16 bg-[#0F172A]">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1F8A9A]/40 via-transparent to-[#1F8A9A]/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Contact</span>
+          <PageBreadcrumb tone="dark" items={[{ label: "Contact" }]} />
           <h1 className="mt-3 text-3xl sm:text-5xl font-extrabold text-white leading-tight max-w-2xl">
-            {SITE.name}
+            Contact
           </h1>
           <div className="w-12 h-1 bg-[#1F8A9A] mt-5 rounded-full" />
           <p className="mt-5 text-slate-300 text-lg max-w-xl leading-relaxed">
@@ -31,7 +32,7 @@ export default function ContactPage() {
       </section>
 
       <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <a href={SITE.phoneHref} className="rounded-[22px] bg-white border border-[#e2e8f0] p-6 shadow-lg shadow-[#1F8A9A]/5 hover:border-[#1F8A9A]/30 transition-colors">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1F8A9A] text-white">
               <Phone className="w-5 h-5" />
@@ -39,14 +40,6 @@ export default function ContactPage() {
             <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#1F8A9A]">Telephone</p>
             <p className="mt-1 font-extrabold text-[#0F172A] text-lg">{SITE.phoneDisplay}</p>
             <p className="mt-1 text-sm text-[#64748b]">Tap to call</p>
-          </a>
-          <a href={SITE.whatsapp} target="_blank" rel="noreferrer" className="rounded-[22px] bg-white border border-[#e2e8f0] p-6 shadow-lg shadow-[#1F8A9A]/5 hover:border-[#25d366]/40 transition-colors">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#25d366] text-white">
-              <MessageCircle className="w-5 h-5" />
-            </span>
-            <p className="mt-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#1F8A9A]">WhatsApp</p>
-            <p className="mt-1 font-extrabold text-[#0F172A] text-lg">Chat with us</p>
-            <p className="mt-1 text-sm text-[#64748b]">Send a photo or a question</p>
           </a>
           <a href={SITE.emailHref} className="rounded-[22px] bg-white border border-[#e2e8f0] p-6 shadow-lg shadow-[#1F8A9A]/5 hover:border-[#1F8A9A]/30 transition-colors">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1F8A9A] text-white">
@@ -76,10 +69,10 @@ export default function ContactPage() {
               <MapPin className="w-6 h-6 text-[#1F8A9A] shrink-0 mt-1" />
               {SITE.address}, {SITE.city}
             </p>
-            <p className="mt-4 text-[#64748b] leading-relaxed">
+            {/* <p className="mt-4 text-[#64748b] leading-relaxed">
               <span className="font-semibold text-[#0F172A]">Service Area. </span>
               {COPY.serviceArea}
-            </p>
+            </p> */}
             <p className="mt-6 text-sm bg-[#FFF7ED] border border-[#FFEDD5] text-[#9A3412] rounded-2xl p-4 leading-relaxed">
               {COPY.pmjay}
             </p>

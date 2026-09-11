@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "M G EYE Foundation",
+  name: "M G Eye Foundation",
   legalName: "Meera Gayatri Eye Foundation",
   phone: "8409001008",
   phoneDisplay: "+91 84090 01008",
@@ -33,7 +33,7 @@ export const COPY = {
   callLabel: "For immediate assistance, please call",
   aboutTitle: "About Us",
   aboutP1:
-    "Welcome to M G EYE Foundation, where advanced eye care meets compassionate, personalized treatment.",
+    "Welcome to M G Eye Foundation, where advanced eye care meets compassionate, personalized treatment.",
   aboutP2:
     "Led by DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protect your vision and help you maintain healthy eyes at every stage of life.",
   mission:
@@ -46,16 +46,12 @@ export const COPY = {
     "Our approach extends beyond scheduling appointments and performing procedures. We listen carefully to each patient, present diagnostic findings clearly, administer treatment with attentiveness, and provide guidance on follow-up care.",
   patientEdu:
     "We recognise that unfamiliar medical terminology can cause unnecessary concern. For this reason, we explain every diagnosis according to a consistent three-part structure: the symptoms experienced by the patient, the underlying condition of the eye, and the recommended course of treatment.",
-  doctorsIntro:
-    "Meet our doctors. Led by DR KUMAR SAKET, Cataract, medical retina and trauma specialist, and DR MALAY KUMAR DWIVEDI, Pediatric Ophthalmologist, Cataract and Squint specialist.",
-  servicesIntro:
+ servicesIntro:
     "Seven clinical services. Each page follows the same structure used in a working eye hospital: the disease, why it occurs, how it presents, what we do here, and what we do not claim to do on site.",
   pmjay:
-    "M G EYE Foundation is an empanelled facility under the PM-JAY scheme and welcomes patients seeking eye care under this programme. Kindly consult the front desk for further information prior to admission.",
-  serviceArea:
-    "M G EYE Foundation is an eye hospital at Plot 121, Durga Puja Maidan, near Vani Vidya Mandir School, Bara Gamharia, Jamshedpur. People come to this hospital from Bara Gamharia, Adityapur, Jamshedpur, and Saraikela-Kharsawan. Eye checks, scans, and surgery all happen in this same hospital.",
+    "M G Eye Foundation is an empanelled facility under the PM-JAY scheme and welcomes patients seeking eye care under this programme. Kindly consult the front desk for further information prior to admission.",
   rajyakarmi:
-    "M G EYE Foundation is associated with the Jharkhand Rajyakarmi Swasthya Bima Yojana (State Employees Health Insurance Scheme / SEHIS). State government employees, pensioners and eligible family members may seek eye care here under this programme. Kindly consult the front desk with your scheme card and papers prior to admission.",
+    "M G Eye Foundation is associated with the Jharkhand Rajyakarmi Swasthya Bima Yojana (State Employees Health Insurance Scheme / SEHIS). State government employees, pensioners and eligible family members may seek eye care here under this programme. Kindly consult the front desk with your scheme card and papers prior to admission.",
 } as const;
 
 export const STATS = [

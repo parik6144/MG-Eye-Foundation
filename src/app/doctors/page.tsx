@@ -4,6 +4,7 @@ import { useCallback, useEffect } from "react";
 import { DOCTORS } from "@/lib/doctors";
 import { SITE, COPY } from "@/lib/site";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 export default function DoctorsPage() {
   const book = useCallback(() => window.dispatchEvent(new CustomEvent("open-appointment")), []);
@@ -21,7 +22,8 @@ export default function DoctorsPage() {
     <div className="pt-6 pb-20 bg-[#F7F9FC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-3xl">
-          <span className="text-[#1F8A9A] text-sm font-semibold tracking-wide uppercase">Our doctors</span>
+          <PageBreadcrumb items={[{ label: "Doctors" }]} />
+          <span className="mt-4 block text-[#1F8A9A] text-sm font-semibold tracking-wide uppercase">Our doctors</span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3 leading-tight">
             Meet Our Doctors
           </h1>

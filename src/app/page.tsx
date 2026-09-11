@@ -25,7 +25,7 @@ export default function HomePage() {
       <section className="bg-white">
         <img
           src="/2new_mg_eye_banner.png"
-          alt="M G EYE Foundation hospital entrance"
+          alt="M G Eye Foundation hospital entrance"
           className="w-full h-auto block"
         />
       </section>
@@ -149,7 +149,7 @@ export default function HomePage() {
             <div className="lg:col-span-6 relative overflow-hidden rounded-[28px] min-h-[280px] sm:min-h-[360px]">
               <img
                 src="/home-about-clinic.png"
-                alt="Eye check at M G EYE Foundation"
+                alt="Eye check at M G Eye Foundation"
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0E4A56]/35 via-transparent to-[#1F8A9A]/20" />

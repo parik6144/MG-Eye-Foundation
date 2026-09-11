@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { SITE, COPY, SERVICE_HUB } from "@/lib/site";
 import BookVisitButton from "@/components/BookVisitButton";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import type { ClinicalPage } from "@/lib/clinicalServicePages";
 
 const CAUSE_ICONS: LucideIcon[] = [
@@ -65,17 +66,10 @@ export default function ClinicalServicePage({ page }: { page: ClinicalPage }) {
         <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute right-1/4 bottom-0 h-40 w-40 rounded-full bg-[#E8B4BC]/20 blur-2xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <p className="text-sm text-white/70">
-            <Link href="/" className="hover:text-white">
-              Home
-            </Link>
-            <span className="mx-1.5">/</span>
-            <Link href="/services" className="hover:text-white">
-              Services
-            </Link>
-            <span className="mx-1.5">/</span>
-            {page.breadcrumb}
-          </p>
+          <PageBreadcrumb
+            tone="dark"
+            items={[{ href: "/services", label: "Services" }, { label: page.breadcrumb }]}
+          />
           <div className="mt-6 grid lg:grid-cols-[1fr_minmax(0,320px)] gap-10 items-center">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-white/70">{page.kicker}</p>
@@ -288,7 +282,7 @@ export default function ClinicalServicePage({ page }: { page: ClinicalPage }) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="rounded-[28px] bg-white border border-[#D5E6EA] overflow-hidden grid lg:grid-cols-[1.2fr_0.8fr]">
           <div className="p-7 sm:p-10">
-            <h2 className="text-2xl font-extrabold text-[#0E4A56]">Visit M G EYE Foundation</h2>
+            <h2 className="text-2xl font-extrabold text-[#0E4A56]">Visit M G Eye Foundation</h2>
             <p className="mt-4 text-[#475569] leading-relaxed">{COPY.mission}</p>
             <ul className="mt-6 space-y-3 text-sm text-[#334155]">
               <li className="flex gap-3">

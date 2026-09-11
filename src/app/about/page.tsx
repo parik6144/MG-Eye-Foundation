@@ -5,8 +5,9 @@ import { STATS, SITE, COPY } from "@/lib/site";
 import BookVisitButton from "@/components/BookVisitButton";
 import ClinicVideo from "@/components/ClinicVideo";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
-export const metadata: Metadata = { title: "About Us | M G EYE Foundation" };
+export const metadata: Metadata = { title: "About Us | M G Eye Foundation" };
 
 export default function AboutPage() {
   return (
@@ -19,9 +20,10 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0E4A56]/90 via-[#0F172A]/70 to-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <p className="text-white/80 text-[11px] font-semibold tracking-[0.22em] uppercase">About us</p>
+          <PageBreadcrumb tone="dark" items={[{ label: "About us" }]} />
+          <p className="mt-4 text-white/80 text-[11px] font-semibold tracking-[0.22em] uppercase">About us</p>
           <h1 className="mt-2 max-w-xl text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            M G EYE Foundation
+            M G Eye Foundation
           </h1>
           <p className="mt-4 text-white/80 text-[11px] font-semibold tracking-[0.18em] uppercase">Our mission</p>
           <p className="mt-2 max-w-lg text-slate-200 leading-relaxed">
@@ -55,7 +57,7 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <img
             src="/clinic/reception.jpg"
-            alt="Reception at M G EYE Foundation"
+            alt="Reception at M G Eye Foundation"
             className="h-64 sm:h-80 w-full object-cover rounded-[24px]"
           />
           <div>
@@ -77,7 +79,12 @@ export default function AboutPage() {
               <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">Our hospital</p>
               <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0F172A]">We are in Bara Gamharia</h2>
               <p className="mt-4 text-[#475569] leading-relaxed">
-                Come from Adityapur, Jamshedpur or Saraikela-Kharsawan. You check in at reception. Then the doctor sees you. Eye scans and surgery happen in this same hospital. We are open Monday to Saturday, 10 a.m. to 6 p.m. Sunday is closed.
+              Welcome! If you are coming from Adityapur, Jamshedpur, or Saraikela-Kharsawan, we are here to make your visit as comfortable and convenient as possible.
+When you arrive, please check in at the reception, where our team will be happy to assist you. You will then meet with the doctor for your consultation. For your convenience, eye scans and surgery are also available at the same hospital.
+
+We are open Monday to Saturday, from 10:00 a.m. to 6:00 p.m. We are closed on Sundays.
+
+We look forward to welcoming you and taking care of your eye health!
               </p>
             </div>
             <ClinicVideo src="/clinic/mgeyefoundation.mp4" poster="/clinic/maingate.webp" />

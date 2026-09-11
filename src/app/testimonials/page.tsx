@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { TESTIMONIALS, TESTIMONIAL_RATING } from "@/lib/testimonials";
 import BookVisitButton from "@/components/BookVisitButton";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
-export const metadata: Metadata = { title: "Testimonials | MG Eye Foundation" };
+export const metadata: Metadata = { title: "Testimonials | M G Eye Foundation" };
 
 const AVATAR = ["#EA4335", "#4285F4", "#34A853", "#FBBC05", "#A142F4", "#FF6D01", "#46BDC6", "#F538A0", "#1A73E8", "#188038"];
 
@@ -40,7 +41,8 @@ export default function TestimonialsPage() {
       <section className="bg-gradient-to-br from-[#0E4A56] via-[#16707E] to-[#1F8A9A] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 grid lg:grid-cols-[1fr_auto] gap-6 items-center">
           <div>
-            <p className="text-white/80 text-[11px] font-semibold tracking-[0.22em] uppercase">Testimonials</p>
+            <PageBreadcrumb tone="dark" items={[{ label: "Testimonials" }]} />
+            <p className="mt-4 text-white/80 text-[11px] font-semibold tracking-[0.22em] uppercase">Testimonials</p>
             <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold leading-tight">What people say</h1>
             <p className="mt-3 max-w-xl text-white/90 leading-relaxed">
               People write about their visit here. These are Google reviews.

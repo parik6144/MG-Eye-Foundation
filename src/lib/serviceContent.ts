@@ -31,7 +31,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       "Double vision in one eye",
     ],
     treatment:
-      "When cataract begins to interfere with reading, work, or safe walking, surgery is advised. Phacoemulsification uses ultrasound to fragment the cloudy lens through a small corneal incision. The fragments are aspirated and a foldable IOL is implanted. Most patients go home the same day. At M G EYE Foundation, lens power is planned with the Tomey optical biometer and, when a dense cataract blocks optical measurement, with ultrasound biometry. Surgery is performed under the ZEISS LUMERA 300 microscope with the Orteli Catrex 3 phaco system. If the capsule clouds months or years later, YAG laser capsulotomy can restore clarity without repeating cataract surgery.",
+      "When cataract begins to interfere with reading, work, or safe walking, surgery is advised. Phacoemulsification uses ultrasound to fragment the cloudy lens through a small corneal incision. The fragments are aspirated and a foldable IOL is implanted. Most patients go home the same day. At M G Eye Foundation, lens power is planned with the Tomey optical biometer and, when a dense cataract blocks optical measurement, with ultrasound biometry. Surgery is performed under the ZEISS LUMERA 300 microscope with the Orteli Catrex 3 phaco system. If the capsule clouds months or years later, YAG laser capsulotomy can restore clarity without repeating cataract surgery.",
     procedures: [
       {
         title: "Phacoemulsification with foldable IOL",

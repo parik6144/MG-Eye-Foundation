@@ -7,6 +7,7 @@ import { getClinicalPage } from "@/lib/clinicalServicePages";
 import { SITE, SERVICE_HUB, allServices, getService } from "@/lib/site";
 import { getServiceClinical } from "@/lib/serviceContent";
 import BookVisitButton from "@/components/BookVisitButton";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,8 +18,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = getService(slug);
-  if (!s) return { title: "Service | M G EYE Foundation" };
-  return { title: `${s.title} | M G EYE Foundation` };
+  if (!s) return { title: "Service | M G Eye Foundation" };
+  return { title: `${s.title} | M G Eye Foundation` };
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -38,9 +39,10 @@ export default async function ServiceDetailPage({ params }: Props) {
     <div className="bg-[#F4F8F9] pb-0">
       <section className="bg-gradient-to-br from-[#0E4A56] via-[#16707E] to-[#1F8A9A] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <Link href="/services" className="text-sm font-semibold text-white/80 hover:text-white">
-            ← All services
-          </Link>
+          <PageBreadcrumb
+            tone="dark"
+            items={[{ href: "/services", label: "Services" }, { label: s.title }]}
+          />
           <div className="mt-6 grid lg:grid-cols-[minmax(0,300px)_1fr] gap-8 items-start">
             <img
               src={s.image}

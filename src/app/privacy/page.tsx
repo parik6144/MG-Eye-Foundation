@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
-export const metadata: Metadata = { title: "Privacy Policy | MG Eye Foundation" };
+export const metadata: Metadata = { title: "Privacy Policy | M G Eye Foundation" };
 
 export default function PrivacyPage() {
   return (
     <div className="pt-6 pb-20 bg-white">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <span className="text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Legal</span>
+        <PageBreadcrumb items={[{ label: "Privacy Policy" }]} />
+        <span className="mt-4 block text-[#1F8A9A] text-sm font-semibold tracking-[0.18em] uppercase">Legal</span>
         <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mt-3">Privacy Policy</h1>
         <div className="w-12 h-1 bg-[#1F8A9A] mt-4 rounded-full" />
         <p className="text-[#64748b] mt-4 text-sm">Last update: 23 August 2026</p>
@@ -16,7 +18,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-extrabold text-[#0F172A]">Who we are</h2>
             <p className="mt-2">
-              This website is for MG Eye Foundation. Address: {SITE.address}, {SITE.city}. Phone: {SITE.phoneDisplay}. Email: {SITE.email}.
+              This website is for M G Eye Foundation. Address: {SITE.address}, {SITE.city}. Phone: {SITE.phoneDisplay}. Email: {SITE.email}.
             </p>
           </section>
           <section>
