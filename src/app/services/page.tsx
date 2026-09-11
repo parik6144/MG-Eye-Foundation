@@ -1,91 +1,67 @@
-"use client";
-
-import { useCallback } from "react";
 import Link from "next/link";
-import { SERVICES, SITE, COPY } from "@/lib/site";
-import { SERVICE_MARKS } from "@/components/ServiceIcons";
+import { Check } from "lucide-react";
+import { SERVICE_HUB } from "@/lib/site";
 
-const BLOCKS = [
-  { key: "what" as const, label: "What it is", box: "bg-[#E7F3F5]", tag: "text-[#0E4A56]" },
-  { key: "feel" as const, label: "How it feels", box: "bg-[#FFF6EC]", tag: "text-[#9A4A12]" },
-  { key: "do" as const, label: "What we do", box: "bg-[#F0F7F4]", tag: "text-[#166534]" },
-];
+function EyeMark() {
+  return (
+    <svg viewBox="0 0 120 120" className="h-[88px] w-[88px] text-[#1F8A9A]/15" fill="currentColor" aria-hidden>
+      <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" strokeWidth="3" />
+      <ellipse cx="60" cy="60" rx="38" ry="22" />
+      <circle cx="60" cy="60" r="14" fill="#fff" />
+      <circle cx="60" cy="60" r="7" />
+    </svg>
+  );
+}
 
 export default function ServicesPage() {
-  const book = useCallback(() => window.dispatchEvent(new CustomEvent("open-appointment")), []);
-
   return (
-    <div className="pb-20 bg-[#F4F8F9]">
-      <section className="bg-gradient-to-br from-[#0E4A56] via-[#16707E] to-[#1F8A9A] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-center">
-          <span className="text-white/80 text-sm font-semibold tracking-[0.18em] uppercase">Services</span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold mt-3">Our Services</h1>
-          <div className="w-12 h-1 bg-white mx-auto mt-4 rounded-full" />
-          <p className="mt-5 max-w-2xl mx-auto leading-relaxed text-white/90">
-            {COPY.servicesIntro}
+    <div className="bg-[#E7F4F1] min-h-screen pb-16">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-y-0 right-0 w-[42%] hidden lg:block">
+          <img
+            src="/service-photos/cornea.png"
+            alt=""
+            className="h-full w-full object-cover object-[center_20%] opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#E7F4F1]/20 to-[#E7F4F1]" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 lg:pb-10">
+          <p className="text-sm text-[#64748b]">
+            <Link href="/" className="hover:text-[#1F8A9A]">
+              Home
+            </Link>
+            <span className="mx-1.5">/</span>
+            <span className="text-[#0E4A56]">Services</span>
           </p>
+          <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold text-[#1F8A9A] tracking-tight">Services</h1>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((s) => {
-            const Mark = SERVICE_MARKS[s.slug];
-            return (
-              <article
-                key={s.title}
-                className="rounded-[24px] overflow-hidden bg-white border border-[#D5E6EA] shadow-[0_10px_28px_rgba(14,74,86,0.08)] hover:shadow-[0_16px_40px_rgba(31,138,154,0.16)] hover:-translate-y-0.5 transition-all"
-              >
-                <div className="relative">
-                  <img src={s.image} alt={s.title} className="h-44 w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E4A56]/70 to-transparent" />
-                  <span className="absolute bottom-3 left-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-md text-[#1F8A9A] [&>svg]:w-10 [&>svg]:h-10">
-                    {Mark ? Mark() : null}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h2 className="text-lg font-extrabold text-[#0E4A56]">{s.title}</h2>
-                  <div className="mt-4 space-y-2.5">
-                    {BLOCKS.map((b) => (
-                      <div key={b.key} className={`rounded-2xl ${b.box} px-3.5 py-3`}>
-                        <p className={`text-[11px] font-bold tracking-[0.14em] uppercase ${b.tag}`}>{b.label}</p>
-                        <p className="mt-1 text-sm text-[#334155] leading-relaxed">{s[b.key]}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-4 text-[11px] font-bold tracking-[0.14em] uppercase text-[#1F8A9A]">What we offer</p>
-                  <ul className="mt-2 space-y-1.5">
-                    {s.offers.map((item) => (
-                      <li key={item} className="flex gap-2 text-sm text-[#475569] leading-snug">
-                        <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#1F8A9A]" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-5 flex flex-wrap items-center gap-3">
-                    <button
-                      onClick={book}
-                      className="inline-flex bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold rounded-full px-5 py-2.5 text-sm"
-                    >
-                      Book this care
-                    </button>
-                    <Link href={`/services/${s.slug}`} className="text-sm font-bold text-[#0E4A56] hover:text-[#1F8A9A]">
-                      View more →
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-        <div className="text-center mt-12">
-          <a
-            href={SITE.phoneHref}
-            className="inline-flex items-center justify-center bg-[#0E4A56] hover:bg-[#16707E] text-white font-bold rounded-full px-6 py-2.5 text-sm"
-          >
-            Call {SITE.phoneDisplay}
-          </a>
-          <p className="text-sm text-[#64748b] mt-3">{SITE.hours}</p>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-7">
+          {SERVICE_HUB.map((s) => (
+            <Link
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              className="group relative rounded-[22px] bg-white/80 hover:bg-white border border-white shadow-[0_8px_28px_rgba(31,138,154,0.08)] px-6 sm:px-8 py-7 min-h-[220px] transition-shadow hover:shadow-[0_14px_36px_rgba(31,138,154,0.14)]"
+            >
+              <span className="pointer-events-none absolute right-4 bottom-4 sm:right-6 sm:bottom-6">
+                <EyeMark />
+              </span>
+              <h2 className="relative flex items-center gap-3 text-lg sm:text-xl font-bold text-[#1F8A9A]">
+                <span className="h-7 w-[3px] rounded-full bg-[#1F8A9A]" />
+                {s.title}
+              </h2>
+              <ul className="relative mt-5 space-y-2.5 max-w-[88%]">
+                {s.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[14px] sm:text-[15px] text-[#475569] leading-snug">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#1F8A9A]" strokeWidth={2.6} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

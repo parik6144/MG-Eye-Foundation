@@ -1,145 +1,156 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SERVICES, SITE, getService } from "@/lib/site";
+import CataractServicePage from "@/components/CataractServicePage";
+import ClinicalServicePage from "@/components/ClinicalServicePage";
+import { getClinicalPage } from "@/lib/clinicalServicePages";
+import { SITE, SERVICE_HUB, allServices, getService } from "@/lib/site";
+import { getServiceClinical } from "@/lib/serviceContent";
 import BookVisitButton from "@/components/BookVisitButton";
 
 type Props = { params: Promise<{ slug: string }> };
 
-const STEP_TONE = [
-  { wrap: "bg-[#E7F3F5] border-[#B7D9E0]", num: "bg-[#1F8A9A]", title: "text-[#0E4A56]" },
-  { wrap: "bg-[#FFF6EC] border-[#F3D5B5]", num: "bg-[#C2410C]", title: "text-[#9A4A12]" },
-  { wrap: "bg-[#F0F7F4] border-[#B7DCC8]", num: "bg-[#166534]", title: "text-[#166534]" },
-  { wrap: "bg-[#EEF2FF] border-[#C7D2FE]", num: "bg-[#3730A3]", title: "text-[#3730A3]" },
-] as const;
-
 export function generateStaticParams() {
-  return SERVICES.map((s) => ({ slug: s.slug }));
+  return allServices().map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const s = getService(slug);
-  if (!s) return { title: "Service | MG Eye Foundation" };
-  return { title: `${s.title} | MG Eye Foundation` };
+  if (!s) return { title: "Service | M G EYE Foundation" };
+  return { title: `${s.title} | M G EYE Foundation` };
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const s = getService(slug);
-  if (!s) notFound();
+  if (slug === "cataract") return <CataractServicePage />;
 
-  const others = SERVICES.filter((x) => x.slug !== s.slug);
+  const custom = getClinicalPage(slug);
+  if (custom) return <ClinicalServicePage page={custom} />;
+
+  const s = getService(slug);
+  const c = getServiceClinical(slug);
+  if (!s || !c) notFound();
+
+  const others = SERVICE_HUB.filter((x) => x.slug !== s.slug);
 
   return (
     <div className="bg-[#F4F8F9] pb-0">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8">
-        <Link href="/services" className="text-sm font-semibold text-[#1F8A9A] hover:underline">
-          ← All eye care
-        </Link>
-        <div className="mt-5 grid lg:grid-cols-[minmax(0,280px)_1fr] xl:grid-cols-[minmax(0,320px)_1fr] gap-8 items-start">
-          <img
-            src={s.image}
-            alt={s.title}
-            className="w-full max-w-[280px] mx-auto lg:mx-0 h-48 sm:h-52 object-cover rounded-[22px] border border-[#D5E6EA]"
-          />
-          <div>
-            <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">Our services</p>
-            <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold text-[#0E4A56] leading-tight">{s.title}</h1>
-            <p className="mt-4 text-[#475569] leading-relaxed">{s.what}</p>
-            <p className="mt-3 text-[#475569] leading-relaxed">{s.feel}</p>
-            <p className="mt-3 text-[#475569] leading-relaxed">{s.do}</p>
-            <p className="mt-3 text-[#334155] leading-relaxed">{s.when}</p>
-            <p className="mt-3 text-sm font-semibold text-[#0E4A56]">{s.doctor}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <BookVisitButton label="Book an appointment" />
-              <a href={SITE.phoneHref} className="inline-flex items-center font-bold text-[#1F8A9A] px-2 py-3 text-sm">
-                Call {SITE.phoneDisplay}
-              </a>
+      <section className="bg-gradient-to-br from-[#0E4A56] via-[#16707E] to-[#1F8A9A] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+          <Link href="/services" className="text-sm font-semibold text-white/80 hover:text-white">
+            ← All services
+          </Link>
+          <div className="mt-6 grid lg:grid-cols-[minmax(0,300px)_1fr] gap-8 items-start">
+            <img
+              src={s.image}
+              alt={s.title}
+              className="w-full h-52 sm:h-64 object-cover rounded-[22px] border border-white/20 shadow-lg"
+            />
+            <div>
+              <p className="text-white/70 text-[11px] font-semibold tracking-[0.22em] uppercase">Clinical service</p>
+              <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold leading-tight">{s.title}</h1>
+              <p className="mt-4 text-white/90 leading-relaxed text-[15px] sm:text-base">{c.overview}</p>
+              <p className="mt-4 text-sm font-semibold text-white">{s.doctor}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <BookVisitButton label="Book an appointment" />
+                <a href={SITE.phoneHref} className="inline-flex items-center font-bold text-white px-2 py-3 text-sm">
+                  Call {SITE.phoneDisplay}
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-[22px] bg-white border border-[#D5E6EA] p-6 sm:p-8">
+            <h2 className="text-xl font-extrabold text-[#0E4A56]">Causes</h2>
+            <ul className="mt-4 space-y-2.5">
+              {c.causes.map((item) => (
+                <li key={item} className="flex gap-2.5 text-[15px] text-[#334155] leading-relaxed">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1F8A9A]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-[22px] bg-white border border-[#D5E6EA] p-6 sm:p-8">
+            <h2 className="text-xl font-extrabold text-[#0E4A56]">Symptoms</h2>
+            <ul className="mt-4 space-y-2.5">
+              {c.symptoms.map((item) => (
+                <li key={item} className="flex gap-2.5 text-[15px] text-[#334155] leading-relaxed">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C2410C]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
-        <div className="grid md:grid-cols-3 gap-4">
-          <figure className="overflow-hidden rounded-[20px] border border-[#B7D9E0] bg-[#E7F3F5]">
-            <img src={s.image} alt="" className="h-32 w-full object-cover" />
-            <figcaption className="p-4">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-[#0E4A56]">What it is</p>
-              <p className="mt-2 text-sm text-[#334155] leading-relaxed">{s.what}</p>
-            </figcaption>
-          </figure>
-          <figure className="overflow-hidden rounded-[20px] border border-[#F3D5B5] bg-[#FFF6EC]">
-            <img src={s.feelImage} alt="" className="h-32 w-full object-cover" />
-            <figcaption className="p-4">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-[#9A4A12]">How it feels</p>
-              <p className="mt-2 text-sm text-[#334155] leading-relaxed">{s.who}</p>
-              <p className="mt-2 text-sm text-[#334155] leading-relaxed">{s.feel}</p>
-            </figcaption>
-          </figure>
-          <figure className="overflow-hidden rounded-[20px] border border-[#B7DCC8] bg-[#F0F7F4]">
-            <img src={s.doImage} alt="" className="h-32 w-full object-cover" />
-            <figcaption className="p-4">
-              <p className="text-[11px] font-bold tracking-[0.16em] uppercase text-[#166534]">What we do</p>
-              <p className="mt-2 text-sm text-[#334155] leading-relaxed">{s.do}</p>
-            </figcaption>
-          </figure>
+        <div className="rounded-[22px] bg-white border border-[#D5E6EA] p-6 sm:p-10">
+          <h2 className="text-2xl font-extrabold text-[#0E4A56]">Treatment</h2>
+          <p className="mt-4 text-[#334155] leading-relaxed text-[15px] sm:text-base">{c.treatment}</p>
+          <p className="mt-5 text-sm text-[#0E4A56] leading-relaxed border-l-4 border-[#1F8A9A] pl-4">{c.scope}</p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0E4A56]">How a visit works</h2>
-        <p className="mt-2 text-[#64748b]">Four steps, with a photo for each step.</p>
-        <ol className="mt-6 space-y-4">
-          {s.steps.map((step, i) => {
-            const tone = STEP_TONE[i % STEP_TONE.length];
-            const extra =
-              i === 3
-                ? "Come back on the day we give you. We check the eye and tell you what to do next."
-                : s.story[i];
-            return (
-              <li
-                key={step}
-                className={`flex flex-col sm:flex-row gap-0 overflow-hidden rounded-[20px] border ${tone.wrap}`}
-              >
-                <img
-                  src={s.stepImages[i]}
-                  alt=""
-                  className="h-36 sm:h-40 sm:w-52 shrink-0 object-cover"
-                />
-                <div className="p-5 sm:p-6 flex gap-4 items-start">
-                  <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${tone.num} text-white text-sm font-bold`}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <p className={`font-extrabold leading-snug ${tone.title}`}>{step}</p>
-                    <p className="mt-2 text-sm text-[#334155] leading-relaxed">{extra}</p>
-                  </div>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-        <p className="mt-6 text-sm text-[#64748b]">
-          We tell you the cost first. {SITE.hours} {SITE.sunday}
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0E4A56]">What we provide</h2>
+        <div className="mt-6 grid sm:grid-cols-2 gap-4">
+          {c.procedures.map((p) => (
+            <article key={p.title} className="rounded-[20px] bg-white border border-[#D5E6EA] p-5 sm:p-6">
+              <h3 className="font-extrabold text-[#0E4A56]">{p.title}</h3>
+              <p className="mt-2 text-sm text-[#475569] leading-relaxed">{p.body}</p>
+            </article>
+          ))}
+        </div>
+        {c.types ? (
+          <div className="mt-8">
+            <h3 className="text-lg font-extrabold text-[#0E4A56]">Clinical types</h3>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {c.types.map((t) => (
+                <li key={t} className="rounded-full bg-[#E7F3F5] text-[#0E4A56] text-sm font-semibold px-4 py-2">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <h2 className="text-2xl font-extrabold text-[#0E4A56]">Questions we are asked</h2>
+        <div className="mt-5 space-y-3">
+          {c.faqs.map((f) => (
+            <details key={f.q} className="group rounded-[18px] bg-white border border-[#D5E6EA] px-5 py-4">
+              <summary className="cursor-pointer font-bold text-[#0E4A56] list-none flex justify-between gap-3">
+                {f.q}
+                <span className="text-[#1F8A9A] group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-3 text-sm text-[#475569] leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <p className="mt-8 text-sm text-[#64748b]">
+          {SITE.hours} {SITE.sunday} · Call {SITE.phoneDisplay}
         </p>
       </section>
 
       <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold text-[#0E4A56] mb-5">Other eye care</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 className="text-2xl font-extrabold text-[#0E4A56] mb-5">Other services</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {others.map((o) => (
               <Link
                 key={o.slug}
                 href={`/services/${o.slug}`}
-                className="group overflow-hidden rounded-2xl border border-[#D5E6EA] hover:border-[#1F8A9A] transition-colors"
+                className="rounded-2xl border border-[#D5E6EA] px-4 py-4 font-bold text-[#0E4A56] hover:border-[#1F8A9A] hover:bg-[#F4F8F9]"
               >
-                <img src={o.image} alt={o.title} className="h-32 w-full object-cover" />
-                <div className="p-3">
-                  <p className="font-bold text-[#0E4A56] group-hover:text-[#1F8A9A]">{o.title}</p>
-                </div>
+                {o.title}
               </Link>
             ))}
           </div>

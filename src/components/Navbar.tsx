@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Mail, Facebook, Instagram, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { useState, useCallback } from "react";
 import { NAV, SITE, COPY, SERVICES } from "@/lib/site";
 
@@ -32,7 +32,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-0 z-[80]">
       <div className="text-white text-[12px] sm:text-[13px]" style={{ backgroundColor: TEAL }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 sm:h-10 flex items-center justify-between gap-3">
           <p className="truncate font-medium tracking-wide flex-1 min-w-0 pr-2">{COPY.tagline}</p>
@@ -76,53 +76,6 @@ export default function Navbar() {
             <nav className="hidden lg:flex items-center gap-0.5 min-w-0 flex-1 justify-end">
               {NAV.map((item) => {
                 const active = isActive(pathname, item.href);
-                if (item.href === "/services") {
-                  return (
-                    <div key={item.href} className="relative group">
-                      <Link
-                        href="/services"
-                        className={`inline-flex items-center gap-1 px-2.5 py-2 text-[13px] font-medium rounded-full whitespace-nowrap transition-colors ${
-                          active ? "font-semibold text-white" : "hover:bg-[#E7F3F5]"
-                        }`}
-                        style={active ? { backgroundColor: TEAL_DEEP, color: "#ffffff" } : { color: TEAL_DEEP }}
-                        aria-haspopup="true"
-                      >
-                        {item.label}
-                        <ChevronDown className="h-3.5 w-3.5 opacity-80" />
-                      </Link>
-                      <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 absolute right-0 top-full z-50 pt-2 transition-opacity">
-                        <ul className="min-w-[250px] overflow-hidden rounded-2xl border border-[#D5E6EA] bg-white py-1.5 shadow-[0_16px_40px_rgba(14,74,86,0.14)]">
-                          <li>
-                            <Link
-                              href="/services"
-                              className={`block px-4 py-2.5 text-[13px] font-semibold ${
-                                pathname === "/services" ? "bg-[#E7F3F5] text-[#0E4A56]" : "text-[#0E4A56] hover:bg-[#F4F8F9]"
-                              }`}
-                            >
-                              All services
-                            </Link>
-                          </li>
-                          {SERVICES.map((s) => {
-                            const href = `/services/${s.slug}`;
-                            const on = pathname === href;
-                            return (
-                              <li key={s.slug}>
-                                <Link
-                                  href={href}
-                                  className={`block px-4 py-2.5 text-[13px] ${
-                                    on ? "bg-[#E7F3F5] font-semibold text-[#0E4A56]" : "text-[#334155] hover:bg-[#F4F8F9]"
-                                  }`}
-                                >
-                                  {s.title}
-                                </Link>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  );
-                }
                 return (
                   <Link
                     key={item.href}

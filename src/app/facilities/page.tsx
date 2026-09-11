@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { EQUIPMENT, SITE } from "@/lib/site";
 import BookVisitButton from "@/components/BookVisitButton";
 
-export const metadata: Metadata = { title: "Technology | MG Eye Foundation" };
+export const metadata: Metadata = { title: "Facilities | M G EYE Foundation" };
 
 export default function FacilitiesPage() {
   return (
     <div className="bg-white pb-0">
       <section className="bg-[#F4F8F9] border-b border-[#D5E6EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">Technology</p>
+          <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">Facilities</p>
           <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-[#0E4A56] leading-tight tracking-tight">
             Our machines
           </h1>

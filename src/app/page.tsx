@@ -74,15 +74,12 @@ export default function HomePage() {
 
       <section className="bg-white py-12 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">{COPY.subhead}</p>
-          <h1 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[#0E4A56] leading-tight">{COPY.headline}</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0E4A56] leading-tight">{COPY.headline}</h1>
           <div className="mt-4 flex items-center justify-center gap-2">
             <span className="h-px w-10 bg-[#1F8A9A]/30" />
             <span className="h-1.5 w-1.5 rounded-full bg-[#1F8A9A]" />
             <span className="h-px w-10 bg-[#1F8A9A]/30" />
           </div>
-          <p className="mt-6 text-[#475569] leading-relaxed">{COPY.intro}</p>
-          <p className="mt-4 text-[#475569] leading-relaxed">{COPY.introLead}</p>
           <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3">
             {STATS.map((s, i) => (
               <div key={s.label} className={`rounded-2xl px-3 py-4 ${STAT_TONE[i]}`}>

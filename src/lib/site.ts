@@ -49,7 +49,7 @@ export const COPY = {
   doctorsIntro:
     "Meet our doctors. Led by Dr. Saket, Cataract, Medical Retina & Trauma, and Dr. Malay, Pediatric Ophthalmologist, Cataract & Squint Specialist.",
   servicesIntro:
-    "Each service is described according to the nature of the condition, its typical symptoms, and the corresponding treatment approach.",
+    "Seven clinical services. Each page follows the same structure used in a working eye hospital: the disease, why it occurs, how it presents, what we do here, and what we do not claim to do on site.",
   pmjay:
     "M G EYE Foundation is an empanelled facility under the PM-JAY scheme and welcomes patients seeking eye care under this programme. Kindly consult the front desk for further information prior to admission.",
   serviceArea:
@@ -134,10 +134,10 @@ export const SERVICES = [
     ],
     when: "Come for a full assessment when cloudy vision begins to interfere with daily activity. Our specialists will advise whether surgery is appropriate.",
     offers: [
-      "Cataract surgery with intraocular lens replacement",
-      "Optical biometry to choose the lens power",
-      "Ultrasound measurement when a dense cataract blocks a light scan",
-      "YAG laser if the capsule becomes cloudy after surgery",
+      "Phacoemulsification with foldable IOL",
+      "Optical and ultrasound biometry for IOL power",
+      "Aspheric, toric and multifocal IOL counselling",
+      "YAG laser capsulotomy for after-cataract haze",
     ],
     story: [
       "The lens inside the eye should be clear, like a clean window. With age, or after injury, that lens can turn cloudy. That cloud is a cataract. Drops cannot wash it away.",
@@ -175,10 +175,10 @@ export const SERVICES = [
     ],
     when: "A pressure check is advisable even when the eye feels comfortable. Early detection helps preserve vision.",
     offers: [
-      "Intraocular pressure measurement and monitoring",
-      "OCT of the optic nerve",
-      "Prescribed pressure-lowering drops",
-      "Laser treatment, including YAG where indicated",
+      "Tono-Pen intraocular pressure measurement",
+      "OCT of the optic nerve, ganglion-cell complex and RNFL",
+      "Pressure-lowering drops and structured follow-up",
+      "YAG laser when anatomically indicated",
     ],
     story: [
       "Glaucoma is extra pressure in the eye. That pressure can harm the nerve that helps you see. Once that nerve is hurt, that part of seeing does not come back. So we try to find it early.",
@@ -216,11 +216,10 @@ export const SERVICES = [
     ],
     when: "Patients with diabetes should have the retina examined on a planned schedule. Sudden dark spots or a sudden drop in vision require prompt assessment.",
     offers: [
-      "Colour fundus photography",
-      "OCT scan of the retina",
-      "Intravitreal injection",
-      "Retinal laser",
-      "Diabetic retina care",
+      "Colour fundus photography and ZEISS CIRRUS OCT",
+      "Retinal laser for macular oedema and selected breaks",
+      "Intravitreal injection for diabetes, ARMD and vein occlusion",
+      "ROP screening and ROP surgery",
     ],
     story: [
       "The retina is the back of the eye. It takes the picture you see. In diabetes, small vessels can leak or swell. Age can also harm the centre of seeing.",
@@ -258,10 +257,10 @@ export const SERVICES = [
     ],
     when: "A painful, red, or injured eye should be examined without delay during working hours.",
     offers: [
-      "Slit-lamp examination",
-      "Anterior segment imaging",
-      "Treatment of infection and injury",
-      "Care for workplace injuries, including those from Adityapur",
+      "Slit-lamp examination and anterior-segment imaging",
+      "Treatment of abrasion, ulcer and chemical injury",
+      "Foreign-body removal and industrial trauma care",
+      "Medical management of ocular-surface disease",
     ],
     story: [
       "The cornea is the clear front window. If it is hurt or infected, light cannot pass well. The eye can hurt a lot. Do not wait at home with a red, painful eye.",
@@ -299,9 +298,10 @@ export const SERVICES = [
     ],
     when: "Come if burning, grittiness or watering persists, or if drops used at home no longer give relief.",
     offers: [
-      "Assessment of why the eye cannot stay wet enough",
-      "Regimen of drops",
-      "Supportive measures to relieve burning and grittiness",
+      "Slit-lamp tear-film and lid-margin assessment",
+      "Lubricants and anti-inflammatory therapy when indicated",
+      "Lid hygiene for meibomian gland dysfunction",
+      "Review of drops already used at home",
     ],
     story: [
       "Dry eye means the eye does not stay wet enough. Odd as it sounds, a dry eye can also water a lot. Screens, dust, age and some medicines can make this worse.",
@@ -339,11 +339,11 @@ export const SERVICES = [
     ],
     when: "We recommend an eye examination if any of these signs are present. Pediatric examinations are conducted daily.",
     offers: [
-      "Daily pediatric eye examinations",
-      "Visual acuity assessment",
-      "Assessment for corrective lenses",
-      "Identification of a weaker or asymmetric eye",
-      "Auto-refraction (glasses power check)",
+      "Daily paediatric eye examination (Lea symbols, stereo tests)",
+      "Paediatric cataract surgery",
+      "ROP screening and ROP surgery",
+      "Amblyopia therapy and glasses",
+      "Paediatric trauma care",
     ],
     story: [
       "A child’s eye is still growing. If one eye is weak, or the two eyes do not work together, we need to find it early. Waiting can make one eye stay weak.",
@@ -381,9 +381,10 @@ export const SERVICES = [
     ],
     when: "A child with a turned or weaker eye should be assessed promptly. Adults with a new or long-standing squint may also be examined here.",
     offers: [
-      "Measurement of eye alignment",
-      "Corrective lenses when indicated",
+      "Prism measurement of alignment and stereopsis",
+      "Glasses-first treatment when the squint is refractive",
       "Squint correction surgery",
+      "Amblyopia protection in children",
     ],
     story: [
       "Squint, or bhengaapan, means the two eyes do not look at the same place. In a child, the brain may start using only the straight eye. The other eye can become lazy.",
@@ -407,10 +408,158 @@ export const SERVICES = [
   },
 ] as const;
 
-export type Service = (typeof SERVICES)[number];
+export const SERVICE_HUB = [
+  {
+    slug: "cataract",
+    title: "Cataract Services",
+    items: [
+      "Phacoemulsification with Foldable IOL",
+      "Multifocal IOL",
+      "Micro-Coaxial Phaco Surgery",
+      "Premium Cataract Surgery Options",
+    ],
+  },
+  {
+    slug: "cornea",
+    title: "Cornea Services",
+    items: [
+      "Penetrating Keratoplasty (PK)",
+      "Therapeutic Penetrating Keratoplasty (TPK)",
+      "DSEK/DMEK",
+      "Hard Contact Lens (RGP & Scleral)",
+      "CXL",
+    ],
+  },
+  {
+    slug: "glaucoma",
+    title: "Glaucoma Services",
+    items: [
+      "Goldmann Applanation Tonometry",
+      "Pachymetry",
+      "Humphrey Visual Field Analysis",
+      "OCT for Ganglion Cell Complex and RNFL",
+      "Ultrasound Biomicroscopy",
+      "Trabeculectomy Surgery",
+      "Glaucoma Shunt Surgery",
+      "Glaucoma Valve Surgery",
+      "Pediatric Glaucoma Surgery",
+    ],
+  },
+  {
+    slug: "oculoplasty",
+    title: "Oculoplasty Services",
+    items: ["DCR Surgery", "DCT Surgery", "Lid Repair Surgery"],
+  },
+  {
+    slug: "pediatric",
+    title: "Pediatric Ophthalmology And Squint Services",
+    items: [
+      "Pediatric Cataract Surgery",
+      "Squint Surgery",
+      "Botox Treatment",
+      "Pediatric Trauma Surgery",
+      "ROP Screening",
+      "Standardized Facility for Pediatric Examination – Tonopen, Lea Symbol",
+      "Titmus Stereo Acuity Chart",
+      "Luneau Loose Prism Set",
+      "Contact Lens",
+    ],
+  },
+  {
+    slug: "refractive",
+    title: "Refractive Error Service",
+    items: ["Lasik, PRK", "ICL"],
+  },
+  {
+    slug: "retina",
+    title: "Vitreo-retinal Services",
+    items: [
+      "Retinal Laser",
+      "Medical & Surgical Management for Diabetic Retinopathy",
+      "ARMD Treatment",
+      "Intravitreal Injection",
+      "Treatment for Retinopathy of Prematurity (ROP)",
+      "Retinal Detachment Surgery",
+      "Macular Hole Surgery",
+      "Ultrasonography",
+      "OCT",
+      "Fluorescein Angiography",
+      "ICG (HRA)",
+      "LVA",
+    ],
+  },
+  {
+    slug: "other",
+    title: "Other Services",
+    items: ["Neuro-Ophthalmology", "Optical Shop", "Pharmacy"],
+  },
+] as const;
+
+const EXTRA_SERVICES = [
+  {
+    slug: "oculoplasty",
+    title: "Oculoplasty Services",
+    what: "Oculoplasty addresses the eyelids, lacrimal drainage system and the tissues around the eye.",
+    feel: "Watering from a blocked tear duct, a drooping or injured lid, or a swelling near the inner corner of the eye.",
+    do: "DCR, DCT and lid repair are planned after examination of the lids and lacrimal pathway.",
+    image: "/treats/malay-injury.png",
+    doctor: "Lid and lacrimal problems are assessed in this hospital.",
+    who: "",
+    signs: [] as string[],
+    when: "",
+    offers: ["DCR Surgery", "DCT Surgery", "Lid Repair Surgery"],
+    story: ["", "", ""] as string[],
+    steps: ["", "", "", ""] as string[],
+    stepImages: ["", "", "", ""] as string[],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/treats/malay-injury.png",
+  },
+  {
+    slug: "refractive",
+    title: "Refractive Error Service",
+    what: "A refractive error means the eye does not bend light onto the retina in sharp focus.",
+    feel: "Blur for distance or near, glare, squinting, headache or strain with screens.",
+    do: "Myopia, hyperopia, astigmatism and presbyopia are measured; glasses, contact lenses, LASIK, PRK or ICL are discussed according to the eye.",
+    image: "/equip/ark.png",
+    doctor: "Refraction is measured on the NIDEK ARK. Surgical options are counselled after a full work-up.",
+    who: "",
+    signs: [] as string[],
+    when: "",
+    offers: ["Lasik, PRK", "ICL"],
+    story: ["", "", ""] as string[],
+    steps: ["", "", "", ""] as string[],
+    stepImages: ["", "", "", ""] as string[],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/equip/ark.png",
+  },
+  {
+    slug: "other",
+    title: "Other Services",
+    what: "Supporting services around medical eye care: neuro-ophthalmic assessment, optical dispensing and pharmacy.",
+    feel: "Headache with visual field loss, a need for spectacles, or medicines prescribed after a visit.",
+    do: "Neuro-ophthalmology problems are examined; an optical shop and pharmacy support the prescription.",
+    image: "/service-photos/pediatric.png",
+    doctor: "Ask at the desk for optical and pharmacy. Neuro-ophthalmic signs are examined by the treating ophthalmologist.",
+    who: "",
+    signs: [] as string[],
+    when: "",
+    offers: ["Neuro-Ophthalmology", "Optical Shop", "Pharmacy"],
+    story: ["", "", ""] as string[],
+    steps: ["", "", "", ""] as string[],
+    stepImages: ["", "", "", ""] as string[],
+    feelImage: "/patient-edu/feel.png",
+    doImage: "/patient-edu/step3.png",
+  },
+] as const;
+
+export type Service = (typeof SERVICES)[number] | (typeof EXTRA_SERVICES)[number];
+
+export function allServices(): Service[] {
+  return [...SERVICES, ...EXTRA_SERVICES] as Service[];
+}
 
 export function getService(slug: string) {
-  return SERVICES.find((s) => s.slug === slug);
+  return allServices().find((s) => s.slug === slug);
 }
 
 export const EQUIPMENT = [
@@ -550,7 +699,7 @@ export const NAV = [
   { href: "/about", label: "About Us" },
   { href: "/doctors", label: "Doctors" },
   { href: "/services", label: "Services" },
-  { href: "/facilities", label: "Technology" },
+  { href: "/facilities", label: "Facilities" },
   { href: "/testimonials", label: "Testimonials" },
   { href: "/contact", label: "Contact" },
 ] as const;
