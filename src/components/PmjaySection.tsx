@@ -32,9 +32,9 @@ export default function PmjaySection() {
         <p className="text-[#1F8A9A] text-xs font-semibold tracking-[0.18em] uppercase text-center">
           Insurance and schemes
         </p>
-        <h2 className="mt-2 text-center text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+        {/* <h2 className="mt-2 text-center text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
           Schemes we are associated with
-        </h2>
+        </h2> */}
         <p className="mt-3 text-center text-[#64748b] text-sm max-w-2xl mx-auto leading-relaxed">
           Bring your card and papers. The front desk will explain what is needed before admission.
         </p>

@@ -56,7 +56,10 @@ export default function DoctorProfileCard({
   const title = doctor.name;
 
   return (
-    <article className={`rounded-[24px] border border-[#e8edf2] bg-white p-6 sm:p-8 ${a.shadow}`}>
+    <article
+      id={useShortName ? undefined : doctor.slug}
+      className={`scroll-mt-28 rounded-[24px] border border-[#e8edf2] bg-white p-6 sm:p-8 ${a.shadow}`}
+    >
       <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
         <div className={`mx-auto sm:mx-0 shrink-0 rounded-2xl border-4 p-1.5 ${a.frame}`}>
           <img
@@ -172,10 +175,10 @@ export default function DoctorProfileCard({
             </button>
             {showFullProfileLink ? (
               <Link
-                href="/doctors"
+                href={`/doctors#${doctor.slug}`}
                 className="inline-flex items-center gap-1 rounded-lg border border-[#e2e8f0] bg-white px-6 py-3 text-sm font-semibold text-[#0F172A] hover:border-[#1F8A9A]"
               >
-                Full profile <ArrowRight className="w-4 h-4" />
+                Read more <ArrowRight className="w-4 h-4" />
               </Link>
             ) : null}
           </div>

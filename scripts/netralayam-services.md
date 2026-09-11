@@ -8,11 +8,10 @@
 - Premium Cataract Surgery Options
 
 ### Cornea Services
-- Penetrating Keratoplasty (PK)
-- Therapeutic Penetrating Keratoplasty (TPK)
-- DSEK/DMEK
-- Hard Contact Lens (RGP & Scleral)
-- CXL
+- Corneal ulcer treatment
+- ⁠corneal imaging ( OCT)
+- ⁠corneal tear repair
+- ⁠contact lens service
 
 ### Glaucoma Services
 - Goldmann Applanation Tonometry

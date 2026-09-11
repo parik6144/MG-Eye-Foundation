@@ -1,12 +1,21 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { DOCTORS } from "@/lib/doctors";
 import { SITE, COPY } from "@/lib/site";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
 
 export default function DoctorsPage() {
   const book = useCallback(() => window.dispatchEvent(new CustomEvent("open-appointment")), []);
+
+  useEffect(() => {
+    const id = window.location.hash.replace("#", "");
+    if (!id) return;
+    const t = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, []);
 
   return (
     <div className="pt-6 pb-20 bg-[#F7F9FC]">

@@ -2,6 +2,7 @@ export const DOCTORS = [
   {
     name: "DR KUMAR SAKET",
     shortName: "DR KUMAR SAKET",
+    slug: "kumar-saket",
     photo: "/Dr Saket.png",
     hindi: "रेटिना विशेषज्ञ",
     englishFocus: "Cataract, Medical Retina and Trauma specialist",
@@ -71,6 +72,7 @@ export const DOCTORS = [
   {
     name: "DR MALAY KUMAR DWIVEDI",
     shortName: "DR MALAY KUMAR DWIVEDI",
+    slug: "malay-kumar-dwivedi",
     photo: "/Dr Malay Kumar Dwiwedi.jpg",
     hindi: "शिशु नेत्र रोग विशेषज्ञ",
     englishFocus: "Pediatric Ophthalmologist, Cataract and Squint specialist",

@@ -137,7 +137,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 space-y-10">
             {DOCTORS.map((d) => (
-              <DoctorProfileCard key={d.name} doctor={d} useShortName />
+              <DoctorProfileCard key={d.name} doctor={d} useShortName showFullProfileLink />
             ))}
           </div>
         </div>
