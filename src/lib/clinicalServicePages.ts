@@ -33,15 +33,15 @@ export type ClinicalPage = {
   surgeons: { name: string; spec: string }[];
 };
 
-const SAKET = { name: "Dr. Kumar Saket", spec: "Cataract, Medical Retina & Trauma" };
-const MALAY = { name: "Dr. Malay Kumar Dwivedi", spec: "Pediatric Ophthalmologist, Cataract & Squint" };
+const SAKET = { name: "DR KUMAR SAKET", spec: "Cataract, medical retina and trauma specialist" };
+const MALAY = { name: "DR MALAY KUMAR DWIVEDI", spec: "Pediatric Ophthalmologist, Cataract and Squint specialist" };
 
 const CORNEA: ClinicalPage = {
   slug: "cornea",
   kicker: "Cornea treatment",
   title: "Cornea Services",
   breadcrumb: "Cornea Services",
-  hero: "M G EYE Foundation, Bara Gamharia, Jamshedpur, provides assessment and treatment for corneal abrasion, ulcer, scarring, keratoconus and other diseases of the clear front window of the eye. Dr. Kumar Saket and Dr. Malay Kumar Dwivedi plan care after a detailed examination of the ocular surface.",
+  hero: "M G EYE Foundation, Bara Gamharia, Jamshedpur, provides assessment and treatment for corneal abrasion, ulcer, scarring, keratoconus and other diseases of the clear front window of the eye. DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI plan care after a detailed examination of the ocular surface.",
   image: "/service-photos/cornea.png",
   imageAlt: "Cornea care at M G EYE Foundation",
   whatTitle: "What is the cornea?",
@@ -154,7 +154,7 @@ const GLAUCOMA: ClinicalPage = {
   kicker: "Glaucoma treatment",
   title: "Glaucoma Services",
   breadcrumb: "Glaucoma Services",
-  hero: "If you are over 40, regular eye checks help screen for glaucoma before vision is lost. At M G EYE Foundation, Bara Gamharia, Jamshedpur, Dr. Kumar Saket monitors eye pressure, the optic nerve and visual function, and plans drops, laser or surgery according to the type and stage of disease.",
+  hero: "If you are over 40, regular eye checks help screen for glaucoma before vision is lost. At M G EYE Foundation, Bara Gamharia, Jamshedpur, DR KUMAR SAKET monitors eye pressure, the optic nerve and visual function, and plans drops, laser or surgery according to the type and stage of disease.",
   image: "/service-photos/glaucoma.png",
   imageAlt: "Glaucoma care at M G EYE Foundation",
   whatTitle: "What is glaucoma?",
@@ -238,7 +238,7 @@ const OCULOPLASTY: ClinicalPage = {
   kicker: "Oculoplastic surgery",
   title: "Oculoplasty Services",
   breadcrumb: "Oculoplasty Services",
-  hero: "Oculoplasty is plastic and reconstructive surgery of the eyelids, tear ducts and tissues around the eye. At M G EYE Foundation, Bara Gamharia, Jamshedpur, plans are individual: function first, then appearance. Dr. Kumar Saket and Dr. Malay Kumar Dwivedi assess lid position, watering and orbital problems in this hospital.",
+  hero: "Oculoplasty is plastic and reconstructive surgery of the eyelids, tear ducts and tissues around the eye. At M G EYE Foundation, Bara Gamharia, Jamshedpur, plans are individual: function first, then appearance. DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI assess lid position, watering and orbital problems in this hospital.",
   image: "/treats/malay-injury.png",
   imageAlt: "Oculoplasty care at M G EYE Foundation",
   whatTitle: "What is oculoplasty?",
@@ -335,7 +335,7 @@ const PEDIATRIC: ClinicalPage = {
   kicker: "Children’s eye care",
   title: "Pediatric Ophthalmology And Squint Services",
   breadcrumb: "Pediatric Ophthalmology And Squint Services",
-  hero: "Healthy eyes matter for a child’s learning and social development. At M G EYE Foundation, Bara Gamharia, Jamshedpur, Dr. Malay Kumar Dwivedi, pediatric ophthalmologist, cataract and squint specialist, examines children according to age and developmental stage. Dr. Kumar Saket supports medical retina and trauma when those problems coexist.",
+  hero: "Healthy eyes matter for a child’s learning and social development. At M G EYE Foundation, Bara Gamharia, Jamshedpur, DR MALAY KUMAR DWIVEDI, pediatric ophthalmologist, cataract and squint specialist, examines children according to age and developmental stage. DR KUMAR SAKET supports medical retina and trauma when those problems coexist.",
   image: "/service-photos/pediatric.png",
   imageAlt: "Pediatric eye care at M G EYE Foundation",
   whatTitle: "Why children need a pediatric eye doctor",
@@ -440,7 +440,7 @@ const REFRACTIVE: ClinicalPage = {
   kicker: "Glasses, lenses and laser",
   title: "Refractive Error Service",
   breadcrumb: "Refractive Error Service",
-  hero: "Refractive errors are among the most common eye conditions. At M G EYE Foundation, Bara Gamharia, Jamshedpur, we measure how the eye focuses, prescribe spectacles or contact lenses, and counsel selected patients about LASIK, PRK or ICL after a full examination. Dr. Kumar Saket and Dr. Malay Kumar Dwivedi explain what is suitable for your cornea and lifestyle.",
+  hero: "Refractive errors are among the most common eye conditions. At M G EYE Foundation, Bara Gamharia, Jamshedpur, we measure how the eye focuses, prescribe spectacles or contact lenses, and counsel selected patients about LASIK, PRK or ICL after a full examination. DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI explain what is suitable for your cornea and lifestyle.",
   image: "/equip/ark.png",
   imageAlt: "Refraction at M G EYE Foundation",
   whatTitle: "What is a refractive error?",
@@ -516,7 +516,7 @@ const OTHER: ClinicalPage = {
   kicker: "Supporting services",
   title: "Other Services",
   breadcrumb: "Other Services",
-  hero: "Besides the main surgical services, M G EYE Foundation, Bara Gamharia, Jamshedpur, offers neuro-ophthalmology assessment, an optical shop and a pharmacy. Dr. Kumar Saket and Dr. Malay Kumar Dwivedi examine vision problems that arise from the nervous system, then support the prescription with glasses and medicines on site.",
+  hero: "Besides the main surgical services, M G EYE Foundation, Bara Gamharia, Jamshedpur, offers neuro-ophthalmology assessment, an optical shop and a pharmacy. DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI examine vision problems that arise from the nervous system, then support the prescription with glasses and medicines on site.",
   image: "/service-photos/pediatric.png",
   imageAlt: "Supporting eye services at M G EYE Foundation",
   whatTitle: "What these services cover",

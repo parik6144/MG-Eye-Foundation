@@ -1,7 +1,7 @@
 export const TESTIMONIALS = [
   {
     name: "Jay Shankar Prasad",
-    text: "Truly a 10/10 Experience! I had an excellent experience at M.G. Eye Foundation. Dr Malay is highly skilled, patient, and explain everything clearly. The staff is very supportive, well-organized, and ensures smooth registration and follow-up. The clinic is clean, modern, and equipped with advanced machines.",
+    text: "Truly a 10/10 Experience! I had an excellent experience at M.G. Eye Foundation. DR MALAY KUMAR DWIVEDI is highly skilled, patient, and explain everything clearly. The staff is very supportive, well-organized, and ensures smooth registration and follow-up. The clinic is clean, modern, and equipped with advanced machines.",
   },
   {
     name: "Mritunjay Mahato",
@@ -9,7 +9,7 @@ export const TESTIMONIALS = [
   },
   {
     name: "Capt Arvind Kumar",
-    text: "Dr Malay and Dr. Saket both are very good. Gentle in approach, listens very professionally. People of Gamharia are fortunate to have the hospital which is well managed by well experienced doctors.",
+    text: "DR MALAY KUMAR DWIVEDI and DR KUMAR SAKET both are very good. Gentle in approach, listens very professionally. People of Gamharia are fortunate to have the hospital which is well managed by well experienced doctors.",
   },
   {
     name: "Deepak Kumar Thakur",

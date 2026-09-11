@@ -180,7 +180,7 @@ export default function CataractServicePage() {
               <h1 className="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">Cataract Services</h1>
               <p className="mt-5 text-white/90 leading-relaxed max-w-2xl">
                 We aim to provide our patients with the best treatment for cataracts at {SITE.name}, Bara Gamharia,
-                Jamshedpur. Our cataract surgeons, Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, continually enhance
+                Jamshedpur. Our cataract surgeons, DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI, continually enhance
                 their expertise through professional development, remaining at the forefront of current techniques in
                 cataract surgery.
               </p>
@@ -393,10 +393,10 @@ export default function CataractServicePage() {
           </div>
           <div className="bg-[#1F8A9A] text-white p-7 sm:p-10 flex flex-col justify-center">
             <p className="text-white/70 text-[11px] font-semibold tracking-[0.18em] uppercase">Surgeons</p>
-            <p className="mt-3 text-lg font-extrabold leading-snug">Dr. Kumar Saket</p>
-            <p className="text-white/80 text-sm">Cataract, Medical Retina & Trauma</p>
-            <p className="mt-4 text-lg font-extrabold leading-snug">Dr. Malay Kumar Dwivedi</p>
-            <p className="text-white/80 text-sm">Pediatric Ophthalmologist, Cataract & Squint</p>
+            <p className="mt-3 text-lg font-extrabold leading-snug">DR KUMAR SAKET</p>
+            <p className="text-white/80 text-sm">Cataract, medical retina and trauma specialist</p>
+            <p className="mt-4 text-lg font-extrabold leading-snug">DR MALAY KUMAR DWIVEDI</p>
+            <p className="text-white/80 text-sm">Pediatric Ophthalmologist, Cataract and Squint specialist</p>
           </div>
         </div>
       </section>

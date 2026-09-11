@@ -25,7 +25,7 @@ export const COPY = {
   intro:
     "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
   introLead:
-    "Led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protecting your vision and helping you maintain healthy eyes at every stage of life.",
+    "Led by DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protect your vision and help you maintain healthy eyes at every stage of life.",
   footerBlurb:
     "Welcome to MEERA GAYATRI EYE FOUNDATION, where advanced eye care meets compassionate, personalized treatment.",
   cta: "Book an Appointment",
@@ -35,9 +35,9 @@ export const COPY = {
   aboutP1:
     "Welcome to M G EYE Foundation, where advanced eye care meets compassionate, personalized treatment.",
   aboutP2:
-    "Led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protecting your vision and helping you maintain healthy eyes at every stage of life.",
+    "Led by DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protect your vision and help you maintain healthy eyes at every stage of life.",
   mission:
-    "Our mission is to provide comprehensive eye care services to all the sections of society at affordable cost.",
+    "to provide comprehensive eye care services to all the sections of society at affordable cost.",
   missionTags: ["On-site same-day scanning", "Seven specialised services", "Structured post-operative follow-up"],
   vision:
     "We believe that any patient requiring treatment for eye conditions should not need to travel to a distant facility and come to our Centre. We are committed to provide world class treatment facility in your vicinity.",
@@ -47,7 +47,7 @@ export const COPY = {
   patientEdu:
     "We recognise that unfamiliar medical terminology can cause unnecessary concern. For this reason, we explain every diagnosis according to a consistent three-part structure: the symptoms experienced by the patient, the underlying condition of the eye, and the recommended course of treatment.",
   doctorsIntro:
-    "Meet our doctors. Led by Dr. Saket, Cataract, Medical Retina & Trauma, and Dr. Malay, Pediatric Ophthalmologist, Cataract & Squint Specialist.",
+    "Meet our doctors. Led by DR KUMAR SAKET, Cataract, medical retina and trauma specialist, and DR MALAY KUMAR DWIVEDI, Pediatric Ophthalmologist, Cataract and Squint specialist.",
   servicesIntro:
     "Seven clinical services. Each page follows the same structure used in a working eye hospital: the disease, why it occurs, how it presents, what we do here, and what we do not claim to do on site.",
   pmjay:
@@ -125,7 +125,7 @@ export const SERVICES = [
     feel: "Patients typically report diminished clarity of vision and increased sensitivity to glare, particularly at night.",
     do: "The clouded lens is removed and replaced with a new, clear intraocular lens. Most patients return home on the day of surgery.",
     image: "/service-photos/cataract.png",
-    doctor: "Dr. Malay and Dr. Saket both do cataract surgery.",
+    doctor: "DR MALAY KUMAR DWIVEDI and DR KUMAR SAKET both do cataract surgery.",
     who: "People who see dull, foggy, or yellow. Night lights may shine too much. Reading and walking may feel hard.",
     signs: [
       "Diminished clarity of vision",
@@ -166,7 +166,7 @@ export const SERVICES = [
     feel: "The condition is often asymptomatic in its early stages; peripheral vision may gradually diminish as it progresses.",
     do: "Intraocular pressure is measured and monitored. Prescribed drops or laser treatment are used to reduce pressure and preserve vision.",
     image: "/service-photos/glaucoma.png",
-    doctor: "Dr. Saket looks after glaucoma (eye pressure).",
+    doctor: "DR KUMAR SAKET looks after glaucoma (eye pressure).",
     who: "People with high eye pressure, a family story of glaucoma, or side vision that is getting small. Many people feel no pain at the start.",
     signs: [
       "Often no symptoms in the early stages",
@@ -207,7 +207,7 @@ export const SERVICES = [
     feel: "Patients may experience blurred, dark, or patchy areas within their field of vision.",
     do: "The retina is examined by scan, and injection or laser therapy is administered to protect and preserve vision.",
     image: "/service-photos/retina.png",
-    doctor: "Dr. Saket looks after the retina. Injection and laser are done here.",
+    doctor: "DR KUMAR SAKET looks after the retina. Injection and laser are done here.",
     who: "People with diabetes, sudden dark spots, blur in the centre, or a retina that needs watching after a scan.",
     signs: [
       "Blurred, dark, or patchy areas within the field of vision",
@@ -330,7 +330,7 @@ export const SERVICES = [
     feel: "Indicators may include sitting unusually close to a screen, a noticeably weaker eye, or feedback from school regarding a child's vision.",
     do: "We assess visual acuity, determine whether corrective lenses are required, and identify any asymmetry in eye strength.",
     image: "/service-photos/pediatric.png",
-    doctor: "Dr. Malay looks after children’s eyes every working day.",
+    doctor: "DR MALAY KUMAR DWIVEDI looks after children’s eyes every working day.",
     who: "Children who sit close to the TV, squeeze their eyes, have a lazy eye, or whose school says they cannot see the board.",
     signs: [
       "Sitting unusually close to a screen",
@@ -372,7 +372,7 @@ export const SERVICES = [
     feel: "The eyes may appear to look in different directions; in children, this can result in the weakening of one eye if left untreated.",
     do: "Following a thorough assessment, treatment may involve corrective lenses or surgical correction, depending on the case.",
     image: "/service-photos/squint.png",
-    doctor: "Dr. Malay does squint (bhengaapan) checks and surgery.",
+    doctor: "DR MALAY KUMAR DWIVEDI does squint (bhengaapan) checks and surgery.",
     who: "Children or adults whose one eye turns in, out, up or down. In a child, this can make one eye weak.",
     signs: [
       "The eyes may appear to look in different directions",

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL((process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "")),
   title: "MG Eye Foundation | Clear Vision. Expert Care. Healthier Eyes.",
   description:
-    "Meera Gayatri Eye Foundation, Bara Gamharia — comprehensive ophthalmic care led by Dr. Kumar Saket and Dr. Malay Kumar Dwivedi. Call +91 84090 01008.",
+    "Meera Gayatri Eye Foundation, Bara Gamharia — comprehensive ophthalmic care led by DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI. Call +91 84090 01008.",
 };
 
 export default function RootLayout({

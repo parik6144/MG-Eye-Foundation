@@ -53,7 +53,7 @@ export default function DoctorProfileCard({
 }) {
   const book = () => window.dispatchEvent(new CustomEvent("open-appointment"));
   const a = ACCENT[accent];
-  const title = useShortName ? doctor.shortName : doctor.name;
+  const title = doctor.name;
 
   return (
     <article className={`rounded-[24px] border border-[#e8edf2] bg-white p-6 sm:p-8 ${a.shadow}`}>
@@ -75,17 +75,15 @@ export default function DoctorProfileCard({
 
           <div className={`${doctor.showLabel ? "mt-2" : ""} flex items-start justify-between gap-4`}>
             <div className="min-w-0">
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="text-2xl sm:text-[2rem] font-extrabold text-[#0F172A] leading-tight">
-                  {title}
-                </h3>
-                {doctor.showQual && !useShortName ? (
-                  <span className="text-[#94A3B8] text-base sm:text-lg font-medium">{doctor.qual}</span>
-                ) : null}
-              </div>
+              <h3 className="text-2xl sm:text-[2rem] font-extrabold text-[#0F172A] leading-tight">
+                {title}
+              </h3>
+              {doctor.showQual ? (
+                <p className="mt-1 text-[#64748b] text-sm sm:text-base font-medium">{doctor.qual}</p>
+              ) : null}
               <p className="mt-1 text-[#1F8A9A] text-sm sm:text-base italic">{doctor.englishFocus}</p>
             </div>
-            {useShortName && doctor.stats.length > 0 ? (
+            {doctor.stats.length > 0 ? (
               <div className="shrink-0 rounded-xl border border-[#e2e8f0] px-4 py-3 text-center">
                 {doctor.stats.map((s) => (
                   <div key={s.label}>
@@ -104,19 +102,6 @@ export default function DoctorProfileCard({
               <li key={h}>{formatExLine(h)}</li>
             ))}
           </ul>
-
-          {!useShortName && doctor.stats.length > 0 ? (
-            <div className="mt-5 flex flex-wrap gap-3">
-              {doctor.stats.map((s) => (
-                <div key={s.label} className="min-w-[150px] rounded-xl border border-[#e2e8f0] px-4 py-3">
-                  <div className="text-[#0F172A] font-extrabold text-[15px] leading-tight">{s.value}</div>
-                  <div className="text-[10px] font-semibold tracking-wide uppercase text-[#94A3B8] mt-1">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : null}
 
           {!useShortName ? (
             <>

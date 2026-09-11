@@ -147,7 +147,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       "Sudden blurring in one eye (vein occlusion can harm vision within minutes)",
     ],
     treatment:
-      "The retina cannot be judged by symptoms alone. Colour fundus photography (Forus) and ZEISS CIRRUS OCT show leakage, oedema, membranes and nerve-fibre change. Medical retina care here includes retinal laser for macular oedema and selected breaks, and intravitreal anti-VEGF or steroid injections for diabetic macular oedema, wet ARMD and vein occlusion. Dr. Malay provides ROP screening and ROP surgery for premature infants. Fluorescein angiography, ICG angiography, vitrectomy, macular-hole surgery and complex retinal-detachment surgery are tertiary vitreoretinal procedures; if the scan shows that pathway, it is named honestly after the visit.",
+      "The retina cannot be judged by symptoms alone. Colour fundus photography (Forus) and ZEISS CIRRUS OCT show leakage, oedema, membranes and nerve-fibre change. Medical retina care here includes retinal laser for macular oedema and selected breaks, and intravitreal anti-VEGF or steroid injections for diabetic macular oedema, wet ARMD and vein occlusion. DR MALAY KUMAR DWIVEDI provides ROP screening for premature infants. Fluorescein angiography, ICG angiography, vitrectomy, macular-hole surgery and complex retinal-detachment surgery are tertiary vitreoretinal procedures; if the scan shows that pathway, it is named honestly after the visit.",
     procedures: [
       {
         title: "OCT and fundus imaging",
@@ -192,7 +192,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       },
     ],
     scope:
-      "Medical retina — imaging, laser, injection — and ROP care are delivered here under Dr. Saket and Dr. Malay. Complex vitreoretinal surgery is discussed only when the examination shows it is needed.",
+      "Medical retina — imaging, laser, injection — and ROP care are delivered here under DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI. Complex vitreoretinal surgery is discussed only when the examination shows it is needed.",
   },
   cornea: {
     overview:
@@ -300,7 +300,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       "In infants: poor tracking, white pupil, watering, or light sensitivity",
     ],
     treatment:
-      "Dr. Malay provides daily paediatric clinics. Care includes refraction (NIDEK ARK), glasses, amblyopia therapy (glasses, patching, selected exercises), paediatric cataract surgery when indicated, ROP screening and ROP surgery, and trauma care. Contact lenses are used in selected aphakic or anisometropic children. Botox for selected squints is a specialised option discussed only when alignment physiology supports it.",
+      "DR MALAY KUMAR DWIVEDI provides daily paediatric clinics. Care includes refraction (NIDEK ARK), glasses, amblyopia therapy (glasses, patching, selected exercises), paediatric cataract surgery when indicated, ROP screening, and trauma care. Contact lenses are used in selected aphakic or anisometropic children. Botox for selected squints is a specialised option discussed only when alignment physiology supports it.",
     procedures: [
       {
         title: "Age-appropriate visual acuity",
@@ -337,7 +337,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
         a: "They diagnose and treat children’s eye disease, prescribe glasses or contact lenses, and operate when cataract, squint, ROP or trauma requires it.",
       },
     ],
-    scope: "Paediatric ophthalmology is a core service of this hospital, led by Dr. Malay, including ROP.",
+    scope: "Paediatric ophthalmology is a core service of this hospital, led by DR MALAY KUMAR DWIVEDI, including ROP.",
   },
   squint: {
     overview:
@@ -355,7 +355,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       "In children: decreased vision in one eye if untreated",
     ],
     treatment:
-      "Alignment is measured with prisms and stereo tests. Glasses are tried first when the squint is refractive. Selected cases need surgery to reposition extraocular muscles. Botox can temporarily weaken a muscle to allow realignment in carefully chosen patients. Dr. Malay performs squint assessment and surgery in this hospital. Cost and the likely need for glasses after surgery are explained beforehand.",
+      "Alignment is measured with prisms and stereo tests. Glasses are tried first when the squint is refractive. Selected cases need surgery to reposition extraocular muscles. Botox can temporarily weaken a muscle to allow realignment in carefully chosen patients. DR MALAY KUMAR DWIVEDI performs squint assessment and surgery in this hospital. Cost and the likely need for glasses after surgery are explained beforehand.",
     procedures: [
       {
         title: "Measurement of alignment and stereopsis",
@@ -385,7 +385,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
         a: "The clinical name for squint: the eyes are not aligned on the same target.",
       },
     ],
-    scope: "Squint clinics and surgery are provided by Dr. Malay. A new adult squint is examined for neurological as well as muscular causes.",
+    scope: "Squint clinics and surgery are provided by DR MALAY KUMAR DWIVEDI. A new adult squint is examined for neurological as well as muscular causes.",
   },
   oculoplasty: {
     overview:
