@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
+import { Poppins, Inter, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -22,6 +22,13 @@ const inter = Inter({
   display: "swap",
 });
 
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL((process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "")),
   title: "M G Eye Foundation | Clear Vision. Expert Care. Healthier Eyes.",
@@ -34,7 +41,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${inter.variable} antialiased`}>
+      <body className={`${poppins.variable} ${inter.variable} ${greatVibes.variable} antialiased`}>
         <Navbar />
         <main className="min-h-screen page-enter">{children}</main>
         <PmjaySection />

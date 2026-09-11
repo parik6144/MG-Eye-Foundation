@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SERVICES } from "@/lib/site";
+import { SERVICE_HUB, allServices } from "@/lib/site";
 
 const base = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
 
@@ -18,7 +18,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/testimonials",
     "/patient-info",
     "/insurance",
-    ...SERVICES.map((s) => `/services/${s.slug}`),
+    ...[...new Set([...SERVICE_HUB.map((s) => s.slug), ...allServices().map((s) => s.slug)])].map(
+      (slug) => `/services/${slug}`,
+    ),
   ];
 
   return pages.map((path) => ({

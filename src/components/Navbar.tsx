@@ -2,12 +2,38 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Mail, Facebook, Instagram } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  Mail,
+  Facebook,
+  Instagram,
+  Eye,
+  Home,
+  Users,
+  Stethoscope,
+  Layers,
+  Building2,
+  MessageSquare,
+  Clock,
+  ArrowRight,
+} from "lucide-react";
 import { useState, useCallback } from "react";
-import { NAV, SITE, COPY, SERVICES } from "@/lib/site";
+import { NAV, SITE, COPY, SERVICE_HUB } from "@/lib/site";
 
 const TEAL = "#1F8A9A";
-const TEAL_DEEP = "#16707E";
+const TEAL_DEEP = "#0E4A56";
+
+const NAV_ICONS = {
+  "/": Home,
+  "/about": Users,
+  "/doctors": Stethoscope,
+  "/services": Layers,
+  "/facilities": Building2,
+  "/testimonials": MessageSquare,
+  "/contact": Phone,
+} as const;
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -35,8 +61,11 @@ export default function Navbar() {
     <header className="sticky top-0 z-[80]">
       <div className="text-white text-[12px] sm:text-[13px]" style={{ backgroundColor: TEAL }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 sm:h-10 flex items-center justify-between gap-3">
-          <p className="truncate font-medium tracking-wide flex-1 min-w-0 pr-2">{COPY.tagline}</p>
-          <div className="flex items-center gap-3 shrink-0 text-white">
+          <p className="truncate font-medium tracking-wide flex-1 min-w-0 pr-2 inline-flex items-center gap-2">
+            <Eye className="w-4 h-4 shrink-0" strokeWidth={1.8} />
+            <span className="truncate">{COPY.tagline}</span>
+          </p>
+          <div className="flex items-center gap-3 shrink-0">
             <a href={SITE.facebook} target="_blank" rel="noreferrer" className="hover:opacity-80" aria-label="Facebook">
               <Facebook className="w-4 h-4" />
             </a>
@@ -52,61 +81,83 @@ export default function Navbar() {
             <a href={SITE.phoneHref} className="hover:opacity-80" aria-label="Call">
               <Phone className="w-4 h-4" />
             </a>
+            <a
+              href={SITE.phoneHref}
+              className="hidden md:inline-flex items-center gap-1.5 pl-3 ml-1 border-l border-white/30 font-semibold whitespace-nowrap hover:opacity-90"
+            >
+              Emergency: {SITE.phoneDisplay}
+            </a>
           </div>
         </div>
       </div>
 
-      <div
-        className="relative z-10 border-b-2"
-        style={{
-          background: "linear-gradient(to bottom, #ffffff, #fcfdfd)",
-          borderColor: TEAL,
-          boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 py-2.5">
+      <div className="relative overflow-hidden border-b border-[#D5E6EA] bg-gradient-to-r from-white via-[#F7FBFD] to-[#EAF6F8]">
+        <img
+          src="/home-hero-eye.png"
+          alt=""
+          className="pointer-events-none absolute right-0 top-0 hidden sm:block h-full w-[38%] object-cover object-[center_35%] opacity-45 [mask-image:linear-gradient(90deg,transparent,black_28%)]"
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4 py-3 sm:py-3.5">
             <Link href="/" className="flex items-center gap-3 min-w-0 shrink-0">
-              <img src="/mg_logo.png" alt={SITE.name} className="h-16 sm:h-20 w-auto object-contain" />
-              <span className="block text-[17px] sm:text-[1.4rem] font-extrabold leading-tight tracking-tight" style={{ color: TEAL }}>
+              <img src="/mg_logo.png" alt={SITE.name} className="h-14 sm:h-[72px] w-auto object-contain" />
+              <span className="block text-[17px] sm:text-[1.55rem] font-extrabold leading-tight tracking-tight" style={{ color: TEAL }}>
                 {SITE.name}
               </span>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-0.5 min-w-0 flex-1 justify-end">
-              {NAV.map((item) => {
-                const active = isActive(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`px-2.5 py-2 text-[13px] font-medium rounded-full whitespace-nowrap transition-colors ${
-                      active ? "font-semibold text-white" : "hover:bg-[#E7F3F5]"
-                    }`}
-                    style={active ? { backgroundColor: TEAL_DEEP, color: "#ffffff" } : { color: TEAL_DEEP }}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+            <div className="flex items-center gap-2 shrink-0">
               <button
+                type="button"
                 onClick={openAppointment}
-                className="ml-2 shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold text-white hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: TEAL }}
+                className="hidden sm:inline-flex items-center gap-3 rounded-full pl-2 pr-2 py-1.5 text-left text-white hover:opacity-95 transition-opacity"
+                style={{ backgroundColor: TEAL_DEEP }}
               >
-                Book an Appointment
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
+                  <Clock className="h-5 w-5" strokeWidth={1.8} />
+                </span>
+                <span className="pr-1">
+                  <span className="block text-sm font-bold leading-tight">Book an Appointment</span>
+                  <span className="block text-[11px] text-white/75 leading-tight mt-0.5">Your vision, our priority.</span>
+                </span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/35 mr-0.5">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </button>
-            </nav>
-
-            <button
-              className="lg:hidden text-[#0F172A] p-2 shrink-0"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
+              <button
+                className="lg:hidden text-[#0F172A] p-2"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              >
+                {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+              </button>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="hidden lg:block bg-white shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-1 py-2.5">
+          {NAV.map((item, i) => {
+            const active = isActive(pathname, item.href);
+            const Icon = NAV_ICONS[item.href];
+            return (
+              <span key={item.href} className="flex items-center">
+                {i > 0 && <span className="mx-1.5 h-5 w-px bg-[#D5E6EA]" />}
+                <Link
+                  href={item.href}
+                  className={`inline-flex items-center gap-2 px-3.5 py-2 text-[13px] font-medium rounded-full whitespace-nowrap transition-colors ${
+                    active ? "font-semibold text-white" : "text-[#475569] hover:bg-[#E7F3F5] hover:text-[#0E4A56]"
+                  }`}
+                  style={active ? { backgroundColor: TEAL } : undefined}
+                >
+                  <Icon className="h-4 w-4" strokeWidth={1.8} />
+                  {item.label}
+                </Link>
+              </span>
+            );
+          })}
+        </nav>
       </div>
 
       {mobileOpen && (
@@ -130,7 +181,7 @@ export default function Navbar() {
                       {item.label}
                     </Link>
                     <ul className="ml-3 mb-1 border-l-2 border-[#1F8A9A]/30">
-                      {SERVICES.map((s) => (
+                      {SERVICE_HUB.map((s) => (
                         <li key={s.slug}>
                           <Link
                             href={`/services/${s.slug}`}
@@ -150,17 +201,17 @@ export default function Navbar() {
                 );
               }
               return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={`block px-4 py-3.5 text-[15px] rounded-xl transition-colors ${
-                  isActive(pathname, item.href) ? "font-semibold" : "text-[#475569]"
-                }`}
-                style={isActive(pathname, item.href) ? { color: TEAL, backgroundColor: "#E7F3F5" } : undefined}
-              >
-                {item.label}
-              </Link>
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`block px-4 py-3.5 text-[15px] rounded-xl transition-colors ${
+                    isActive(pathname, item.href) ? "font-semibold" : "text-[#475569]"
+                  }`}
+                  style={isActive(pathname, item.href) ? { color: TEAL, backgroundColor: "#E7F3F5" } : undefined}
+                >
+                  {item.label}
+                </Link>
               );
             })}
             <div className="px-4 pt-3 pb-2">

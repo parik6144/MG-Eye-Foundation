@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone, MapPin, Mail, Clock, Facebook, Instagram } from "lucide-react";
-import { SITE, SERVICES, NAV, COPY } from "@/lib/site";
+import { SITE, SERVICE_HUB, NAV, COPY } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -41,8 +41,8 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-sm mb-5 text-white uppercase tracking-wider">Services</h4>
             <ul className="space-y-2.5 text-slate-400 text-sm">
-              {SERVICES.map((s) => (
-                <li key={s.title}>
+              {SERVICE_HUB.map((s) => (
+                <li key={s.slug}>
                   <Link href={`/services/${s.slug}`} className="hover:text-[#1F8A9A] transition-colors">{s.title}</Link>
                 </li>
               ))}

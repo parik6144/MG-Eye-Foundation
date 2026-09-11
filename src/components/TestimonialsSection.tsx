@@ -58,8 +58,16 @@ export default function TestimonialsSection({ force = false }: { force?: boolean
   const next = () => setPage((p) => (p + 1) % SLIDES.length);
 
   return (
-    <section className="bg-[#F7F9FC] border-t border-[#e2e8f0] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+    <section className="relative overflow-hidden border-t border-[#e2e8f0] bg-gradient-to-b from-[#F4FBFF] via-[#F7FCFF] to-white">
+      <span className="pointer-events-none absolute -left-20 top-6 h-64 w-64 rounded-full bg-[#C9E9F3]/55" />
+      <span className="pointer-events-none absolute left-[22%] bottom-0 h-40 w-40 rounded-full bg-[#D8EEF6]/70" />
+      <span className="pointer-events-none absolute -right-16 top-10 h-72 w-72 rounded-full bg-[#C9E4F2]/40" />
+      <img
+        src="/home-hero-eye.png"
+        alt=""
+        className="pointer-events-none absolute right-[-2%] top-[6%] hidden md:block h-[88%] w-[42%] object-cover object-[center_32%] opacity-40 [mask-image:linear-gradient(90deg,transparent,black_18%,black_78%,transparent)]"
+      />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6">
           <div>
             <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-[#1F8A9A]">Testimonials</p>

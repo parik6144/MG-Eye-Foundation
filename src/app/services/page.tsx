@@ -3,17 +3,6 @@ import { Check } from "lucide-react";
 import { SERVICE_HUB } from "@/lib/site";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
 
-function EyeMark() {
-  return (
-    <svg viewBox="0 0 120 120" className="h-[88px] w-[88px] text-[#1F8A9A]/15" fill="currentColor" aria-hidden>
-      <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" strokeWidth="3" />
-      <ellipse cx="60" cy="60" rx="38" ry="22" />
-      <circle cx="60" cy="60" r="14" fill="#fff" />
-      <circle cx="60" cy="60" r="7" />
-    </svg>
-  );
-}
-
 export default function ServicesPage() {
   return (
     <div className="bg-[#E7F4F1] min-h-screen pb-16">
@@ -38,14 +27,14 @@ export default function ServicesPage() {
             <Link
               key={s.slug}
               href={`/services/${s.slug}`}
-              className="group relative rounded-[22px] bg-white/80 hover:bg-white border border-white shadow-[0_8px_28px_rgba(31,138,154,0.08)] px-6 sm:px-8 py-7 min-h-[220px] transition-shadow hover:shadow-[0_14px_36px_rgba(31,138,154,0.14)]"
+              className="group relative overflow-hidden rounded-[24px] bg-white border border-[#D5E6EA] shadow-[0_8px_28px_rgba(31,138,154,0.08)] px-6 sm:px-8 py-8 min-h-[220px] transition-all duration-300 hover:-translate-y-1 hover:border-[#1F8A9A]/50 hover:shadow-[0_18px_44px_rgba(31,138,154,0.2)]"
             >
-              <span className="pointer-events-none absolute right-4 bottom-4 sm:right-6 sm:bottom-6">
-                <EyeMark />
-              </span>
-              <h2 className="relative flex items-center gap-3 text-lg sm:text-xl font-bold text-[#1F8A9A]">
-                <span className="h-7 w-[3px] rounded-full bg-[#1F8A9A]" />
-                {s.title}
+              <span className="pointer-events-none absolute inset-0 bg-[#1F8A9A]/0 opacity-0 group-hover:bg-[#1F8A9A]/8 group-hover:opacity-100 transition-all duration-300" />
+              <h2 className="relative flex items-center gap-4 text-xl sm:text-2xl font-extrabold text-[#0E4A56] group-hover:text-[#16707E] transition-colors">
+                <span className="flex h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem] shrink-0 items-center justify-center rounded-2xl bg-[#E7F3F5] ring-1 ring-[#1F8A9A]/20">
+                  <img src={s.icon} alt="" className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform duration-300 group-hover:scale-110" />
+                </span>
+                <span>{s.title}</span>
               </h2>
               <ul className="relative mt-5 space-y-2.5 max-w-[88%]">
                 {s.items.map((item) => (

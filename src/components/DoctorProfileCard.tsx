@@ -1,109 +1,131 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Baby,
+  BookOpen,
+  CalendarDays,
+  Droplet,
+  Droplets,
+  Eye,
+  Heart,
+  ScanEye,
+  Shield,
+  Stethoscope,
+  Users,
+} from "lucide-react";
 import { DOCTORS } from "@/lib/doctors";
 
 type Doctor = (typeof DOCTORS)[number];
-type Accent = "blue" | "orange";
 
 function formatExLine(line: string) {
   const rest = line.replace(/^Ex\.?\s+/i, "");
   if (rest.startsWith("Visiting")) return `Ex-${rest}`;
   if (rest.startsWith("HOD")) return `Ex- ${rest}`;
+  if (rest.startsWith("Fellow")) return `Ex-${rest}`;
   return `Ex-${rest}`;
 }
 
-const ACCENT: Record<Accent, {
-  label: string;
-  check: string;
-  checkBg: string;
-  btn: string;
-  shadow: string;
-  frame: string;
-}> = {
-  blue: {
-    label: "text-[#1F8A9A]",
-    check: "text-[#1F8A9A]",
-    checkBg: "bg-[#1F8A9A]/10",
-    btn: "bg-[#1F8A9A] hover:bg-[#16707E] shadow-[#1F8A9A]/25",
-    shadow: "shadow-[0_18px_50px_-24px_rgba(31,138,154,0.28)]",
-    frame: "border-[#1F8A9A]/35 bg-[#E7F3F5]",
-  },
-  orange: {
-    label: "text-[#16707E]",
-    check: "text-[#1F8A9A]",
-    checkBg: "bg-[#1F8A9A]/10",
-    btn: "bg-[#16707E] hover:bg-[#0E4A56] shadow-[#1F8A9A]/25",
-    shadow: "shadow-[0_18px_50px_-24px_rgba(31,138,154,0.28)]",
-    frame: "border-[#1F8A9A]/40 bg-[#E7F3F5]",
-  },
-};
+function expertiseIcon(label: string): LucideIcon {
+  const t = label.toLowerCase();
+  if (t.includes("diabetic")) return Droplets;
+  if (t.includes("trauma") || t.includes("injury")) return Shield;
+  if (t.includes("dry") || t.includes("tear") || t.includes("allerg") || t.includes("infection")) return Droplet;
+  if (t.includes("cataract")) return ScanEye;
+  if (t.includes("comprehensive") || t.includes("ophthalmic care")) return Stethoscope;
+  if (t.includes("child") || t.includes("paediatric") || t.includes("pediatric") || t.includes("rop") || t.includes("congenital"))
+    return Baby;
+  if (t.includes("lazy") || t.includes("amblyopia") || t.includes("learning") || t.includes("school")) return BookOpen;
+  if (t.includes("squint") || t.includes("strabismus") || t.includes("ptosis") || t.includes("eyelid") || t.includes("movement"))
+    return Eye;
+  if (t.includes("developmental")) return Heart;
+  return Eye;
+}
 
 export default function DoctorProfileCard({
   doctor,
   showFullProfileLink = false,
-  accent = "blue",
   useShortName = false,
 }: {
   doctor: Doctor;
   showFullProfileLink?: boolean;
-  accent?: Accent;
+  accent?: "blue" | "orange";
   useShortName?: boolean;
 }) {
   const book = () => window.dispatchEvent(new CustomEvent("open-appointment"));
-  const a = ACCENT[accent];
-  const title = doctor.name;
+  const expertise = useShortName ? doctor.expertise.slice(0, 8) : doctor.expertise;
+  const years = doctor.stats[0];
 
   return (
     <article
       id={useShortName ? undefined : doctor.slug}
-      className={`scroll-mt-28 rounded-[24px] border border-[#e8edf2] bg-white p-6 sm:p-8 ${a.shadow}`}
+      className="relative overflow-hidden scroll-mt-28 rounded-[32px] border border-white/80 bg-white/85 p-4 sm:p-6 lg:p-7 shadow-[0_18px_50px_rgba(31,138,154,0.10)]"
     >
-      <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
-        <div className={`mx-auto sm:mx-0 shrink-0 rounded-2xl border-4 p-1.5 ${a.frame}`}>
-          <img
-            src={doctor.photo}
-            alt={doctor.name}
-            className="h-56 w-44 sm:h-64 sm:w-52 rounded-xl object-cover object-top"
-          />
+      <img
+        src="/home-hero-eye.png"
+        alt=""
+        className="pointer-events-none absolute right-[-4%] top-[8%] hidden lg:block h-[78%] w-[34%] object-cover object-[center_30%] opacity-40 [mask-image:linear-gradient(90deg,transparent,black_22%,black_80%,transparent)]"
+      />
+      <span className="pointer-events-none absolute -right-10 -bottom-12 h-40 w-40 rounded-full bg-[#C9E9F3]/50" />
+
+      <div className="relative flex flex-col lg:flex-row gap-5 lg:gap-7 items-start">
+        <div className="relative mx-auto lg:mx-0 h-56 w-44 sm:h-64 sm:w-52 shrink-0 overflow-hidden rounded-[26px] shadow-[0_12px_28px_rgba(14,74,86,0.18)]">
+          <img src={doctor.photo} alt={doctor.name} className="absolute inset-0 h-full w-full object-cover object-top" />
+          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[#16707E] via-[#1F8A9A]/90 to-transparent" />
+          <Eye className="absolute bottom-3 left-3 h-5 w-5 text-white/90" strokeWidth={1.7} />
+          <p className="absolute bottom-3 left-10 font-script text-[15px] leading-[1.05] text-white">
+            Eye care
+            <br />
+            Clearer seeing
+          </p>
         </div>
 
-        <div className="min-w-0 flex-1">
-          {doctor.showLabel ? (
-            <p className={`${a.label} text-[11px] font-semibold tracking-[0.14em] uppercase`}>
-              {doctor.label}
-            </p>
-          ) : null}
-
-          <div className={`${doctor.showLabel ? "mt-2" : ""} flex items-start justify-between gap-4`}>
+        <div className="min-w-0 flex-1 w-full">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="min-w-0">
-              <h3 className="text-2xl sm:text-[2rem] font-extrabold text-[#0F172A] leading-tight">
-                {title}
+              <h3 className="text-2xl sm:text-[1.85rem] font-extrabold text-[#0E4A56] leading-tight tracking-tight">
+                {doctor.name}
               </h3>
               {doctor.showQual ? (
-                <p className="mt-1 text-[#64748b] text-sm sm:text-base font-medium">{doctor.qual}</p>
+                <p className="mt-1 text-[#64748b] text-sm font-medium">{doctor.qual}</p>
               ) : null}
-              <p className="mt-1 text-[#1F8A9A] text-sm sm:text-base italic">{doctor.englishFocus}</p>
-            </div>
-            {doctor.stats.length > 0 ? (
-              <div className="shrink-0 rounded-xl border border-[#e2e8f0] px-4 py-3 text-center">
-                {doctor.stats.map((s) => (
-                  <div key={s.label}>
-                    <div className="text-[#0F172A] font-extrabold text-[15px] leading-tight">{s.value}</div>
-                    <div className="text-[10px] font-semibold tracking-wide uppercase text-[#94A3B8] mt-1">
-                      {s.label}
-                    </div>
-                  </div>
+              <p className="mt-1 text-[#1F8A9A] text-sm sm:text-[15px] italic">{doctor.englishFocus}</p>
+              <ul className="mt-3 space-y-1 text-[13px] sm:text-sm text-[#475569] leading-snug">
+                {doctor.highlights.map((h) => (
+                  <li key={h}>{formatExLine(h)}</li>
                 ))}
+              </ul>
+            </div>
+
+            {years ? (
+              <div className="shrink-0 flex items-center gap-3 sm:flex-col sm:items-center sm:text-center sm:min-w-[120px]">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#E7F6F8] text-[#1F8A9A] ring-8 ring-[#E7F6F8]/60">
+                  <Users className="h-7 w-7" strokeWidth={1.6} />
+                </span>
+                <div>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-[#1F8A9A] leading-none">{years.value}</p>
+                  <p className="mt-1 text-[10px] font-semibold tracking-[0.14em] uppercase text-[#64748b]">
+                    Years of experience
+                  </p>
+                </div>
               </div>
             ) : null}
           </div>
 
-          <ul className={`mt-3 text-sm text-[#475569] ${useShortName ? "space-y-1" : "grid sm:grid-cols-2 gap-x-8 gap-y-1.5"}`}>
-            {doctor.highlights.map((h) => (
-              <li key={h}>{formatExLine(h)}</li>
-            ))}
+          <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-3">
+            {expertise.map((item) => {
+              const Icon = expertiseIcon(item);
+              return (
+                <li key={item} className="flex items-center gap-2.5 text-sm text-[#334155]">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F6F8] text-[#1F8A9A]">
+                    <Icon className="h-4 w-4" strokeWidth={1.8} />
+                  </span>
+                  <span className="leading-snug">{item}</span>
+                </li>
+              );
+            })}
           </ul>
 
           {!useShortName ? (
@@ -122,37 +144,16 @@ export default function DoctorProfileCard({
             </>
           ) : null}
 
-          {!useShortName ? (
-            <p className="mt-6 text-xs font-semibold tracking-[0.16em] uppercase text-[#94A3B8]">
-              Areas of special interest
-            </p>
-          ) : null}
-          <ul className={`mt-3 grid gap-x-4 gap-y-2 ${useShortName ? "grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2 gap-x-8 gap-y-2.5"}`}>
-            {(useShortName ? doctor.expertise.slice(0, 8) : doctor.expertise).map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-[#334155]">
-                <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${a.checkBg}`}>
-                  <Check className={`h-3.5 w-3.5 ${a.check}`} strokeWidth={3} />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
           {doctor.showMemberships ? (
-            <>
-              <p className="mt-6 text-xs font-semibold tracking-[0.16em] uppercase text-[#94A3B8]">
-                Professional qualifications
-              </p>
-              <ul className="mt-3 space-y-1.5 text-sm text-[#475569]">
-                {doctor.memberships.map((m) => (
-                  <li key={m}>{m}</li>
-                ))}
-              </ul>
-            </>
+            <ul className="mt-4 space-y-1.5 text-sm text-[#475569]">
+              {doctor.memberships.map((m) => (
+                <li key={m}>{m}</li>
+              ))}
+            </ul>
           ) : null}
 
           {!useShortName ? (
-            <div className="mt-5 grid grid-cols-4 gap-2">
+            <div className="mt-5 grid grid-cols-4 gap-2 max-w-lg">
               {doctor.treats.map((t) => (
                 <figure key={t.title} className="relative aspect-square overflow-hidden rounded-xl">
                   <img src={t.image} alt={t.title} className="absolute inset-0 h-full w-full object-cover" />
@@ -165,20 +166,25 @@ export default function DoctorProfileCard({
             </div>
           ) : null}
 
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={book}
-              className={`${a.btn} text-white font-bold rounded-lg px-6 py-3 text-sm shadow-md`}
+              className="inline-flex items-center gap-2 rounded-full bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold px-5 py-2.5 text-sm shadow-md shadow-[#1F8A9A]/20"
             >
-              {doctor.bookLabel}
+              <CalendarDays className="h-4 w-4" strokeWidth={2} />
+              Book an Appointment
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
+                <ArrowRight className="h-3.5 w-3.5" />
+              </span>
             </button>
             {showFullProfileLink ? (
               <Link
                 href={`/doctors#${doctor.slug}`}
-                className="inline-flex items-center gap-1 rounded-lg border border-[#e2e8f0] bg-white px-6 py-3 text-sm font-semibold text-[#0F172A] hover:border-[#1F8A9A]"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-[#1F8A9A] bg-white px-5 py-2.5 text-sm font-bold text-[#1F8A9A] hover:bg-[#E7F6F8]"
               >
-                Read more <ArrowRight className="w-4 h-4" />
+                Read more
+                <ArrowRight className="h-4 w-4" />
               </Link>
             ) : null}
           </div>

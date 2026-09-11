@@ -58,6 +58,7 @@
   }
   html { scroll-behavior: smooth; overflow-x: hidden; }
   body { overflow-x: hidden; }
+  .font-script { font-family: var(--font-script), cursive; }
 }
 
 @keyframes fadeUp {

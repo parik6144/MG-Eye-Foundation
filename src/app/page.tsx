@@ -2,18 +2,28 @@
 
 import Link from "next/link";
 import { useCallback } from "react";
-import { UserSearch, MapPin, CalendarDays, ArrowRight } from "lucide-react";
-import { COPY, SERVICES, STATS } from "@/lib/site";
+import { UserSearch, MapPin, CalendarDays, ArrowRight, Users, User, Eye, UserRound } from "lucide-react";
+import { COPY, SERVICE_HUB, STATS } from "@/lib/site";
 import { DOCTORS } from "@/lib/doctors";
-import { SERVICE_MARKS, SERVICE_SHORT, ServicesTitleMark } from "@/components/ServiceIcons";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
 
-const STAT_TONE = [
-  "bg-[#E7F3F5] text-[#0E4A56]",
-  "bg-[#FFF6EC] text-[#9A4A12]",
-  "bg-[#F0F7F4] text-[#166534]",
-  "bg-[#EEF2FF] text-[#3730A3]",
-];
+const SERVICE_CARD = {
+  cataract: { wrap: "bg-[#EAF2FF]", blob: "bg-[#BFD4FF]", accent: "text-[#2563EB]", btn: "bg-[#3B82F6]" },
+  cornea: { wrap: "bg-[#E7FBF3]", blob: "bg-[#B6F0D3]", accent: "text-[#059669]", btn: "bg-[#10B981]" },
+  glaucoma: { wrap: "bg-[#FFF6E8]", blob: "bg-[#FFD9A3]", accent: "text-[#EA580C]", btn: "bg-[#F97316]" },
+  retina: { wrap: "bg-[#FFF0F5]", blob: "bg-[#F9C2D4]", accent: "text-[#DB2777]", btn: "bg-[#EC4899]" },
+  pediatric: { wrap: "bg-[#F4EEFF]", blob: "bg-[#D5C4FF]", accent: "text-[#7C3AED]", btn: "bg-[#8B5CF6]" },
+  oculoplasty: { wrap: "bg-[#E6FBFF]", blob: "bg-[#B5F1F8]", accent: "text-[#0891B2]", btn: "bg-[#06B6D4]" },
+  refractive: { wrap: "bg-[#FFF8E1]", blob: "bg-[#FFE7A3]", accent: "text-[#D97706]", btn: "bg-[#F59E0B]" },
+  other: { wrap: "bg-[#FFF1F4]", blob: "bg-[#FBCFE8]", accent: "text-[#E11D48]", btn: "bg-[#F43F5E]" },
+} as const;
+
+const STAT_CARD = [
+  { wrap: "bg-[#EAF4FF]", iconWrap: "bg-[#D7EBFF] text-[#2B7DE9]", num: "text-[#2B7DE9]", Icon: Users },
+  { wrap: "bg-[#FFF1E6]", iconWrap: "bg-[#FFE0C8] text-[#E85D04]", num: "text-[#E85D04]", Icon: User },
+  { wrap: "bg-[#E8F8EE]", iconWrap: "bg-[#CFF0D8] text-[#2E8B57]", num: "text-[#1B7A3D]", Icon: Eye },
+  { wrap: "bg-[#F3EEFF]", iconWrap: "bg-[#E4D9FF] text-[#6D4AE8]", num: "text-[#6D28D9]", Icon: UserRound },
+] as const;
 
 export default function HomePage() {
   const openAppointment = useCallback(() => {
@@ -30,93 +40,150 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="bg-[#F4F8F9] px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="max-w-6xl mx-auto rounded-3xl bg-white shadow-[0_18px_50px_rgba(31,138,154,0.12)] border border-[#D5E6EA] grid md:grid-cols-3 overflow-hidden">
-          <Link
-            href="/doctors"
-            className="flex items-start gap-4 p-6 sm:p-7 hover:bg-[#E7F3F5] transition-colors md:border-r border-[#e2e8f0]"
-          >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#E7F3F5] text-[#1F8A9A]">
-              <UserSearch className="w-6 h-6" strokeWidth={1.6} />
-            </span>
-            <span>
-              <span className="block font-extrabold text-[#0F172A]">Find a Doctor</span>
-              <span className="block text-sm text-[#64748b] mt-1 leading-snug">Meet our doctors.</span>
-            </span>
-          </Link>
-          <Link
-            href="/contact"
-            className="flex items-start gap-4 p-6 sm:p-7 hover:bg-[#FFF6EC] transition-colors md:border-r border-[#e2e8f0] border-t md:border-t-0"
-          >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#FFF6EC] text-[#C2410C]">
-              <MapPin className="w-6 h-6" strokeWidth={1.6} />
-            </span>
-            <span>
-              <span className="block font-extrabold text-[#0F172A]">Locate Us</span>
-              <span className="block text-sm text-[#64748b] mt-1 leading-snug">Bara Gamharia, Jamshedpur.</span>
-            </span>
-          </Link>
-          <button
-            type="button"
-            onClick={openAppointment}
-            className="flex items-start gap-4 p-6 sm:p-7 text-left bg-[#1F8A9A] hover:bg-[#16707E] transition-colors border-t md:border-t-0"
-          >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-white">
-              <CalendarDays className="w-6 h-6" strokeWidth={1.6} />
-            </span>
-            <span>
-              <span className="block font-extrabold text-white">Book an Appointment</span>
-              <span className="block text-sm text-white/80 mt-1 leading-snug">{COPY.ctaNote}</span>
-            </span>
-          </button>
-        </div>
-      </section>
+      <section id="home-intro" className="relative overflow-hidden bg-gradient-to-b from-[#F4FBFF] via-[#F7FCFF] to-white">
+        <span className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#C9E9F3]/55" />
+        <span className="pointer-events-none absolute left-[18%] top-36 h-40 w-40 rounded-full bg-[#D8EEF6]/70" />
+        <span className="pointer-events-none absolute -right-16 bottom-24 h-80 w-80 rounded-full bg-[#C9E4F2]/40" />
+        <img
+          src="/home-hero-eye.png"
+          alt=""
+          className="pointer-events-none absolute right-0 top-[22%] hidden lg:block h-[70%] w-[42%] object-cover object-[center_30%] opacity-75 [mask-image:linear-gradient(90deg,transparent,black_18%,black_85%,transparent)] [mask-size:100%_100%]"
+        />
 
-      <section className="bg-white py-12 sm:py-14">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#0E4A56] leading-tight">{COPY.headline}</h1>
-          <div className="mt-4 flex items-center justify-center gap-2">
-            <span className="h-px w-10 bg-[#1F8A9A]/30" />
-            <span className="h-1.5 w-1.5 rounded-full bg-[#1F8A9A]" />
-            <span className="h-px w-10 bg-[#1F8A9A]/30" />
-          </div>
-          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3">
-            {STATS.map((s, i) => (
-              <div key={s.label} className={`rounded-2xl px-3 py-4 ${STAT_TONE[i]}`}>
-                <p className="text-xl sm:text-2xl font-extrabold">{s.num}</p>
-                <p className="mt-1 text-[11px] sm:text-xs leading-snug opacity-80">{s.label}</p>
-              </div>
-            ))}
+        <div className="relative px-4 sm:px-6 lg:px-10 pt-8 sm:pt-10">
+          <div className="grid md:grid-cols-3 overflow-hidden rounded-[32px] bg-white shadow-[0_18px_50px_rgba(31,138,154,0.12)] border border-[#E4EEF2]">
+            <Link
+              href="/doctors"
+              className="group flex items-center gap-4 px-5 sm:px-7 py-5 hover:bg-[#F7FBFD] transition-colors md:border-r border-[#E8F0F3]"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E7F7FA] text-[#1F8A9A]">
+                <UserSearch className="w-6 h-6" strokeWidth={1.7} />
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block font-extrabold text-[#0F172A]">Find a Doctor</span>
+                <span className="block text-sm text-[#64748b] mt-1 leading-snug">Meet our experienced eye specialists.</span>
+              </span>
+              <ArrowRight className="h-5 w-5 shrink-0 text-[#94A3B8] group-hover:text-[#1F8A9A]" />
+            </Link>
+            <Link
+              href="/contact"
+              className="group flex items-center gap-4 px-5 sm:px-7 py-5 hover:bg-[#FFF8F2] transition-colors md:border-r border-[#E8F0F3] border-t md:border-t-0"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#FFF1E8] text-[#EA580C]">
+                <MapPin className="w-6 h-6" strokeWidth={1.7} />
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block font-extrabold text-[#0F172A]">Locate Us</span>
+                <span className="block text-sm text-[#64748b] mt-1 leading-snug">Bara Gamharia, Jamshedpur.</span>
+              </span>
+              <ArrowRight className="h-5 w-5 shrink-0 text-[#F97316]" />
+            </Link>
+            <button
+              type="button"
+              onClick={openAppointment}
+              className="group flex items-center gap-4 px-5 sm:px-7 py-5 text-left bg-[#16707E] hover:bg-[#0E4A56] transition-colors border-t md:border-t-0"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+                <CalendarDays className="w-6 h-6" strokeWidth={1.7} />
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block font-extrabold text-white">Book an Appointment</span>
+                <span className="block text-sm text-white/80 mt-1 leading-snug">{COPY.ctaNote}</span>
+              </span>
+              <ArrowRight className="h-5 w-5 shrink-0 text-white/90" />
+            </button>
           </div>
         </div>
-      </section>
 
-      <section className="py-16 sm:py-20 bg-[#F4F8F9]">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-[2rem] sm:text-[2.4rem] font-extrabold text-[#0E4A56]">Services</h2>
-            <div className="mt-3 flex items-center justify-center gap-3">
-              <span className="w-20 sm:w-28 border-t-2 border-dotted border-[#1F8A9A]" />
-              <ServicesTitleMark />
-              <span className="w-20 sm:w-28 border-t-2 border-dotted border-[#1F8A9A]" />
+        <div className="relative max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-14 sm:pb-16">
+          <div className="relative text-center">
+            <div className="flex items-center justify-center gap-3">
+              <span className="h-px w-10 bg-[#1F8A9A]/35" />
+              <p className="text-[#1F8A9A] text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase">
+                Care for your eyes
+              </p>
+              <span className="h-px w-10 bg-[#1F8A9A]/35" />
             </div>
+            <h1 className="mt-4 text-3xl sm:text-5xl font-extrabold text-[#0F172A] leading-tight max-w-3xl mx-auto">
+              Comprehensive and Advanced Eye Care Hospital
+              <br />
+              <span className="text-[#1F8A9A]"></span> 
+            </h1>
+
           </div>
 
-          <div className="mt-12 flex flex-nowrap items-stretch justify-start lg:justify-center gap-3 overflow-x-auto pb-2">
-            {SERVICES.map((s) => {
-              const Mark = SERVICE_MARKS[s.slug];
+          <div className="mt-10 sm:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {STATS.map((s, i) => {
+              const tone = STAT_CARD[i];
+              const Icon = tone.Icon;
+              return (
+                <div
+                  key={s.label}
+                  className={`rounded-[26px] px-4 py-7 sm:py-8 text-center shadow-[0_12px_28px_rgba(15,23,42,0.06)] ${tone.wrap}`}
+                >
+                  <span className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full ${tone.iconWrap}`}>
+                    <Icon className="h-6 w-6" strokeWidth={1.7} />
+                  </span>
+                  <p className={`mt-4 text-2xl sm:text-[1.7rem] font-extrabold ${tone.num}`}>{s.num}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-[#475569] leading-snug">{s.label}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 flex items-center justify-center gap-3 text-center">
+            <span className="h-px w-16 sm:w-24 bg-[#1F8A9A]/25" />
+            <Eye className="h-5 w-5 text-[#1F8A9A]" strokeWidth={1.6} />
+            <span className="h-px w-16 sm:w-24 bg-[#1F8A9A]/25" />
+          </div>
+          <p className="mt-3 text-center text-sm sm:text-base text-[#64748b]">
+             Trusted by thousands for quality eye care, advanced technology and compassionate treatment.
+          </p>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-16 sm:py-20 bg-gradient-to-b from-[#F7FBFF] via-[#F4F8F9] to-white">
+        <span className="pointer-events-none absolute -left-16 top-10 h-48 w-48 rounded-full bg-[#C7E8F0]/50" />
+        <span className="pointer-events-none absolute right-10 top-6 h-32 w-32 rounded-full bg-[#D6C8F5]/40" />
+        <span className="pointer-events-none absolute -right-10 bottom-8 h-56 w-56 rounded-full bg-[#F8D5E6]/35" />
+        <div className="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-[#1F8A9A] text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase">
+              Complete eye care under one roof
+            </p>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-[#0E4A56] leading-tight">
+              Our <span className="text-[#1F8A9A]">Eye Care</span> Services
+            </h2>
+          
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {SERVICE_HUB.map((s) => {
+              const theme = SERVICE_CARD[s.slug];
               return (
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
-                  className="group shrink-0 w-[138px] sm:w-[148px] lg:flex-1 lg:w-auto lg:min-w-0 lg:max-w-[168px] rounded-[18px] bg-white px-2.5 py-6 text-center shadow-[0_12px_32px_rgba(15,23,42,0.08)] hover:shadow-[0_18px_40px_rgba(31,138,154,0.18)] hover:-translate-y-1.5 border border-white hover:border-[#1F8A9A]/25 transition-all"
+                  className={`group relative overflow-hidden rounded-[28px] min-h-[300px] p-6 sm:p-7 flex flex-col ${theme.wrap} shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-1.5 hover:shadow-[0_22px_44px_rgba(15,23,42,0.12)] transition-all duration-300`}
                 >
-                  <span className="mx-auto flex items-center justify-center text-[#1F8A9A]">
-                    {Mark ? Mark() : null}
-                  </span>
-                  <span className="mx-auto mt-3 mb-3 block h-[3px] w-10 rounded-full bg-[#1F8A9A]" />
-                  <span className="block text-[11px] sm:text-xs font-bold tracking-[0.1em] uppercase text-[#1F8A9A] leading-snug">
-                    {SERVICE_SHORT[s.slug] ?? s.title}
+                  <span className={`pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full ${theme.blob} opacity-70`} />
+                  <span className={`pointer-events-none absolute -right-6 bottom-8 h-24 w-24 rounded-full ${theme.blob} opacity-40`} />
+                  <img
+                    src={s.icon}
+                    alt=""
+                    className="relative h-[72px] w-[72px] sm:h-[84px] sm:w-[84px] object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <h3 className="relative mt-5 text-xl sm:text-[1.35rem] font-extrabold text-[#0F172A] leading-snug">
+                    {s.title}
+                  </h3>
+                  <p className="relative mt-2 text-sm text-[#475569] leading-relaxed flex-1">
+                    {s.blurb}
+                  </p>
+                  <span className={`relative mt-5 inline-flex items-center gap-2 text-sm font-bold ${theme.accent}`}>
+                    Learn More
+                    <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-white ${theme.btn} group-hover:opacity-90`}>
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
                   </span>
                 </Link>
               );
@@ -125,17 +192,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-b from-[#F4FBFF] via-white to-[#F7FBFD]">
+        <span className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-[#C9E9F3]/50" />
+        <span className="pointer-events-none absolute right-10 top-4 h-36 w-36 rounded-full bg-[#D6EEF6]/70" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0E4A56]">Meet Our Doctors</h2>
-            <div className="mt-4 flex items-center justify-center gap-2">
-              <span className="h-px w-8 bg-[#1F8A9A]/30" />
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1F8A9A]" />
-              <span className="h-px w-8 bg-[#1F8A9A]/30" />
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0E4A56] leading-tight">
+              Meet Our <span className="text-[#1F8A9A]">Doctors</span>
+            </h2>
+            <div className="mt-4 flex items-center justify-center gap-3">
+              <span className="h-px w-10 bg-[#1F8A9A]/35" />
+              <Eye className="h-5 w-5 text-[#1F8A9A]" strokeWidth={1.6} />
+              <span className="h-px w-10 bg-[#1F8A9A]/35" />
             </div>
           </div>
-          <div className="mt-12 space-y-10">
+          <div className="mt-10 space-y-8">
             {DOCTORS.map((d) => (
               <DoctorProfileCard key={d.name} doctor={d} useShortName showFullProfileLink />
             ))}

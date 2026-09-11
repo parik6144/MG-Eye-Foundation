@@ -56,7 +56,7 @@ export const COPY = {
 
 export const STATS = [
   { num: "15+", label: "Years of Clinical Experience" },
-  { num: "1,00,000+", label: "Patients" },
+  { num: "1,000,000+", label: "Patients" },
   { num: "10,000+", label: "Surgeries" },
   { num: "10", label: "Specialists" },
 ] as const;
@@ -408,6 +408,8 @@ export const SERVICE_HUB = [
   {
     slug: "cataract",
     title: "Cataract Services",
+    icon: "/service-icons/cataract.png",
+    blurb: "We check cloudy vision. Surgery with a new lens can help you see more clearly.",
     items: [
       "Phacoemulsification with Foldable IOL",
       "Multifocal IOL",
@@ -418,16 +420,20 @@ export const SERVICE_HUB = [
   {
     slug: "cornea",
     title: "Cornea Services",
+    icon: "/service-icons/cornea.png",
+    blurb: "We treat infection, injury and other problems of the clear front of the eye.",
     items: [
       "Corneal ulcer treatment",
-      "⁠Corneal imaging ( OCT)",
-      "⁠Corneal tear repair",
+      "Corneal imaging (OCT)",
+      "Corneal tear repair",
       "Contact lens service",
     ],
   },
   {
     slug: "glaucoma",
     title: "Glaucoma Services",
+    icon: "/service-icons/glaucoma.png",
+    blurb: "We find high eye pressure early and treat it to protect your seeing.",
     items: [
       "Goldmann Applanation Tonometry",
       "Pachymetry",
@@ -437,13 +443,24 @@ export const SERVICE_HUB = [
     ],
   },
   {
-    slug: "oculoplasty",
-    title: "Oculoplasty Services",
-    items: ["DCR Surgery", "DCT Surgery", "Lid Repair Surgery","Entropion surgery","Ectropion surgery","Ptosis correction"],
+    slug: "retina",
+    title: "Vitreo-retinal Services",
+    icon: "/service-icons/retina.png",
+    blurb: "We treat problems at the back of the eye, including swelling from diabetes.",
+    items: [
+      "Retinal Laser",
+      "Medical Management for Diabetic Retinopathy",
+      "ARMD Treatment",
+      "Intravitreal Injection",
+      "OCT",
+      "LVA",
+    ],
   },
   {
     slug: "pediatric",
     title: "Pediatric Ophthalmology And Squint Services",
+    icon: "/service-icons/pediatric.png",
+    blurb: "We check children’s eyes and treat squint so both eyes can work well.",
     items: [
       "Pediatric Cataract Surgery",
       "Squint Surgery",
@@ -457,25 +474,24 @@ export const SERVICE_HUB = [
     ],
   },
   {
-    slug: "refractive",
-    title: "Refractive Error Service",
-    items: ["PRK", "ICL"],
+    slug: "oculoplasty",
+    title: "Oculoplasty Services",
+    icon: "/service-icons/oculoplasty.png",
+    blurb: "We treat eyelid, tear-duct and nearby problems.",
+    items: ["DCR Surgery", "DCT Surgery", "Lid Repair Surgery", "Entropion surgery", "Ectropion surgery", "Ptosis correction"],
   },
   {
-    slug: "retina",
-    title: "Vitreo-retinal Services",
-    items: [
-      "Retinal Laser",
-      "Medical Management for Diabetic Retinopathy",
-      "ARMD Treatment",
-      "Intravitreal Injection",
-      "OCT",
-      "LVA",
-    ],
+    slug: "refractive",
+    title: "Refractive Error Service",
+    icon: "/service-icons/refractive.png",
+    blurb: "Glasses, contact lenses and other options for clearer seeing.",
+    items: ["PRK", "ICL"],
   },
   {
     slug: "other",
     title: "Other Services",
+    icon: "/service-icons/other.png",
+    blurb: "Optical shop, pharmacy and extra eye care in this hospital.",
     items: ["Neuro-Ophthalmology", "Optical Shop", "Pharmacy"],
   },
 ] as const;
