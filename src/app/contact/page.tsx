@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { Phone, MapPin, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
-import { SITE, COPY } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 const MAP_SRC =
@@ -68,16 +68,6 @@ export default function ContactPage() {
             <p className="mt-6 flex items-start gap-3 text-[#475569] text-lg leading-relaxed">
               <MapPin className="w-6 h-6 text-[#1F8A9A] shrink-0 mt-1" />
               {SITE.address}, {SITE.city}
-            </p>
-            {/* <p className="mt-4 text-[#64748b] leading-relaxed">
-              <span className="font-semibold text-[#0F172A]">Service Area. </span>
-              {COPY.serviceArea}
-            </p> */}
-            <p className="mt-6 text-sm bg-[#FFF7ED] border border-[#FFEDD5] text-[#9A3412] rounded-2xl p-4 leading-relaxed">
-              {COPY.pmjay}
-            </p>
-            <p className="mt-4 text-sm bg-[#F0FDF4] border border-[#BBF7D0] text-[#14532D] rounded-2xl p-4 leading-relaxed">
-              {COPY.rajyakarmi}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href={SITE.phoneHref} className="inline-flex items-center justify-center gap-2 bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold rounded-full px-7 py-3.5 text-sm">
