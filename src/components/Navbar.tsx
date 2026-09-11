@@ -85,7 +85,7 @@ export default function Navbar() {
               href={SITE.phoneHref}
               className="hidden md:inline-flex items-center gap-1.5 pl-3 ml-1 border-l border-white/30 font-semibold whitespace-nowrap hover:opacity-90"
             >
-              Emergency: {SITE.phoneDisplay}
+              {SITE.phoneDisplay}
             </a>
           </div>
         </div>
