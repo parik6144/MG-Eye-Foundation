@@ -58,9 +58,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-[80]">
+    <header className="sticky top-0 left-0 right-0 z-[80] w-full bg-white">
       <div className="text-white text-[12px] sm:text-[13px]" style={{ backgroundColor: TEAL }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 sm:h-10 flex items-center justify-between gap-3">
+        <div className="w-full px-4 sm:px-6 lg:px-10 h-9 sm:h-10 flex items-center justify-between gap-3">
           <p className="truncate font-medium tracking-wide flex-1 min-w-0 pr-2 inline-flex items-center gap-2">
             <Eye className="w-4 h-4 shrink-0" strokeWidth={1.8} />
             <span className="truncate">{COPY.tagline}</span>
@@ -91,17 +91,19 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden border-b border-[#D5E6EA] bg-gradient-to-r from-white via-[#F7FBFD] to-[#EAF6F8]">
-        <img
-          src="/home-hero-eye.png"
-          alt=""
-          className="pointer-events-none absolute right-0 top-0 hidden sm:block h-full w-[38%] object-cover object-[center_35%] opacity-45 [mask-image:linear-gradient(90deg,transparent,black_28%)]"
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 py-3 sm:py-3.5">
-            <Link href="/" className="flex items-center gap-3 min-w-0 shrink-0">
-              <img src="/mg_logo.png" alt={SITE.name} className="h-14 sm:h-[72px] w-auto object-contain" />
-              <span className="block text-[17px] sm:text-[1.55rem] font-extrabold leading-tight tracking-tight" style={{ color: TEAL }}>
+      <div className="relative border-b border-[#D5E6EA] bg-gradient-to-r from-white via-[#F7FBFD] to-[#EAF6F8]">
+        <span className="pointer-events-none absolute inset-y-0 right-0 hidden sm:block w-[38%] overflow-hidden">
+          <img
+            src="/home-hero-eye.png"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-[center_35%] opacity-45 [mask-image:linear-gradient(90deg,transparent,black_28%)]"
+          />
+        </span>
+        <div className="relative w-full px-4 sm:px-6 lg:px-10">
+          <div className="flex items-center justify-between gap-4 min-h-[88px] sm:min-h-[96px] py-2.5">
+            <Link href="/" className="flex items-center gap-3 shrink-0">
+              <img src="/mg_logo.png" alt={SITE.name} className="h-16 sm:h-20 w-auto max-w-none object-contain" />
+              <span className="block whitespace-nowrap text-[17px] sm:text-[1.55rem] font-extrabold leading-tight tracking-tight" style={{ color: TEAL }}>
                 {SITE.name}
               </span>
             </Link>
@@ -136,8 +138,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="hidden lg:block bg-white shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-1 py-2.5">
+      <div className="hidden lg:block bg-white shadow-[0_6px_18px_rgba(15,23,42,0.06)] w-full">
+        <nav className="w-full px-4 sm:px-6 lg:px-10 flex items-center justify-between gap-1 py-2.5">
           {NAV.map((item, i) => {
             const active = isActive(pathname, item.href);
             const Icon = NAV_ICONS[item.href];
