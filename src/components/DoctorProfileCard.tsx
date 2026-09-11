@@ -101,7 +101,7 @@ export default function DoctorProfileCard({
 
           <ul className={`mt-3 text-sm text-[#475569] ${useShortName ? "space-y-1" : "grid sm:grid-cols-2 gap-x-8 gap-y-1.5"}`}>
             {doctor.highlights.map((h) => (
-              <li key={h}>{useShortName ? formatExLine(h) : h.replace("Ex. ", "")}</li>
+              <li key={h}>{formatExLine(h)}</li>
             ))}
           </ul>
 
