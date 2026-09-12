@@ -91,14 +91,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="relative border-b border-[#D5E6EA] bg-gradient-to-r from-white via-[#F7FBFD] to-[#EAF6F8]">
-        <span className="pointer-events-none absolute inset-y-0 right-0 hidden sm:block w-[38%] overflow-hidden">
-          <img
-            src="/home-hero-eye.png"
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover object-[center_35%] opacity-45 [mask-image:linear-gradient(90deg,transparent,black_28%)]"
-          />
-        </span>
+      <div className="relative border-b border-[#D5E6EA] bg-white">
         <div className="relative w-full px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between gap-4 min-h-[88px] sm:min-h-[96px] py-2.5">
             <Link href="/" className="flex items-center gap-3 shrink-0">

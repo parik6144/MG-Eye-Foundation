@@ -40,17 +40,8 @@ export default function HomePage() {
         />
       </section>
 
-      <section id="home-intro" className="relative overflow-hidden bg-gradient-to-b from-[#F4FBFF] via-[#F7FCFF] to-white">
-        <span className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#C9E9F3]/55" />
-        <span className="pointer-events-none absolute left-[18%] top-36 h-40 w-40 rounded-full bg-[#D8EEF6]/70" />
-        <span className="pointer-events-none absolute -right-16 bottom-24 h-80 w-80 rounded-full bg-[#C9E4F2]/40" />
-        <img
-          src="/home-hero-eye.png"
-          alt=""
-          className="pointer-events-none absolute right-0 top-[22%] hidden lg:block h-[70%] w-[42%] object-cover object-[center_30%] opacity-75 [mask-image:linear-gradient(90deg,transparent,black_18%,black_85%,transparent)] [mask-size:100%_100%]"
-        />
-
-        <div className="relative px-4 sm:px-6 lg:px-10 pt-8 sm:pt-10">
+      <section id="home-intro" className="bg-white">
+        <div className="px-4 sm:px-6 lg:px-10 pt-8 sm:pt-10">
           <div className="grid md:grid-cols-3 overflow-hidden rounded-[32px] bg-white shadow-[0_18px_50px_rgba(31,138,154,0.12)] border border-[#E4EEF2]">
             <Link
               href="/doctors"
@@ -95,7 +86,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="relative max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-14 sm:pb-16">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-14 sm:pb-16">
           <div className="relative text-center">
             <div className="flex items-center justify-center gap-3">
               <span className="h-px w-10 bg-[#1F8A9A]/35" />
@@ -142,11 +133,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-20 bg-gradient-to-b from-[#F7FBFF] via-[#F4F8F9] to-white">
-        <span className="pointer-events-none absolute -left-16 top-10 h-48 w-48 rounded-full bg-[#C7E8F0]/50" />
-        <span className="pointer-events-none absolute right-10 top-6 h-32 w-32 rounded-full bg-[#D6C8F5]/40" />
-        <span className="pointer-events-none absolute -right-10 bottom-8 h-56 w-56 rounded-full bg-[#F8D5E6]/35" />
-        <div className="relative max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-[#1F8A9A] text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase">
               Complete eye care under one roof
@@ -164,7 +152,7 @@ export default function HomePage() {
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
-                  className={`group relative overflow-hidden rounded-[28px] min-h-[300px] p-6 sm:p-7 flex flex-col ${theme.wrap} shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-1.5 hover:shadow-[0_22px_44px_rgba(15,23,42,0.12)] transition-all duration-300`}
+                  className={`group relative overflow-hidden rounded-[28px] p-6 sm:p-7 flex flex-col ${theme.wrap} shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-1.5 hover:shadow-[0_22px_44px_rgba(15,23,42,0.12)] transition-all duration-300`}
                 >
                   <span className={`pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full ${theme.blob} opacity-70`} />
                   <span className={`pointer-events-none absolute -right-6 bottom-8 h-24 w-24 rounded-full ${theme.blob} opacity-40`} />
@@ -176,9 +164,6 @@ export default function HomePage() {
                   <h3 className="relative mt-5 text-xl sm:text-[1.35rem] font-extrabold text-[#0F172A] leading-snug">
                     {s.title}
                   </h3>
-                  <p className="relative mt-2 text-sm text-[#475569] leading-relaxed flex-1">
-                    {s.blurb}
-                  </p>
                   <span className={`relative mt-5 inline-flex items-center gap-2 text-sm font-bold ${theme.accent}`}>
                     Learn More
                     <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-white ${theme.btn} group-hover:opacity-90`}>
@@ -192,10 +177,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-14 sm:py-20 bg-gradient-to-b from-[#F4FBFF] via-white to-[#F7FBFD]">
-        <span className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-[#C9E9F3]/50" />
-        <span className="pointer-events-none absolute right-10 top-4 h-36 w-36 rounded-full bg-[#D6EEF6]/70" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0E4A56] leading-tight">
               Meet Our <span className="text-[#1F8A9A]">Doctors</span>

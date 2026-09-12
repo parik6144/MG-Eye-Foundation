@@ -61,25 +61,11 @@ export default function DoctorProfileCard({
   return (
     <article
       id={useShortName ? undefined : doctor.slug}
-      className="relative overflow-hidden scroll-mt-28 rounded-[32px] border border-white/80 bg-white/85 p-4 sm:p-6 lg:p-7 shadow-[0_18px_50px_rgba(31,138,154,0.10)]"
+      className="relative overflow-hidden scroll-mt-28 rounded-[32px] border border-[#E4EEF2] bg-white p-4 sm:p-6 lg:p-7 shadow-[0_18px_50px_rgba(31,138,154,0.10)]"
     >
-      <img
-        src="/home-hero-eye.png"
-        alt=""
-        className="pointer-events-none absolute right-[-4%] top-[8%] hidden lg:block h-[78%] w-[34%] object-cover object-[center_30%] opacity-40 [mask-image:linear-gradient(90deg,transparent,black_22%,black_80%,transparent)]"
-      />
-      <span className="pointer-events-none absolute -right-10 -bottom-12 h-40 w-40 rounded-full bg-[#C9E9F3]/50" />
-
       <div className="relative flex flex-col lg:flex-row gap-5 lg:gap-7 items-start">
-        <div className="relative mx-auto lg:mx-0 h-56 w-44 sm:h-64 sm:w-52 shrink-0 overflow-hidden rounded-[26px] shadow-[0_12px_28px_rgba(14,74,86,0.18)]">
+        <div className="relative mx-auto lg:mx-0 h-64 w-52 sm:h-80 sm:w-64 shrink-0 overflow-hidden rounded-[26px] shadow-[0_12px_28px_rgba(14,74,86,0.18)]">
           <img src={doctor.photo} alt={doctor.name} className="absolute inset-0 h-full w-full object-cover object-top" />
-          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[#16707E] via-[#1F8A9A]/90 to-transparent" />
-          <Eye className="absolute bottom-3 left-3 h-5 w-5 text-white/90" strokeWidth={1.7} />
-          <p className="absolute bottom-3 left-10 font-script text-[15px] leading-[1.05] text-white">
-            Eye care
-            <br />
-            Clearer seeing
-          </p>
         </div>
 
         <div className="min-w-0 flex-1 w-full">
