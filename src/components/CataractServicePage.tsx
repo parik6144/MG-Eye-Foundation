@@ -170,8 +170,7 @@ export default function CataractServicePage() {
           />
           <div className="mt-6 grid lg:grid-cols-[1fr_minmax(0,320px)] gap-10 items-center">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-white/70">Cataract treatment</p>
-              <h1 className="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">Cataract Services</h1>
+              <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">Cataract Services</h1>
               <p className="mt-5 text-white/90 leading-relaxed max-w-2xl">
                 We aim to provide our patients with the best treatment for cataracts at {SITE.name}, Bara Gamharia,
                 Jamshedpur. Our cataract surgeons, DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI, continually enhance

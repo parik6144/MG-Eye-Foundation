@@ -116,7 +116,7 @@ export const CARE_STEPS = [
 export const SERVICES = [
   {
     slug: "cataract",
-    title: "Cataract Surgery",
+    title: "Cataract Services",
     what: "A cataract is a clouding of the natural lens of the eye.",
     feel: "Patients typically report diminished clarity of vision and increased sensitivity to glare, particularly at night.",
     do: "The clouded lens is removed and replaced with a new, clear intraocular lens. Most patients return home on the day of surgery.",
@@ -157,7 +157,7 @@ export const SERVICES = [
   },
   {
     slug: "glaucoma",
-    title: "Glaucoma Treatment",
+    title: "Glaucoma Services",
     what: "Glaucoma results from elevated pressure within the eye, which can damage the optic nerve over time.",
     feel: "The condition is often asymptomatic in its early stages; peripheral vision may gradually diminish as it progresses.",
     do: "Intraocular pressure is measured and monitored. Prescribed drops or laser treatment are used to reduce pressure and preserve vision.",
@@ -198,7 +198,7 @@ export const SERVICES = [
   },
   {
     slug: "retina",
-    title: "Medical Retina Services",
+    title: "Vitreo-retinal Services",
     what: "The retina, located at the back of the eye, may leak or swell, a condition frequently associated with diabetes.",
     feel: "Patients may experience blurred, dark, or patchy areas within their field of vision.",
     do: "The retina is examined by scan, and injection or laser therapy is administered to protect and preserve vision.",
@@ -239,7 +239,7 @@ export const SERVICES = [
   },
   {
     slug: "cornea",
-    title: "Cornea Treatment",
+    title: "Cornea Services",
     what: "The cornea is the transparent outer surface of the eye.",
     feel: "Symptoms may include pain, redness, or visible damage following injury or infection.",
     do: "The cornea is examined using specialised instruments, and the underlying infection or injury is treated to restore clarity.",
@@ -321,7 +321,7 @@ export const SERVICES = [
   },
   {
     slug: "pediatric",
-    title: "Pediatric Eye Care",
+    title: "Pediatric Ophthalmology And Squint Services",
     what: "Children require careful, age-appropriate ophthalmic assessment.",
     feel: "Indicators may include sitting unusually close to a screen, a noticeably weaker eye, or feedback from school regarding a child's vision.",
     do: "We assess visual acuity, determine whether corrective lenses are required, and identify any asymmetry in eye strength.",

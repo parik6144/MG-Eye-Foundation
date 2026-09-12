@@ -7,22 +7,110 @@ import { COPY, SERVICE_HUB, STATS } from "@/lib/site";
 import { DOCTORS } from "@/lib/doctors";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
 
-const SERVICE_CARD = {
-  cataract: { wrap: "bg-[#EAF2FF]", blob: "bg-[#BFD4FF]", accent: "text-[#2563EB]", btn: "bg-[#3B82F6]" },
-  cornea: { wrap: "bg-[#E7FBF3]", blob: "bg-[#B6F0D3]", accent: "text-[#059669]", btn: "bg-[#10B981]" },
-  glaucoma: { wrap: "bg-[#FFF6E8]", blob: "bg-[#FFD9A3]", accent: "text-[#EA580C]", btn: "bg-[#F97316]" },
-  retina: { wrap: "bg-[#FFF0F5]", blob: "bg-[#F9C2D4]", accent: "text-[#DB2777]", btn: "bg-[#EC4899]" },
-  pediatric: { wrap: "bg-[#F4EEFF]", blob: "bg-[#D5C4FF]", accent: "text-[#7C3AED]", btn: "bg-[#8B5CF6]" },
-  oculoplasty: { wrap: "bg-[#E6FBFF]", blob: "bg-[#B5F1F8]", accent: "text-[#0891B2]", btn: "bg-[#06B6D4]" },
-  refractive: { wrap: "bg-[#FFF8E1]", blob: "bg-[#FFE7A3]", accent: "text-[#D97706]", btn: "bg-[#F59E0B]" },
-  other: { wrap: "bg-[#FFF1F4]", blob: "bg-[#FBCFE8]", accent: "text-[#E11D48]", btn: "bg-[#F43F5E]" },
-} as const;
+const NAVY = "#0E4A56";
+
+function ServiceLineIcon({ slug }: { slug: string }) {
+  const common = {
+    viewBox: "0 0 64 64",
+    fill: "none",
+    stroke: NAVY,
+    strokeWidth: 2.2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    className: "h-10 w-10 sm:h-11 sm:w-11 mx-auto",
+    "aria-hidden": true,
+  };
+  if (slug === "cataract") {
+    return (
+      <svg {...common}>
+        <path d="M8 32c8-14 16-20 24-20s16 6 24 20c-8 14-16 20-24 20S16 46 8 32z" />
+        <circle cx="26" cy="32" r="8.5" />
+        <circle cx="26" cy="32" r="3.4" fill={NAVY} stroke="none" />
+        <ellipse cx="44" cy="32" rx="10" ry="14" fill="white" />
+      </svg>
+    );
+  }
+  if (slug === "cornea") {
+    return (
+      <svg {...common}>
+        <path d="M14 38c2-16 10-24 18-24s16 8 18 24" />
+        <ellipse cx="32" cy="38" rx="18" ry="8" />
+        <path d="M20 36c4 5 20 5 24 0" />
+      </svg>
+    );
+  }
+  if (slug === "glaucoma") {
+    return (
+      <svg {...common}>
+        <path d="M8 34c8-14 16-20 24-20s16 6 24 20c-8 14-16 20-24 20S16 48 8 34z" />
+        <circle cx="32" cy="34" r="7.5" />
+        <circle cx="32" cy="34" r="3" fill={NAVY} stroke="none" />
+        <circle cx="46" cy="18" r="9" />
+        <path d="M46 18v-5" />
+        <path d="M46 18l4 3" />
+      </svg>
+    );
+  }
+  if (slug === "retina") {
+    return (
+      <svg {...common}>
+        <circle cx="32" cy="32" r="20" />
+        <path d="M32 32c-2-8-8-14-16-16" />
+        <path d="M32 32c8-4 14-4 18 2" />
+        <path d="M32 32c-6 4-10 12-8 18" />
+        <path d="M32 32c6 6 14 10 18 8" />
+        <path d="M32 32c-8 2-14 8-14 14" />
+        <circle cx="32" cy="32" r="3.2" fill={NAVY} stroke="none" />
+      </svg>
+    );
+  }
+  if (slug === "pediatric") {
+    return (
+      <svg {...common}>
+        <circle cx="32" cy="24" r="10" />
+        <path d="M22 24h20" />
+        <circle cx="32" cy="24" r="3.2" fill={NAVY} stroke="none" />
+        <path d="M18 50c2-10 8-16 14-16s12 6 14 16" />
+        <path d="M24 38c-6 2-10 8-10 14" />
+        <path d="M40 38c6 2 10 8 10 14" />
+      </svg>
+    );
+  }
+  if (slug === "oculoplasty") {
+    return (
+      <svg {...common}>
+        <path d="M12 36c8-16 16-22 20-22s12 6 20 22" />
+        <path d="M14 38c8 12 16 16 18 16s10-4 18-16" />
+        <circle cx="32" cy="36" r="7" />
+        <circle cx="32" cy="36" r="2.8" fill={NAVY} stroke="none" />
+        <path d="M18 24c6-6 22-6 28 0" />
+      </svg>
+    );
+  }
+  if (slug === "refractive") {
+    return (
+      <svg {...common}>
+        <circle cx="22" cy="32" r="11" />
+        <circle cx="42" cy="32" r="11" />
+        <path d="M33 32h-2" />
+        <path d="M11 32H8" />
+        <path d="M53 32h3" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <rect x="14" y="14" width="36" height="36" rx="8" />
+      <path d="M32 22v20M22 32h20" />
+    </svg>
+  );
+}
 
 const STAT_CARD = [
-  { wrap: "bg-[#EAF4FF]", iconWrap: "bg-[#D7EBFF] text-[#2B7DE9]", num: "text-[#2B7DE9]", Icon: Users },
-  { wrap: "bg-[#FFF1E6]", iconWrap: "bg-[#FFE0C8] text-[#E85D04]", num: "text-[#E85D04]", Icon: User },
-  { wrap: "bg-[#E8F8EE]", iconWrap: "bg-[#CFF0D8] text-[#2E8B57]", num: "text-[#1B7A3D]", Icon: Eye },
-  { wrap: "bg-[#F3EEFF]", iconWrap: "bg-[#E4D9FF] text-[#6D4AE8]", num: "text-[#6D28D9]", Icon: UserRound },
+  { wrap: "bg-[#E7F7FA]", iconWrap: "bg-[#D4EEF2] text-[#1F8A9A]", num: "text-[#0E4A56]", Icon: Users },
+  { wrap: "bg-[#E7F7FA]", iconWrap: "bg-[#D4EEF2] text-[#16707E]", num: "text-[#0E4A56]", Icon: User },
+  { wrap: "bg-[#E7F7FA]", iconWrap: "bg-[#D4EEF2] text-[#1F8A9A]", num: "text-[#0E4A56]", Icon: Eye },
+  { wrap: "bg-[#E7F7FA]", iconWrap: "bg-[#D4EEF2] text-[#16707E]", num: "text-[#0E4A56]", Icon: UserRound },
 ] as const;
 
 export default function HomePage() {
@@ -58,16 +146,16 @@ export default function HomePage() {
             </Link>
             <Link
               href="/contact"
-              className="group flex items-center gap-4 px-5 sm:px-7 py-5 hover:bg-[#FFF8F2] transition-colors md:border-r border-[#E8F0F3] border-t md:border-t-0"
+              className="group flex items-center gap-4 px-5 sm:px-7 py-5 hover:bg-[#F7FBFD] transition-colors md:border-r border-[#E8F0F3] border-t md:border-t-0"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#FFF1E8] text-[#EA580C]">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E7F7FA] text-[#1F8A9A]">
                 <MapPin className="w-6 h-6" strokeWidth={1.7} />
               </span>
               <span className="flex-1 min-w-0">
                 <span className="block font-extrabold text-[#0F172A]">Locate Us</span>
                 <span className="block text-sm text-[#64748b] mt-1 leading-snug">Bara Gamharia, Jamshedpur.</span>
               </span>
-              <ArrowRight className="h-5 w-5 shrink-0 text-[#F97316]" />
+              <ArrowRight className="h-5 w-5 shrink-0 text-[#94A3B8] group-hover:text-[#1F8A9A]" />
             </Link>
             <button
               type="button"
@@ -95,10 +183,8 @@ export default function HomePage() {
               </p>
               <span className="h-px w-10 bg-[#1F8A9A]/35" />
             </div>
-            <h1 className="mt-4 text-3xl sm:text-5xl font-extrabold text-[#0F172A] leading-tight max-w-3xl mx-auto">
+            <h1 className="mt-4 text-3xl sm:text-5xl font-extrabold text-[#0E4A56] leading-tight max-w-3xl mx-auto">
               Comprehensive and Advanced Eye Care Hospital
-              <br />
-              <span className="text-[#1F8A9A]"></span> 
             </h1>
 
           </div>
@@ -133,46 +219,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-12 bg-white">
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-[#1F8A9A] text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase">
-              Complete eye care under one roof
-            </p>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-[#0E4A56] leading-tight">
-              Our <span className="text-[#1F8A9A]">Eye Care</span> Services
+            <div className="flex items-center justify-center gap-4">
+              <span className="h-px w-10 sm:w-16 bg-[#0E4A56]/25" />
+              <p className="text-[#64748b] text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase">
+                Complete eye care under one roof
+              </p>
+              <span className="h-px w-10 sm:w-16 bg-[#0E4A56]/25" />
+            </div>
+            <h2 className="mt-2 text-2xl sm:text-4xl font-extrabold text-[#0E4A56] leading-tight">
+              Our <span className="text-[#16707E]">Eye Care</span> Services
             </h2>
-          
           </div>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {SERVICE_HUB.map((s) => {
-              const theme = SERVICE_CARD[s.slug];
-              return (
-                <Link
-                  key={s.slug}
-                  href={`/services/${s.slug}`}
-                  className={`group relative overflow-hidden rounded-[28px] p-6 sm:p-7 flex flex-col ${theme.wrap} shadow-[0_10px_28px_rgba(15,23,42,0.06)] hover:-translate-y-1.5 hover:shadow-[0_22px_44px_rgba(15,23,42,0.12)] transition-all duration-300`}
-                >
-                  <span className={`pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full ${theme.blob} opacity-70`} />
-                  <span className={`pointer-events-none absolute -right-6 bottom-8 h-24 w-24 rounded-full ${theme.blob} opacity-40`} />
-                  <img
-                    src={s.icon}
-                    alt=""
-                    className="relative h-[72px] w-[72px] sm:h-[84px] sm:w-[84px] object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <h3 className="relative mt-5 text-xl sm:text-[1.35rem] font-extrabold text-[#0F172A] leading-snug">
-                    {s.title}
-                  </h3>
-                  <span className={`relative mt-5 inline-flex items-center gap-2 text-sm font-bold ${theme.accent}`}>
-                    Learn More
-                    <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-white ${theme.btn} group-hover:opacity-90`}>
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </span>
-                </Link>
-              );
-            })}
+          <div className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {SERVICE_HUB.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="flex flex-col items-center text-center rounded-2xl bg-white border border-[#E6EEF1] px-2.5 py-3 sm:px-3 sm:py-4 shadow-[0_6px_16px_rgba(14,74,86,0.05)] hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(14,74,86,0.10)] transition-all duration-300"
+              >
+                <ServiceLineIcon slug={s.slug} />
+                <h3 className="mt-2 text-[13px] sm:text-sm font-extrabold text-[#0E4A56] leading-snug line-clamp-2">
+                  {s.title}
+                </h3>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { COPY } from "@/lib/site";
 
-const HIDE_ON = ["/", "/privacy", "/terms", "/testimonials"];
+const HIDE_ON = ["/", "/contact", "/privacy", "/terms", "/testimonials"];
 
 const SCHEMES = [
   {
@@ -25,7 +25,6 @@ const SCHEMES = [
 export default function PmjaySection() {
   const pathname = usePathname();
   if (HIDE_ON.includes(pathname)) return null;
-  const showBody = pathname !== "/contact";
 
   return (
     <section className="bg-[#FFFDF8] border-y border-[#e2e8f0]">
@@ -47,7 +46,7 @@ export default function PmjaySection() {
               <div className="text-center sm:text-left">
                 <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.16em] uppercase">{s.kicker}</p>
                 <h3 className="mt-2 text-xl font-extrabold text-[#0F172A] leading-snug">{s.title}</h3>
-                {showBody ? <p className="mt-3 text-[#334155] text-sm leading-relaxed">{s.body}</p> : null}
+                <p className="mt-3 text-[#334155] text-sm leading-relaxed">{s.body}</p>
               </div>
             </article>
           ))}

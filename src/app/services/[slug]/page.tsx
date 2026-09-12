@@ -17,9 +17,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const hub = SERVICE_HUB.find((x) => x.slug === slug);
   const s = getService(slug);
-  if (!s) return { title: "Service | M G Eye Foundation" };
-  return { title: `${s.title} | M G Eye Foundation` };
+  const title = hub?.title ?? s?.title;
+  if (!title) return { title: "Service | M G Eye Foundation" };
+  return { title: `${title} | M G Eye Foundation` };
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -34,6 +36,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!s || !c) notFound();
 
   const others = SERVICE_HUB.filter((x) => x.slug !== s.slug);
+  const name = SERVICE_HUB.find((x) => x.slug === s.slug)?.title ?? s.title;
 
   return (
     <div className="bg-[#F4F8F9] pb-0">
@@ -41,17 +44,16 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <PageBreadcrumb
             tone="dark"
-            items={[{ href: "/services", label: "Services" }, { label: s.title }]}
+            items={[{ href: "/services", label: "Services" }, { label: name }]}
           />
           <div className="mt-6 grid lg:grid-cols-[minmax(0,300px)_1fr] gap-8 items-start">
             <img
               src={s.image}
-              alt={s.title}
+              alt={name}
               className="w-full h-52 sm:h-64 object-cover rounded-[22px] border border-white/20 shadow-lg"
             />
             <div>
-              <p className="text-white/70 text-[11px] font-semibold tracking-[0.22em] uppercase">Clinical service</p>
-              <h1 className="mt-2 text-3xl sm:text-4xl font-extrabold leading-tight">{s.title}</h1>
+              <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">{name}</h1>
               <p className="mt-4 text-white/90 leading-relaxed text-[15px] sm:text-base">{c.overview}</p>
               <p className="mt-4 text-sm font-semibold text-white">{s.doctor}</p>
               <div className="mt-6 flex flex-wrap gap-3">

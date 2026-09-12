@@ -72,8 +72,7 @@ export default function ClinicalServicePage({ page }: { page: ClinicalPage }) {
           />
           <div className="mt-6 grid lg:grid-cols-[1fr_minmax(0,320px)] gap-10 items-center">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.22em] uppercase text-white/70">{page.kicker}</p>
-              <h1 className="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight">{page.title}</h1>
+              <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">{page.title}</h1>
               <p className="mt-5 text-white/90 leading-relaxed max-w-2xl">{page.hero}</p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <BookVisitButton label="Book an appointment" />

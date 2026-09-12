@@ -8,6 +8,7 @@ import FaqSection from "@/components/FaqSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AppointmentPopup from "@/components/AppointmentPopup";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -42,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${inter.variable} ${greatVibes.variable} antialiased`}>
+        <ScrollToTop />
         <Navbar />
         <main className="min-h-screen page-enter">{children}</main>
         <PmjaySection />

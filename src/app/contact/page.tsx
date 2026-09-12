@@ -69,6 +69,13 @@ export default function ContactPage() {
               <MapPin className="w-6 h-6 text-[#1F8A9A] shrink-0 mt-1" />
               {SITE.address}, {SITE.city}
             </p>
+            <div className="mt-5">
+              <p className="text-xs font-semibold tracking-[0.14em] uppercase text-[#1F8A9A]">Insurance and schemes</p>
+              <div className="mt-3 grid grid-cols-2 gap-4 sm:gap-5">
+                <img src="/pmjayimages.jpg" alt="Ayushman Bharat PM-JAY" className="w-full h-auto object-contain" />
+                <img src="/rajyakarmi.png" alt="Rajyakarmi Swasthya Bima Yojana" className="w-full h-auto object-contain" />
+              </div>
+            </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href={SITE.phoneHref} className="inline-flex items-center justify-center gap-2 bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold rounded-full px-7 py-3.5 text-sm">
                 <Phone className="w-4 h-4" /> Call now
