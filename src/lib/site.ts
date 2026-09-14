@@ -408,7 +408,7 @@ export const SERVICE_HUB = [
   {
     slug: "cataract",
     title: "Cataract Services",
-    icon: "/service-icons/cataract.png",
+    icon: "/services/logos/cataract.png",
     blurb: "We check cloudy vision. Surgery with a new lens can help you see more clearly.",
     items: [
       "Phacoemulsification with Foldable IOL",
@@ -420,7 +420,7 @@ export const SERVICE_HUB = [
   {
     slug: "cornea",
     title: "Cornea Services",
-    icon: "/service-icons/cornea.png",
+    icon: "/services/logos/cornea.png",
     blurb: "We treat infection, injury and other problems of the clear front of the eye.",
     items: [
       "Corneal ulcer treatment",
@@ -432,7 +432,7 @@ export const SERVICE_HUB = [
   {
     slug: "glaucoma",
     title: "Glaucoma Services",
-    icon: "/service-icons/glaucoma.png",
+    icon: "/services/logos/glaucoma.png",
     blurb: "We find high eye pressure early and treat it to protect your seeing.",
     items: [
       "Goldmann Applanation Tonometry",
@@ -445,7 +445,7 @@ export const SERVICE_HUB = [
   {
     slug: "retina",
     title: "Vitreo-retinal Services",
-    icon: "/service-icons/retina.png",
+    icon: "/services/logos/vitereo_retina.png",
     blurb: "We treat problems at the back of the eye, including swelling from diabetes.",
     items: [
       "Retinal Laser",
@@ -459,7 +459,7 @@ export const SERVICE_HUB = [
   {
     slug: "pediatric",
     title: "Pediatric Ophthalmology And Squint Services",
-    icon: "/service-icons/pediatric.png",
+    icon: "/services/logos/pediatric.png",
     blurb: "We check children’s eyes and treat squint so both eyes can work well.",
     items: [
       "Pediatric Cataract Surgery",
@@ -476,14 +476,14 @@ export const SERVICE_HUB = [
   {
     slug: "oculoplasty",
     title: "Oculoplasty Services",
-    icon: "/service-icons/oculoplasty.png",
+    icon: "/services/logos/oculoplasty.png",
     blurb: "We treat eyelid, tear-duct and nearby problems.",
     items: ["DCR Surgery", "DCT Surgery", "Lid Repair Surgery", "Entropion surgery", "Ectropion surgery", "Ptosis correction"],
   },
   {
     slug: "refractive",
     title: "Refractive Error Service",
-    icon: "/service-icons/refractive.png",
+    icon: "/services/logos/refractive_error.png",
     blurb: "Glasses, contact lenses and other options for clearer seeing.",
     items: ["PRK", "ICL"],
   },

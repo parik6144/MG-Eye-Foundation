@@ -7,105 +7,6 @@ import { COPY, SERVICE_HUB, STATS } from "@/lib/site";
 import { DOCTORS } from "@/lib/doctors";
 import DoctorProfileCard from "@/components/DoctorProfileCard";
 
-const NAVY = "#0E4A56";
-
-function ServiceLineIcon({ slug }: { slug: string }) {
-  const common = {
-    viewBox: "0 0 64 64",
-    fill: "none",
-    stroke: NAVY,
-    strokeWidth: 2.2,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    className: "h-10 w-10 sm:h-11 sm:w-11 mx-auto",
-    "aria-hidden": true,
-  };
-  if (slug === "cataract") {
-    return (
-      <svg {...common}>
-        <path d="M8 32c8-14 16-20 24-20s16 6 24 20c-8 14-16 20-24 20S16 46 8 32z" />
-        <circle cx="26" cy="32" r="8.5" />
-        <circle cx="26" cy="32" r="3.4" fill={NAVY} stroke="none" />
-        <ellipse cx="44" cy="32" rx="10" ry="14" fill="white" />
-      </svg>
-    );
-  }
-  if (slug === "cornea") {
-    return (
-      <svg {...common}>
-        <path d="M14 38c2-16 10-24 18-24s16 8 18 24" />
-        <ellipse cx="32" cy="38" rx="18" ry="8" />
-        <path d="M20 36c4 5 20 5 24 0" />
-      </svg>
-    );
-  }
-  if (slug === "glaucoma") {
-    return (
-      <svg {...common}>
-        <path d="M8 34c8-14 16-20 24-20s16 6 24 20c-8 14-16 20-24 20S16 48 8 34z" />
-        <circle cx="32" cy="34" r="7.5" />
-        <circle cx="32" cy="34" r="3" fill={NAVY} stroke="none" />
-        <circle cx="46" cy="18" r="9" />
-        <path d="M46 18v-5" />
-        <path d="M46 18l4 3" />
-      </svg>
-    );
-  }
-  if (slug === "retina") {
-    return (
-      <svg {...common}>
-        <circle cx="32" cy="32" r="20" />
-        <path d="M32 32c-2-8-8-14-16-16" />
-        <path d="M32 32c8-4 14-4 18 2" />
-        <path d="M32 32c-6 4-10 12-8 18" />
-        <path d="M32 32c6 6 14 10 18 8" />
-        <path d="M32 32c-8 2-14 8-14 14" />
-        <circle cx="32" cy="32" r="3.2" fill={NAVY} stroke="none" />
-      </svg>
-    );
-  }
-  if (slug === "pediatric") {
-    return (
-      <svg {...common}>
-        <circle cx="32" cy="24" r="10" />
-        <path d="M22 24h20" />
-        <circle cx="32" cy="24" r="3.2" fill={NAVY} stroke="none" />
-        <path d="M18 50c2-10 8-16 14-16s12 6 14 16" />
-        <path d="M24 38c-6 2-10 8-10 14" />
-        <path d="M40 38c6 2 10 8 10 14" />
-      </svg>
-    );
-  }
-  if (slug === "oculoplasty") {
-    return (
-      <svg {...common}>
-        <path d="M12 36c8-16 16-22 20-22s12 6 20 22" />
-        <path d="M14 38c8 12 16 16 18 16s10-4 18-16" />
-        <circle cx="32" cy="36" r="7" />
-        <circle cx="32" cy="36" r="2.8" fill={NAVY} stroke="none" />
-        <path d="M18 24c6-6 22-6 28 0" />
-      </svg>
-    );
-  }
-  if (slug === "refractive") {
-    return (
-      <svg {...common}>
-        <circle cx="22" cy="32" r="11" />
-        <circle cx="42" cy="32" r="11" />
-        <path d="M33 32h-2" />
-        <path d="M11 32H8" />
-        <path d="M53 32h3" />
-      </svg>
-    );
-  }
-  return (
-    <svg {...common}>
-      <rect x="14" y="14" width="36" height="36" rx="8" />
-      <path d="M32 22v20M22 32h20" />
-    </svg>
-  );
-}
-
 const STAT_CARD = [
   { wrap: "bg-[#E7F7FA]", iconWrap: "bg-[#D4EEF2] text-[#1F8A9A]", num: "text-[#0E4A56]", Icon: Users },
   { wrap: "bg-[#E7F7FA]", iconWrap: "bg-[#D4EEF2] text-[#16707E]", num: "text-[#0E4A56]", Icon: User },
@@ -241,8 +142,8 @@ export default function HomePage() {
                 href={`/services/${s.slug}`}
                 className="flex flex-col items-center text-center rounded-2xl bg-white border border-[#E6EEF1] px-2.5 py-3 sm:px-3 sm:py-4 shadow-[0_6px_16px_rgba(14,74,86,0.05)] hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(14,74,86,0.10)] transition-all duration-300"
               >
-                <ServiceLineIcon slug={s.slug} />
-                <h3 className="mt-2 text-[13px] sm:text-sm font-extrabold text-[#0E4A56] leading-snug line-clamp-2">
+                <img src={s.icon} alt="" className="h-16 w-16 sm:h-20 sm:w-20 mx-auto object-contain" />
+                <h3 className="mt-2.5 text-[13px] sm:text-sm font-extrabold text-[#0E4A56] leading-snug line-clamp-2">
                   {s.title}
                 </h3>
               </Link>

@@ -31,8 +31,8 @@ export default function ServicesPage() {
             >
               <span className="pointer-events-none absolute inset-0 bg-[#1F8A9A]/0 opacity-0 group-hover:bg-[#1F8A9A]/8 group-hover:opacity-100 transition-all duration-300" />
               <h2 className="relative flex items-center gap-4 text-xl sm:text-2xl font-extrabold text-[#0E4A56] group-hover:text-[#16707E] transition-colors">
-                <span className="flex h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem] shrink-0 items-center justify-center rounded-2xl bg-[#E7F3F5] ring-1 ring-[#1F8A9A]/20">
-                  <img src={s.icon} alt="" className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform duration-300 group-hover:scale-110" />
+                <span className="flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-2xl bg-[#E7F3F5] ring-1 ring-[#1F8A9A]/20 p-2">
+                  <img src={s.icon} alt="" className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" />
                 </span>
                 <span>{s.title}</span>
               </h2>
