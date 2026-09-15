@@ -6,9 +6,11 @@ import { Play } from "lucide-react";
 export default function ClinicVideo({
   src,
   poster,
+  aspect = "video",
 }: {
   src: string;
   poster?: string;
+  aspect?: "video" | "portrait";
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -22,10 +24,10 @@ export default function ClinicVideo({
 
   return (
     <div className="rounded-[24px] border-8 border-[#0F172A] bg-[#0F172A] overflow-hidden shadow-lg">
-      <div className="relative aspect-video bg-black">
+      <div className={`relative bg-black ${aspect === "portrait" ? "aspect-[9/16]" : "aspect-video"}`}>
         <video
           ref={ref}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain"
           src={src}
           poster={poster}
           preload="metadata"
@@ -42,7 +44,7 @@ export default function ClinicVideo({
             aria-label="Play video"
           >
             {poster ? (
-              <img src={poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
+              <img src={poster} alt="" className="absolute inset-0 h-full w-full object-contain" />
             ) : null}
             <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-[#1F8A9A] text-white shadow-lg shadow-[#1F8A9A]/40">
               <Play className="h-7 w-7 ml-1" fill="currentColor" />

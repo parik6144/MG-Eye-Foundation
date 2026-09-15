@@ -97,8 +97,8 @@ export default function TestimonialsPage() {
             <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0E4A56]">Watch a patient story</h2>
             <p className="mt-2 text-[#64748b] text-sm">A patient talks about their visit at this hospital.</p>
           </div>
-          <div className="mx-auto max-w-4xl">
-            <ClinicVideo src="/testimonial/mg_eye_testimonial.mp4" />
+          <div className="mx-auto w-full max-w-[360px]">
+            <ClinicVideo src="/testimonial/mg_eye_testimonial.mp4" aspect="portrait" />
           </div>
         </div>
         <div className="mt-8 text-center">
