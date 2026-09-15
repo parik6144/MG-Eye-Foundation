@@ -99,6 +99,8 @@ export async function sendAppointmentMails(data: {
   name: string;
   phone: string;
   email: string;
+  age: string;
+  sex: string;
   date: string;
   time: string;
   message: string;
@@ -108,6 +110,8 @@ export async function sendAppointmentMails(data: {
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone },
     { label: "Email", value: data.email },
+    { label: "Age", value: data.age },
+    { label: "Sex", value: data.sex },
     { label: "Date", value: data.date },
     { label: "Time", value: data.time },
     { label: "Message", value: data.message },
@@ -116,7 +120,7 @@ export async function sendAppointmentMails(data: {
   await transporter.sendMail({
     from: fromHeader(),
     to: adminList(),
-    replyTo: data.email,
+    ...(data.email ? { replyTo: data.email } : {}),
     subject: `New visit request — ${data.name}`,
     html: wrapEmail(
       "New visit request",
@@ -124,6 +128,8 @@ export async function sendAppointmentMails(data: {
     ),
     attachments: [logoCid()],
   });
+
+  if (!data.email) return;
 
   await transporter.sendMail({
     from: fromHeader(),

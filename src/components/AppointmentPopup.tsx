@@ -24,6 +24,8 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
     name: "",
     phone: "",
     email: "",
+    age: "",
+    sex: "",
     date: "",
     time: "",
     message: "",
@@ -41,7 +43,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
     setSubmitted(false);
     setSending(false);
     setError("");
-    setForm({ name: "", phone: "", email: "", date: "", time: "", message: "" });
+    setForm({ name: "", phone: "", email: "", age: "", sex: "", date: "", time: "", message: "" });
   }, [externalClose]);
 
   useEffect(() => {
@@ -83,7 +85,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
       <div className="relative bg-white rounded-[24px] w-full max-w-[900px] max-h-[90vh] shadow-2xl overflow-hidden animate-fade-up flex flex-col lg:flex-row">
 
         {/* ============ LEFT SIDEBAR - Dark ============ */}
-        <div className="hidden lg:flex lg:w-[340px] shrink-0 flex-col justify-between bg-[#0F172A] p-8 lg:p-10 relative overflow-hidden">
+        <div className="hidden lg:flex lg:w-[340px] shrink-0 flex-col justify-start gap-8 bg-[#0F172A] p-8 lg:p-10 relative overflow-hidden">
           {/* Decorative circles */}
           <div className="absolute top-0 right-0 w-48 h-48 rounded-full border border-white/[0.06] -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-20 left-0 w-32 h-32 rounded-full border border-[#1F8A9A]/10 translate-y-1/2 -translate-x-1/2" />
@@ -94,11 +96,11 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
               Book your eye visit
             </h3>
             <p className="text-slate-400 text-sm mt-4 leading-relaxed">
-              Fill the form — you will see a clear success or failure message after submit. Our desk confirms by phone.
+              Fill the form. You will see if it was sent.
             </p>
           </div>
 
-          <div className="relative z-10 mt-8">
+          <div className="relative z-10">
             {/* Call */}
             <span className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.15em] uppercase">Call</span>
             <p className="text-white text-lg font-bold mt-1.5 leading-snug">
@@ -187,18 +189,54 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                 {/* Row 2: Email (full width) */}
                 <div>
                   <label className="text-[11px] font-semibold text-[#64748b] uppercase tracking-wider mb-1.5 block">
-                    Email <span className="text-[#FF0808]">*</span>
+                    Email
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8]" />
                     <input
-                      required
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="your@email.com (optional)"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
                     />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="text-[11px] font-semibold text-[#64748b] uppercase tracking-wider mb-1.5 block">
+                      Age <span className="text-[#FF0808]">*</span>
+                    </label>
+                    <input
+                      required
+                      type="number"
+                      min={0}
+                      max={120}
+                      placeholder="Years"
+                      value={form.age}
+                      onChange={(e) => setForm({ ...form, age: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none placeholder:text-[#94a3b8]"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-semibold text-[#64748b] uppercase tracking-wider mb-1.5 block">
+                      Sex <span className="text-[#FF0808]">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={form.sex}
+                        onChange={(e) => setForm({ ...form, sex: e.target.value })}
+                        className="w-full px-4 pr-10 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none appearance-none"
+                      >
+                        <option value="">Select</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8] pointer-events-none" />
+                    </div>
                   </div>
                 </div>
 
@@ -265,7 +303,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                 <button
                   type="submit"
                   disabled={sending}
-                  className="btn-navy mt-2 w-full disabled:opacity-60"
+                  className="mt-2 w-full bg-[#1F8A9A] hover:bg-[#16707E] text-white font-bold rounded-full py-3.5 text-sm disabled:opacity-60"
                 >
                   {sending ? "Sending..." : "Confirm Appointment"}
                 </button>

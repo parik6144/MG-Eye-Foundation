@@ -40,7 +40,7 @@ export const COPY = {
     "to provide comprehensive eye care services to all the sections of society at affordable cost.",
   missionTags: ["On-site same-day scanning", "Seven specialised services", "Structured post-operative follow-up"],
   vision:
-    "We believe that any patient requiring treatment for eye conditions should not need to travel to a distant facility and come to our Centre. We are committed to provide world class treatment facility in your vicinity.",
+    "Our vision is to create a world where everyone has access to quality eye care and the opportunity to enjoy clear, healthy vision. We are committed to bringing advanced eye care closer to individuals and families, with compassion, expertise, and trust at the heart of everything we do.",
   visionTags: ["1,00,000+ patients treated", "Daily pediatric eye examinations", "Dedicated care for ocular injuries"],
   whyIntro:
     "Our approach extends beyond scheduling appointments and performing procedures. We listen carefully to each patient, present diagnostic findings clearly, administer treatment with attentiveness, and provide guidance on follow-up care.",

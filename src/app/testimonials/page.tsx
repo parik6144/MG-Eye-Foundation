@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { TESTIMONIALS, TESTIMONIAL_RATING } from "@/lib/testimonials";
 import BookVisitButton from "@/components/BookVisitButton";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
+import ClinicVideo from "@/components/ClinicVideo";
 
 export const metadata: Metadata = { title: "Testimonials | M G Eye Foundation" };
 
@@ -89,6 +90,16 @@ export default function TestimonialsPage() {
               <p className="mt-3 text-sm leading-relaxed text-[#334155]">“{t.text}”</p>
             </article>
           ))}
+        </div>
+        <div className="mt-12 sm:mt-14">
+          <div className="text-center mb-6">
+            <p className="text-[#1F8A9A] text-[11px] font-semibold tracking-[0.22em] uppercase">On video</p>
+            <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0E4A56]">Watch a patient story</h2>
+            <p className="mt-2 text-[#64748b] text-sm">A patient talks about their visit at this hospital.</p>
+          </div>
+          <div className="mx-auto max-w-4xl">
+            <ClinicVideo src="/testimonial/mg_eye_testimonial.mp4" />
+          </div>
         </div>
         <div className="mt-8 text-center">
           <BookVisitButton label="Book an appointment" />

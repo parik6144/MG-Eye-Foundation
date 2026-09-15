@@ -142,7 +142,9 @@ export default function HomePage() {
                 href={`/services/${s.slug}`}
                 className="flex flex-col items-center text-center rounded-2xl bg-white border border-[#E6EEF1] px-2.5 py-3 sm:px-3 sm:py-4 shadow-[0_6px_16px_rgba(14,74,86,0.05)] hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(14,74,86,0.10)] transition-all duration-300"
               >
-                <img src={s.icon} alt="" className="h-16 w-16 sm:h-20 sm:w-20 mx-auto object-contain" />
+                <span className="flex h-16 w-16 sm:h-20 sm:w-20 mx-auto items-center justify-center rounded-2xl bg-white border-2 border-[#1F8A9A] shadow-[0_8px_18px_rgba(31,138,154,0.28)] p-1.5">
+                  <img src={s.icon} alt="" className="h-full w-full object-contain" />
+                </span>
                 <h3 className="mt-2.5 text-[13px] sm:text-sm font-extrabold text-[#0E4A56] leading-snug line-clamp-2">
                   {s.title}
                 </h3>
