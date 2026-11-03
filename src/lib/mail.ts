@@ -1,6 +1,4 @@
 import { createTransport } from "nodemailer";
-import fs from "fs";
-import path from "path";
 import { SITE } from "@/lib/site";
 
 function escapeHtml(value: string) {
@@ -11,26 +9,7 @@ function escapeHtml(value: string) {
     .replace(/"/g, "&quot;");
 }
 
-function logoAttachment() {
-  const logoPath = path.join(process.cwd(), "public", "mg_logo.png");
-  if (!fs.existsSync(logoPath)) return [];
-  return [
-    {
-      filename: "mg_logo.png",
-      path: logoPath,
-      cid: "mgelogo",
-    },
-  ];
-}
-
 function wrapEmail(title: string, inner: string) {
-  const hasLogo = logoAttachment().length > 0;
-  const logoBlock = hasLogo
-    ? `<div style="display:inline-block;background:#ffffff;border-radius:12px;padding:10px 16px;">
-                <img src="cid:mgelogo" alt="MG Eye Foundation" width="140" style="display:block;height:auto;max-width:140px;" />
-              </div>`
-    : "";
-
   return `<!DOCTYPE html>
 <html>
 <body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
@@ -40,8 +19,7 @@ function wrapEmail(title: string, inner: string) {
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
           <tr>
             <td style="background:#0F172A;padding:22px 28px;text-align:center;">
-              ${logoBlock}
-              <p style="margin:14px 0 0;color:#ffffff;font-size:18px;font-weight:700;">MG Eye Foundation</p>
+              <p style="margin:0;color:#ffffff;font-size:18px;font-weight:700;">MG Eye Foundation</p>
               <p style="margin:4px 0 0;color:#94a3b8;font-size:13px;">Eye hospital, Bara Gamharia</p>
             </td>
           </tr>
@@ -77,13 +55,16 @@ function rows(fields: { label: string; value: string }[]) {
     .join("");
 }
 
+function plainRows(fields: { label: string; value: string }[]) {
+  return fields.map((f) => `${f.label}: ${f.value || "—"}`).join("\n");
+}
+
 function mailAuth() {
   const user = process.env.MAIL_USERNAME?.trim();
   const pass = process.env.MAIL_PASSWORD?.replace(/^['"]|['"]$/g, "").replace(/\s+/g, "");
   if (user && pass) return { user, pass };
 
-  // Live (Vercel) often has no dashboard env — use the working Gmail SMTP so hospital mail still sends.
-  // Prefer real MAIL_* in Vercel Settings when you can; those override this.
+  // Live (Vercel) often has no dashboard env — use working Gmail SMTP so hospital mail still sends.
   if (process.env.VERCEL) {
     return {
       user: "signnature001@gmail.com",
@@ -111,15 +92,9 @@ function getTransporter() {
   });
 }
 
-/** Hospital inbox — appointment & contact mails go here */
+/** Hospital inbox only — appointment & contact admin mails */
 function adminList() {
-  const primary = "mgeyefoundation@gmail.com";
-  const extra = process.env.MAIL_ADMIN || "";
-  const list = extra
-    .split(",")
-    .map((e) => e.trim())
-    .filter(Boolean);
-  return Array.from(new Set([primary, SITE.email, ...list])).join(",");
+  return "mgeyefoundation@gmail.com";
 }
 
 const fromHeader = () => {
@@ -137,29 +112,33 @@ export async function sendAppointmentMails(data: {
   time: string;
 }) {
   const transporter = getTransporter();
-
-  const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
+  const fields = [
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone },
     { label: "Age", value: data.age },
     { label: "Sex", value: data.sex },
     { label: "Date", value: data.date },
     { label: "Time", value: data.time },
-  ])}</table>`;
+  ];
+  const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows(fields)}</table>`;
 
-  await transporter.sendMail({
+  const info = await transporter.sendMail({
     from: fromHeader(),
     to: adminList(),
     replyTo: SITE.email,
-    subject: `New appointment request — ${data.name}`,
+    subject: `MG Eye lead — appointment — ${data.name}`,
+    text: `New appointment request\n\n${plainRows(fields)}\n\nPlease call to confirm the time.`,
     html: wrapEmail(
       "New appointment request",
       `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">A patient asked for an eye visit from the website booking form.</p>
        <p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Please call them to confirm the time.</p>
        ${details}`
     ),
-    attachments: logoAttachment(),
   });
+
+  if (!info.accepted?.length) {
+    throw new Error(`Mail was not accepted for ${adminList()}. ${info.response || ""}`);
+  }
 }
 
 export async function sendContactMails(data: {
@@ -169,37 +148,41 @@ export async function sendContactMails(data: {
   message: string;
 }) {
   const transporter = getTransporter();
-
-  const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
+  const fields = [
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone },
     { label: "Email", value: data.email },
     { label: "Message", value: data.message },
-  ])}</table>`;
+  ];
+  const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows(fields)}</table>`;
 
-  await transporter.sendMail({
+  const adminInfo = await transporter.sendMail({
     from: fromHeader(),
     to: adminList(),
     replyTo: data.email,
-    subject: `New contact message — ${data.name}`,
+    subject: `MG Eye lead — contact — ${data.name}`,
+    text: `New contact message\n\n${plainRows(fields)}`,
     html: wrapEmail(
       "New message from the Contact page",
       `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Someone sent a message from the website Contact form.</p>
        ${details}`
     ),
-    attachments: logoAttachment(),
   });
+
+  if (!adminInfo.accepted?.length) {
+    throw new Error(`Mail was not accepted for ${adminList()}. ${adminInfo.response || ""}`);
+  }
 
   await transporter.sendMail({
     from: fromHeader(),
     to: data.email,
     subject: "We got your message — MG Eye Foundation",
+    text: `Thank you, ${data.name}. We got your message. We will call or write back on a working day. For an urgent eye problem, call ${SITE.phoneDisplay}.\n\n${plainRows(fields)}`,
     html: wrapEmail(
       `Thank you, ${data.name}`,
       `<p style="margin:0 0 12px;color:#475569;font-size:15px;line-height:1.6;">We got your message. We will call or write back on a working day.</p>
        <p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">For an urgent eye problem, call ${escapeHtml(SITE.phoneDisplay)}.</p>
        ${details}`
     ),
-    attachments: logoAttachment(),
   });
 }
