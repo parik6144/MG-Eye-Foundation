@@ -92,9 +92,9 @@ function getTransporter() {
   });
 }
 
-/** Hospital inbox only — appointment & contact admin mails */
+/** Lead inbox — appointment & contact admin mails only */
 function adminList() {
-  return "mgeyefoundation@gmail.com";
+  return "mgef.appointment@gmail.com";
 }
 
 const fromHeader = () => {
@@ -125,7 +125,7 @@ export async function sendAppointmentMails(data: {
   const info = await transporter.sendMail({
     from: fromHeader(),
     to: adminList(),
-    replyTo: SITE.email,
+    replyTo: "mgef.appointment@gmail.com",
     subject: `MG Eye lead — appointment — ${data.name}`,
     text: `New appointment request\n\n${plainRows(fields)}\n\nPlease call to confirm the time.`,
     html: wrapEmail(
