@@ -98,48 +98,28 @@ const fromHeader = () =>
 export async function sendAppointmentMails(data: {
   name: string;
   phone: string;
-  email: string;
   age: string;
   sex: string;
   date: string;
   time: string;
-  message: string;
 }) {
   const transporter = getTransporter();
   const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone },
-    { label: "Email", value: data.email },
     { label: "Age", value: data.age },
     { label: "Sex", value: data.sex },
     { label: "Date", value: data.date },
     { label: "Time", value: data.time },
-    { label: "Message", value: data.message },
   ])}</table>`;
 
   await transporter.sendMail({
     from: fromHeader(),
     to: adminList(),
-    ...(data.email ? { replyTo: data.email } : {}),
     subject: `New visit request — ${data.name}`,
     html: wrapEmail(
       "New visit request",
       `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Someone asked for an eye visit from the website.</p>${details}`
-    ),
-    attachments: [logoCid()],
-  });
-
-  if (!data.email) return;
-
-  await transporter.sendMail({
-    from: fromHeader(),
-    to: data.email,
-    subject: "We got your visit request — MG Eye Foundation",
-    html: wrapEmail(
-      `Thank you, ${data.name}`,
-      `<p style="margin:0 0 12px;color:#475569;font-size:15px;line-height:1.6;">We got your request to book an eye visit. This is not the final booking yet. Our desk will call you to confirm the time.</p>
-       <p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">If you need us sooner, call ${escapeHtml(SITE.phoneDisplay)}.</p>
-       ${details}`
     ),
     attachments: [logoCid()],
   });

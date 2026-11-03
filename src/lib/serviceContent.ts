@@ -147,7 +147,8 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       "Sudden blurring in one eye (vein occlusion can harm vision within minutes)",
     ],
     treatment:
-      "The retina cannot be judged by symptoms alone. Colour fundus photography (Forus) and ZEISS CIRRUS OCT show leakage, oedema, membranes and nerve-fibre change. Medical retina care here includes retinal laser for macular oedema and selected breaks, and intravitreal anti-VEGF or steroid injections for diabetic macular oedema, wet ARMD and vein occlusion. DR MALAY KUMAR DWIVEDI provides ROP screening for premature infants. Fluorescein angiography, ICG angiography, vitrectomy, macular-hole surgery and complex retinal-detachment surgery are tertiary vitreoretinal procedures; if the scan shows that pathway, it is named honestly after the visit.",
+      "The retina cannot be judged by symptoms alone. Colour fundus photography (Forus) and ZEISS CIRRUS OCT show leakage, oedema, membranes and nerve-fibre change. Medical retina care here includes retinal laser for macular oedema and selected breaks, and intravitreal anti-VEGF or steroid injections for diabetic macular oedema, wet ARMD and vein occlusion. DR MALAY KUMAR DWIVEDI provides ROP screening for premature infants.",
+  
     procedures: [
       {
         title: "OCT and fundus imaging",
@@ -469,12 +470,11 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
   },
   other: {
     overview:
-      "Beyond the named surgical specialties, the hospital lists neuro-ophthalmology, an optical shop and a pharmacy. Neuro-ophthalmology sits between neurology and ophthalmology: vision, eye movement, pupils and visual field when the problem may be in the nerve or brain rather than in the ocular media.",
+      "Beyond the named surgical specialties, the hospital lists neuro-ophthalmology and an optical shop. Neuro-ophthalmology sits between neurology and ophthalmology: vision, eye movement, pupils and visual field when the problem may be in the nerve or brain rather than in the ocular media.",
     causes: [
       "Optic nerve or pathway disease",
       "Raised intracranial pressure, inflammation, injury",
       "Need for dispensed spectacles after refraction",
-      "Need for prescribed eye medicines after a consultation",
     ],
     symptoms: [
       "Sudden or progressive loss of vision",
@@ -483,7 +483,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       "Acute headache with visual change",
     ],
     treatment:
-      "Neuro-ophthalmic signs are examined by the ophthalmologist; some patients need neurological imaging or referral. The optical shop dispenses spectacles to the refraction. The pharmacy compounds and dispenses prescribed drops and tablets.",
+      "Neuro-ophthalmic signs are examined by the ophthalmologist; some patients need neurological imaging or referral. The optical shop dispenses spectacles to the refraction.",
     procedures: [
       {
         title: "Neuro-Ophthalmology",
@@ -492,10 +492,6 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
       {
         title: "Optical Shop",
         body: "Spectacles are fitted to the measured prescription, including paediatric and occupational needs.",
-      },
-      {
-        title: "Pharmacy",
-        body: "Prescribed ophthalmic medicines are dispensed with instructions on dose, side-effects and duration.",
       },
     ],
     faqs: [
@@ -508,7 +504,7 @@ export const SERVICE_CLINICAL: Record<string, ServiceClinical> = {
         a: "Optic-nerve fibres do not regenerate. The aim is to diagnose the cause quickly and protect remaining function.",
       },
     ],
-    scope: "Neuro-ophthalmic examination, optical dispensing and pharmacy are the three listed supporting services.",
+    scope: "Neuro-ophthalmic examination and optical dispensing are the listed supporting services.",
   },
 };
 

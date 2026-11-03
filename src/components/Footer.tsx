@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { Phone, MapPin, Mail, Clock, Facebook, Instagram } from "lucide-react";
 import { SITE, SERVICE_HUB, NAV, COPY } from "@/lib/site";
 
@@ -87,6 +88,19 @@ export default function Footer() {
         </div>
       </div>
       <div className="h-[3px] bg-gradient-to-r from-[#1F8A9A] via-[#16707E] to-[#0E4A56]" />
+      <Script id="tawk-to" strategy="lazyOnload">
+        {`
+          var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+          (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6ae9b0b6e5a2253c3412832b/1k6gdkiqm';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+          })();
+        `}
+      </Script>
     </footer>
   );
 }

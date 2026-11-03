@@ -57,11 +57,11 @@ const CORNEA: ClinicalPage = {
     { title: "Toxic chemicals", body: "Alkali and acid exposure damage cells rapidly. Immediate irrigation and examination reduce the depth of injury." },
     { title: "Dystrophies and degeneration", body: "Inherited or age-related change in corneal layers can cause haze, recurrent erosion or progressive thinning." },
     { title: "Autoimmune disorders", body: "Systemic immune disease may inflame the ocular surface or sclera and secondarily involve the cornea." },
-    { title: "Ectasia (thinning)", body: "Keratoconus and related ectasias steepen and thin the cornea, distorting vision and sometimes progressing." },
+    { title: "Ectasia (thinning)", body: "Keratoconus and related ectasias steepen and thin the cornea, distorting vision and sometimes progressive." },
     { title: "Nutritional deficiencies", body: "Severe vitamin A deficiency and related malnutrition can soften the cornea and raise the risk of ulcer." },
     { title: "Allergies", body: "Chronic allergic inflammation roughens the surface, causes itching and may lead to shield ulcers in children." },
     { title: "Tumours", body: "Benign or malignant growths of the ocular surface can invade or distort the cornea." },
-    { title: "Dry eye and glaucoma", body: "A poor tear film or long-term pressure disease and its drops can stress the surface and delay healing." },
+    { title: "Dry eye and glaucoma", body: "A poor tear film or long-term IOP rise and its drops can stress the surface and delay healing." },
   ],
   symptomsKicker: "How it feels",
   symptomsTitle: "Symptoms",
@@ -80,30 +80,25 @@ const CORNEA: ClinicalPage = {
   servicesTitle: "Cornea services provided by us",
   services: [
     {
-      title: "Penetrating Keratoplasty (PK)",
-      body: "A full-thickness transplant removes the diseased central cornea and replaces it with donor tissue. It is used when all layers are scarred or the architecture cannot be restored by a partial-thickness graft.",
+      title: "Corneal Ulcer Treatment",
+      body: "Comprehensive diagnosis and treatment of corneal ulcers caused by infections, injuries, or other conditions. Treatment focuses on controlling infection, reducing inflammation, promoting healing, and protecting vision through appropriate medication and regular monitoring.",
     },
     {
-      title: "Therapeutic Penetrating Keratoplasty (TPK)",
-      body: "TPK is advised in severe fungal keratitis when infection cannot be controlled medically, to stop spread, protect the globe and, where possible, salvage structure.",
+      title: "Corneal Tear Repair",
+      body: "Specialized treatment for corneal injuries, cuts, and tears caused by trauma or accidents. Depending on the severity, treatment may include protective medication, tissue repair, or surgical procedures to restore corneal integrity and help preserve vision.",
     },
     {
-      title: "DSEK / DMEK",
-      body: "Endothelial keratoplasty replaces only the inner layers. DSEK uses a small incision to remove damaged endothelium and Descemet’s membrane and place a partial-thickness donor button. DMEK replaces host Descemet membrane and endothelium with donor DM and endothelium alone.",
-      chips: ["DSEK", "DMEK"],
-    },
-    {
-      title: "Hard contact lens (RGP and scleral)",
-      body: "Rigid gas-permeable lenses can improve acuity in keratoconus and after transplant. Scleral lenses rest on the white of the eye and vault over an irregular cornea, creating a smooth optical surface.",
-    },
-    {
-      title: "CXL (corneal collagen cross-linking)",
-      body: "CXL uses riboflavin and controlled ultraviolet light to stiffen corneal collagen and inhibit progression of ectasia in suitable eyes.",
+      title: "Contact Lens Service",
+      body: "Professional contact lens consultation, fitting, and guidance based on individual eye conditions and visual needs. Services include regular and specialized lenses, such as Rigid Gas Permeable (RGP) and scleral lenses, for conditions like keratoconus and irregular corneas.",
     },
   ],
   machinesTitle: "How we examine the cornea here",
   machines: [
     { title: "Slit lamp", body: "Magnified examination of the cornea, conjunctiva, anterior chamber and lens for abrasion, ulcer, infiltrate and scar." },
+    {
+      title: "Corneal Imaging (OCT)",
+      body: "Optical Coherence Tomography (OCT) provides detailed cross-sectional images of the cornea, helping assess corneal thickness, individual layers, structural abnormalities, and disease progression for accurate diagnosis and treatment planning."
+    },
     { title: "Appasamy Anterior Segment Imaging", body: "Documents the front of the eye so change over time can be compared with precision." },
     { title: "NIDEK ARK", body: "Measures refractive power and corneal curvature, which helps in keratoconus and post-transplant follow-up." },
     { title: "ZEISS LUMERA 300", body: "Operating microscope used when corneal microsurgery is performed in this hospital." },
@@ -184,13 +179,12 @@ const GLAUCOMA: ClinicalPage = {
   services: [
     { title: "Goldmann applanation tonometry", body: "One of the most accurate methods used to measure intraocular pressure at the slit lamp." },
     { title: "Pachymetry", body: "A simple, painless measurement of corneal thickness, which is needed to interpret pressure readings correctly." },
-    { title: "Humphrey visual field analysis", body: "The Humphrey field analyser maps the extent of the visual field so silent side-vision loss can be documented and followed." },
     { title: "OCT for ganglion cell complex and RNFL", body: "Optical coherence tomography images and measures the ganglion cell complex and retinal nerve fibre layer without touching the eye." },
-    { title: "Ultrasound biomicroscopy", body: "UBM images the anterior segment when the angle, iris and ciliary body need to be seen in more detail." },
+    {
+      title: "Fundus Photography",
+      body: "A non-invasive imaging technique that captures detailed photographs of the retina and optic nerve. It helps document optic nerve changes, detect retinal abnormalities, and monitor conditions such as glaucoma and diabetic retinopathy."
+    },
     { title: "Trabeculectomy surgery", body: "A filtering operation that lowers pressure inside the eye. It remains a gold-standard surgical option in many patients." },
-    { title: "Glaucoma valve surgery", body: "A valved device opens to drain excess fluid from the eye to an external reservoir when further pressure lowering is required." },
-    { title: "Glaucoma shunt surgery", body: "A tube shunt provides an alternative drainage path when prior surgery has failed or the eye is at high risk." },
-    { title: "Pediatric glaucoma surgery", body: "Surgery in children most often uses external trabeculotomy or goniotomy, chosen according to the anatomy of the angle." },
   ],
   machinesTitle: "How we assess glaucoma here",
   machines: [
@@ -206,7 +200,7 @@ const GLAUCOMA: ClinicalPage = {
     {
       q: "What are the different types of glaucoma?",
       a: "The main types are:",
-      list: ["Primary open-angle glaucoma", "Angle-closure glaucoma", "Congenital glaucoma", "Secondary glaucoma"],
+      list: ["Primary open-angle glaucoma", "Angle-closure glaucoma", "Congenital glaucoma", "Secondary glaucoma", "Normal tension glaucoma"],
     },
     {
       q: "What are the risk factors for developing glaucoma?",
@@ -281,10 +275,6 @@ const OCULOPLASTY: ClinicalPage = {
     {
       title: "Lid repair surgery",
       body: "Eyelid reconstruction (including blepharoplasty when indicated) restores function and appearance of the lid and periocular area with as little extra morbidity as possible. Outcome depends on the defect, age, health of nearby tissue and surgical planning.",
-    },
-    {
-      title: "Orbital surgery",
-      body: "Orbital operations address tumours, thyroid-related orbital disease, fractures and congenital anomalies. Selected cases are planned with ENT, neurosurgery or maxillofacial colleagues so the approach is complete.",
     },
   ],
   machinesTitle: "How we operate and examine here",
@@ -406,7 +396,7 @@ const PEDIATRIC: ClinicalPage = {
     { title: "Tono-Pen", body: "Comfortable pressure measurement without a large slit-lamp setup, useful in children." },
     { title: "NIDEK ARK", body: "Objective refraction and keratometry to support glasses and contact-lens planning." },
     { title: "ZEISS LUMERA 300", body: "Microscope for pediatric cataract, squint and trauma surgery." },
-    { title: "General anaesthesia machine", body: "Controlled anaesthesia when a child cannot cooperate for examination under anaesthesia or surgery." },
+    { title: "General anaesthesia machine", body: "Controlled anesthesia, as a child cannot cooperate for examination without anesthesia." },
     { title: "Slit lamp", body: "Detailed view of the front of the eye when the child can sit for examination." },
   ],
   extraTitle: "Types of strabismus",
@@ -422,7 +412,7 @@ const PEDIATRIC: ClinicalPage = {
     { q: "How can I fix my toddler’s squint?", a: "Glasses, injections, eye exercises and surgery can all play a role, chosen after examination." },
     { q: "Can a child develop a squint?", a: "Some children are born with a squint. Others develop it between 1 and 4 years of age." },
     { q: "How do you know if your baby has squint eyes?", a: "Clues include an eye that turns, decreased vision, double vision, difficulty reading in older children, headache and poor depth perception." },
-    { q: "When should a child see an ophthalmologist?", a: "When there are vision problems, a turning eye, a white pupil, premature birth needing ROP review, or a family history of serious childhood eye disease." },
+    { q: "When should a child see an ophthalmologist?", a: "When there are vision problems, a squinting eye, a white pupil, or premature birth ROP review is needed within 30 days of life, family history of serious childhood eye disease, or any child (even normal) before the third birthday." },
     { q: "What age should a child see an eye doctor?", a: "Children should have a first eye exam around six months of age and then at least once every year, or sooner if something looks wrong." },
     { q: "What is strabismus?", a: "Strabismus, also called squint, is a condition in which the eyes are misaligned." },
     {
@@ -471,12 +461,8 @@ const REFRACTIVE: ClinicalPage = {
   servicesTitle: "Refractive error services provided by us",
   services: [
     {
-      title: "LASIK",
-      body: "Laser-Assisted in Situ Keratomileusis reshapes the cornea so light focuses more accurately on the retina. It is used in suitable myopia, hypermetropia and astigmatism after a full work-up.",
-    },
-    {
-      title: "PRK",
-      body: "Photorefractive keratectomy also uses a laser to reshape the cornea but does not create a flap. It may be preferred when corneal thickness, shape or lifestyle make PRK the safer surface option.",
+      title: "Glasses",
+      body: "Comprehensive eye testing and personalized prescription glasses to correct refractive errors such as myopia, hyperopia, and astigmatism, helping improve vision and provide clear, comfortable eyesight."
     },
     {
       title: "ICL",
@@ -516,12 +502,12 @@ const OTHER: ClinicalPage = {
   kicker: "Supporting services",
   title: "Other Services",
   breadcrumb: "Other Services",
-  hero: "Besides the main surgical services, M G Eye Foundation, Bara Gamharia, Jamshedpur, offers neuro-ophthalmology assessment, an optical shop and a pharmacy. DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI examine vision problems that arise from the nervous system, then support the prescription with glasses and medicines on site.",
+  hero: "Besides the main surgical services, M G Eye Foundation, Bara Gamharia, Jamshedpur, offers neuro-ophthalmology assessment and an optical shop. DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI examine vision problems that arise from the nervous system, then support the prescription with glasses on site.",
   image: "/service-photos/pediatric.png",
   imageAlt: "Supporting eye services at M G Eye Foundation",
   whatTitle: "What these services cover",
   whatBody:
-    "Neuro-ophthalmology sits between neurology and ophthalmology. It deals with disease of the nervous system that affects vision, eye movement or the pupils. The optical shop dispenses spectacles matched to the clinical prescription. The pharmacy compounds and dispenses medicines prescribed after the visit.",
+    "Neuro-ophthalmology sits between neurology and ophthalmology. It deals with disease of the nervous system that affects vision, eye movement or the pupils. The optical shop dispenses spectacles matched to the clinical prescription.",
   causesKicker: "When to come",
   causesTitle: "Reasons to visit a neuro-ophthalmologist",
   causesIntro: "These signs can affect children and adults. Sudden vision loss or unequal pupils need prompt examination.",
@@ -546,10 +532,10 @@ const OTHER: ClinicalPage = {
     { title: "Pupil change", body: "A pupil that does not react, or two pupils of different size, needs examination." },
     { title: "Double vision", body: "Two images that separate more in one gaze direction suggest a nerve or muscle problem." },
     { title: "Colour desaturation", body: "Red objects look washed out in one eye compared with the other in optic neuritis." },
-    { title: "Need for new glasses or drops", body: "After the medical visit, the optical shop and pharmacy complete the plan." },
+    { title: "Need for new glasses", body: "After the medical visit, the optical shop can complete the glasses plan." },
   ],
   treatment:
-    "Many neuro-ophthalmic conditions are managed with investigation and medicines. Surgery is reserved for selected problems such as adult strabismus or botulinum toxin for blepharospasm and hemifacial spasm. Optical dispensing and pharmacy sit beside the clinic so the family can complete glasses and drops without a second journey when stock allows.",
+    "Many neuro-ophthalmic conditions are managed with investigation and medicines. Surgery is reserved for selected problems such as adult strabismus or botulinum toxin for blepharospasm and hemifacial spasm. The optical shop sits beside the clinic so the family can complete glasses without a second journey when stock allows.",
   servicesTitle: "Other services provided by us",
   services: [
     {
@@ -559,10 +545,6 @@ const OTHER: ClinicalPage = {
     {
       title: "Optical shop",
       body: "Spectacles are chosen for indoor or outdoor use and for the person’s work. Trained staff help match frames and lenses to the medical prescription and to comfort, including progressive and single-vision designs as advised.",
-    },
-    {
-      title: "Pharmacy",
-      body: "The pharmacy team dispenses medicines prescribed for the individual, with attention to how the drops or tablets are used and to important side effects that should be reported.",
     },
   ],
   machinesTitle: "Supportive diagnostics on site",

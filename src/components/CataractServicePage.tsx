@@ -25,7 +25,7 @@ import PageBreadcrumb from "@/components/PageBreadcrumb";
 const CAUSES = [
   {
     title: "Old age",
-    body: "Lens proteins change slowly over decades. The lens yellows and stiffens, so light no longer passes as a clear image. This is the most common cause of cataract.",
+    body: "Lens proteins change slowly over decades. The lens yellows and stiffens, so light no longer passes to form a clear image. This is the most common cause of cataract.",
   },
   {
     title: "Smoking",
@@ -59,7 +59,7 @@ const SYMPTOMS = [
   {
     icon: Contrast,
     text: "Hazy or blurred vision",
-    body: "Objects look foggy or out of focus, as if seen through a dirty window. Reading, faces and road signs become harder to resolve.",
+    body: "Objects look foggy or out of focus, as if seen through a dirty window. Reading, Seeing faces and road signs become harder to resolve.",
   },
   {
     icon: Moon,
@@ -100,15 +100,10 @@ const SERVICES_BLOCKS = [
     body: "Multifocal intraocular lenses are implanted to correct both far and near vision without spectacles. A small percentage of patients may need small power occasionally.",
   },
   {
-    n: "03",
-    title: "Micro-Coaxial Phaco Surgery",
-    body: "This technique reduces the incision to less than 2.2 mm. Irrigation, aspiration and phacoemulsification are performed with instruments used in standard coaxial small-incision cataract surgery. Patients may have quicker wound healing, smaller surgically induced astigmatism, better postoperative visual sharpness, lower risk of infection, and more stable corneal biomechanics.",
-  },
-  {
     n: "04",
     title: "Premium Cataract Surgery Options",
     body: "These options enable vision for distance, intermediate and near tasks without blurred zones.",
-    chips: ["Mono-vision", "Toric IOLs", "Aspheric IOLs", "Multifocal IOLs"],
+    chips: ["Monofocal IOLs", "Toric IOLs", "Advance Monofocal IOLs", "Multifocal IOLs",  "EDOF IOLs" ],
   },
 ];
 

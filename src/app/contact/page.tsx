@@ -71,9 +71,13 @@ export default function ContactPage() {
             </p>
             <div className="mt-5">
               <p className="text-xs font-semibold tracking-[0.14em] uppercase text-[#1F8A9A]">Insurance and schemes</p>
-              <div className="mt-3 grid grid-cols-2 gap-4 sm:gap-5">
-                <img src="/pmjayimages.jpg" alt="Ayushman Bharat PM-JAY" className="w-full h-auto object-contain" />
-                <img src="/rajyakarmi.png" alt="Rajyakarmi Swasthya Bima Yojana" className="w-full h-auto object-contain" />
+              <div className="mt-3 grid grid-cols-2 gap-4 sm:gap-5 items-center">
+                <div className="flex h-48 sm:h-56 items-center justify-center">
+                  <img src="/pmjayimages.jpg" alt="Ayushman Bharat PM-JAY" className="h-full w-auto max-w-full object-contain" />
+                </div>
+                <div className="flex h-52 sm:h-60 items-center justify-center">
+                  <img src="/rajyakarmi.png" alt="Rajyakarmi Swasthya Bima Yojana" className="h-full w-auto max-w-full object-contain" />
+                </div>
               </div>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">

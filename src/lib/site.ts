@@ -37,7 +37,7 @@ export const COPY = {
   aboutP2:
     "Led by DR KUMAR SAKET and DR MALAY KUMAR DWIVEDI, our clinic provides comprehensive ophthalmic care for patients of all ages. From routine eye examinations and diagnosis of eye conditions to advanced surgical treatments, we are committed to protect your vision and help you maintain healthy eyes at every stage of life.",
   mission:
-    "to provide comprehensive eye care services to all the sections of society at affordable cost.",
+    "To provide comprehensive eye care services to all the sections of society at affordable cost.",
   missionTags: ["On-site same-day scanning", "Seven specialised services", "Structured post-operative follow-up"],
   vision:
     "Our vision is to create a world where everyone has access to quality eye care and the opportunity to enjoy clear, healthy vision. We are committed to bringing advanced eye care closer to individuals and families, with compassion, expertise, and trust at the heart of everything we do.",
@@ -413,7 +413,6 @@ export const SERVICE_HUB = [
     items: [
       "Phacoemulsification with Foldable IOL",
       "Multifocal IOL",
-      "Micro-Coaxial Phaco Surgery",
       "Premium Cataract Surgery Options",
     ],
   },
@@ -439,7 +438,6 @@ export const SERVICE_HUB = [
       "Pachymetry",
       "OCT for Ganglion Cell Complex and RNFL",
       "Trabeculectomy Surgery",
-      "Glaucoma Shunt Surgery",
     ],
   },
   {
@@ -485,14 +483,14 @@ export const SERVICE_HUB = [
     title: "Refractive Error Service",
     icon: "/services/logos/refractive_error.png",
     blurb: "Glasses, contact lenses and other options for clearer seeing.",
-    items: ["PRK", "ICL"],
+    items: ["Glasses", "ICL"],
   },
   {
     slug: "other",
     title: "Other Services",
     icon: "/service-icons/other.png",
-    blurb: "Optical shop, pharmacy and extra eye care in this hospital.",
-    items: ["Neuro-Ophthalmology", "Optical Shop", "Pharmacy"],
+    blurb: "Optical shop and extra eye care in this hospital.",
+    items: ["Neuro-Ophthalmology", "Optical Shop"],
   },
 ] as const;
 
@@ -536,15 +534,15 @@ const EXTRA_SERVICES = [
   {
     slug: "other",
     title: "Other Services",
-    what: "Supporting services around medical eye care: neuro-ophthalmic assessment, optical dispensing and pharmacy.",
-    feel: "Headache with visual field loss, a need for spectacles, or medicines prescribed after a visit.",
-    do: "Neuro-ophthalmology problems are examined; an optical shop and pharmacy support the prescription.",
+    what: "Supporting services around medical eye care: neuro-ophthalmic assessment and optical dispensing.",
+    feel: "Headache with visual field loss, or a need for spectacles after a visit.",
+    do: "Neuro-ophthalmology problems are examined; an optical shop supports the prescription.",
     image: "/service-photos/pediatric.png",
-    doctor: "Ask at the desk for optical and pharmacy. Neuro-ophthalmic signs are examined by the treating ophthalmologist.",
+    doctor: "Ask at the desk for the optical shop. Neuro-ophthalmic signs are examined by the treating ophthalmologist.",
     who: "",
     signs: [] as string[],
     when: "",
-    offers: ["Neuro-Ophthalmology", "Optical Shop", "Pharmacy"],
+    offers: ["Neuro-Ophthalmology", "Optical Shop"],
     story: ["", "", ""] as string[],
     steps: ["", "", "", ""] as string[],
     stepImages: ["", "", "", ""] as string[],
