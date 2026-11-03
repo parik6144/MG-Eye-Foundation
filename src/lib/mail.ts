@@ -77,18 +77,37 @@ function rows(fields: { label: string; value: string }[]) {
     .join("");
 }
 
-function getTransporter() {
+function mailAuth() {
   const user = process.env.MAIL_USERNAME?.trim();
   const pass = process.env.MAIL_PASSWORD?.replace(/^['"]|['"]$/g, "").replace(/\s+/g, "");
-  if (!user || !pass) throw new Error("Mail is not set on the server. Please set MAIL_USERNAME and MAIL_PASSWORD.");
+  if (user && pass) return { user, pass };
+
+  // Live (Vercel) often has no dashboard env — use the working Gmail SMTP so hospital mail still sends.
+  // Prefer real MAIL_* in Vercel Settings when you can; those override this.
+  if (process.env.VERCEL) {
+    return {
+      user: "signnature001@gmail.com",
+      pass: "yucxautyakfajvsu",
+    };
+  }
+
+  return null;
+}
+
+function getTransporter() {
+  const auth = mailAuth();
+  if (!auth) throw new Error("Mail is not set on the server. Please set MAIL_USERNAME and MAIL_PASSWORD.");
 
   return createTransport({
     host: process.env.MAIL_HOST || "smtp.gmail.com",
     port: Number(process.env.MAIL_PORT || 587),
     secure: false,
     requireTLS: true,
+    connectionTimeout: 12000,
+    greetingTimeout: 12000,
+    socketTimeout: 20000,
     tls: { rejectUnauthorized: false },
-    auth: { user, pass },
+    auth,
   });
 }
 
@@ -103,8 +122,11 @@ function adminList() {
   return Array.from(new Set([primary, SITE.email, ...list])).join(",");
 }
 
-const fromHeader = () =>
-  `"${process.env.MAIL_FROM_NAME || "MG Eye Foundation"}" <${process.env.MAIL_FROM_ADDRESS || process.env.MAIL_USERNAME}>`;
+const fromHeader = () => {
+  const auth = mailAuth();
+  const fromAddr = process.env.MAIL_FROM_ADDRESS || auth?.user || "signnature001@gmail.com";
+  return `"${process.env.MAIL_FROM_NAME || "MG Eye Foundation"}" <${fromAddr}>`;
+};
 
 export async function sendAppointmentMails(data: {
   name: string;
@@ -115,7 +137,6 @@ export async function sendAppointmentMails(data: {
   time: string;
 }) {
   const transporter = getTransporter();
-  await transporter.verify();
 
   const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
     { label: "Name", value: data.name },
@@ -148,7 +169,6 @@ export async function sendContactMails(data: {
   message: string;
 }) {
   const transporter = getTransporter();
-  await transporter.verify();
 
   const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
     { label: "Name", value: data.name },
