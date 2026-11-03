@@ -16,6 +16,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "Please fill name, phone, age, sex, date and time." }, { status: 400 });
     }
 
+    const tomorrow = new Date();
+    tomorrow.setHours(0, 0, 0, 0);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const chosen = new Date(`${date}T00:00:00`);
+    if (Number.isNaN(chosen.getTime()) || chosen < tomorrow) {
+      return NextResponse.json(
+        { ok: false, error: "Please choose a date after today." },
+        { status: 400 }
+      );
+    }
+
     await sendAppointmentMails({ name, phone, age, sex, date, time });
     return NextResponse.json({ ok: true, message: "Request sent." });
   } catch (error) {

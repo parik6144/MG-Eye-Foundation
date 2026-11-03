@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import { Phone, MapPin, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
 import { SITE } from "@/lib/site";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
+import { swalError, swalSuccess } from "@/lib/swal";
 
 const MAP_SRC =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.5908957717247!2d86.10057549999999!3d22.817618100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e5848c06a167%3A0x2cdbf23713a6129!2sM%20G%20Eye%20Foundation!5e0!3m2!1sen!2sin!4v1787430071311!5m2!1sen!2sin";
@@ -112,12 +113,20 @@ export default function ContactPage() {
                     });
                     const data = await res.json().catch(() => ({}));
                     if (!res.ok) {
-                      setError(data.error || `Mail failed (${res.status})`);
+                      const msg = data.error || `Mail failed (${res.status})`;
+                      setError(msg);
+                      await swalError("Mail not sent", msg);
                       return;
                     }
                     setFormSubmitted(true);
+                    await swalSuccess(
+                      "Message sent",
+                      "Thank you. A mail went to the hospital. We will call or write back on a working day."
+                    );
                   } catch (err) {
-                    setError(err instanceof Error ? err.message : "Network error. Mail did not send.");
+                    const msg = err instanceof Error ? err.message : "Network error. Mail did not send.";
+                    setError(msg);
+                    await swalError("Mail not sent", msg);
                   } finally {
                     setSending(false);
                   }

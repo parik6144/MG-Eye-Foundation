@@ -1,4 +1,5 @@
 import { createTransport } from "nodemailer";
+import fs from "fs";
 import path from "path";
 import { SITE } from "@/lib/site";
 
@@ -10,15 +11,26 @@ function escapeHtml(value: string) {
     .replace(/"/g, "&quot;");
 }
 
-function logoCid() {
-  return {
-    filename: "mg_logo.png",
-    path: path.join(process.cwd(), "public", "mg_logo.png"),
-    cid: "mgelogo",
-  };
+function logoAttachment() {
+  const logoPath = path.join(process.cwd(), "public", "mg_logo.png");
+  if (!fs.existsSync(logoPath)) return [];
+  return [
+    {
+      filename: "mg_logo.png",
+      path: logoPath,
+      cid: "mgelogo",
+    },
+  ];
 }
 
 function wrapEmail(title: string, inner: string) {
+  const hasLogo = logoAttachment().length > 0;
+  const logoBlock = hasLogo
+    ? `<div style="display:inline-block;background:#ffffff;border-radius:12px;padding:10px 16px;">
+                <img src="cid:mgelogo" alt="MG Eye Foundation" width="140" style="display:block;height:auto;max-width:140px;" />
+              </div>`
+    : "";
+
   return `<!DOCTYPE html>
 <html>
 <body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
@@ -28,9 +40,7 @@ function wrapEmail(title: string, inner: string) {
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
           <tr>
             <td style="background:#0F172A;padding:22px 28px;text-align:center;">
-              <div style="display:inline-block;background:#ffffff;border-radius:12px;padding:10px 16px;">
-                <img src="cid:mgelogo" alt="MG Eye Foundation" width="140" style="display:block;height:auto;max-width:140px;" />
-              </div>
+              ${logoBlock}
               <p style="margin:14px 0 0;color:#ffffff;font-size:18px;font-weight:700;">MG Eye Foundation</p>
               <p style="margin:4px 0 0;color:#94a3b8;font-size:13px;">Eye hospital, Bara Gamharia</p>
             </td>
@@ -68,9 +78,9 @@ function rows(fields: { label: string; value: string }[]) {
 }
 
 function getTransporter() {
-  const user = process.env.MAIL_USERNAME;
+  const user = process.env.MAIL_USERNAME?.trim();
   const pass = process.env.MAIL_PASSWORD?.replace(/^['"]|['"]$/g, "").replace(/\s+/g, "");
-  if (!user || !pass) throw new Error("Mail is not set on the server.");
+  if (!user || !pass) throw new Error("Mail is not set on the server. Please set MAIL_USERNAME and MAIL_PASSWORD.");
 
   return createTransport({
     host: process.env.MAIL_HOST || "smtp.gmail.com",
@@ -82,14 +92,15 @@ function getTransporter() {
   });
 }
 
+/** Hospital inbox — appointment & contact mails go here */
 function adminList() {
+  const primary = "mgeyefoundation@gmail.com";
   const extra = process.env.MAIL_ADMIN || "";
   const list = extra
     .split(",")
     .map((e) => e.trim())
     .filter(Boolean);
-  const unique = Array.from(new Set([SITE.email, "parikachevier2013@gmail.com", ...list]));
-  return unique.join(",");
+  return Array.from(new Set([primary, SITE.email, ...list])).join(",");
 }
 
 const fromHeader = () =>
@@ -104,6 +115,8 @@ export async function sendAppointmentMails(data: {
   time: string;
 }) {
   const transporter = getTransporter();
+  await transporter.verify();
+
   const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone },
@@ -116,12 +129,15 @@ export async function sendAppointmentMails(data: {
   await transporter.sendMail({
     from: fromHeader(),
     to: adminList(),
-    subject: `New visit request — ${data.name}`,
+    replyTo: SITE.email,
+    subject: `New appointment request — ${data.name}`,
     html: wrapEmail(
-      "New visit request",
-      `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Someone asked for an eye visit from the website.</p>${details}`
+      "New appointment request",
+      `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">A patient asked for an eye visit from the website booking form.</p>
+       <p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Please call them to confirm the time.</p>
+       ${details}`
     ),
-    attachments: [logoCid()],
+    attachments: logoAttachment(),
   });
 }
 
@@ -132,6 +148,8 @@ export async function sendContactMails(data: {
   message: string;
 }) {
   const transporter = getTransporter();
+  await transporter.verify();
+
   const details = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows([
     { label: "Name", value: data.name },
     { label: "Phone", value: data.phone },
@@ -143,12 +161,13 @@ export async function sendContactMails(data: {
     from: fromHeader(),
     to: adminList(),
     replyTo: data.email,
-    subject: `New website message — ${data.name}`,
+    subject: `New contact message — ${data.name}`,
     html: wrapEmail(
-      "New message from the website",
-      `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Someone sent a message from the Contact page.</p>${details}`
+      "New message from the Contact page",
+      `<p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">Someone sent a message from the website Contact form.</p>
+       ${details}`
     ),
-    attachments: [logoCid()],
+    attachments: logoAttachment(),
   });
 
   await transporter.sendMail({
@@ -161,6 +180,6 @@ export async function sendContactMails(data: {
        <p style="margin:0 0 16px;color:#475569;font-size:15px;line-height:1.6;">For an urgent eye problem, call ${escapeHtml(SITE.phoneDisplay)}.</p>
        ${details}`
     ),
-    attachments: [logoCid()],
+    attachments: logoAttachment(),
   });
 }

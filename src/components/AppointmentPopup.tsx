@@ -4,11 +4,23 @@ import { useState, useEffect, useCallback } from "react";
 import { X, Calendar, Clock, Phone, CheckCircle2, ChevronDown, User } from "lucide-react";
 
 import { SITE } from "@/lib/site";
+import { swalError, swalSuccess } from "@/lib/swal";
 
 const TIME_SLOTS = [
   "10:00 AM", "11:00 AM", "12:00 PM",
   "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "5:30 PM",
 ];
+
+/** Local YYYY-MM-DD for tomorrow — booking starts after today */
+function minAppointmentDate() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + 1);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
 
 interface AppointmentPopupProps {
   isOpen?: boolean;
@@ -52,6 +64,14 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
     e.preventDefault();
     setSending(true);
     setError("");
+    const earliest = minAppointmentDate();
+    if (!form.date || form.date < earliest) {
+      const msg = "Please choose a date after today.";
+      setError(msg);
+      setSending(false);
+      await swalError("Date not allowed", msg);
+      return;
+    }
     try {
       const res = await fetch("/api/appointment", {
         method: "POST",
@@ -60,13 +80,21 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setError(data.error || `Mail failed (${res.status})`);
+        const msg = data.error || `Mail failed (${res.status})`;
+        setError(msg);
+        await swalError("Mail not sent", msg);
         return;
       }
       setSubmitted(true);
-      setTimeout(() => close(), 3500);
+      await swalSuccess(
+        "Request sent",
+        "We got your booking request. Our desk will call you to confirm the time. A mail also went to the hospital."
+      );
+      close();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Network error. Mail did not send.");
+      const msg = err instanceof Error ? err.message : "Network error. Mail did not send.";
+      setError(msg);
+      await swalError("Mail not sent", msg);
     } finally {
       setSending(false);
     }
@@ -221,7 +249,7 @@ export default function AppointmentPopup({ isOpen: externalOpen, onClose: extern
                         type="date"
                         value={form.date}
                         onChange={(e) => setForm({ ...form, date: e.target.value })}
-                        min={new Date().toISOString().split("T")[0]}
+                        min={minAppointmentDate()}
                         className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e2e8f0] focus:border-[#1F8A9A] focus:ring-2 focus:ring-[#1F8A9A]/15 bg-white text-sm text-[#0F172A] transition-all outline-none"
                       />
                     </div>
