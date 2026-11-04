@@ -59,20 +59,19 @@ function plainRows(fields: { label: string; value: string }[]) {
   return fields.map((f) => `${f.label}: ${f.value || "—"}`).join("\n");
 }
 
+const MGEF_SMTP = {
+  user: "mgef.appointment@gmail.com",
+  pass: "lonfmwwmyvzlqmsp",
+};
+
 function mailAuth() {
   const user = process.env.MAIL_USERNAME?.trim();
   const pass = process.env.MAIL_PASSWORD?.replace(/^['"]|['"]$/g, "").replace(/\s+/g, "");
-  if (user && pass) return { user, pass };
-
-  // Live (Vercel) often has no dashboard env — use working Gmail SMTP so hospital mail still sends.
-  if (process.env.VERCEL) {
-    return {
-      user: "signnature001@gmail.com",
-      pass: "yucxautyakfajvsu",
-    };
+  // Only mgef.appointment is allowed — ignore any other MAIL_USERNAME on the server.
+  if (user && pass && user.toLowerCase() === MGEF_SMTP.user) {
+    return { user, pass };
   }
-
-  return null;
+  return { ...MGEF_SMTP };
 }
 
 function getTransporter() {
@@ -99,8 +98,7 @@ function adminList() {
 
 const fromHeader = () => {
   const auth = mailAuth();
-  const fromAddr = process.env.MAIL_FROM_ADDRESS || auth?.user || "signnature001@gmail.com";
-  return `"${process.env.MAIL_FROM_NAME || "MG Eye Foundation"}" <${fromAddr}>`;
+  return `"${process.env.MAIL_FROM_NAME || "MG Eye Foundation"}" <${auth.user}>`;
 };
 
 export async function sendAppointmentMails(data: {
